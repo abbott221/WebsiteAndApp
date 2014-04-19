@@ -6,184 +6,98 @@ import org.json.JSONObject;
 
 import android.support.v7.app.ActionBarActivity;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends ActionBarActivity {
+
+
+public class AttemptView1 extends Activity implements AttemptView {
 	
 	
+	private AttemptController1 controller;
 	
-	//NEW CONTENT BEGINS
 	
-	//TextView content;
-    //EditText fname, email, login, pass;
-    //String Name, Email, Login, Pass;
+	//private final Button getNextPost;
+	//private final TextView textView;
     
-    EditText threadID, postContent, userID, userName;
-    Button submit;
+	//private final EditText threadID, postContent, userID, userName;
     
-    //NEW CONTENT ENDS
+	//private final Button submit;
 	
-	
-	
-	Button button;
+	Button getNextPost;
 	TextView textView;
+    
+	EditText threadID, postContent, userID, userName;
+    
+	Button submit;
+    
+	
+	
 	//boolean changedText = false;
 	int entry = 1;
 	
 	
-	String postsURL = "http://androidtesting.x10host.com/JSONposts.php";
-	String threadsURL = "http://androidtesting.x10host.com/JSONthreads.php";
-	
-	//similar to PostsForm.php
-	String targetURL = "http://androidtesting.x10host.com/JSONtarget.php";
 	
 	
 	
-
-    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
-        //@Bad
-        //circumvent NetworkOnMainThreadException
-        //doing networking on main thread is bad because the whole thread waits for the response
-        //implement Async task later
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        //@Bad
-        
-        
-        //NEW CONTENT BEGINS
-        
-        
-        //threadID
-        //postContent
-        //userID
-        //userName
-        
-        //content    =   (TextView)findViewById( R.id.content );
-        //fname      =   (EditText)findViewById(R.id.name);
-        //email      =   (EditText)findViewById(R.id.email);
-        //login      =    (EditText)findViewById(R.id.loginname);
-        //pass       =   (EditText)findViewById(R.id.password);
-         
-         
-        //Button saveme=(Button)findViewById(R.id.save);
-        
-        
-        threadID     =   (EditText)findViewById( R.id.threadID );
-        postContent  =   (EditText)findViewById(R.id.postContent);
-        userID       =   (EditText)findViewById(R.id.userID);
-        userName     =   (EditText)findViewById(R.id.userName);
-        
-        submit       =   (Button)findViewById(R.id.submit);
-         
-         
+	
+	
+	public AttemptView1() {
 
         
-        submit.setOnClickListener(new MyOnClickListener(this));
-        
-        /*
-        saveme.setOnClickListener(new Button.OnClickListener(){
 
-            public void onClick(View v)
-            {
-                try{
-                     
-                         // CALL GetText method to make post method call
-                        //GetText();
-                        
-                        
-                        JSONfunctions.postData();
-                        
-                 }
-                catch(Exception ex)
-                 {
-                    content.setText(" url exeption! " );
-                 }
-            }
-        });
-        */
+		getNextPost = (Button) findViewById(R.id.button1);
         
-        //NEW CONTENT ENDS
-        
-        
-        
-        
-        
-        button = (Button) findViewById(R.id.button1);
-        
-        //The MyOnClickListener Class is also new content JSYK
-        button.setOnClickListener(new MyOnClickListener(this));
-        
+        //getNextPost.setOnClickListener(new MyOnClickListener(this));
+		this.getNextPost.setOnClickListener(this);
+		
+		
         textView = (TextView) findViewById(R.id.textView1);
+		
+		
+		
+        threadID     =   (EditText) findViewById( R.id.threadID );
+        postContent  =   (EditText) findViewById(R.id.postContent);
+        userID       =   (EditText) findViewById(R.id.userID);
+        userName     =   (EditText) findViewById(R.id.userName);
+        
+        submit       =   (Button) findViewById(R.id.submit);
+         
+         
+
+        
+        //submit.setOnClickListener(new MyOnClickListener(this));
+        this.submit.setOnClickListener(this);
+        //submit.s
+        //submit.setO
         
         
         
         
-        /*
-         * JSON OBJECT STUFF GOES HERE
-         */
         
         
-        //use global postsURL
-        //String url = "http://androidtesting.x10host.com/JSONposts.php";
-        //String url = "http://google.com";
         
         
 
+        /*
         try {
     	    
-        	//JSONObject jReturn = JSONfunctions.getJSONfromURL(url);
-        	
-        	//JSONArray names = jReturn.names();
-        	//JSONArray jArrayReturn = jReturn.toJSONArray(names);
         	
         	JSONArray jArrayReturn = JSONfunctions.getJSONfromURL(postsURL);
         	
-        	
-        	
-        	
-        	
-    	    
-        	/*
-        	for ( int i = 0; i < (jArrayReturn.length() - 5); i++ ) {
-    	    	JSONObject json_data = jArrayReturn.getJSONObject(i);
-    	    	
-    	    	
-    	    	StringBuilder displayMe = new StringBuilder();
-    	    	//json_data.
-    	    	
-    	    	Log.i("log_tag","num: "+json_data.getInt("postNumber")+
-    	    			", user: "+json_data.getString("postUser")+
-                        ", content: "+json_data.getString("postContent")
-    	    	);
-    	    	
-    	    	displayMe.append("num: ");
-    	    	displayMe.append( json_data.getInt("postNumber") );
-    	    	displayMe.append("\nuser: ");
-    	    	displayMe.append( json_data.getString("postUser") );
-    	    	displayMe.append("\ncontent: ");
-    	    	displayMe.append( json_data.getString("postContent") );
-    	    	
-    	    	textView.setText(displayMe.toString());
-    	    } //END FOR LOOP
-        	*/
         	
         	
         	JSONObject json_data = jArrayReturn.getJSONObject(entry);
 	    	
 	    	
 	    	StringBuilder displayMe = new StringBuilder();
-	    	//json_data.
 	    	
 	    	Log.i("log_tag","thread: "+json_data.getInt("threadID")+
 	    			", post: "+json_data.getString("postID")+
@@ -209,20 +123,80 @@ public class MainActivity extends ActionBarActivity {
         	
     	    
         } catch (JSONException e) {
-        	Log.e("log_tag", "lol4 Error parsing data "+e.toString());
+        	Log.e("log_tag", "Error parsing data "+e.toString());
         } catch (Exception e) {
-        	Log.e("log_tag", "toplel Error parsing data "+e.toString());
+        	Log.e("log_tag", "Error parsing data "+e.toString());
         }
         
+        */
         
         
         
+	}
+	
+	
+
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
+	@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         
-        //textView.setText("Hello World!");
-        
+        //@Bad
+        //circumvent NetworkOnMainThreadException
+        //doing networking on main thread is bad because the whole thread waits for the response
+        //implement Async task later
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        //@Bad
         
         
     }
+    
+    
+    @Override
+    public void registerObserver(AttemptController1 controller) {
+
+        this.controller = controller;
+
+    }
+
+
+
+	@Override
+	public void onClick(View viewEvent) {
+		// TODO Auto-generated method stub
+
+		
+		//Object source = event.getSource();
+		
+		//returns int
+		int source = viewEvent.getId();
+		//int source = viewEvent.getComponent
+		
+		
+		//getNextPost button
+		if (source == R.id.button1)
+		{
+		    this.controller.processNextPostEvent();
+		}
+		
+		//submit button was pressed
+		else if (source == R.id.submit)
+		{
+			this.controller.processSubmitEvent();
+		}
+	}
+
+
+
+	@Override
+	public void updateTextView(String show) {
+		// TODO Auto-generated method stub
+		
+		this.textView.setText( show );
+		
+	}
 
 
 

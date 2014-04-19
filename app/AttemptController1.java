@@ -8,21 +8,31 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-public class MyOnClickListener implements OnClickListener {
+public class AttemptController1 implements AttemptController, OnClickListener {
 
-	MainActivity caller;
+	//MainActivity callerView;
 	
-	public MyOnClickListener(MainActivity activity) {
-		this.caller = activity;
+	
+	
+	//private final AttemptModel model;
+    //private final AttemptView view;
+    
+    AttemptModel model;
+    AttemptView view;
+	
+	
+	
+	
+	public AttemptController1(AttemptModel aModel, AttemptView aView) {
+		//this.callerView = activity;
+		
+		this.model = aModel;
+		this.view = aView;
 	}
 	
 	public void onClick(View view) {
 		
 		
-
-		//String url = "http://androidtesting.x10host.com/androidJSON.php";
-		//String url = "http://google.com";
-        //boolean diagnosis = false;
         
 		
 		if (view.getId() == R.id.button1)
@@ -31,32 +41,28 @@ public class MyOnClickListener implements OnClickListener {
 		    
             try {
     	        
-        	    //JSONObject jReturn = JSONfunctions.getJSONfromURL(url);
         	    
-        	    //JSONArray names = jReturn.names();
-        	    //JSONArray jArrayReturn = jReturn.toJSONArray(names);
-        	    
-        	    JSONArray jArrayReturn = JSONfunctions.getJSONfromURL(this.caller.postsURL);
+        	    JSONArray jArrayReturn = AttemptModel.getJSONfromURL( this.model.getPostsURL() );
     	        
-        	    if ( (this.caller.entry + 2) == jArrayReturn.length() )
+        	    if ( (this.model.getEntry() + 2) == jArrayReturn.length() )
         	    {
-        		    this.caller.entry = 1;
+        		    //this.callerView.entry = 1;
+        	    	this.model.setEntry(1);
         	    }
         	    else
         	    {
-        		    this.caller.entry += 1;
+        		    //this.callerView.entry += 1;
+        		    
+        		    int temp = this.model.getEntry();
+        		    temp += 1;
+        		    this.model.setEntry(temp);
         	    }
         	    
-        	    JSONObject json_data = jArrayReturn.getJSONObject(this.caller.entry);
+        	    JSONObject json_data = jArrayReturn.getJSONObject( this.model.getEntry() );
 	    	    
 	    	    
 	    	    StringBuilder displayMe = new StringBuilder();
-	    	    /*
-	    	    Log.i("log_tag","num: "+json_data.getInt("postNumber")+
-	    			", user: "+json_data.getString("postUser")+
-                    ", content: "+json_data.getString("postContent")
-	    	    );
-	    	    */
+	    	    
 	    	    Log.i("log_tag","thread: "+json_data.getInt("threadID")+
 	    			", post: "+json_data.getString("postID")+
                     ", content: "+json_data.getString("postContent")+
@@ -64,14 +70,6 @@ public class MyOnClickListener implements OnClickListener {
                     ", username: "+json_data.getString("userName")
 	    	    );
 	    	    
-	    	    /*
-	    	    displayMe.append("num: ");
-	    	    displayMe.append( json_data.getInt("postNumber") );
-	    	    displayMe.append("\nuser: ");
-	    	    displayMe.append( json_data.getString("postUser") );
-	    	    displayMe.append("\ncontent: ");
-	    	    displayMe.append( json_data.getString("postContent") );
-	    	    */
 	    	    displayMe.append("\n\n\n\n\n");
 	    	    displayMe.append("thread: ");
 	    	    displayMe.append( json_data.getInt("threadID") );
@@ -85,19 +83,18 @@ public class MyOnClickListener implements OnClickListener {
 	    	    displayMe.append( json_data.getString("userName") );
 	    	    
 	    	    
-	    	    this.caller.textView.setText( displayMe.toString() );
+	    	    //this.view.textView.setText( displayMe.toString() );
+	    	    this.view.updateTextView( displayMe.toString() );
 	    	    
 	    	    
 	    	    
             } catch (JSONException e) {
-        	    Log.e("log_tag", "lol4 Error parsing data "+e.toString());
+        	    Log.e("log_tag", "Error parsing data "+e.toString());
         	    
-        	    //this.caller.textView.setText( "error 1" );
         	    
             } catch (Exception e) {
-        	    Log.e("log_tag", "toplel Error parsing data "+e.toString());
+        	    Log.e("log_tag", "Error parsing data "+e.toString());
         	    
-                //this.caller.textView.setText( "error 2" );
                 
             }
 		}
@@ -105,19 +102,99 @@ public class MyOnClickListener implements OnClickListener {
 		{
 		    try {
                 
-                // CALL GetText method to make post method call
-                //GetText();
-                
-                
-                JSONfunctions.postData(this.caller.targetURL);
+                AttemptModel.postData( this.model.getTargetURL() );
                 
             }
             catch(Exception ex)
             {
-                this.caller.textView.setText( " url exeption! " );
+                //this.view.textView.setText( " url exeption! " );
+            	this.view.updateTextView( " url exeption! " );
+            	
             }
 		}
 		
+		
+	}
+
+	@Override
+	public void processNextPostEvent() {
+		// TODO Auto-generated method stub
+		
+		try {
+	        
+    	    
+    	    JSONArray jArrayReturn = AttemptModel.getJSONfromURL( this.model.getPostsURL() );
+	        
+    	    if ( (this.model.getEntry() + 2) == jArrayReturn.length() )
+    	    {
+    		    //this.callerView.entry = 1;
+    		    this.model.setEntry(1);
+    	    }
+    	    else
+    	    {
+    		    //this.callerView.entry += 1;
+    		    
+    		    int temp = this.model.getEntry();
+    		    temp += 1;
+    		    this.model.setEntry(temp);
+    	    }
+    	    
+    	    JSONObject json_data = jArrayReturn.getJSONObject(this.model.getEntry());
+    	    
+    	    
+    	    StringBuilder displayMe = new StringBuilder();
+    	    
+    	    Log.i("log_tag","thread: "+json_data.getInt("threadID")+
+    			", post: "+json_data.getString("postID")+
+                ", content: "+json_data.getString("postContent")+
+                ", user ID: "+json_data.getString("userID")+
+                ", username: "+json_data.getString("userName")
+    	    );
+    	    
+    	    displayMe.append("\n\n\n\n\n");
+    	    displayMe.append("thread: ");
+    	    displayMe.append( json_data.getInt("threadID") );
+    	    displayMe.append("\npost: ");
+    	    displayMe.append( json_data.getInt("postID") );
+    	    displayMe.append("\ncontent: ");
+    	    displayMe.append( json_data.getString("postContent") );
+    	    displayMe.append("\nuser ID: ");
+    	    displayMe.append( json_data.getInt("userID") );
+    	    displayMe.append("\nusername: ");
+    	    displayMe.append( json_data.getString("userName") );
+    	    
+    	    
+    	    //this.callerView.textView.setText( displayMe.toString() );
+    	    this.view.updateTextView( displayMe.toString() );
+    	    
+    	    
+    	    
+        } catch (JSONException e) {
+    	    Log.e("log_tag", "Error parsing data "+e.toString());
+    	    
+    	    
+        } catch (Exception e) {
+    	    Log.e("log_tag", "Error parsing data "+e.toString());
+    	    
+            
+        }
+		
+	}
+
+	@Override
+	public void processSubmitEvent() {
+		// TODO Auto-generated method stub
+		
+		try {
+            
+            AttemptModel.postData( this.model.getTargetURL() );
+            
+        }
+        catch(Exception ex)
+        {
+            //this.callerView.textView.setText( " url exeption! " );
+            this.view.updateTextView( " url exeption! " );
+        }
 		
 	}
 }

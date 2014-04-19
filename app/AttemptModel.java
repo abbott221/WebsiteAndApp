@@ -1,5 +1,6 @@
 package com.MichaelFAbbott.myfirstapp;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,19 +19,123 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.util.Log;
-public class JSONfunctions {
-	
-	MainActivity caller;
-	
+
+
+//this class can be "final"
+//public final class AttemptModel
+public class AttemptModel {
+	/**
+     * Model variables.
+     */
+    private final String postsURL, threadsURL, targetURL;
+    
+    private int entry;
+    
+    JSONArray postArray = null;
+
+    /**
+     * Default constructor.
+     */
+    public AttemptModel() {
+        this.postsURL = "http://androidtesting.x10host.com/JSONposts.php";
+        this.threadsURL = "http://androidtesting.x10host.com/JSONthreads.php";
+        
+        this.targetURL = "http://androidtesting.x10host.com/JSONtarget.php";
+        
+        this.entry = 1;
+        
+        this.postArray = new JSONArray();
+    }
+    
+    public String getPostsURL() {
+
+        // TODO: fill in body
+
+        /*
+         * This line added just to make the program compilable. Should be
+         * replaced with appropriate return statement.
+         */
+        return this.postsURL;
+    }
+    
+    public String getThreadsURL() {
+
+        // TODO: fill in body
+
+        /*
+         * This line added just to make the program compilable. Should be
+         * replaced with appropriate return statement.
+         */
+        return this.threadsURL;
+    }
+    
+    public String getTargetURL() {
+
+        // TODO: fill in body
+
+        /*
+         * This line added just to make the program compilable. Should be
+         * replaced with appropriate return statement.
+         */
+        return this.targetURL;
+    }
+    
+    
+    public int getEntry()
+    {
+    	return this.entry;
+    }
+    
+    public void setEntry(int newValue)
+    {
+    	this.entry = newValue;
+    }
+    
+    
+    
+    
+    public JSONArray getArray() {
+
+        // TODO: fill in body
+
+        /*
+         * This line added just to make the program compilable. Should be
+         * replaced with appropriate return statement.
+         */
+        return this.postArray;
+    }
+    
+    //shouldn't need to be used? NNCalculator didn't have any setter methods
+    public void setArray(String result) {
+
+        // TODO: fill in body
+
+        /*
+         * This line added just to make the program compilable. Should be
+         * replaced with appropriate return statement.
+         */
+    	
+    	try {
+    		
+			this.postArray = new JSONArray(result);
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
+    
+    
+    
+    
     public static JSONArray getJSONfromURL(String url) {
     	
     	String result = "";
     	
 	    InputStream is = null;
-	    //JSONObject jArray = null;
 	    JSONArray jArray = null;
 
 	    
@@ -38,26 +143,18 @@ public class JSONfunctions {
 	    // Download JSON data from URL
 	    //http post
 	    try {
-	        //System.out.println("MRA 1");
-	    	HttpClient httpclient = new DefaultHttpClient();
-	    	//System.out.println("MRA 2");
+	        HttpClient httpclient = new DefaultHttpClient();
 	    	HttpPost httppost = new HttpPost(url);
-	    	//System.out.println("MRA 3");
 	        
-	        //this fucker is the problem.
 	        HttpResponse response = httpclient.execute(httppost);
 	        
-	        //System.out.println("MRA 4");
-	        
-	        //GET ENTITY
 	        HttpEntity entity = response.getEntity();
 	        
-	        //System.out.println("MRA 5");
 	        
 	        is = entity.getContent();
 
 	    } catch (Exception e) {
-	        Log.e("log_tag", "lol1 Error in http connection " + e.toString());
+	        Log.e("log_tag", "Error in http connection " + e.toString());
 	    }
 
 	    
@@ -65,7 +162,6 @@ public class JSONfunctions {
 	    
 	    
 	    
-	    // Convert response to string
 	    try {
 	        BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"), 8);
 	        StringBuilder sb = new StringBuilder();
@@ -80,48 +176,36 @@ public class JSONfunctions {
 	        result = sb.toString();
 	        
 	    } catch (Exception e) {
-	        Log.e("log_tag", "lol2 Error converting result " + e.toString());
+	        Log.e("log_tag", "Error converting result " + e.toString());
 	    }
 
 	    try {
 
-	        //jArray = new JSONObject(result);
 	        jArray = new JSONArray(result);
 	        
 	        
 	    } catch (JSONException e) {
-	        
-	    	
-	    	
-	    	//PROBLEM IS HERE
-	    	
-	    	Log.e("log_tag", "lol3 Error parsing data " + e.toString());
-	        
+	    	Log.e("log_tag", "Error parsing data " + e.toString());
 	    } catch (Exception e) {
-	        Log.e("log_tag", "toplel Error parsing data " + e.toString());
+	        Log.e("log_tag", "Error parsing data " + e.toString());
 	    }
 
 	    return jArray;
-	    
     }
     
     
     public static void postData(String url) {
         // Create a new HttpClient and Post Header
         HttpClient httpclient = new DefaultHttpClient();
-        //HttpPost httppost = new HttpPost("http://www.yoursite.com/script.php");
         HttpPost httppost = new HttpPost(url);
 
         try {
             // Add your data
         	
         	
-        	
             //List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
         	List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
         	
-            //nameValuePairs.add(new BasicNameValuePair("id", "12345"));
-            //nameValuePairs.add(new BasicNameValuePair("stringdata", "Hi"));
         	
         	//String pThreadID = caller.threadID.getText().toString();
         	
@@ -133,8 +217,6 @@ public class JSONfunctions {
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             
             
-            
-
             // Execute HTTP Post Request
             HttpResponse response = httpclient.execute(httppost);
 
@@ -144,14 +226,8 @@ public class JSONfunctions {
             // TODO Auto-generated catch block
         }
         
-        
-        
-        
-        //at end, add some means of adjusting the View
-        
-        //content.setText( text  );
-        
     }
+    
 	
 }
 
