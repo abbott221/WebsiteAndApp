@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>MedZapp</title>
+	
+	<style>
+		
+		#myForm1 {
+			position: absolute;
+			right: 60%;
+			bottom: 20%;
+		}
+		#myForm2 {
+			position: absolute;
+			right: 30%;
+			bottom: 20%;
+		}
+		
+		img {
+			position: absolute;
+			right: 45%;
+			bottom: 50%;
+			border-radius: 25px;
+			border: 1px black solid;
+		}
+		
+		h1 {
+		  position: absolute;
+		  right: 5%;
+		  bottom: 5%;
+		}
+	</style>
+	
+</head>
+
+
+<body>
+
+
+<script>
+//document.write("Hello World!");
+//document.cookie="username=John Doe";
+//document.write("Hello World!");
+</script>
+
+
+<!-- Type for input can be password, text, or submit -->
+<h1> Project MedZapp </h1>
+<img src="logo.png">
+	
+	
+	
+<div id="myForm1">
+	<h2> Log In </h2>
+	<form method="post" action="ViewLogin.php">
+	
+	<!-- <input type="hidden" name="redirect" value="http://www.opera.com" /> -->
+	
+	Username: <input name="postUser" type="text" /><br>
+	Password: <input name="postPass" type="password" /><br>
+	<input class="submit" name="submit" type="submit" />
+	</form>
+	
+</div>
+<div id="myForm2">
+	<h2> Sign Up </h2>
+	<form method="post" action="ViewSignup.php">
+	Username: <input name="postUser2" type="text" /><br>
+	Password: <input name="postPass2" type="password" /><br>
+	<input class="submit" name="submit" type="submit" />
+	</form>
+
+</div>
+
+
+
+
+
+</body>
+</html>
