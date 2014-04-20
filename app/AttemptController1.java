@@ -17,13 +17,13 @@ public class AttemptController1 implements AttemptController, OnClickListener {
 	//private final AttemptModel model;
     //private final AttemptView view;
     
-    AttemptModel model;
+    AttemptModel1 model;
     AttemptView view;
 	
 	
 	
 	
-	public AttemptController1(AttemptModel aModel, AttemptView aView) {
+	public AttemptController1(AttemptModel1 aModel, AttemptView aView) {
 		//this.callerView = activity;
 		
 		this.model = aModel;
@@ -35,14 +35,14 @@ public class AttemptController1 implements AttemptController, OnClickListener {
 		
         
 		
-		if (view.getId() == R.id.button1)
+		if (view.getId() == R.id.getNextPost1)
 		{
 		    
 		    
             try {
     	        
         	    
-        	    JSONArray jArrayReturn = AttemptModel.getJSONfromURL( this.model.getPostsURL() );
+        	    JSONArray jArrayReturn = AttemptModel1.getJSONfromURL( this.model.getPostsURL() );
     	        
         	    if ( (this.model.getEntry() + 2) == jArrayReturn.length() )
         	    {
@@ -102,7 +102,7 @@ public class AttemptController1 implements AttemptController, OnClickListener {
 		{
 		    try {
                 
-                AttemptModel.postData( this.model.getTargetURL() );
+                AttemptModel1.postData( this.model.getTargetURL() );
                 
             }
             catch(Exception ex)
@@ -116,6 +116,17 @@ public class AttemptController1 implements AttemptController, OnClickListener {
 		
 	}
 
+	
+	
+	
+	
+	public void callController() {
+		//do nothing
+	}
+	
+	
+	
+	
 	@Override
 	public void processNextPostEvent() {
 		// TODO Auto-generated method stub
@@ -123,7 +134,7 @@ public class AttemptController1 implements AttemptController, OnClickListener {
 		try {
 	        
     	    
-    	    JSONArray jArrayReturn = AttemptModel.getJSONfromURL( this.model.getPostsURL() );
+    	    JSONArray jArrayReturn = AttemptModel1.getJSONfromURL( this.model.getPostsURL() );
 	        
     	    if ( (this.model.getEntry() + 2) == jArrayReturn.length() )
     	    {
@@ -187,7 +198,7 @@ public class AttemptController1 implements AttemptController, OnClickListener {
 		
 		try {
             
-            AttemptModel.postData( this.model.getTargetURL() );
+            AttemptModel1.postData( this.model.getTargetURL() );
             
         }
         catch(Exception ex)

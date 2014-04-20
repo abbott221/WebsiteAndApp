@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import android.support.v7.app.ActionBarActivity;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -50,16 +51,42 @@ public class AttemptView1 extends Activity implements AttemptView {
 	
 	
 	public AttemptView1() {
+		//super.onCreate(savedInstanceState);
+		//setContentView(R.layout.activity_main);
+		
+		
+		//onCreate is the new constructor for android?
+		
+	}
+	
+	
+
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
+	@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        //@Bad
+        //circumvent NetworkOnMainThreadException
+        //doing networking on main thread is bad because the whole thread waits for the response
+        //implement Async task later
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        //@Bad
+        
+        
+        
 
         
 
-		getNextPost = (Button) findViewById(R.id.button1);
+		getNextPost = (Button) findViewById(R.id.getNextPost1);
         
         //getNextPost.setOnClickListener(new MyOnClickListener(this));
 		this.getNextPost.setOnClickListener(this);
 		
 		
-        textView = (TextView) findViewById(R.id.textView1);
+        textView = (TextView) findViewById(R.id.postText1);
 		
 		
 		
@@ -80,84 +107,40 @@ public class AttemptView1 extends Activity implements AttemptView {
         
         
         
+        this.updateTextView("hi michael");
         
         
         
         
         
-
-        /*
-        try {
-    	    
-        	
-        	JSONArray jArrayReturn = JSONfunctions.getJSONfromURL(postsURL);
-        	
-        	
-        	
-        	JSONObject json_data = jArrayReturn.getJSONObject(entry);
-	    	
-	    	
-	    	StringBuilder displayMe = new StringBuilder();
-	    	
-	    	Log.i("log_tag","thread: "+json_data.getInt("threadID")+
-	    			", post: "+json_data.getString("postID")+
-                    ", content: "+json_data.getString("postContent")+
-                    ", user ID: "+json_data.getString("userID")+
-                    ", username: "+json_data.getString("userName")
-	    	);
-	    	
-	    	displayMe.append("\n\n\n\n\n");
-	    	displayMe.append("thread: ");
-	    	displayMe.append( json_data.getInt("threadID") );
-	    	displayMe.append("\npost: ");
-	    	displayMe.append( json_data.getInt("postID") );
-	    	displayMe.append("\ncontent: ");
-	    	displayMe.append( json_data.getString("postContent") );
-	    	displayMe.append("\nuser ID: ");
-	    	displayMe.append( json_data.getInt("userID") );
-	    	displayMe.append("\nusername: ");
-	    	displayMe.append( json_data.getString("userName") );
-        	
-	    	
-	    	textView.setText( displayMe.toString() );
-        	
-    	    
-        } catch (JSONException e) {
-        	Log.e("log_tag", "Error parsing data "+e.toString());
-        } catch (Exception e) {
-        	Log.e("log_tag", "Error parsing data "+e.toString());
-        }
         
-        */
+        //MOVE MAIN METHOD TO HERE?
+        //properly register the observer???
+        /**
+         * 
+         * MAIN METHOD GOES HERE?
+         * 
+         * properly register the observer
+         * 
+         */
         
         
-        
-	}
-	
-	
-
-    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
-        //@Bad
-        //circumvent NetworkOnMainThreadException
-        //doing networking on main thread is bad because the whole thread waits for the response
-        //implement Async task later
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        //@Bad
-        
+        AttemptModel1 model = new AttemptModel1();
+        AttemptController1 controller = new AttemptController1(model, this);
+        this.registerObserver(controller);
         
     }
+    
+    
     
     
     @Override
     public void registerObserver(AttemptController1 controller) {
 
         this.controller = controller;
+        
+        //that component hasn't been created yet, that happens on the intent
+        //this.updateTextView("hi michael 2");
 
     }
 
@@ -176,9 +159,11 @@ public class AttemptView1 extends Activity implements AttemptView {
 		
 		
 		//getNextPost button
-		if (source == R.id.button1)
+		if (source == R.id.getNextPost1)
 		{
-		    this.controller.processNextPostEvent();
+			this.controller.callController();
+			
+			this.controller.processNextPostEvent();
 		}
 		
 		//submit button was pressed
