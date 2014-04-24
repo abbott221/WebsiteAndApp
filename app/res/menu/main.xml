@@ -13,6 +13,9 @@
         android:id="@+id/action_login"
         android:title="@string/action_login"/>
     <item
+        android:id="@+id/action_posts"
+        android:title="@string/action_posts"/>
+    <item
         android:id="@+id/action_board"
         android:title="@string/action_board"/>
     

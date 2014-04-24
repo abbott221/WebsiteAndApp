@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
         
         
         //Intent i = new Intent(getBaseContext(), AttemptView1.class);
-        Intent i = new Intent(getBaseContext(), View_Post.class);
+        Intent i = new Intent(getBaseContext(), Post_View.class);
         startActivity(i);
         
         

@@ -6,7 +6,9 @@ import org.json.JSONObject;
 
 import com.MichaelFAbbott.myfirstapp.AttemptController1;
 import com.MichaelFAbbott.myfirstapp.AttemptModel1;
+import com.MichaelFAbbott.myfirstapp.Login_View;
 import com.MichaelFAbbott.myfirstapp.MainActivityActionBar.PlaceholderFragment;
+import com.MichaelFAbbott.myfirstapp.Post_View;
 import com.MichaelFAbbott.myfirstapp.R;
 import com.MichaelFAbbott.standards.AttemptController;
 import com.MichaelFAbbott.standards.AttemptModel;
@@ -80,6 +82,8 @@ public class ViewWithActivityBar extends ActionBarActivity implements AttemptVie
 		
 		//call processActionBarSelection to start new intent?
 		
+		Intent i;
+		
 		switch (item.getItemId()) {
 		case R.id.action_settings:
 			//openSearch(); for search activity in example code
@@ -87,8 +91,12 @@ public class ViewWithActivityBar extends ActionBarActivity implements AttemptVie
 			//startActivity(i);
 			return true;
 		case R.id.action_login:
-			//Intent i = new Intent(getBaseContext(), AttemptView1.class);
-			//startActivity(i);
+			i = new Intent(getBaseContext(), Login_View.class);
+			startActivity(i);
+			return true;
+		case R.id.action_posts:
+			i = new Intent(getBaseContext(), Post_View.class);
+			startActivity(i);
 			return true;
 		case R.id.action_board:
 			//composeMessage();
