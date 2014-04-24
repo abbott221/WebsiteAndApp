@@ -20,12 +20,14 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import com.MichaelFAbbott.standards.AttemptModel;
+
 import android.util.Log;
 
 
 //this class can be "final"
 //public final class AttemptModel
-public class AttemptModel1 {
+public class AttemptModel1 implements AttemptModel {
 	/**
      * Model variables.
      */

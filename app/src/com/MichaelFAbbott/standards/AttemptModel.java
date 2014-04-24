@@ -23,7 +23,7 @@ public interface AttemptModel {
 	public JSONArray getArray();
 	public void setArray(String result);
 	
-	public /*static*/ JSONArray getJSONfromURL(String url);
-	public /*static*/ void postData(String url);
+	//public /*static*/ JSONArray getJSONfromURL(String url);
+	//public /*static*/ void postData(String url);
 	
 }
