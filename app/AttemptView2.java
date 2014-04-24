@@ -27,7 +27,7 @@ import android.widget.TextView;
 
 
 
-public class AttemptView1 extends ActionBarActivity implements AttemptView {
+public class AttemptView2 extends ActionBarActivity implements AttemptView {
 	
 	
 	private AttemptController1 controller;
@@ -58,7 +58,7 @@ public class AttemptView1 extends ActionBarActivity implements AttemptView {
 	
 	
 	
-	public AttemptView1() {
+	public AttemptView2() {
 		//super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_main);
 		
@@ -139,6 +139,16 @@ public class AttemptView1 extends ActionBarActivity implements AttemptView {
         
         
         
+        
+        
+        /*
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, new PlaceholderFragment())
+                    .commit();
+        }
+        */
+        
     }
     
     
@@ -152,6 +162,22 @@ public class AttemptView1 extends ActionBarActivity implements AttemptView {
         return true;
     }
     
+    /*
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                openSearch();
+                return true;
+            case R.id.action_compose:
+                composeMessage();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -159,17 +185,17 @@ public class AttemptView1 extends ActionBarActivity implements AttemptView {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         
-        //call processActionBarSelection to start new intent?
-    	
+    	//int id = item.getItemId();
+        //if (id == R.id.action_settings) {
+        //    return true;
+        //}
+        
         switch (item.getItemId()) {
             case R.id.action_settings:
-                //openSearch(); for search activity in example code
-            	//Intent i = new Intent(getBaseContext(), AttemptView1.class);
-                //startActivity(i);
+                //openSearch();
                 return true;
             case R.id.action_login:
-            	//Intent i = new Intent(getBaseContext(), AttemptView1.class);
-                //startActivity(i);
+                //composeMessage();
                 return true;
             case R.id.action_board:
                 //composeMessage();
@@ -181,8 +207,37 @@ public class AttemptView1 extends ActionBarActivity implements AttemptView {
         //return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * A placeholder fragment containing a simple view.
+     */
+    /*
+    public static class PlaceholderFragment extends Fragment {
+
+        public PlaceholderFragment() {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            return rootView;
+        }
+    }
+    */
     
     
+    
+    /*
+    @Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+    	//
+    	// Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_activity_actions, menu);
+        return super.onCreateOptionsMenu(menu);
+		return false;
+    }
+    */
     
     
     
@@ -231,17 +286,6 @@ public class AttemptView1 extends ActionBarActivity implements AttemptView {
 		// TODO Auto-generated method stub
 		
 		this.textView.setText( show );
-		
-	}
-	
-	
-	public void updateActionBarView(int id) {
-		// TODO Auto-generated method stub
-		
-		//this.textView.setText( show );
-		
-		//Intent i = new Intent(getBaseContext(), AttemptView1.class);
-        //startActivity(i);
 		
 	}
 

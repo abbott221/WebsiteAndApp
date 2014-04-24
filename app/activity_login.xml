@@ -14,14 +14,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.18"
+            android:layout_weight="0.86"
             android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/getNextPost1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Button" />
 
             <TextView
                 android:id="@+id/statusText1"
@@ -41,36 +35,17 @@
                 android:id="@+id/username1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.13"
+                android:layout_weight="0.07"
                 android:ems="10"
                 android:inputType="textMultiLine" />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/password1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.10"
+                android:layout_weight="0.06"
                 android:ems="10"
-                android:inputType="textMultiLine" >
-
-                <requestFocus />
-            </EditText>
-
-            <EditText
-                android:id="@+id/userID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.10"
-                android:ems="10"
-                android:inputType="textMultiLine" />
-
-            <EditText
-                android:id="@+id/userName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.10"
-                android:ems="10"
-                android:inputType="textMultiLine" />
+                android:inputType="textPassword" />
 
             <Button
                 android:id="@+id/submit1"

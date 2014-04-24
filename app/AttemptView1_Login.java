@@ -27,38 +27,25 @@ import android.widget.TextView;
 
 
 
-public class AttemptView1 extends ActionBarActivity implements AttemptView {
+public class AttemptView1_Login extends Activity implements AttemptView {
 	
 	
 	private AttemptController1 controller;
 	
 	
-	//private final Button getNextPost;
-	//private final TextView textView;
-    
-	//private final EditText threadID, postContent, userID, userName;
-    
-	//private final Button submit;
 	
-	Button getNextPost;
-	TextView textView;
-    
-	EditText threadID, postContent, userID, userName;
+	
+	TextView status;
+	
+	EditText userName, passWord;
     
 	Button submit;
     
 	
 	
-	//boolean changedText = false;
-	int entry = 1;
 	
 	
-	
-	
-	
-	
-	
-	public AttemptView1() {
+	public AttemptView1_Login() {
 		//super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_main);
 		
@@ -73,7 +60,7 @@ public class AttemptView1 extends ActionBarActivity implements AttemptView {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         
         //@Bad
         //circumvent NetworkOnMainThreadException
@@ -87,35 +74,29 @@ public class AttemptView1 extends ActionBarActivity implements AttemptView {
         
 
         
-
-		getNextPost = (Button) findViewById(R.id.getNextPost1);
         
-        //getNextPost.setOnClickListener(new MyOnClickListener(this));
-		this.getNextPost.setOnClickListener(this);
-		
-		
-        textView = (TextView) findViewById(R.id.statusText1);
-		
-		
-		
-        threadID     =   (EditText) findViewById( R.id.username1 );
-        postContent  =   (EditText) findViewById(R.id.password);
-        userID       =   (EditText) findViewById(R.id.userID);
-        userName     =   (EditText) findViewById(R.id.userName);
+        
+        status       =   (TextView) findViewById(R.id.statusText1);
+        
+        userName     =   (EditText) findViewById( R.id.username1 );
+        passWord     =   (EditText) findViewById(R.id.password1);
         
         submit       =   (Button) findViewById(R.id.submit1);
-         
-         
+        
+        
+        
+        
 
-        
+		//this.getNextPost.setOnClickListener(this);
+		this.submit.setOnClickListener(this);
         //submit.setOnClickListener(new MyOnClickListener(this));
-        this.submit.setOnClickListener(this);
-        //submit.s
-        //submit.setO
+		
+		
+		
         
         
         
-        this.updateTextView("hi michael, ATTEMPT VIEW 2");
+        this.updateTextView("Login below (username, password)");
         
         
         
@@ -131,6 +112,8 @@ public class AttemptView1 extends ActionBarActivity implements AttemptView {
          * properly register the observer
          * 
          */
+        
+        //Model and controller should be passed in as parameters?
         
         
         AttemptModel1 model = new AttemptModel1();
@@ -230,20 +213,11 @@ public class AttemptView1 extends ActionBarActivity implements AttemptView {
 	public void updateTextView(String show) {
 		// TODO Auto-generated method stub
 		
-		this.textView.setText( show );
+		this.submit.setText( show );
 		
 	}
 	
 	
-	public void updateActionBarView(int id) {
-		// TODO Auto-generated method stub
-		
-		//this.textView.setText( show );
-		
-		//Intent i = new Intent(getBaseContext(), AttemptView1.class);
-        //startActivity(i);
-		
-	}
 
 
 

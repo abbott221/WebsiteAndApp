@@ -33,6 +33,11 @@ public class AttemptModel1 {
     
     private int entry;
     
+    private String userName;
+    private int userID;
+    
+    
+    
     JSONArray postArray = null;
 
     /**
@@ -46,86 +51,62 @@ public class AttemptModel1 {
         
         this.entry = 1;
         
+        this.userName = "";
+        this.userID = 0;
+        
         this.postArray = new JSONArray();
     }
     
+    
+    
     public String getPostsURL() {
-
-        // TODO: fill in body
-
-        /*
-         * This line added just to make the program compilable. Should be
-         * replaced with appropriate return statement.
-         */
         return this.postsURL;
     }
-    
     public String getThreadsURL() {
-
-        // TODO: fill in body
-
-        /*
-         * This line added just to make the program compilable. Should be
-         * replaced with appropriate return statement.
-         */
         return this.threadsURL;
     }
-    
     public String getTargetURL() {
-
-        // TODO: fill in body
-
-        /*
-         * This line added just to make the program compilable. Should be
-         * replaced with appropriate return statement.
-         */
         return this.targetURL;
     }
     
     
-    public int getEntry()
-    {
+    
+    public int getEntry() {
     	return this.entry;
     }
-    
-    public void setEntry(int newValue)
-    {
+    public void setEntry(int newValue) {
     	this.entry = newValue;
+    }
+    
+    public String getUserName() {
+    	return this.userName;
+    }
+    public void setUserName(String newValue) {
+    	this.userName = newValue;
+    }
+    
+    public int getUserID() {
+    	return this.userID;
+    }
+    public void setUserID(int newValue) {
+    	this.userID = newValue;
     }
     
     
     
     
     public JSONArray getArray() {
-
-        // TODO: fill in body
-
-        /*
-         * This line added just to make the program compilable. Should be
-         * replaced with appropriate return statement.
-         */
         return this.postArray;
     }
     
     //shouldn't need to be used? NNCalculator didn't have any setter methods
     public void setArray(String result) {
-
-        // TODO: fill in body
-
-        /*
-         * This line added just to make the program compilable. Should be
-         * replaced with appropriate return statement.
-         */
-    	
     	try {
-    		
 			this.postArray = new JSONArray(result);
 			
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
     }
     
     

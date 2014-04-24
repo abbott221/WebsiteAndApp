@@ -98,7 +98,7 @@ public class AttemptController1 implements AttemptController, OnClickListener {
                 
             }
 		}
-		else if (view.getId() == R.id.submit)
+		else if (view.getId() == R.id.submit1)
 		{
 		    try {
                 
@@ -119,10 +119,6 @@ public class AttemptController1 implements AttemptController, OnClickListener {
 	
 	
 	
-	
-	public void callController() {
-		//do nothing
-	}
 	
 	
 	
@@ -162,7 +158,8 @@ public class AttemptController1 implements AttemptController, OnClickListener {
                 ", username: "+json_data.getString("userName")
     	    );
     	    
-    	    displayMe.append("\n\n\n\n\n");
+    	    //displayMe.append("\n\n\n\n\n");
+    	    displayMe.append("\n\n");
     	    displayMe.append("thread: ");
     	    displayMe.append( json_data.getInt("threadID") );
     	    displayMe.append("\npost: ");

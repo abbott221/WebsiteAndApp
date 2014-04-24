@@ -15,6 +15,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
         <activity
             android:name="com.MichaelFAbbott.myfirstapp.MainActivity"
             android:label="@string/app_name" >
@@ -24,6 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity android:name="com.MichaelFAbbott.myfirstapp.AttemptView1" ></activity>
+        <activity android:name="com.MichaelFAbbott.myfirstapp.AttemptView2" ></activity>
+        
     </application>
 
 </manifest>
