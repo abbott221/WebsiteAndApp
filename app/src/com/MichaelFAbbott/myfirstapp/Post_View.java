@@ -4,7 +4,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.MichaelFAbbott.myfirstapp.MainActivityActionBar.PlaceholderFragment;
 import com.MichaelFAbbott.standards.AttemptController;
 import com.MichaelFAbbott.standards.AttemptModel;
 import com.MichaelFAbbott.standards.AttemptView;
@@ -80,7 +79,7 @@ public class Post_View extends ViewWithActivityBar implements AttemptView {
 		
 		this.getNextPost.setOnClickListener(this);
 		
-		this.updateTextView("hi michael, POST_VIEW");
+		this.updateTextView("hi michael, POST_VIEW v2");
 		
 		
 		

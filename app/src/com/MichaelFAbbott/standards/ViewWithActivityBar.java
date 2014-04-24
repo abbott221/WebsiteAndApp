@@ -7,7 +7,6 @@ import org.json.JSONObject;
 import com.MichaelFAbbott.myfirstapp.AttemptController1;
 import com.MichaelFAbbott.myfirstapp.AttemptModel1;
 import com.MichaelFAbbott.myfirstapp.Login_View;
-import com.MichaelFAbbott.myfirstapp.MainActivityActionBar.PlaceholderFragment;
 import com.MichaelFAbbott.myfirstapp.Post_View;
 import com.MichaelFAbbott.myfirstapp.R;
 import com.MichaelFAbbott.standards.AttemptController;

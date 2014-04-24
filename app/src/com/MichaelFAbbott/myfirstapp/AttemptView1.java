@@ -4,7 +4,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.MichaelFAbbott.myfirstapp.MainActivityActionBar.PlaceholderFragment;
 import com.MichaelFAbbott.standards.AttemptController;
 import com.MichaelFAbbott.standards.AttemptModel;
 import com.MichaelFAbbott.standards.AttemptView;
