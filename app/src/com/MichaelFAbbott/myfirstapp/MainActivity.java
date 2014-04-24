@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
         //view.registerObserver(controller);
         
       
-        AttemptModel model = (AttemptModel) new AttemptModel1();
+        AttemptModel1 model = new AttemptModel1();
         
         
         
@@ -70,7 +70,8 @@ public class MainActivity extends Activity {
         
         
         
-        Intent i = new Intent(getBaseContext(), AttemptView1.class);
+        //Intent i = new Intent(getBaseContext(), AttemptView1.class);
+        Intent i = new Intent(getBaseContext(), View_Post.class);
         startActivity(i);
         
         

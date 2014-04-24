@@ -21,13 +21,13 @@ public class AttemptController1 implements AttemptController, OnClickListener {
 	//private final AttemptModel model;
     //private final AttemptView view;
     
-    AttemptModel model;
+    AttemptModel1 model;
     AttemptView view;
 	
 	
 	
 	
-	public AttemptController1(AttemptModel aModel, AttemptView aView) {
+	public AttemptController1(AttemptModel1 aModel, AttemptView aView) {
 		//this.callerView = activity;
 		
 		this.model = aModel;
@@ -46,7 +46,8 @@ public class AttemptController1 implements AttemptController, OnClickListener {
             try {
     	        
         	    
-        	    JSONArray jArrayReturn = AttemptModel1.getJSONfromURL( this.model.getPostsURL() );
+        	    //JSONArray jArrayReturn = AttemptModel1.getJSONfromURL( this.model.getPostsURL() );
+        	    JSONArray jArrayReturn = this.model.getJSONfromURL( this.model.getPostsURL() );
     	        
         	    if ( (this.model.getEntry() + 2) == jArrayReturn.length() )
         	    {
@@ -132,7 +133,10 @@ public class AttemptController1 implements AttemptController, OnClickListener {
 		try {
 	        
     	    
-    	    JSONArray jArrayReturn = AttemptModel1.getJSONfromURL( this.model.getPostsURL() );
+    	    //JSONArray jArrayReturn = AttemptModel1.getJSONfromURL( this.model.getPostsURL() );
+    	    
+    	    JSONArray jArrayReturn = JSONfunctions.getJSONfromURL( this.model.getPostsURL() );
+    	    
 	        
     	    if ( (this.model.getEntry() + 2) == jArrayReturn.length() )
     	    {
@@ -195,7 +199,8 @@ public class AttemptController1 implements AttemptController, OnClickListener {
 	public void processSubmitEvent() {
 		try {
             
-            AttemptModel1.postData( this.model.getTargetURL() );
+            //AttemptModel1.postData( this.model.getTargetURL() );
+            JSONfunctions.postData( this.model.getTargetURL() );
             
         }
         catch(Exception ex)

@@ -80,14 +80,45 @@ public class View_Post extends ViewWithActivityBar {
 		
 		this.getNextPost.setOnClickListener(this);
 		
-		this.updateTextView("hi michael, ATTEMPT VIEW 2");
+		this.updateTextView("hi michael, VIEW_POST");
 		
 		
 		
 		
-		AttemptModel model = (AttemptModel) new AttemptModel1();
+		AttemptModel1 model = new AttemptModel1();
 		AttemptController controller = new AttemptController1(model, this);
 		this.registerObserver(controller);
+	}
+	
+	
+	@Override
+	public void registerObserver(AttemptController controller) {
+		this.controller = (AttemptController1) controller;
+	}
+	
+	
+	
+	@Override
+	public void onClick(View viewEvent) {
+		
+		int source = viewEvent.getId();
+		
+		//getNextPost button was pressed
+		if (source == R.id.getNextPost1)
+		{
+			this.controller.processNextPostEvent();
+		}
+		
+		//submit button was pressed
+		else if (source == R.id.submit1)
+		{
+			this.controller.processSubmitEvent();
+		}
+	}
+	
+	@Override
+	public void updateTextView(String show) {
+		this.textView.setText( show );
 	}
 	
 	

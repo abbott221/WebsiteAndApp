@@ -57,7 +57,7 @@ public class ViewWithActivityBar extends ActionBarActivity implements AttemptVie
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy);
 		
-		AttemptModel model = (AttemptModel) new AttemptModel1();
+		AttemptModel1 model = new AttemptModel1();
 		AttemptController controller = new AttemptController1(model, this);
 		this.registerObserver(controller);
 	}

@@ -119,7 +119,7 @@ public class AttemptView1_Login extends Activity implements AttemptView {
         //Model and controller should be passed in as parameters?
         
         
-        AttemptModel model = (AttemptModel) new AttemptModel1();
+        AttemptModel1 model = new AttemptModel1();
         AttemptController1 controller = new AttemptController1(model, this);
         this.registerObserver(controller);
         

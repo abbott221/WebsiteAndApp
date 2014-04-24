@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
         //view.registerObserver(controller);
         
       
-        AttemptModel model = (AttemptModel) new AttemptModel1();
+        AttemptModel1 model = new AttemptModel1();
         
         
         
