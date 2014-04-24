@@ -4,6 +4,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.MichaelFAbbott.standards.AttemptController;
+import com.MichaelFAbbott.standards.AttemptModel;
+import com.MichaelFAbbott.standards.AttemptView;
+
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,13 +21,13 @@ public class AttemptController1 implements AttemptController, OnClickListener {
 	//private final AttemptModel model;
     //private final AttemptView view;
     
-    AttemptModel1 model;
+    AttemptModel model;
     AttemptView view;
 	
 	
 	
 	
-	public AttemptController1(AttemptModel1 aModel, AttemptView aView) {
+	public AttemptController1(AttemptModel aModel, AttemptView aView) {
 		//this.callerView = activity;
 		
 		this.model = aModel;
@@ -125,8 +129,6 @@ public class AttemptController1 implements AttemptController, OnClickListener {
 	
 	@Override
 	public void processNextPostEvent() {
-		// TODO Auto-generated method stub
-		
 		try {
 	        
     	    
@@ -191,8 +193,6 @@ public class AttemptController1 implements AttemptController, OnClickListener {
 
 	@Override
 	public void processSubmitEvent() {
-		// TODO Auto-generated method stub
-		
 		try {
             
             AttemptModel1.postData( this.model.getTargetURL() );
@@ -203,6 +203,14 @@ public class AttemptController1 implements AttemptController, OnClickListener {
             //this.callerView.textView.setText( " url exeption! " );
             this.view.updateTextView( " url exeption! " );
         }
+		
+	}
+
+	
+	
+	@Override
+	public void updateViewToMatchModel() {
+		// TODO Auto-generated method stub
 		
 	}
 }

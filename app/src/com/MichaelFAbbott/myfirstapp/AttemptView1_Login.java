@@ -5,6 +5,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.MichaelFAbbott.myfirstapp.MainActivityActionBar.PlaceholderFragment;
+import com.MichaelFAbbott.standards.AttemptController;
+import com.MichaelFAbbott.standards.AttemptModel;
+import com.MichaelFAbbott.standards.AttemptView;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -27,38 +30,25 @@ import android.widget.TextView;
 
 
 
-public class AttemptView2 extends ActionBarActivity implements AttemptView {
+public class AttemptView1_Login extends Activity implements AttemptView {
 	
 	
 	private AttemptController1 controller;
 	
 	
-	//private final Button getNextPost;
-	//private final TextView textView;
-    
-	//private final EditText threadID, postContent, userID, userName;
-    
-	//private final Button submit;
 	
-	Button getNextPost;
-	TextView textView;
-    
-	EditText threadID, postContent, userID, userName;
+	
+	TextView status;
+	
+	EditText userName, passWord;
     
 	Button submit;
     
 	
 	
-	//boolean changedText = false;
-	int entry = 1;
 	
 	
-	
-	
-	
-	
-	
-	public AttemptView2() {
+	public AttemptView1_Login() {
 		//super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_main);
 		
@@ -73,7 +63,7 @@ public class AttemptView2 extends ActionBarActivity implements AttemptView {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         
         //@Bad
         //circumvent NetworkOnMainThreadException
@@ -87,35 +77,29 @@ public class AttemptView2 extends ActionBarActivity implements AttemptView {
         
 
         
-
-		getNextPost = (Button) findViewById(R.id.getNextPost1);
         
-        //getNextPost.setOnClickListener(new MyOnClickListener(this));
-		this.getNextPost.setOnClickListener(this);
-		
-		
-        textView = (TextView) findViewById(R.id.statusText1);
-		
-		
-		
-        threadID     =   (EditText) findViewById( R.id.username1 );
-        postContent  =   (EditText) findViewById(R.id.password);
-        userID       =   (EditText) findViewById(R.id.userID);
-        userName     =   (EditText) findViewById(R.id.userName);
+        
+        status       =   (TextView) findViewById(R.id.statusText1);
+        
+        userName     =   (EditText) findViewById( R.id.username1 );
+        passWord     =   (EditText) findViewById(R.id.password1);
         
         submit       =   (Button) findViewById(R.id.submit1);
-         
-         
+        
+        
+        
+        
 
-        
+		//this.getNextPost.setOnClickListener(this);
+		this.submit.setOnClickListener(this);
         //submit.setOnClickListener(new MyOnClickListener(this));
-        this.submit.setOnClickListener(this);
-        //submit.s
-        //submit.setO
+		
+		
+		
         
         
         
-        this.updateTextView("hi michael, ATTEMPT VIEW 2");
+        this.updateTextView("Login below (username, password)");
         
         
         
@@ -132,22 +116,14 @@ public class AttemptView2 extends ActionBarActivity implements AttemptView {
          * 
          */
         
+        //Model and controller should be passed in as parameters?
         
-        AttemptModel1 model = new AttemptModel1();
+        
+        AttemptModel model = (AttemptModel) new AttemptModel1();
         AttemptController1 controller = new AttemptController1(model, this);
         this.registerObserver(controller);
         
         
-        
-        
-        
-        /*
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
-        */
         
     }
     
@@ -162,22 +138,6 @@ public class AttemptView2 extends ActionBarActivity implements AttemptView {
         return true;
     }
     
-    /*
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle presses on the action bar items
-        switch (item.getItemId()) {
-            case R.id.action_search:
-                openSearch();
-                return true;
-            case R.id.action_compose:
-                composeMessage();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-    */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -185,17 +145,17 @@ public class AttemptView2 extends ActionBarActivity implements AttemptView {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         
-    	//int id = item.getItemId();
-        //if (id == R.id.action_settings) {
-        //    return true;
-        //}
-        
+        //call processActionBarSelection to start new intent?
+    	
         switch (item.getItemId()) {
             case R.id.action_settings:
-                //openSearch();
+                //openSearch(); for search activity in example code
+            	//Intent i = new Intent(getBaseContext(), AttemptView1.class);
+                //startActivity(i);
                 return true;
             case R.id.action_login:
-                //composeMessage();
+            	//Intent i = new Intent(getBaseContext(), AttemptView1.class);
+                //startActivity(i);
                 return true;
             case R.id.action_board:
                 //composeMessage();
@@ -207,45 +167,16 @@ public class AttemptView2 extends ActionBarActivity implements AttemptView {
         //return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    /*
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-        }
-    }
-    */
     
     
-    
-    /*
-    @Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-    	//
-    	// Inflate the menu items for use in the action bar
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_activity_actions, menu);
-        return super.onCreateOptionsMenu(menu);
-		return false;
-    }
-    */
     
     
     
     
     @Override
-    public void registerObserver(AttemptController1 controller) {
+    public void registerObserver(AttemptController controller) {
 
-        this.controller = controller;
+        this.controller = (AttemptController1) controller;
         
         //that component hasn't been created yet, that happens on the intent
         //this.updateTextView("hi michael 2");
@@ -285,9 +216,11 @@ public class AttemptView2 extends ActionBarActivity implements AttemptView {
 	public void updateTextView(String show) {
 		// TODO Auto-generated method stub
 		
-		this.textView.setText( show );
+		this.submit.setText( show );
 		
 	}
+	
+	
 
 
 

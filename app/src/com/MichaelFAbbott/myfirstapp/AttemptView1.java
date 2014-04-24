@@ -5,6 +5,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.MichaelFAbbott.myfirstapp.MainActivityActionBar.PlaceholderFragment;
+import com.MichaelFAbbott.standards.AttemptController;
+import com.MichaelFAbbott.standards.AttemptModel;
+import com.MichaelFAbbott.standards.AttemptView;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -27,25 +30,38 @@ import android.widget.TextView;
 
 
 
-public class AttemptView1_Login extends Activity implements AttemptView {
+public class AttemptView1 extends ActionBarActivity implements AttemptView {
 	
 	
 	private AttemptController1 controller;
 	
 	
+	//private final Button getNextPost;
+	//private final TextView textView;
+    
+	//private final EditText threadID, postContent, userID, userName;
+    
+	//private final Button submit;
 	
-	
-	TextView status;
-	
-	EditText userName, passWord;
+	Button getNextPost;
+	TextView textView;
+    
+	EditText threadID, postContent, userID, userName;
     
 	Button submit;
     
 	
 	
+	//boolean changedText = false;
+	int entry = 1;
 	
 	
-	public AttemptView1_Login() {
+	
+	
+	
+	
+	
+	public AttemptView1() {
 		//super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_main);
 		
@@ -60,7 +76,7 @@ public class AttemptView1_Login extends Activity implements AttemptView {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_main);
         
         //@Bad
         //circumvent NetworkOnMainThreadException
@@ -74,29 +90,35 @@ public class AttemptView1_Login extends Activity implements AttemptView {
         
 
         
+
+		getNextPost = (Button) findViewById(R.id.getNextPost1);
         
-        
-        status       =   (TextView) findViewById(R.id.statusText1);
-        
-        userName     =   (EditText) findViewById( R.id.username1 );
-        passWord     =   (EditText) findViewById(R.id.password1);
+        //getNextPost.setOnClickListener(new MyOnClickListener(this));
+		this.getNextPost.setOnClickListener(this);
+		
+		
+        textView = (TextView) findViewById(R.id.statusText1);
+		
+		
+		
+        threadID     =   (EditText) findViewById( R.id.username1 );
+        postContent  =   (EditText) findViewById(R.id.password);
+        userID       =   (EditText) findViewById(R.id.userID);
+        userName     =   (EditText) findViewById(R.id.userName);
         
         submit       =   (Button) findViewById(R.id.submit1);
-        
-        
-        
-        
+         
+         
 
-		//this.getNextPost.setOnClickListener(this);
-		this.submit.setOnClickListener(this);
+        
         //submit.setOnClickListener(new MyOnClickListener(this));
-		
-		
-		
+        this.submit.setOnClickListener(this);
+        //submit.s
+        //submit.setO
         
         
         
-        this.updateTextView("Login below (username, password)");
+        this.updateTextView("hi michael, ATTEMPT VIEW 2");
         
         
         
@@ -113,10 +135,8 @@ public class AttemptView1_Login extends Activity implements AttemptView {
          * 
          */
         
-        //Model and controller should be passed in as parameters?
         
-        
-        AttemptModel1 model = new AttemptModel1();
+        AttemptModel model = (AttemptModel) new AttemptModel1();
         AttemptController1 controller = new AttemptController1(model, this);
         this.registerObserver(controller);
         
@@ -171,9 +191,9 @@ public class AttemptView1_Login extends Activity implements AttemptView {
     
     
     @Override
-    public void registerObserver(AttemptController1 controller) {
+    public void registerObserver(AttemptController controller) {
 
-        this.controller = controller;
+        this.controller = (AttemptController1) controller;
         
         //that component hasn't been created yet, that happens on the intent
         //this.updateTextView("hi michael 2");
@@ -213,11 +233,20 @@ public class AttemptView1_Login extends Activity implements AttemptView {
 	public void updateTextView(String show) {
 		// TODO Auto-generated method stub
 		
-		this.submit.setText( show );
+		this.textView.setText( show );
 		
 	}
 	
 	
+	public void updateActionBarView(int id) {
+		// TODO Auto-generated method stub
+		
+		//this.textView.setText( show );
+		
+		//Intent i = new Intent(getBaseContext(), AttemptView1.class);
+        //startActivity(i);
+		
+	}
 
 
 

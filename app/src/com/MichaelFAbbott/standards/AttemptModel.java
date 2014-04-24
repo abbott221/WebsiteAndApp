@@ -1,9 +1,15 @@
-package com.MichaelFAbbott.myfirstapp;
+package com.MichaelFAbbott.standards;
 
 import org.json.JSONArray;
 
 
 public interface AttemptModel {
+	
+	//constructor constructs every field/private variable
+	
+	//then a bunch of getters/setters
+	//setters might not be necessary for some reference types?
+	
 	
 	public String getPostsURL();
 	

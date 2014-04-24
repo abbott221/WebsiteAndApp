@@ -1,6 +1,9 @@
 package com.MichaelFAbbott.myfirstapp;
 
 
+import com.MichaelFAbbott.standards.AttemptModel;
+import com.MichaelFAbbott.standards.AttemptView;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -37,7 +40,7 @@ public class MainActivity extends Activity {
         //view.registerObserver(controller);
         
       
-        AttemptModel1 model = new AttemptModel1();
+        AttemptModel model = (AttemptModel) new AttemptModel1();
         
         
         
@@ -49,7 +52,7 @@ public class MainActivity extends Activity {
         //Intent i = new Intent(getBaseContext(), AttemptView1.class);
         //startActivity(i);
         
-        AttemptView1 view = new AttemptView1();
+        AttemptView view = new AttemptView1();
         
         
         
