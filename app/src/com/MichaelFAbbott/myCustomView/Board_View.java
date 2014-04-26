@@ -1,9 +1,12 @@
-package com.MichaelFAbbott.myfirstapp;
+package com.MichaelFAbbott.myCustomView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.MichaelFAbbott.myfirstapp.AttemptController1;
+import com.MichaelFAbbott.myfirstapp.AttemptModel1;
+import com.MichaelFAbbott.myfirstapp.R;
 import com.MichaelFAbbott.standards.AttemptController;
 import com.MichaelFAbbott.standards.AttemptModel;
 import com.MichaelFAbbott.standards.AttemptView;
@@ -30,23 +33,20 @@ import android.widget.TextView;
 
 
 
-public class Login_View extends ViewWithActivityBar implements AttemptView {
+public class Board_View extends ViewWithActivityBar implements AttemptView {
 	
 	
 	
 	private AttemptController controller;
 	
-	TextView status;
-    
-	EditText userName, passWord;
-    
-	Button submit;
+	Board_CustomView mCustomDrawableView;
 	
 	
 	
 	
 	
-	public Login_View() {
+	
+	public Board_View() {
 		//nothing?
 	}
 	
@@ -63,17 +63,10 @@ public class Login_View extends ViewWithActivityBar implements AttemptView {
 		
 		
 		
-		status       =   (TextView) findViewById(R.id.statusText1);
-		
-		userName     =   (EditText) findViewById(R.id.username1);
-		userName     =   (EditText) findViewById(R.id.password1);
-		
-		submit       =   (Button) findViewById(R.id.submit1);
-		
-		this.submit.setOnClickListener(this);
-		
-		this.updateTextView("hi michael, LOGIN_VIEW v3");
-		
+		//replaces DisplayManager
+		mCustomDrawableView = new Board_CustomView(this);
+    	
+    	setContentView(mCustomDrawableView);
 		
 		
 		
@@ -92,19 +85,12 @@ public class Login_View extends ViewWithActivityBar implements AttemptView {
 	
 	@Override
 	public void onClick(View viewEvent) {
-		
-		int source = viewEvent.getId();
-		
-		//submit button was pressed
-		if (source == R.id.submit1)
-		{
-			this.controller.processSubmitEvent();
-		}
+		//nothing
 	}
 	
 	@Override
 	public void updateTextView(String show) {
-		this.status.setText( show );
+		//nothing
 	}
 	
 	
