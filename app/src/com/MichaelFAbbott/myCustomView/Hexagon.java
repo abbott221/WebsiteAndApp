@@ -21,7 +21,7 @@ public class Hexagon
 	
 	
 	
-	private Triangle debug;
+	//private Triangle debug;
 	
 	
 	
@@ -49,13 +49,13 @@ public class Hexagon
 		//float centerX = 200;
 		//float centerY = 200;
 		
-		centerX = r * 200 + 200;
+		centerX = c * 200 + 200;
 		if (r % 2 != 0)
 		{
 			centerX += 100;
 		}
 		
-		centerY = c * 200 + 200;
+		centerY = r * 200 + 200;
 		
 		
 		
@@ -66,8 +66,6 @@ public class Hexagon
 		
 		angle = (1.0 / 12.0) * 2.0 * Math.PI; //position to 1/12
 		
-		//tempX = (float) (Math.cos(angle) * 90.0) + centerX;
-		//tempY = (float) (Math.sin(angle) * 90.0) + centerY;
 		tempX = (float) (Math.cos(angle) * 90.0);
 		tempY = (float) (Math.sin(angle) * 90.0);
 		
@@ -78,8 +76,6 @@ public class Hexagon
 	    {
 	    	angle = (i / 12.0) * 2.0 * Math.PI; //initial position to 11/12, final position to 1/12
 			
-			//tempX = (float) (Math.cos(angle) * 90.0) + centerX;
-			//tempY = (float) (Math.sin(angle) * 90.0) + centerY;
 			tempX = (float) (Math.cos(angle) * 90.0);
 			tempY = (float) (Math.sin(angle) * 90.0);
 			
@@ -94,14 +90,14 @@ public class Hexagon
 	    
 	    
 	    
-	    debug = new Triangle(centerX, centerY);
+	    //debug = new Triangle(centerX, centerY);
 	    
 	    
 	}
 	
 	
 	
-	public void drawHexagon( Canvas canvas )
+	public void drawSelf( Canvas canvas )
 	{
 		/*
 		double x, y;
@@ -117,7 +113,7 @@ public class Hexagon
 			y = ( -0.5 + row ) * Math.sqrt( 3 );
 		}
 		/**/
-		debug.drawSelf(canvas);
+		//debug.drawSelf(canvas);
 		
 
 		canvas.save();

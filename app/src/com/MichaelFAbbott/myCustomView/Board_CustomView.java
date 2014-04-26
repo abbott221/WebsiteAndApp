@@ -25,8 +25,8 @@ public class Board_CustomView extends View {
 		
 		super(context);
 		
-		rows = 2;
-		columns = 2;
+		rows = 4;
+		columns = 4;
 		
 		board = new Hexagon[ rows ][ columns ];
 		
@@ -57,7 +57,7 @@ public class Board_CustomView extends View {
 		{
 			for (int j = 0; j < columns; j++)
 			{
-				board[i][j].drawHexagon(canvas);
+				board[i][j].drawSelf(canvas);
 			}
 		}
 		/**/
