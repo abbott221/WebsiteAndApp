@@ -79,7 +79,7 @@ public class Post_View extends ViewWithActivityBar implements AttemptView {
 		
 		this.getNextPost.setOnClickListener(this);
 		
-		this.updateTextView("hi michael, POST_VIEW v3");
+		this.updateTextView("hi michael, POST_VIEW v4");
 		
 		
 		

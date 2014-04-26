@@ -72,7 +72,7 @@ public class Login_View extends ViewWithActivityBar implements AttemptView {
 		
 		this.submit.setOnClickListener(this);
 		
-		this.updateTextView("hi michael, LOGIN_VIEW v3");
+		this.updateTextView("hi michael, LOGIN_VIEW v4");
 		
 		
 		
