@@ -52,10 +52,40 @@ public class Board_CustomView extends View {
 	    }
 	    */
 	    
-		shapePath.moveTo( 100, 100 );
-		shapePath.lineTo( 300, 300 );
-		shapePath.lineTo( 100, 300 );
-		shapePath.lineTo( 100, 100 );
+		float centerX = 200;
+		float centerY = 200;
+		
+		//shapePath.moveTo( centerX, centerY ); // center? or top?
+		
+		//shapePath.moveTo( centerX, centerY );
+		
+		
+		float tempX = 0;
+		float tempY = 0;
+		double angle = 0;
+		
+		//for( double ang = 2 * Math.PI; ang > 0; ang -= d_rad )
+	    //{
+	    //	shapePath.lineTo( (float) Math.cos( ang ), (float) Math.sin( ang ) );
+	    //}
+		
+		angle = (1.0 / 12.0) * 2.0 * Math.PI; //initial value is 2 PI
+		
+		tempX = (float) (Math.cos(angle) * 100) + centerX;
+		tempY = (float) (Math.sin(angle) * 100) + centerY;
+		
+		shapePath.moveTo( tempX, tempY );
+		
+		
+		for( float i = 11; i > 0; i -= 2 )
+	    {
+	    	angle = (i / 12.0) * 2.0 * Math.PI; //initial value is 2 PI
+			
+			tempX = (float) (Math.cos(angle) * 100.0) + centerX;
+			tempY = (float) (Math.sin(angle) * 100.0) + centerY;
+			
+			shapePath.lineTo( tempX, tempY );
+	    }
 		
 		
 	    
@@ -77,14 +107,14 @@ public class Board_CustomView extends View {
 		
 		canvas.save();
 		
-		canvas.scale( 2, 2 );
-		canvas.translate( 100, 100 );
+		//canvas.scale( 2, 2 );
+		//canvas.translate( 100, 100 );
 		
 		paintFill.setColor( android.graphics.Color.RED );
 		//paintFill.setColor( 0xff74AC23 );
 		//paintFill.setColor( 0xFF000000 );
-		paintFill.setStyle( Paint.Style.STROKE );
-		//paintFill.setStyle( Paint.Style.FILL );
+		//paintFill.setStyle( Paint.Style.STROKE );
+		paintFill.setStyle( Paint.Style.FILL );
 		
 		paintFill.setStrokeWidth(50);
 		
