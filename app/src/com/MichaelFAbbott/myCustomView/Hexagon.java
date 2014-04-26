@@ -1,5 +1,7 @@
 package com.MichaelFAbbott.myCustomView;
 
+import com.MichaelFAbbott.standards.AttemptController;
+
 import android.graphics.*;
 import android.util.Log;
 
@@ -19,6 +21,11 @@ public class Hexagon
 	
 	
 	
+	public static enum State {
+		SELECTED, UNSELECTED
+	}
+	private State currentState;
+	
 	
 	
 	
@@ -26,8 +33,11 @@ public class Hexagon
 	// constructor using row and col index
 	public Hexagon( int r, int c )
 	{
+		this.currentState = State.UNSELECTED;
+		
 		row = r;
 		column = c;
+		
 		
 		
 		myColor = android.graphics.Color.RED;
@@ -51,13 +61,13 @@ public class Hexagon
 		//float centerX = 200;
 		//float centerY = 200;
 		
-		centerX = c * 200 + 200;
+		centerX = c * 200 + 150;
 		if (r % 2 != 0)
 		{
 			centerX += 100;
 		}
 		
-		centerY = r * 200 + 200;
+		centerY = r * 200 + 150;
 		
 		
 		
@@ -111,13 +121,24 @@ public class Hexagon
 	}
 	
 	
+	public State getHighlighted()
+	{
+		return this.currentState;
+	}
+	//make a processHighlighted event???
+	public void setHighlighted(State newState)
+	{
+		this.currentState = newState;
+	}
+	
+	
 	public String toString()
 	{
 		StringBuilder returnMe = new StringBuilder();
 		returnMe.append("row: ");
-		returnMe.append(row);
+		returnMe.append(this.row);
 		returnMe.append(" column: ");
-		returnMe.append(column);
+		returnMe.append(this.column);
 		
 		return returnMe.toString();
 	}
@@ -143,20 +164,7 @@ public class Hexagon
 	
 	public void drawSelf( Canvas canvas )
 	{
-		/*
-		double x, y;
 		
-		if( column % 2 == 0 )
-		{
-			x = column * 3.0 / 2.0;
-			y = row * Math.sqrt( 3 );
-		}
-		else
-		{
-			x = 1.5 + 3 * (column - 1) / 2.0;
-			y = ( -0.5 + row ) * Math.sqrt( 3 );
-		}
-		/**/
 		//debug.drawSelf(canvas);
 		
 
@@ -165,22 +173,22 @@ public class Hexagon
 		//canvas.scale( 2, 2 );
 		canvas.translate( centerX, centerY );
 		
-		paintFill.setColor( myColor );
-		//int something = android.graphics.Color.RED;
+		if (currentState == State.SELECTED)
+		{
+			paintFill.setColor( android.graphics.Color.BLUE );
+		}
+		else if (currentState == State.UNSELECTED)
+		{
+			paintFill.setColor( android.graphics.Color.RED );
+		}
 		
-		//if (row == 1 && column == 1)
-		//{
-		//	paintFill.setColor( android.graphics.Color.BLUE );
-		//}
 		
-		//paintFill.setColor( 0xff74AC23 );
-		//paintFill.setColor( 0xFF000000 );
-		//paintFill.setStyle( Paint.Style.STROKE );
+		//paintFill.setColor( myColor );
 		paintFill.setStyle( Paint.Style.FILL );
 		
-		//paintFill.setStrokeWidth(50);
-		
 		canvas.drawPath( shapePath, paintFill );
+		
+		
 		
 		canvas.restore();
 		
