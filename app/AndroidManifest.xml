@@ -29,6 +29,8 @@
         <activity android:name="com.MichaelFAbbott.myfirstapp.Post_View" ></activity>
         <activity android:name="com.MichaelFAbbott.myfirstapp.Login_View" ></activity>
         
+        <activity android:name="com.MichaelFAbbott.customView.Strategy" ></activity>
+        
         <activity android:name="com.MichaelFAbbott.myfirstapp.AttemptView1" ></activity>
         <activity android:name="com.MichaelFAbbott.myfirstapp.AttemptView2" ></activity>
         

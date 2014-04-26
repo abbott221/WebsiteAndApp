@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.MichaelFAbbott.customView.Strategy;
 import com.MichaelFAbbott.myfirstapp.AttemptController1;
 import com.MichaelFAbbott.myfirstapp.AttemptModel1;
 import com.MichaelFAbbott.myfirstapp.Login_View;
@@ -99,6 +100,8 @@ public class ViewWithActivityBar extends ActionBarActivity implements AttemptVie
 			return true;
 		case R.id.action_board:
 			//composeMessage();
+			i = new Intent(getBaseContext(), Strategy.class);
+			startActivity(i);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
