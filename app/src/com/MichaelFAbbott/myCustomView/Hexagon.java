@@ -15,13 +15,10 @@ public class Hexagon
 	
 	private float centerX, centerY;
 	
-	private boolean printed;
+	int myColor;
 	
 	
 	
-	
-	
-	//private Triangle debug;
 	
 	
 	
@@ -33,7 +30,10 @@ public class Hexagon
 		column = c;
 		
 		
-		printed = false;
+		myColor = android.graphics.Color.RED;
+		
+		
+		
 		
 		
 		//HEXAGON START
@@ -45,6 +45,8 @@ public class Hexagon
 		
 		
 		shapePath = new Path();
+		
+		
 		
 		//float centerX = 200;
 		//float centerY = 200;
@@ -87,14 +89,56 @@ public class Hexagon
 	    shapePath.close();
 		
 		//HEXAGON END
-	    
-	    
-	    
-	    //debug = new Triangle(centerX, centerY);
-	    
-	    
 	}
 	
+	
+	public float getCenterX()
+	{
+		return centerX;
+	}
+	public float getCenterY()
+	{
+		return centerY;
+	}
+	
+	public float getRow()
+	{
+		return row;
+	}
+	public float getColumn()
+	{
+		return column;
+	}
+	
+	
+	public String toString()
+	{
+		StringBuilder returnMe = new StringBuilder();
+		returnMe.append("row: ");
+		returnMe.append(row);
+		returnMe.append(" column: ");
+		returnMe.append(column);
+		
+		return returnMe.toString();
+	}
+	
+	
+	public void setColor(int newColor)
+	{
+		myColor = newColor;
+	}
+	
+	public boolean equals( Hexagon other )
+	{
+		boolean returnMe = false;
+		
+		if (other.getRow() == row && other.getColumn() == column)
+		{
+			returnMe = true;
+		}
+		
+		return returnMe;
+	}
 	
 	
 	public void drawSelf( Canvas canvas )
@@ -121,7 +165,8 @@ public class Hexagon
 		//canvas.scale( 2, 2 );
 		canvas.translate( centerX, centerY );
 		
-		paintFill.setColor( android.graphics.Color.RED );
+		paintFill.setColor( myColor );
+		//int something = android.graphics.Color.RED;
 		
 		//if (row == 1 && column == 1)
 		//{
@@ -140,14 +185,6 @@ public class Hexagon
 		canvas.restore();
 		
 		
-		if (!printed)
-		{
-			printed = true;
-			System.err.println(row + "x: " + centerX);
-			System.err.println(column + "y: " + centerY);
-			//Log.e("log_tag", row + "x: " + centerX);
-			//Log.e("log_tag", column + "y: " + centerY);
-		}
 		
 		
 	}
