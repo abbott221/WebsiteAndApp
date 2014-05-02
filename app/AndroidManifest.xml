@@ -5,6 +5,7 @@
     android:versionName="1.0" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
     
     <uses-sdk
         android:minSdkVersion="8"
@@ -26,10 +27,16 @@
             </intent-filter>
         </activity>
         
+        
+        <activity android:name="com.MichaelFAbbott.myViewAsSurface2.Board_MyActivity2" ></activity>
+        <activity android:name="com.MichaelFAbbott.myViewAsSurface3.Board_MyActivity3" ></activity>
+        <activity android:name="com.MichaelFAbbott.myViewAsSurface4.Board_MyActivity4" ></activity>
+        
         <activity android:name="com.MichaelFAbbott.myfirstapp.Post_View" ></activity>
         <activity android:name="com.MichaelFAbbott.myfirstapp.Login_View" ></activity>
         
         <activity android:name="com.MichaelFAbbott.customView.Strategy" ></activity>
+        <activity android:name="com.MichaelFAbbott.myCustomView.Board_View" ></activity>
         
         <activity android:name="com.MichaelFAbbott.myfirstapp.AttemptView1" ></activity>
         <activity android:name="com.MichaelFAbbott.myfirstapp.AttemptView2" ></activity>

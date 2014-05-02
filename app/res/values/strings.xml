@@ -10,5 +10,7 @@
     <string name="action_login">Log in</string>
     <string name="action_posts">Posts</string>
     <string name="action_board">Tile Board</string>
+    
+    <string name="action_experiment">Experiment</string>
 
 </resources>

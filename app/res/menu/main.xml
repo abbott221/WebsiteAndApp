@@ -18,6 +18,9 @@
     <item
         android:id="@+id/action_board"
         android:title="@string/action_board"/>
+    <item
+        android:id="@+id/action_experiment"
+        android:title="@string/action_experiment"/>
     
 
 </menu>
