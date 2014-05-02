@@ -24,8 +24,10 @@ This is NOT ready for deployment. It currently does not utilize data sanitation 
 
 TODO
 -----
-- Data table sanitization
-- Salting of usenames and passwords
-- Tamperevident cookies
-- Storing patient data and conversations in an encrypted format
-- Forcing SSL
+- Properly update the rest of this page
+- Find a sufficient and not messy way of doing multithreading
+- Bring the board to a SurfaceView
+- Use XML file for the board activity's set-up process
+- Incorprate the database for log-ins, chats and stuff
+- Do saved instance bundles
+- stop sending ALL of the database info in every single request
