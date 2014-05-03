@@ -1,4 +1,4 @@
-package com.MichaelFAbbott.myViewAsSurface4;
+package com.MichaelFAbbott.myViewAsSurface5;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,10 +42,10 @@ import android.widget.TextView;
 
 
 
-public class Board_MyActivity4 extends ViewWithActivityBar implements OnTouchListener {
+public class Board_MyActivity5 extends ViewWithActivityBar implements OnTouchListener {
 	
 	
-	Board_MyView4 v;
+	Board_MyView5 v;
 	
 	//float x, y;
 	
@@ -59,7 +59,7 @@ public class Board_MyActivity4 extends ViewWithActivityBar implements OnTouchLis
 		setContentView(R.layout.activity_experiment);
 		LinearLayout lolContainer = (LinearLayout) findViewById(R.id.linearContainer);
 		//Board_MyView4 lolView = new Board_MyView4(this);
-		v = new Board_MyView4(this); //the view is referenced outside of onCreate()
+		v = new Board_MyView5(this); //the view is referenced outside of onCreate()
 		//lolContainer.addView(lolView);
 		lolContainer.addView(v);
 		

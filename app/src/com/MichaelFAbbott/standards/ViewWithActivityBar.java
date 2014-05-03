@@ -10,6 +10,7 @@ import com.MichaelFAbbott.myViewAsSurface.Board_MyActivity;
 import com.MichaelFAbbott.myViewAsSurface2.Board_MyActivity2;
 import com.MichaelFAbbott.myViewAsSurface3.Board_MyActivity3;
 import com.MichaelFAbbott.myViewAsSurface4.Board_MyActivity4;
+import com.MichaelFAbbott.myViewAsSurface5.Board_MyActivity5;
 import com.MichaelFAbbott.myfirstapp.AttemptController1;
 import com.MichaelFAbbott.myfirstapp.AttemptModel1;
 import com.MichaelFAbbott.myfirstapp.Login_View;
@@ -111,7 +112,7 @@ public class ViewWithActivityBar extends ActionBarActivity implements AttemptVie
 		case R.id.action_experiment:
 			//composeMessage();
 			//i = new Intent(getBaseContext(), Board_MyActivity2.class);
-			i = new Intent(getBaseContext(), Board_MyActivity4.class);
+			i = new Intent(getBaseContext(), Board_MyActivity5.class);
 			startActivity(i);
 			return true;
 		default:

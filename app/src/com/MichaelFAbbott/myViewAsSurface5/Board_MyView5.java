@@ -1,30 +1,45 @@
-package com.MichaelFAbbott.myViewAsSurface4;
+package com.MichaelFAbbott.myViewAsSurface5;
 
+
+import com.MichaelFAbbott.customView.GameMap;
+import com.MichaelFAbbott.myCustomView.Board_Controller;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 
 
-public class Board_MyView4 extends SurfaceView implements SurfaceHolder.Callback {
+public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback {
 
 		//Thread t = null;
 	
-		Board_MyThread4 t = null;
+		Board_MyThread5 t = null;
 	
 		SurfaceHolder holder;
-		boolean isItOK = false;
+		//boolean isItOK = false;
 		
-		public Board_MyView4(Context context) {
+		
+		private Board_Listener5 listener;
+		private GestureDetector gestures;
+		
+		
+		public Board_MyView5(Context context) {
 			super(context);
 			// TODO Auto-generated constructor stub
 			holder = getHolder();
 			
-			t = new Board_MyThread4(this);
+			t = new Board_MyThread5(this);
+			
+			
+			
+			listener = new Board_Listener5(); //but it has no constructor?
+			gestures = new GestureDetector( context, listener );
+			
 		}
 
 		
@@ -49,12 +64,14 @@ public class Board_MyView4 extends SurfaceView implements SurfaceHolder.Callback
 
 		@Override
 		public void surfaceDestroyed(SurfaceHolder holder) {
-			t.terminateSurface();
+			//t.terminateSurface();
+			t.pause();
 		}
 		
 		public void surfaceRestart() {
 			if (t != null) {
-				t.restartSurface(); 
+				//t.restartSurface();
+				t.resume();
 			}
 		}
 		
@@ -63,6 +80,9 @@ public class Board_MyView4 extends SurfaceView implements SurfaceHolder.Callback
 		@Override
 		public boolean onTouchEvent(MotionEvent event) {
 			
+			gestures.onTouchEvent( event );
+			
+			invalidate();
 			
 			return true;
 		}
@@ -82,7 +102,7 @@ public class Board_MyView4 extends SurfaceView implements SurfaceHolder.Callback
 			
 			Paint paintFill = new Paint();
 			//paintFill.setColor(0xff74AC23);
-			paintFill.setColor( android.graphics.Color.GRAY );
+			paintFill.setColor( android.graphics.Color.RED );
 			
 			paintFill.setStyle( Paint.Style.FILL );
 			

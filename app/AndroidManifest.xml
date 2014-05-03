@@ -31,6 +31,7 @@
         <activity android:name="com.MichaelFAbbott.myViewAsSurface2.Board_MyActivity2" ></activity>
         <activity android:name="com.MichaelFAbbott.myViewAsSurface3.Board_MyActivity3" ></activity>
         <activity android:name="com.MichaelFAbbott.myViewAsSurface4.Board_MyActivity4" ></activity>
+        <activity android:name="com.MichaelFAbbott.myViewAsSurface5.Board_MyActivity5" ></activity>
         
         <activity android:name="com.MichaelFAbbott.myfirstapp.Post_View" ></activity>
         <activity android:name="com.MichaelFAbbott.myfirstapp.Login_View" ></activity>
