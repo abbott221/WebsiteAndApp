@@ -1,11 +1,11 @@
-package com.MichaelFAbbott.myCustomView;
+package com.MichaelFAbbott.myViewAsSurface5;
 
 import com.MichaelFAbbott.standards.AttemptController;
 
 import android.graphics.*;
 import android.util.Log;
 
-public class Hexagon
+public class Hexagon5
 {
 	public static int hSize = 20;
 	
@@ -21,19 +21,24 @@ public class Hexagon
 	
 	
 	
-	public static enum State {
+	public static enum SelectState {
 		SELECTED, UNSELECTED
 	}
-	private State currentState;
-	
+	public static enum HeldState {
+		HOLD_BLUE, HOLD_PURPLE, HOLD_GREEN, HOLD_YELLOW, HOLD_RED
+	}
+	private SelectState currentState; //selectState
+	private HeldState myHeldState;
 	
 	
 	
 	
 	// constructor using row and col index
-	public Hexagon( int r, int c )
+	public Hexagon5( int r, int c )
 	{
-		this.currentState = State.UNSELECTED;
+		this.currentState = SelectState.UNSELECTED;
+		this.myHeldState = HeldState.HOLD_RED;
+		
 		
 		row = r;
 		column = c;
@@ -121,15 +126,39 @@ public class Hexagon
 	}
 	
 	
-	public State getHighlighted()
+	
+	
+	
+	
+	public SelectState getHighlighted()
 	{
 		return this.currentState;
 	}
 	//make a processHighlighted event???
-	public void setHighlighted(State newState)
+	public void setHighlighted(SelectState newState)
 	{
 		this.currentState = newState;
 	}
+	
+	
+	
+	public HeldState getHeldState()
+	{
+		return this.myHeldState;
+	}
+	//make a processHighlighted event???
+	public void setHeldState(HeldState newState)
+	{
+		this.myHeldState = newState;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public String toString()
@@ -149,7 +178,7 @@ public class Hexagon
 		myColor = newColor;
 	}
 	
-	public boolean equals( Hexagon other )
+	public boolean equals( Hexagon5 other )
 	{
 		boolean returnMe = false;
 		
@@ -160,6 +189,64 @@ public class Hexagon
 		
 		return returnMe;
 	}
+	
+	
+	
+	public void updateSelf()
+	{
+		//update the color
+		
+		//HOLD_BLUE, HOLD_PURPLE, HOLD_GREEN, HOLD_YELLOW, HOLD_RED
+		
+		
+		if (this.currentState == SelectState.SELECTED)
+		{
+			switch ( myHeldState ) {
+			case HOLD_BLUE:
+				setColor( Color.parseColor("#33B5E5") );
+				break;
+			case HOLD_PURPLE:
+				setColor( Color.parseColor("#AA66CC") );
+				break;
+			case HOLD_GREEN:
+				setColor( Color.parseColor("#99CC00") );
+				break;
+			case HOLD_YELLOW:
+				setColor( Color.parseColor("#FFBB33") );
+				break;
+			case HOLD_RED:
+				setColor( Color.parseColor("#FF4444") );
+				break;
+			default:
+				//nothing
+			}
+		}
+		else
+		{
+			switch ( myHeldState ) {
+			case HOLD_BLUE:
+				setColor( Color.parseColor("#0099CC") );
+				break;
+			case HOLD_PURPLE:
+				setColor( Color.parseColor("#9933CC") );
+				break;
+			case HOLD_GREEN:
+				setColor( Color.parseColor("#669900") );
+				break;
+			case HOLD_YELLOW:
+				setColor( Color.parseColor("#FF8800") );
+				break;
+			case HOLD_RED:
+				setColor( Color.parseColor("#CC0000") );
+				break;
+			default:
+				//nothing
+			}
+		}
+		
+		
+	}
+	
 	
 	
 	public void drawSelf( Canvas canvas )
@@ -173,14 +260,27 @@ public class Hexagon
 		//canvas.scale( 2, 2 );
 		canvas.translate( centerX, centerY );
 		
-		if (currentState == State.SELECTED)
+		/*
+		if (currentState == SelectState.SELECTED)
 		{
 			paintFill.setColor( android.graphics.Color.BLUE );
 		}
-		else if (currentState == State.UNSELECTED)
+		else if (currentState == SelectState.UNSELECTED)
 		{
-			paintFill.setColor( android.graphics.Color.RED );
+			//original was this red
+			//paintFill.setColor( android.graphics.Color.RED );
+			
+			//brush.setColor( 0xFF000000 );
+			paintFill.setColor( Color.parseColor("#FFBB33") );
+			//paintFill.setColor( Color.parseColor("#636161") );
+			
+			
+			//paintFill.setColor( android.graphics.Color.BLACK );
 		}
+		/**/
+		
+		paintFill.setColor( myColor );
+		
 		
 		
 		//paintFill.setColor( myColor );

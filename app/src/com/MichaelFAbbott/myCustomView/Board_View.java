@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -42,6 +43,9 @@ public class Board_View extends ViewWithActivityBar implements AttemptView {
 	Board_CustomView mCustomDrawableView;
 	
 	
+	private Vibrator haptic;
+	
+	
 	
 	
 	
@@ -58,13 +62,15 @@ public class Board_View extends ViewWithActivityBar implements AttemptView {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		
+		haptic = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
+		
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy);
 		
 		
 		
 		//replaces DisplayManager
-		mCustomDrawableView = new Board_CustomView(this);
+		mCustomDrawableView = new Board_CustomView(this, haptic);
     	
     	setContentView(mCustomDrawableView);
 		
