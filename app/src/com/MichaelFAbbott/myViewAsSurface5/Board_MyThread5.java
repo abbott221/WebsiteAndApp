@@ -112,7 +112,7 @@ public class Board_MyThread5 implements Runnable {
 			
 			//draw on canvas
 			//c.drawARGB(255, 150, 150, 10);
-			_panel.updatePhysics();
+			_panel.updateTiles();
 			_panel.drawSurface(_c);
 			
 			holder.unlockCanvasAndPost(_c);

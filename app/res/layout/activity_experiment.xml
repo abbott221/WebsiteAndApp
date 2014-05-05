@@ -16,17 +16,30 @@
             android:id="@+id/linearContainer"
             android:layout_width="match_parent"
             android:layout_height="228dp"
-            android:layout_weight="0.13"
+            android:layout_weight="0.21"
             android:orientation="vertical" >
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Button" />
+            android:layout_weight="0.00" >
+
+            <Spinner
+                android:id="@+id/look_spinner1"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.69" />
+
+            <Button
+                android:id="@+id/look_button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.24"
+                android:text="Button" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

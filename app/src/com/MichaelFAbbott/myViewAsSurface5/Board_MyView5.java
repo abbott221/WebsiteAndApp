@@ -3,6 +3,8 @@ package com.MichaelFAbbott.myViewAsSurface5;
 
 import com.MichaelFAbbott.customView.GameMap;
 import com.MichaelFAbbott.myCustomView.Board_Controller;
+import com.MichaelFAbbott.myCustomView.Board_Model;
+import com.MichaelFAbbott.myCustomView.Hexagon;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -28,7 +30,15 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 		private GestureDetector gestures;
 		
 		
-		public Board_MyView5(Context context) {
+		
+		
+		
+		private Board_Model5 model;
+		
+		
+		
+		
+		public Board_MyView5(Context context, Board_Listener5 newController) {
 			super(context);
 			// TODO Auto-generated constructor stub
 			holder = getHolder();
@@ -36,8 +46,17 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			t = new Board_MyThread5(this);
 			
 			
+			//pass this to the other stuff
+			//model = new Board_Model5();
+			//model = activityModel;
 			
-			listener = new Board_Listener5(); //but it has no constructor?
+			
+			
+			
+			//listener = new Board_Listener5(model); //but it has no constructor?
+			listener = newController;
+			model = newController.getModel();
+			
 			gestures = new GestureDetector( context, listener );
 			
 		}
@@ -89,12 +108,23 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 		
 		
 		
-		public void updatePhysics() {
-			//
+		public void updateTiles() {
+			for (int i = 0; i < this.model.getRows(); i++) {
+				for (int j = 0; j < this.model.getColumns(); j++) {
+					Hexagon5 current = this.model.getHexagon(i, j);
+					
+					current.updateSelf();
+					
+				}
+			}
+			
+			
 		}
 		
 		
+		//"process draw event"
 		public void drawSurface(Canvas canvas) {
+			/*
 			//Canvas c = holder.lockCanvas();
 			
 			//draw on canvas
@@ -109,6 +139,20 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			canvas.drawCircle(300, 300, 100, paintFill);
 			
 			//holder.unlockCanvasAndPost(c);
+			/**/
+			
+			
+			for (int i = 0; i < this.model.getRows(); i++) {
+				for (int j = 0; j < this.model.getColumns(); j++) {
+					Hexagon5 current = this.model.getHexagon(i, j);
+					
+					current.drawSelf(canvas);
+					
+				}
+			}
+			
+			
+			
 		}
 		
 		
