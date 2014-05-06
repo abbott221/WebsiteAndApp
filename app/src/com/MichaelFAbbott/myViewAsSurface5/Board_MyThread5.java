@@ -16,14 +16,17 @@ public class Board_MyThread5 implements Runnable {
 	
 	private Board_MyView5 _panel;
 	
+	private Board_Listener5 controller;
+	
 	private Canvas _c;
 	//volatile Thread t;
 	
-	public Board_MyThread5(Board_MyView5 panel) {
+	public Board_MyThread5(Board_MyView5 panel, Board_Listener5 newController) {
 		
 		holder = panel.getHolder();
 		_panel = panel;
 		
+		controller = newController;
 		_c = new Canvas();
 		
 		

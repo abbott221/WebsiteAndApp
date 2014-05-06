@@ -95,7 +95,8 @@ public class Board_MyActivity5 extends ViewWithActivityBar implements OnTouchLis
 		
 		mvcController = new Board_Listener5(model, mvcView);
 		
-		
+		mvcView.registerObserver(mvcController);
+		model.registerObserver(mvcController);
 		
 		mvcView.setSpinner(lolSpinner);
 		

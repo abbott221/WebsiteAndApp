@@ -21,6 +21,7 @@ public class Hexagon5
 	
 	
 	
+	
 	public static enum SelectState {
 		SELECTED, UNSELECTED
 	}
@@ -42,7 +43,6 @@ public class Hexagon5
 		
 		row = r;
 		column = c;
-		
 		
 		
 		myColor = android.graphics.Color.RED;
@@ -249,7 +249,7 @@ public class Hexagon5
 	
 	
 	
-	public void drawSelf( Canvas canvas )
+	public void drawSelf( Canvas canvas, Bitmap drawMe )
 	{
 		
 		//debug.drawSelf(canvas);
@@ -259,25 +259,6 @@ public class Hexagon5
 		
 		//canvas.scale( 2, 2 );
 		canvas.translate( centerX, centerY );
-		
-		/*
-		if (currentState == SelectState.SELECTED)
-		{
-			paintFill.setColor( android.graphics.Color.BLUE );
-		}
-		else if (currentState == SelectState.UNSELECTED)
-		{
-			//original was this red
-			//paintFill.setColor( android.graphics.Color.RED );
-			
-			//brush.setColor( 0xFF000000 );
-			paintFill.setColor( Color.parseColor("#FFBB33") );
-			//paintFill.setColor( Color.parseColor("#636161") );
-			
-			
-			//paintFill.setColor( android.graphics.Color.BLACK );
-		}
-		/**/
 		
 		paintFill.setColor( myColor );
 		
@@ -289,6 +270,18 @@ public class Hexagon5
 		canvas.drawPath( shapePath, paintFill );
 		
 		
+		//canvas.scale( 2, 2 );
+		//canvas.translate( centerX, centerY );
+		//canvas.drawBitmap(drawMe, 0, 0, new Paint());
+		
+		int w = drawMe.getWidth();
+		int h = drawMe.getHeight();
+		
+		canvas.translate( -(w/2), -(h/2) );
+		
+		canvas.drawBitmap(drawMe, 0, 0, paintFill);
+		
+		
 		
 		canvas.restore();
 		
@@ -296,6 +289,58 @@ public class Hexagon5
 		
 		
 	}
+	
+	
+	public void drawSelf2( Canvas canvas, Bitmap drawMe )
+	{
+		
+		//debug.drawSelf(canvas);
+		
+
+		canvas.save();
+		
+		//canvas.scale( 2, 2 );
+		
+		int wHalf = drawMe.getWidth() / 2;
+		int hHalf = drawMe.getHeight() / 2;
+		
+		
+		
+		
+		canvas.translate( centerX, centerY );
+		
+		canvas.drawBitmap(drawMe, -wHalf, (-hHalf + 30), paintFill);
+		
+		
+		
+		
+		//canvas.translate( wHalf, hHalf );
+		
+		paintFill.setColor( myColor );
+		paintFill.setStyle( Paint.Style.FILL );
+		
+		
+		canvas.drawPath( shapePath, paintFill );
+		
+		
+		//canvas.scale( 2, 2 );
+		//canvas.translate( centerX, centerY );
+		
+		
+		//canvas.translate( wHalf, hHalf );
+		
+		//canvas.drawBitmap(drawMe, 0, 0, paintFill);
+		
+		
+		
+		canvas.restore();
+		
+		
+		
+		
+	}
+	
+	
 }
 
 

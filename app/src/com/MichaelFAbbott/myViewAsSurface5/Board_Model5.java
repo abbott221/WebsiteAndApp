@@ -24,6 +24,10 @@ public class Board_Model5 {
 	
 	Hexagon5 lolSelected;
 	
+	//Context lolContext;
+	
+	private Board_Listener5 controller;
+	
 	
 	
 	public Board_Model5() {
@@ -51,7 +55,10 @@ public class Board_Model5 {
 		
 	}
 	
-    
+	public void registerObserver(Board_Listener5 newController)
+	{
+		controller = newController;
+	}
     
     
     public int getRows()

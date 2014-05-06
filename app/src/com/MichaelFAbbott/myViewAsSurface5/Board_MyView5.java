@@ -5,10 +5,16 @@ import com.MichaelFAbbott.customView.GameMap;
 import com.MichaelFAbbott.myCustomView.Board_Controller;
 import com.MichaelFAbbott.myCustomView.Board_Model;
 import com.MichaelFAbbott.myCustomView.Hexagon;
+import com.MichaelFAbbott.myfirstapp.R;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -30,6 +36,20 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 		private GestureDetector gestures;
 		
 		
+		//private Context lolContext;
+		//private Drawable blank;
+		//private Bitmap lolBitmap;
+		
+		private Bitmap tAutumn;
+		private Bitmap tDirt;
+		private Bitmap tGrass;
+		private Bitmap tLava;
+		private Bitmap tMagic;
+		private Bitmap tRock;
+		private Bitmap tSand;
+		private Bitmap tSnow;
+		private Bitmap tStone;
+		private Bitmap tWater;
 		
 		
 		
@@ -43,7 +63,7 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			// TODO Auto-generated constructor stub
 			holder = getHolder();
 			
-			t = new Board_MyThread5(this);
+			t = new Board_MyThread5(this, newController);
 			
 			
 			//pass this to the other stuff
@@ -58,6 +78,27 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			model = newController.getModel();
 			
 			gestures = new GestureDetector( context, listener );
+			
+			
+			
+			//lolContext = context;
+			
+			//blank = context.getResources().getDrawable( R.drawable.tile_sand_full );
+			//blank.setBounds(-50, -50, 50, 50);
+			
+			//Bitmap mBitmap = Bitmap.createScaledBitmap( R.drawable.field_1, 250, 250, boolean filter);
+			
+			Resources res = context.getResources();
+			tAutumn = BitmapFactory.decodeResource(res, R.drawable.tile_autumn_full);
+			tDirt = BitmapFactory.decodeResource(res, R.drawable.tile_dirt_full);
+			tGrass = BitmapFactory.decodeResource(res, R.drawable.tile_grass_full);
+			tLava = BitmapFactory.decodeResource(res, R.drawable.tile_lava_full);
+			tMagic = BitmapFactory.decodeResource(res, R.drawable.tile_magic_full);
+			tRock = BitmapFactory.decodeResource(res, R.drawable.tile_rock_full);
+			tSand = BitmapFactory.decodeResource(res, R.drawable.tile_sand_full);
+			tSnow = BitmapFactory.decodeResource(res, R.drawable.tile_snow_full);
+			tStone = BitmapFactory.decodeResource(res, R.drawable.tile_stone_full);
+			tWater = BitmapFactory.decodeResource(res, R.drawable.tile_water_full);
 			
 		}
 
@@ -141,16 +182,35 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			//holder.unlockCanvasAndPost(c);
 			/**/
 			
+			canvas.drawColor(Color.BLACK);
 			
 			for (int i = 0; i < this.model.getRows(); i++) {
 				for (int j = 0; j < this.model.getColumns(); j++) {
 					Hexagon5 current = this.model.getHexagon(i, j);
 					
-					current.drawSelf(canvas);
+					current.drawSelf2(canvas, tStone);
 					
 				}
 			}
 			
+			//canvas.save();
+			//canvas.drawBitmap(lolBitmap, 100, 100, new Paint());
+			//canvas.restore();
+			
+			
+			
+			//canvas.save();
+			//canvas.translate( 200, 200 );
+			//blank.draw(canvas);
+			
+			//canvas.drawColor(Color.BLACK);
+			//canvas.drawBitmap(lolBitmap, 100, 100, new Paint());
+			
+			//blank.draw(canvas);
+			
+			//canvas.drawB
+			
+			//canvas.restore();
 			
 			
 		}
