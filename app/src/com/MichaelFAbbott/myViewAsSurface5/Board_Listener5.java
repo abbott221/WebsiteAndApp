@@ -223,7 +223,7 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 	}
 	
 	public void onScrollEnd() {
-		System.err.println("I heard you! onScrollEnd");
+		//System.err.println("I heard you! onScrollEnd");
 		
 
 		//this.model.getMyView5().setScrollInProgress(true);

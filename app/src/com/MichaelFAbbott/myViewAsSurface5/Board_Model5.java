@@ -156,8 +156,67 @@ public class Board_Model5 {
 	 * if the user didn't tap within the range of a hexagon
 	 * (or possibly tapped waaaayyy away from the hexagons), then
 	 * nothing will be set to selected
+	 * 
+	 * called by onSingleTapUp() in Board_Listener5
 	 */
 	public Hexagon5 getClosestTile(float x, float y)
+	{
+		float tempX = 0;
+		float tempY = 0;
+		
+		float diffX = 0;
+		float diffY = 0;
+		
+		float inputX = x;
+		float inputY = y;
+		
+		Hexagon5 selected = null;
+		
+		
+		
+		System.err.println("input X: " + inputX);
+		System.err.println("input Y: " + inputY);
+		System.err.println("Canvas 0,0 X: " + board[0][0].getCanvasX() );
+		System.err.println("Canvas 0,0 Y: " + board[0][0].getCanvasY() );
+		
+		
+		
+		for (int i = 0; i < rows; i++)
+		{
+			for (int j = 0; j < columns; j++)
+			{
+				/**/
+				//tempX = board[i][j].getCenterX();
+				//tempY = board[i][j].getCenterY();
+				
+				float tempRadius = touchRadius;
+				tempRadius *= scaleSize;
+				
+				
+				
+				
+				tempX = board[i][j].getCanvasX();
+				tempY = board[i][j].getCanvasY();
+				
+				
+				diffX = tempX - inputX;
+				diffY = tempY - inputY;
+				
+				if ( (diffX*diffX) + (diffY*diffY) < (tempRadius*tempRadius) )
+				{
+					selected = board[i][j];
+				}
+				
+				
+			}
+		}
+		
+		//THIS COULD RETURN NULL!!!
+		return selected;
+	}
+	
+    /*
+	public Hexagon5 getClosestTile2(float x, float y)
 	{
 		float tempX = 0;
 		float tempY = 0;
@@ -208,7 +267,7 @@ public class Board_Model5 {
 		//THIS COULD RETURN NULL!!!
 		return selected;
 	}
-    
+	/**/
 	
 	
 	
@@ -294,6 +353,27 @@ public class Board_Model5 {
 		this.scaleInProgress = newValue;
 	}
 	/**/
+    
+    
+    
+    public float getCanvasHalfHeight()
+	{
+		return this.canvasHalfHeight;
+	}
+    public void setCanvasHalfHeight(float newValue)
+	{
+		this.canvasHalfHeight = newValue;
+	}
+    
+    
+    public float getCanvasHalfWidth()
+	{
+		return this.canvasHalfWidth;
+	}
+    public void setCanvasHalfWidth(float newValue)
+	{
+		this.canvasHalfWidth = newValue;
+	}
 	
 }
 

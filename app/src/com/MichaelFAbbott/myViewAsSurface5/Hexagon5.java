@@ -236,7 +236,7 @@ public class Hexagon5
 	
 	
 	
-	public void updateSelf()
+	public void updateSelfColor()
 	{
 		//update the color
 		

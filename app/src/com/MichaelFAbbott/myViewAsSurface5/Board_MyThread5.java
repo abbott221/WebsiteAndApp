@@ -113,6 +113,12 @@ public class Board_MyThread5 implements Runnable {
 			_c = holder.lockCanvas();
 			//WHAT IS "c" AS OPPOSED TO PRIVATE VARIABLE "_c"???
 			
+			
+			Board_Model5 tempM = this.controller.getModel();
+			tempM.setCanvasHalfHeight(_c.getHeight() / 2);
+			tempM.setCanvasHalfWidth(_c.getWidth() / 2);
+			
+			
 			//draw on canvas
 			//c.drawARGB(255, 150, 150, 10);
 			_panel.updateTiles();

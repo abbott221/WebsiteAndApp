@@ -289,11 +289,57 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 		
 		
 		public void updateTiles() {
+			
+			float mScale;
+			float scrollX;
+			float scrollY;
+			float canvasHeight;
+			float canvasWidth;
+			float resultX;
+			float resultY;
+			
 			for (int i = 0; i < this.model.getRows(); i++) {
 				for (int j = 0; j < this.model.getColumns(); j++) {
 					Hexagon5 current = this.model.getHexagon(i, j);
 					
-					current.updateSelf();
+					current.updateSelfColor();
+					
+					
+					//Haskell or lambda expressions would probably be a good idea here
+					//I'll look into that sometime...
+					
+					mScale = this.model.getScale();
+					scrollX = this.model.getDisplacementX();
+					scrollY = this.model.getDisplacementY();
+					canvasHeight = this.model.getCanvasHalfHeight();
+					canvasWidth = this.model.getCanvasHalfWidth();
+					
+					
+					
+					/*
+					resultX = canvasWidth * mScale;
+					resultY = canvasHeight * mScale;
+					
+					resultX += scrollX;
+					resultY += scrollY;
+					
+					resultX += (current.getCenterX() - canvasWidth);
+					resultY += (current.getCenterY() - canvasHeight);
+					/**/
+					
+					resultX = canvasWidth;
+					resultY = canvasHeight;
+					
+					resultX += scrollX * mScale;
+					resultY += scrollY * mScale;
+					
+					resultX += (current.getCenterX() - canvasWidth) * mScale;
+					resultY += (current.getCenterY() - canvasHeight) * mScale;
+					
+					
+					
+					current.setCanvasX(resultX);
+					current.setCanvasY(resultY);
 					
 				}
 			}
