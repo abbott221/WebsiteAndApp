@@ -28,10 +28,21 @@ public class Board_Model5 {
 	
 	private Board_Listener5 controller;
 	
+	private Board_MyView5 myView5;
+	
 	
 	
 	private boolean scaleInProgress;
 	private float scaleSize;
+	
+	private float unclearedScaleSize;
+	
+	
+	private float displacementX;
+	private float displacementY;
+	
+	private float unclearedDX;
+	private float unclearedDY;
 	
 	//private float startSpanX;
 	//private float startSpanY;
@@ -64,6 +75,15 @@ public class Board_Model5 {
 		this.scaleInProgress = false;
 		this.scaleSize = 1;
 		
+		this.unclearedScaleSize = 1;
+		
+		
+		
+		this.displacementX = 0;
+		this.displacementY = 0;
+		this.unclearedDX = 0;
+		this.unclearedDY = 0;
+		
 		
 		
 		//this.startSpanX = null;
@@ -73,6 +93,15 @@ public class Board_Model5 {
 	public void registerObserver(Board_Listener5 newController)
 	{
 		controller = newController;
+	}
+	
+	public void registerMyView5(Board_MyView5 newView)
+	{
+		myView5 = newView;
+	}
+	public Board_MyView5 getMyView5()
+	{
+		return this.myView5;
 	}
     
     
@@ -131,6 +160,9 @@ public class Board_Model5 {
 		float diffX = 0;
 		float diffY = 0;
 		
+		float inputX = x;
+		float inputY = y;
+		
 		Hexagon5 selected = null;
 		
 		for (int i = 0; i < rows; i++)
@@ -140,11 +172,26 @@ public class Board_Model5 {
 				tempX = board[i][j].getCenterX();
 				tempY = board[i][j].getCenterY();
 				
+				float tempRadius = touchRadius;
 				
-				diffX = tempX - x;
-				diffY = tempY - y;
+				tempX *= scaleSize;
+				tempY *= scaleSize;
+				//inputX *= scaleSize;
+				//inputY *= scaleSize;
+				tempRadius *= scaleSize;
 				
-				if ( (diffX*diffX) + (diffY*diffY) < (touchRadius*touchRadius) )
+				
+				tempX += displacementX;
+				tempY += displacementY;
+				//inputX *= scaleSize;
+				//inputY *= scaleSize;
+				//tempRadius *= scaleSize;
+				
+				
+				diffX = tempX - inputX;
+				diffY = tempY - inputY;
+				
+				if ( (diffX*diffX) + (diffY*diffY) < (tempRadius*tempRadius) )
 				{
 					selected = board[i][j];
 				}
@@ -170,6 +217,68 @@ public class Board_Model5 {
 		this.scaleSize = newValue;
 	}
     
+    public float getUnclearedScale()
+	{
+		return this.unclearedScaleSize;
+	}
+    public void setUnclearedScale(float newValue)
+	{
+		this.unclearedScaleSize = newValue;
+	}
+    
+    
+    
+    
+    
+    public float getDisplacementX()
+	{
+		return this.displacementX;
+	}
+    public void setDisplacementX(float newValue)
+	{
+		this.displacementX = newValue;
+	}
+    
+    public float getDisplacementY()
+	{
+		return this.displacementY;
+	}
+    public void setDisplacementY(float newValue)
+	{
+		this.displacementY = newValue;
+	}
+    
+    
+    public float getUnclearedDX()
+	{
+		return this.unclearedDX;
+	}
+    public void setUnclearedDX(float newValue)
+	{
+		this.unclearedDX = newValue;
+	}
+    
+    public float getUnclearedDY()
+	{
+		return this.unclearedDY;
+	}
+    public void setUnclearedDY(float newValue)
+	{
+		this.unclearedDY = newValue;
+	}
+    
+    /*
+    public void updateDisplacementX(float newValue)
+	{
+		this.displacementX += newValue;
+	}
+    public void updateDisplacementY(float newValue)
+	{
+		this.displacementY += newValue;
+	}
+    /**/
+    
+    
     
     public boolean getScaleInProgress()
 	{
@@ -179,7 +288,7 @@ public class Board_Model5 {
 	{
 		this.scaleInProgress = newValue;
 	}
-	
+	/**/
 	
 }
 

@@ -6,7 +6,7 @@ import com.MichaelFAbbott.myCustomView.Board_Controller;
 import com.MichaelFAbbott.myCustomView.Board_Model;
 import com.MichaelFAbbott.myCustomView.Hexagon;
 import com.MichaelFAbbott.myfirstapp.R;
-
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -15,6 +15,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.v4.view.MotionEventCompat;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
@@ -23,6 +25,7 @@ import android.view.SurfaceView;
 
 
 
+@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback {
 
 		//Thread t = null;
@@ -37,6 +40,10 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 		private GestureDetector touchGestures;
 		
 		private ScaleGestureDetector scaleGestures;
+		
+		private boolean scrollInProgress = false;
+		private boolean scaleInProgress = false;
+		//private boolean scrollOccurred = false;
 		
 		
 		//private Context lolContext;
@@ -126,6 +133,8 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			occPink = BitmapFactory.decodeResource(res, R.drawable.alien_pink);
 			occYellow = BitmapFactory.decodeResource(res, R.drawable.alien_yellow);
 			
+			
+			model.registerMyView5(this);
 		}
 
 		
@@ -162,6 +171,17 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 		}
 		
 		
+		public void setScrollInProgress(boolean newValue)
+		{
+			this.scrollInProgress = newValue;
+		}
+		
+		public void setScaleInProgress(boolean newValue)
+		{
+			this.scaleInProgress = newValue;
+		}
+		
+		
 		
 		@Override
 		public boolean onTouchEvent(MotionEvent event) {
@@ -173,6 +193,87 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 				touchGestures.onTouchEvent( event );
 			}
 			//touchGestures.onTouchEvent( event );
+			
+			
+			
+			int action = MotionEventCompat.getActionMasked(event);
+			
+			
+			/*
+			if (event.getSource() == MotionEvent.ACTION_SCROLL)
+			{
+				this.scrollInProgress = true;
+				System.err.println("scroll in progress");
+			}
+			/**/
+			if (action == MotionEvent.ACTION_UP)
+			{
+				System.err.println("up occurred");
+				if (this.scrollInProgress == true)
+				{
+					
+					if (this.scaleInProgress == true)
+					{
+						System.err.println("scroll ended for scale event");
+						//this.scrollInProgress = false;
+						setScrollInProgress(false);
+						setScaleInProgress(false);
+					}
+					else
+					{
+						System.err.println("scroll ended for scroll exclusive event");
+						
+						listener.onScrollEnd();
+						
+						//this.scrollInProgress = false;
+						setScrollInProgress(false);
+					}
+					
+					//System.err.println("scroll ended");
+				}
+				
+				//scroll not in progress (but scale also wouldn't be in progress)
+				else
+				{
+					//never mind
+				}
+				
+				
+				
+				
+			}
+			
+			/*
+			switch(action) {
+			case (MotionEvent.ACTION_SCROLL):
+				//Log.d(DEBUG_TAG,"Action was DOWN");
+				
+				break;
+			case (MotionEvent.ACTION_DOWN):
+				//Log.d(DEBUG_TAG,"Action was DOWN");
+				break;
+			case (MotionEvent.ACTION_MOVE):
+				//Log.d(DEBUG_TAG,"Action was MOVE");
+				break;
+			case (MotionEvent.ACTION_UP):
+				//if (event.g == MotionEvent.ACTION_SCROLL)
+				//{
+					//
+				//}
+				//Log.d(DEBUG_TAG,"Action was UP");
+				break;
+			case (MotionEvent.ACTION_CANCEL):
+				//Log.d(DEBUG_TAG,"Action was CANCEL");
+				break;
+			case (MotionEvent.ACTION_OUTSIDE):
+				//Log.d(DEBUG_TAG,"Movement of current screen element");
+				break;
+			default:
+				//return super.onTouchEvent(event);
+			}
+			/**/
+			
+			
 			
 			invalidate();
 			
@@ -214,6 +315,10 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			//holder.unlockCanvasAndPost(c);
 			/**/
 			
+			float passScale = this.model.getScale();
+			float passX = this.model.getDisplacementX();
+			float passY = this.model.getDisplacementY();
+			
 			canvas.drawColor(Color.BLACK);
 			
 			for (int i = 0; i < this.model.getRows(); i++) {
@@ -223,22 +328,22 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 					
 					switch ( current.getOccupantState() ) {
 					case NONE:
-						current.drawSelf(canvas, tDemo);
+						current.drawSelf(canvas, tDemo, passScale, passX, passY);
 						break;
 					case OCC_BEIGE:
-						current.drawSelfOccupied(canvas, tDemo, occBeige);
+						current.drawSelfOccupied(canvas, tDemo, occBeige, passScale, passX, passY);
 						break;
 					case OCC_BLUE:
-						current.drawSelfOccupied(canvas, tDemo, occBlue);
+						current.drawSelfOccupied(canvas, tDemo, occBlue, passScale, passX, passY);
 						break;
 					case OCC_GREEN:
-						current.drawSelfOccupied(canvas, tDemo, occGreen);
+						current.drawSelfOccupied(canvas, tDemo, occGreen, passScale, passX, passY);
 						break;
 					case OCC_PINK:
-						current.drawSelfOccupied(canvas, tDemo, occPink);
+						current.drawSelfOccupied(canvas, tDemo, occPink, passScale, passX, passY);
 						break;
 					case OCC_YELLOW:
-						current.drawSelfOccupied(canvas, tDemo, occYellow);
+						current.drawSelfOccupied(canvas, tDemo, occYellow, passScale, passX, passY);
 						break;
 					default:
 						//nothing

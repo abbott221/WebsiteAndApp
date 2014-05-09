@@ -7,7 +7,7 @@ import android.util.Log;
 
 public class Hexagon5
 {
-	public static int hSize = 20;
+	//public static int hSize = 20;
 	
 	private Paint paintFill;
 	private static Path shapePath;
@@ -306,11 +306,14 @@ public class Hexagon5
 	}
 	/**/
 	
-	public void drawSelf( Canvas canvas, Bitmap drawBlock )
+	public void drawSelf( Canvas canvas, Bitmap drawBlock,
+			float myScale, float dX, float dY )
 	{
 		canvas.save();
 		
-		//canvas.scale( 2, 2 );
+		canvas.scale( myScale, myScale );
+		
+		canvas.translate( dX, dY );
 		
 		canvas.translate( centerX, centerY );
 		
@@ -333,11 +336,14 @@ public class Hexagon5
 		canvas.restore();
 	}
 	
-	public void drawSelfOccupied( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant )
+	public void drawSelfOccupied( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant,
+			float myScale, float dX, float dY )
 	{
 		canvas.save();
 		
-		//canvas.scale( 2, 2 );
+		canvas.scale( myScale, myScale );
+		
+		canvas.translate( dX, dY );
 		
 		canvas.translate( centerX, centerY );
 		

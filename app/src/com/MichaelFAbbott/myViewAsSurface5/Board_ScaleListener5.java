@@ -45,6 +45,8 @@ public class Board_ScaleListener5 extends ScaleGestureDetector.SimpleOnScaleGest
 	private float startSpan;
 	private float currentSpan;
 	
+	//private boolean changeProcessed = false;
+	
 	//private float currentSpanX;
 	//private float currentSpanY;
 	
@@ -71,16 +73,22 @@ public class Board_ScaleListener5 extends ScaleGestureDetector.SimpleOnScaleGest
 	public boolean onScale(ScaleGestureDetector sgd) {
 		
 		
-		System.err.println("I heard you! onScale");
+		//System.err.println("I heard you! onScale");
+		
+		
+		
+		float tempScale = this.model.getUnclearedScale();
 		
 		
 		
 		currentSpan = sgd.getCurrentSpan();
 		
-		float tempScale = this.model.getScale();
-		
 		tempScale *= (currentSpan / startSpan);
+		//tempScale = (currentSpan / startSpan);
         tempScale = Math.max( 0.1f, Math.min( tempScale, 5.0f ) );
+        
+        
+        this.model.setScale(tempScale);
 		
 		
 		return true;
@@ -92,9 +100,11 @@ public class Board_ScaleListener5 extends ScaleGestureDetector.SimpleOnScaleGest
 	public boolean onScaleBegin(ScaleGestureDetector sgd) {
 		//Hexagon5 temp = this.model.getClosestTile(eX, eY);
 		
+		this.model.getMyView5().setScaleInProgress(true);
+		
 		this.model.setScaleInProgress(true);
 		
-		System.err.println("I heard you! onScaleBegin");
+		//System.err.println("I heard you! onScaleBegin");
 		
 		
 		
@@ -114,10 +124,24 @@ public class Board_ScaleListener5 extends ScaleGestureDetector.SimpleOnScaleGest
 	@Override
 	public void onScaleEnd(ScaleGestureDetector sgd) {
 		
-		System.err.println("I heard you! onScaleEnd");
+		//System.err.println("I heard you! onScaleEnd");
 		
 		this.model.setScaleInProgress(false);
 		
+		
+		
+		
+
+		float tempScale = this.model.getUnclearedScale();
+		
+		currentSpan = sgd.getCurrentSpan();
+		
+		tempScale *= (currentSpan / startSpan);
+		//tempScale = (currentSpan / startSpan);
+        tempScale = Math.max( 0.1f, Math.min( tempScale, 5.0f ) );
+        
+        //this.model.setScale(tempScale);
+        this.model.setUnclearedScale(tempScale);
 	}
 	
 	

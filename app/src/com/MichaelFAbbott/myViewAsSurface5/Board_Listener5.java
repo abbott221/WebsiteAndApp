@@ -20,11 +20,18 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 
-public class Board_Listener5 implements GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener {
+public class Board_Listener5 implements GestureDetector.OnGestureListener /*, ScaleGestureDetector.OnScaleGestureListener*/ {
 	
 	
 	private Board_Model5 model;
 	private View_References mvcView;
+	
+	
+	
+	private float startScrollX;
+	private float startScrollY;
+	private float currentScrollX;
+	private float currentScrollY;
 	
 
 	public Board_Listener5(Board_Model5 m, View_References v) {
@@ -125,7 +132,7 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener, Scale
 	@Override
 	public boolean onDown(MotionEvent e) {
 		
-		System.err.println("I heard you! onDown");
+		//System.err.println("I heard you! onDown");
 		
 		if (!this.model.getScaleInProgress())
 		{
@@ -143,6 +150,11 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener, Scale
 				//highlighted = temp;
 			}
 		}
+		
+		
+		startScrollX = e.getX();
+		startScrollY = e.getY();
+		
 		
 		return true;
 	}
@@ -167,14 +179,95 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener, Scale
 
 
 	@Override
-	public boolean onScroll(MotionEvent arg0, MotionEvent arg1, float arg2,
-			float arg3) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+		
+		
+		//System.err.println("I heard you! onScroll");
+		
+		this.model.getMyView5().setScrollInProgress(true);
+		
+		
+		
+		float tempDX = this.model.getUnclearedDX();
+		float tempDY = this.model.getUnclearedDY();
+		
+		
+		currentScrollX = e2.getX();
+		currentScrollY = e2.getY();
+		
+		
+		tempDX += currentScrollX - startScrollX;
+		tempDY += currentScrollY - startScrollY;
+		
+		//RETURN IF FAIL
+		//tempDX = currentScrollX - startScrollX;
+		//tempDY = currentScrollY - startScrollY;
+		
+		
+		//tempDX = Math.max( 0.0f, tempDX );
+		//tempDX = Math.max( 0.0f, Math.min( tempDX, 200.0f ) );
+		//tempDY = Math.max( 0.0f, Math.min( tempDY, 200.0f ) );
+		
+		
+		//TEMP
+        this.model.setDisplacementX(tempDX);
+        this.model.setDisplacementY(tempDY);
+        
+        
+        
+        //this.model.updateDisplacementX(tempDX);
+        //this.model.updateDisplacementY(tempDY);
+		
+		
+		return true;
 	}
+	
+	public void onScrollEnd() {
+		System.err.println("I heard you! onScrollEnd");
+		
 
-
-
+		//this.model.getMyView5().setScrollInProgress(true);
+		
+		
+		
+		float tempDX = this.model.getUnclearedDX();
+		float tempDY = this.model.getUnclearedDY();
+		
+		
+		//currentScrollX = e2.getX();
+		//currentScrollY = e2.getY();
+		
+		
+		tempDX += currentScrollX - startScrollX;
+		tempDY += currentScrollY - startScrollY;
+		
+		//RETURN IF FAIL
+		//tempDX = currentScrollX - startScrollX;
+		//tempDY = currentScrollY - startScrollY;
+		
+		
+		//tempDX = Math.max( 0.0f, tempDX );
+		//tempDX = Math.max( 0.0f, Math.min( tempDX, 200.0f ) );
+		//tempDY = Math.max( 0.0f, Math.min( tempDY, 200.0f ) );
+		
+		
+		//TEMP
+		//this.model.setDisplacementX(tempDX);
+        //this.model.setDisplacementY(tempDY);
+        this.model.setUnclearedDX(tempDX);
+        this.model.setUnclearedDY(tempDY);
+        
+        
+        
+        //this.model.updateDisplacementX(tempDX);
+        //this.model.updateDisplacementY(tempDY);
+		
+		
+		//return true;
+	}
+	
+	
+	
 	@Override
 	public void onShowPress(MotionEvent arg0) {
 		// TODO Auto-generated method stub
@@ -206,9 +299,10 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener, Scale
 		
 		return false;
 	}
-
-
-
+	
+	
+	
+	/*
 	@Override
 	public boolean onScale(ScaleGestureDetector sgd) {
 		
@@ -216,9 +310,9 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener, Scale
 		
 		return true;
 	}
-
-
-
+	
+	
+	
 	@Override
 	public boolean onScaleBegin(ScaleGestureDetector sgd) {
 		//Hexagon5 temp = this.model.getClosestTile(eX, eY);
@@ -229,15 +323,16 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener, Scale
 		
 		return true;
 	}
-
-
-
+	
+	
+	
 	@Override
 	public void onScaleEnd(ScaleGestureDetector arg0) {
 		
 		this.model.setScaleInProgress(false);
 		
 	}
+	/**/
 	
 	
 	
