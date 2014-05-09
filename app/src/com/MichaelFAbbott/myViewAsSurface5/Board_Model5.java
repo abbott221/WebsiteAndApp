@@ -48,6 +48,10 @@ public class Board_Model5 {
 	//private float startSpanY;
 	
 	
+	private float canvasHalfHeight;
+	private float canvasHalfWidth;
+	
+	
 	
 	public Board_Model5() {
 		this.rows = 7;
@@ -86,8 +90,9 @@ public class Board_Model5 {
 		
 		
 		
-		//this.startSpanX = null;
-		//this.startSpanY = null;
+		//should I initialize it???
+		//this.canvasHalfHeight = 100.0f;
+		
 	}
 	
 	public void registerObserver(Board_Listener5 newController)

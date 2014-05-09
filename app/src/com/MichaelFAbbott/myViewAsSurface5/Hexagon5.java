@@ -17,6 +17,9 @@ public class Hexagon5
 	
 	private float centerX, centerY;
 	
+	private float canvasX;
+	private float canvasY;
+	
 	int myColor;
 	
 	
@@ -81,6 +84,12 @@ public class Hexagon5
 		
 		
 		
+		canvasX = centerX;
+		canvasY = centerY;
+		
+		
+		
+		
 		float tempX = 0;
 		float tempY = 0;
 		double angle = 0;
@@ -120,6 +129,27 @@ public class Hexagon5
 	{
 		return centerY;
 	}
+	
+	
+	public float getCanvasX()
+	{
+		return canvasX;
+	}
+	public float getCanvasY()
+	{
+		return canvasY;
+	}
+	
+	
+	public void setCanvasX(float newValue)
+	{
+		this.canvasX = newValue;
+	}
+	public void setCanvasY(float newValue)
+	{
+		this.canvasY = newValue;
+	}
+	
 	
 	public float getRow()
 	{
@@ -306,7 +336,10 @@ public class Hexagon5
 	}
 	/**/
 	
-	public void drawSelf( Canvas canvas, Bitmap drawBlock,
+	
+	
+	/*
+	public void drawSelf3( Canvas canvas, Bitmap drawBlock,
 			float myScale, float dX, float dY )
 	{
 		canvas.save();
@@ -335,17 +368,39 @@ public class Hexagon5
 		
 		canvas.restore();
 	}
+	/**/
 	
-	public void drawSelfOccupied( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant,
-			float myScale, float dX, float dY )
+	
+	
+	public void drawSelf( Canvas canvas, Bitmap drawBlock,
+			float myScale, float scrollX, float scrollY )
 	{
 		canvas.save();
 		
+		//canvas.scale( myScale, myScale );
+		
+		float canvasHeight = canvas.getHeight() / 2;
+		float canvasWidth = canvas.getWidth() / 2;
+		
+		canvas.translate( canvasWidth, canvasHeight );
+		
+		
 		canvas.scale( myScale, myScale );
 		
-		canvas.translate( dX, dY );
 		
-		canvas.translate( centerX, centerY );
+		canvas.translate( scrollX, scrollY );
+		
+		
+		//LAST USED
+		//canvas.scale( myScale, myScale );
+		
+		
+		
+		float YfromCenter = centerY - canvasHeight;
+		float XfromCenter = centerX - canvasWidth;
+		
+		canvas.translate( XfromCenter, YfromCenter );
+		
 		
 		
 		
@@ -359,14 +414,78 @@ public class Hexagon5
 		paintFill.setColor( myColor );
 		paintFill.setStyle( Paint.Style.FILL );
 		
+		//only affects tile size (they shrink in place)
+		//canvas.scale( myScale, myScale );
+		
 		canvas.drawPath( shapePath, paintFill );
 		
+		//ineffective here
+		//canvas.scale( myScale, myScale );
 		
+		
+		canvas.restore();
+	}
+	
+	public void drawSelfOccupied( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant,
+			float myScale, float scrollX, float scrollY )
+	{
+canvas.save();
+		
+		//canvas.scale( myScale, myScale );
+		
+		float canvasHeight = canvas.getHeight() / 2;
+		float canvasWidth = canvas.getWidth() / 2;
+		
+		canvas.translate( canvasWidth, canvasHeight );
+		
+		
+		canvas.scale( myScale, myScale );
+		
+		
+		canvas.translate( scrollX, scrollY );
+		
+		
+		//LAST USED
+		//canvas.scale( myScale, myScale );
+		
+		
+		
+		float YfromCenter = centerY - canvasHeight;
+		float XfromCenter = centerX - canvasWidth;
+		
+		canvas.translate( XfromCenter, YfromCenter );
+		
+		
+		
+		
+		int wHalf = drawBlock.getWidth() / 2;
+		int hHalf = drawBlock.getHeight() / 2;
+		
+		canvas.drawBitmap(drawBlock, -wHalf, (-hHalf + 30), paintFill);
+		
+		
+		
+		paintFill.setColor( myColor );
+		paintFill.setStyle( Paint.Style.FILL );
+		
+		//only affects tile size (they shrink in place)
+		//canvas.scale( myScale, myScale );
+		
+		canvas.drawPath( shapePath, paintFill );
+		
+		//ineffective here
+		//canvas.scale( myScale, myScale );
+		
+		
+		
+		/**************************************/
 		
 		wHalf = drawOccupant.getWidth() / 2;
 		hHalf = drawOccupant.getHeight() / 2;
 		
 		canvas.drawBitmap(drawOccupant, -wHalf, (-hHalf - 30), paintFill);
+		
+		/**************************************/
 		
 		
 		

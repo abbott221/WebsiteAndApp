@@ -71,6 +71,9 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 		private Bitmap occYellow;
 		
 		
+		private Bitmap sepiaSky;
+		
+		
 		
 		private Board_Model5 model;
 		
@@ -132,6 +135,9 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			occGreen = BitmapFactory.decodeResource(res, R.drawable.alien_green);
 			occPink = BitmapFactory.decodeResource(res, R.drawable.alien_pink);
 			occYellow = BitmapFactory.decodeResource(res, R.drawable.alien_yellow);
+			
+			
+			sepiaSky = BitmapFactory.decodeResource(res, R.drawable.sepia_sky);
 			
 			
 			model.registerMyView5(this);
@@ -319,7 +325,93 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			float passX = this.model.getDisplacementX();
 			float passY = this.model.getDisplacementY();
 			
+			
+			//make background black
 			canvas.drawColor(Color.BLACK);
+			
+			
+			/****************************************/
+			
+			
+			Bitmap drawBlock = sepiaSky;
+			
+			
+			canvas.save(); //SAVE
+			
+			
+			// 0) TRYING THIS WITH PLANNING FOR ONCE
+			// edge = [canvasHalf + f(displace)] - [(pic)*f(scale)]
+			// edge = [canvasHalf + displace / 2] - [pic * 3(inScale ^ (1/2) )]
+			
+			
+			// 1) MEASUREMENTS
+			
+			float hCanvasHeight = canvas.getHeight() / 2;
+			float hCanvasWidth = canvas.getWidth() / 2;
+			
+			float hPicHeight = drawBlock.getHeight() / 2;
+			float hPicWidth = drawBlock.getWidth() / 2;
+			
+			float fDisplaceX = passX / 2;
+			float fDisplaceY = passY / 2;
+			
+			//float fScale = (float) Math.pow(passScale, 0.5);
+			//fScale *= 3.0;
+			float fScale = (float) (passScale * 1.0);
+			
+			// 1) ENDS
+			
+			
+			
+			// 2) SCALING OF THE PIC FROM CENTER
+			
+			//canvas.scale( fScale, fScale );
+			
+			// 2) ENDS
+			
+			
+			
+			// 3) LINE UP CENTER OF PIC WITH CENTER OF CANVAS
+			
+			//wait... mixed up x vs. y and height vs. width
+			//left edge: x with width, top: y with height
+			
+			float topEdge = (hCanvasHeight + fDisplaceY) - (hPicHeight * fScale);
+			float leftEdge = (hCanvasWidth + fDisplaceX) - (hPicWidth * fScale);
+			
+			//works so far
+			//topEdge = (hCanvasHeight + fDisplaceY) - (hPicHeight);
+			//leftEdge = (hCanvasWidth + fDisplaceX) - (hPicWidth);
+			
+			topEdge = (hCanvasHeight + fDisplaceY) - (hPicHeight);
+			leftEdge = (hCanvasWidth + fDisplaceX) - (hPicWidth);
+			
+			// 3) ENDS
+			
+			
+			
+			
+			
+			//all calculations done via the edges
+			//canvas.translate( passX, passY );
+			
+			
+			
+			
+			canvas.drawBitmap(drawBlock, leftEdge, topEdge, new Paint() );
+			//canvas.drawBitmap(drawOccupant, -wHalf, (-hHalf - 30), paintFill);
+			
+			
+			//canvas.scale( fScale, fScale );
+			
+			
+			
+			canvas.restore(); //RESTORE
+			
+			/****************************************/
+			
+			
+			
 			
 			for (int i = 0; i < this.model.getRows(); i++) {
 				for (int j = 0; j < this.model.getColumns(); j++) {

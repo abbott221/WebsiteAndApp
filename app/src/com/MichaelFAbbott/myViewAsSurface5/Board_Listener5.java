@@ -132,7 +132,7 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 	@Override
 	public boolean onDown(MotionEvent e) {
 		
-		/**/
+		/*
 		//System.err.println("I heard you! onDown");
 		
 		//if (!this.model.getScaleInProgress())
@@ -281,7 +281,7 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 		
 		//System.err.println("I heard you! onDown");
 		
-		/*
+		/**/
 		
 		//if (!this.model.getScaleInProgress())
 		//{
@@ -308,38 +308,6 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 	}
 	
 	
-	
-	/*
-	@Override
-	public boolean onScale(ScaleGestureDetector sgd) {
-		
-		
-		
-		return true;
-	}
-	
-	
-	
-	@Override
-	public boolean onScaleBegin(ScaleGestureDetector sgd) {
-		//Hexagon5 temp = this.model.getClosestTile(eX, eY);
-		
-		this.model.setScaleInProgress(true);
-		
-		System.err.println("I heard you!");
-		
-		return true;
-	}
-	
-	
-	
-	@Override
-	public void onScaleEnd(ScaleGestureDetector arg0) {
-		
-		this.model.setScaleInProgress(false);
-		
-	}
-	/**/
 	
 	
 	
