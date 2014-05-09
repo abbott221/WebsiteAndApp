@@ -40,6 +40,11 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener, Scale
 		return this.model;
 	}
 	
+	public View_References getView()
+	{
+		return this.mvcView;
+	}
+	
 	
 	
 	public void processSelectionEvent(Hexagon5 temp)
@@ -72,11 +77,36 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener, Scale
 		case HOLD_GREEN:
 			this.mvcView.updateSpinner(2);
 			break;
-		case HOLD_YELLOW:
+		case HOLD_ORANGE:
 			this.mvcView.updateSpinner(3);
 			break;
 		case HOLD_RED:
 			this.mvcView.updateSpinner(4);
+			break;
+		default:
+			//nothing
+		}
+    	
+    	
+    	Hexagon5.OccupantState occupy = temp.getOccupantState();
+    	switch ( occupy ) {
+		case NONE:
+			this.mvcView.updateOccSpinner(0);
+			break;
+		case OCC_BEIGE:
+			this.mvcView.updateOccSpinner(1);
+			break;
+		case OCC_BLUE:
+			this.mvcView.updateOccSpinner(2);
+			break;
+		case OCC_GREEN:
+			this.mvcView.updateOccSpinner(3);
+			break;
+		case OCC_PINK:
+			this.mvcView.updateOccSpinner(4);
+			break;
+		case OCC_YELLOW:
+			this.mvcView.updateOccSpinner(5);
 			break;
 		default:
 			//nothing
@@ -94,18 +124,24 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener, Scale
 
 	@Override
 	public boolean onDown(MotionEvent e) {
-		float eX = e.getX();
-		float eY = e.getY();
 		
-		//System.err.println("I heard you!");
-		Hexagon5 temp = this.model.getClosestTile(eX, eY);
+		System.err.println("I heard you! onDown");
 		
-		if (temp != null)
+		if (!this.model.getScaleInProgress())
 		{
+			float eX = e.getX();
+			float eY = e.getY();
 			
-			processSelectionEvent(temp);
-			//temp.setHighlighted(Hexagon.State.SELECTED);
-			//highlighted = temp;
+			//System.err.println("I heard you!");
+			Hexagon5 temp = this.model.getClosestTile(eX, eY);
+			
+			if (temp != null)
+			{
+				
+				processSelectionEvent(temp);
+				//temp.setHighlighted(Hexagon.State.SELECTED);
+				//highlighted = temp;
+			}
 		}
 		
 		return true;
@@ -174,24 +210,32 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener, Scale
 
 
 	@Override
-	public boolean onScale(ScaleGestureDetector arg0) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean onScale(ScaleGestureDetector sgd) {
+		
+		
+		
+		return true;
 	}
 
 
 
 	@Override
-	public boolean onScaleBegin(ScaleGestureDetector arg0) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean onScaleBegin(ScaleGestureDetector sgd) {
+		//Hexagon5 temp = this.model.getClosestTile(eX, eY);
+		
+		this.model.setScaleInProgress(true);
+		
+		System.err.println("I heard you!");
+		
+		return true;
 	}
 
 
 
 	@Override
 	public void onScaleEnd(ScaleGestureDetector arg0) {
-		// TODO Auto-generated method stub
+		
+		this.model.setScaleInProgress(false);
 		
 	}
 	

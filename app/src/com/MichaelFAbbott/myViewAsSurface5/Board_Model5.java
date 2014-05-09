@@ -30,13 +30,19 @@ public class Board_Model5 {
 	
 	
 	
+	private boolean scaleInProgress;
+	private float scaleSize;
+	
+	//private float startSpanX;
+	//private float startSpanY;
+	
+	
+	
 	public Board_Model5() {
 		this.rows = 7;
 		this.columns = 4;
 		
 		this.touchRadius = 90;
-		
-		
 		
 		
 
@@ -53,6 +59,15 @@ public class Board_Model5 {
 		
 		this.lolSelected = null;
 		
+		
+		
+		this.scaleInProgress = false;
+		this.scaleSize = 1;
+		
+		
+		
+		//this.startSpanX = null;
+		//this.startSpanY = null;
 	}
 	
 	public void registerObserver(Board_Listener5 newController)
@@ -142,6 +157,29 @@ public class Board_Model5 {
 		return selected;
 	}
     
+	
+	
+	
+	
+	public float getScale()
+	{
+		return this.scaleSize;
+	}
+    public void setScale(float newValue)
+	{
+		this.scaleSize = newValue;
+	}
+    
+    
+    public boolean getScaleInProgress()
+	{
+		return this.scaleInProgress;
+	}
+    public void setScaleInProgress(boolean newValue)
+	{
+		this.scaleInProgress = newValue;
+	}
+	
 	
 }
 

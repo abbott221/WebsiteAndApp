@@ -109,6 +109,8 @@ public class Board_MyActivity5 extends ViewWithActivityBar implements OnTouchLis
 		
 		mvcView.setSpinner(lolSpinner);
 		
+		mvcView.setOccSpinner(occSpinner);
+		
 		
 		
 		
@@ -253,7 +255,7 @@ public class Board_MyActivity5 extends ViewWithActivityBar implements OnTouchLis
 					theSelected.setHeldState(HeldState.HOLD_GREEN);
 					break;
 				case 3: //yellow
-					theSelected.setHeldState(HeldState.HOLD_YELLOW);
+					theSelected.setHeldState(HeldState.HOLD_ORANGE);
 					break;
 				case 4: //red
 					theSelected.setHeldState(HeldState.HOLD_RED);

@@ -26,7 +26,7 @@ public class Hexagon5
 		SELECTED, UNSELECTED
 	}
 	public static enum HeldState {
-		HOLD_BLUE, HOLD_PURPLE, HOLD_GREEN, HOLD_YELLOW, HOLD_RED
+		HOLD_BLUE, HOLD_PURPLE, HOLD_GREEN, HOLD_ORANGE, HOLD_RED
 	}
 	public static enum OccupantState {
 		NONE, OCC_BEIGE, OCC_BLUE, OCC_GREEN, OCC_PINK, OCC_YELLOW
@@ -213,45 +213,50 @@ public class Hexagon5
 		//HOLD_BLUE, HOLD_PURPLE, HOLD_GREEN, HOLD_YELLOW, HOLD_RED
 		
 		
-		if (this.currentState == SelectState.SELECTED)
+		if (this.currentState == SelectState.SELECTED) //HIGHLIGHTED
 		{
 			switch ( myHeldState ) {
 			case HOLD_BLUE:
-				setColor( Color.parseColor("#33B5E5") );
+				setColor( Color.parseColor("#6DCAEC") );
 				break;
 			case HOLD_PURPLE:
-				setColor( Color.parseColor("#AA66CC") );
+				setColor( Color.parseColor("#C58BE2") );
 				break;
 			case HOLD_GREEN:
 				setColor( Color.parseColor("#99CC00") );
 				break;
-			case HOLD_YELLOW:
-				setColor( Color.parseColor("#FFBB33") );
+			case HOLD_ORANGE:
+				setColor( Color.parseColor("#FFBD21") );
 				break;
 			case HOLD_RED:
-				setColor( Color.parseColor("#FF4444") );
+				setColor( Color.parseColor("#FF5F5F") );
 				break;
 			default:
 				//nothing
 			}
 		}
-		else
+		else //NOT HIGHLIGHTED
 		{
 			switch ( myHeldState ) {
 			case HOLD_BLUE:
-				setColor( Color.parseColor("#0099CC") );
+				//setColor( Color.parseColor("#0099CC") );
+				setColor( Color.parseColor("#079DD0") );
 				break;
 			case HOLD_PURPLE:
-				setColor( Color.parseColor("#9933CC") );
+				//setColor( Color.parseColor("#9933CC") );
+				setColor( Color.parseColor("#A041D0") );
 				break;
 			case HOLD_GREEN:
-				setColor( Color.parseColor("#669900") );
+				//setColor( Color.parseColor("#669900") );
+				setColor( Color.parseColor("#69A000") );
 				break;
-			case HOLD_YELLOW:
-				setColor( Color.parseColor("#FF8800") );
+			case HOLD_ORANGE:
+				//setColor( Color.parseColor("#FF8800") );
+				setColor( Color.parseColor("#FF9105") );
 				break;
 			case HOLD_RED:
-				setColor( Color.parseColor("#CC0000") );
+				//setColor( Color.parseColor("#CC0000") );
+				setColor( Color.parseColor("#D30A0A") );
 				break;
 			default:
 				//nothing

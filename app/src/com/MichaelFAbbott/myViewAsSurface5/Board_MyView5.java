@@ -17,6 +17,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -33,7 +34,9 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 		
 		
 		private Board_Listener5 listener;
-		private GestureDetector gestures;
+		private GestureDetector touchGestures;
+		
+		private ScaleGestureDetector scaleGestures;
 		
 		
 		//private Context lolContext;
@@ -86,7 +89,11 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			listener = newController;
 			model = newController.getModel();
 			
-			gestures = new GestureDetector( context, listener );
+			touchGestures = new GestureDetector( context, listener );
+			
+			Board_ScaleListener5 tempScaleListener;
+			tempScaleListener = new Board_ScaleListener5(listener.getModel(), listener.getView());
+			scaleGestures = new ScaleGestureDetector( context, tempScaleListener );
 			
 			
 			
@@ -159,7 +166,13 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 		@Override
 		public boolean onTouchEvent(MotionEvent event) {
 			
-			gestures.onTouchEvent( event );
+			scaleGestures.onTouchEvent(event);
+			
+			if (!scaleGestures.isInProgress())
+			{
+				touchGestures.onTouchEvent( event );
+			}
+			//touchGestures.onTouchEvent( event );
 			
 			invalidate();
 			
