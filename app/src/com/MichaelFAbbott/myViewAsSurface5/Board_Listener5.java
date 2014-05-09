@@ -132,25 +132,25 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 	@Override
 	public boolean onDown(MotionEvent e) {
 		
+		/**/
 		//System.err.println("I heard you! onDown");
 		
-		if (!this.model.getScaleInProgress())
-		{
-			float eX = e.getX();
-			float eY = e.getY();
-			
-			//System.err.println("I heard you!");
-			Hexagon5 temp = this.model.getClosestTile(eX, eY);
-			
-			if (temp != null)
-			{
-				
-				processSelectionEvent(temp);
-				//temp.setHighlighted(Hexagon.State.SELECTED);
-				//highlighted = temp;
-			}
-		}
+		//if (!this.model.getScaleInProgress())
+		//{
+		float eX = e.getX();
+		float eY = e.getY();
 		
+		//System.err.println("I heard you!");
+		Hexagon5 temp = this.model.getClosestTile(eX, eY);
+		
+		if (temp != null)
+		{
+			processSelectionEvent(temp);
+			//temp.setHighlighted(Hexagon.State.SELECTED);
+			//highlighted = temp;
+		}
+		//}
+		/**/
 		
 		startScrollX = e.getX();
 		startScrollY = e.getY();
@@ -278,7 +278,13 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 
 	@Override
 	public boolean onSingleTapUp(MotionEvent e) {
+		
+		//System.err.println("I heard you! onDown");
+		
 		/*
+		
+		//if (!this.model.getScaleInProgress())
+		//{
 		float eX = e.getX();
 		float eY = e.getY();
 		
@@ -287,17 +293,18 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 		
 		if (temp != null)
 		{
-			
 			processSelectionEvent(temp);
 			//temp.setHighlighted(Hexagon.State.SELECTED);
 			//highlighted = temp;
 		}
-		
-		return true;
+		//}
 		/**/
 		
 		
-		return false;
+		
+		
+		
+		return true;
 	}
 	
 	
