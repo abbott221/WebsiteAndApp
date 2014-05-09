@@ -16,7 +16,7 @@
             android:id="@+id/linearContainer"
             android:layout_width="match_parent"
             android:layout_height="228dp"
-            android:layout_weight="0.21"
+            android:layout_weight="0.23"
             android:orientation="vertical" >
 
         </LinearLayout>
@@ -28,9 +28,13 @@
 
             <Spinner
                 android:id="@+id/look_spinner1"
-                android:layout_width="140dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.69" />
+                android:layout_width="110dp"
+                android:layout_height="match_parent" />
+
+            <Spinner
+                android:id="@+id/look_spinner2"
+                android:layout_width="110dp"
+                android:layout_height="match_parent" />
 
             <Button
                 android:id="@+id/look_button1"

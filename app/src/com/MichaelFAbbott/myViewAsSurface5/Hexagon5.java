@@ -28,8 +28,12 @@ public class Hexagon5
 	public static enum HeldState {
 		HOLD_BLUE, HOLD_PURPLE, HOLD_GREEN, HOLD_YELLOW, HOLD_RED
 	}
+	public static enum OccupantState {
+		NONE, OCC_BEIGE, OCC_BLUE, OCC_GREEN, OCC_PINK, OCC_YELLOW
+	}
 	private SelectState currentState; //selectState
 	private HeldState myHeldState;
+	private OccupantState myOccupantState;
 	
 	
 	
@@ -39,6 +43,7 @@ public class Hexagon5
 	{
 		this.currentState = SelectState.UNSELECTED;
 		this.myHeldState = HeldState.HOLD_RED;
+		this.myOccupantState = OccupantState.NONE;
 		
 		
 		row = r;
@@ -146,12 +151,21 @@ public class Hexagon5
 	{
 		return this.myHeldState;
 	}
-	//make a processHighlighted event???
 	public void setHeldState(HeldState newState)
 	{
 		this.myHeldState = newState;
 	}
 	
+	
+	
+	public OccupantState getOccupantState()
+	{
+		return this.myOccupantState;
+	}
+	public void setOccupantState(OccupantState newState)
+	{
+		this.myOccupantState = newState;
+	}
 	
 	
 	
@@ -248,8 +262,8 @@ public class Hexagon5
 	}
 	
 	
-	
-	public void drawSelf( Canvas canvas, Bitmap drawMe )
+	/*
+	public void drawSelf2( Canvas canvas, Bitmap drawMe )
 	{
 		
 		//debug.drawSelf(canvas);
@@ -284,60 +298,68 @@ public class Hexagon5
 		
 		
 		canvas.restore();
-		
-		
-		
-		
 	}
+	/**/
 	
-	
-	public void drawSelf2( Canvas canvas, Bitmap drawMe )
+	public void drawSelf( Canvas canvas, Bitmap drawBlock )
 	{
-		
-		//debug.drawSelf(canvas);
-		
-
 		canvas.save();
 		
 		//canvas.scale( 2, 2 );
 		
-		int wHalf = drawMe.getWidth() / 2;
-		int hHalf = drawMe.getHeight() / 2;
-		
-		
-		
-		
 		canvas.translate( centerX, centerY );
 		
-		canvas.drawBitmap(drawMe, -wHalf, (-hHalf + 30), paintFill);
 		
 		
+		int wHalf = drawBlock.getWidth() / 2;
+		int hHalf = drawBlock.getHeight() / 2;
+		
+		canvas.drawBitmap(drawBlock, -wHalf, (-hHalf + 30), paintFill);
 		
 		
-		//canvas.translate( wHalf, hHalf );
 		
 		paintFill.setColor( myColor );
 		paintFill.setStyle( Paint.Style.FILL );
 		
-		
 		canvas.drawPath( shapePath, paintFill );
-		
-		
-		//canvas.scale( 2, 2 );
-		//canvas.translate( centerX, centerY );
-		
-		
-		//canvas.translate( wHalf, hHalf );
-		
-		//canvas.drawBitmap(drawMe, 0, 0, paintFill);
 		
 		
 		
 		canvas.restore();
+	}
+	
+	public void drawSelfOccupied( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant )
+	{
+		canvas.save();
+		
+		//canvas.scale( 2, 2 );
+		
+		canvas.translate( centerX, centerY );
 		
 		
 		
+		int wHalf = drawBlock.getWidth() / 2;
+		int hHalf = drawBlock.getHeight() / 2;
 		
+		canvas.drawBitmap(drawBlock, -wHalf, (-hHalf + 30), paintFill);
+		
+		
+		
+		paintFill.setColor( myColor );
+		paintFill.setStyle( Paint.Style.FILL );
+		
+		canvas.drawPath( shapePath, paintFill );
+		
+		
+		
+		wHalf = drawOccupant.getWidth() / 2;
+		hHalf = drawOccupant.getHeight() / 2;
+		
+		canvas.drawBitmap(drawOccupant, -wHalf, (-hHalf - 30), paintFill);
+		
+		
+		
+		canvas.restore();
 	}
 	
 	

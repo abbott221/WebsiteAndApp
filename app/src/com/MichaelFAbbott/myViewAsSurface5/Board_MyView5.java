@@ -51,6 +51,15 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 		private Bitmap tStone;
 		private Bitmap tWater;
 		
+		private Bitmap tDemo;
+		
+		
+		private Bitmap occBeige;
+		private Bitmap occBlue;
+		private Bitmap occGreen;
+		private Bitmap occPink;
+		private Bitmap occYellow;
+		
 		
 		
 		private Board_Model5 model;
@@ -99,6 +108,16 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			tSnow = BitmapFactory.decodeResource(res, R.drawable.tile_snow_full);
 			tStone = BitmapFactory.decodeResource(res, R.drawable.tile_stone_full);
 			tWater = BitmapFactory.decodeResource(res, R.drawable.tile_water_full);
+			
+			tDemo = BitmapFactory.decodeResource(res, R.drawable.demo_grass);
+			
+			
+			
+			occBeige = BitmapFactory.decodeResource(res, R.drawable.alien_beige);
+			occBlue = BitmapFactory.decodeResource(res, R.drawable.alien_blue);
+			occGreen = BitmapFactory.decodeResource(res, R.drawable.alien_green);
+			occPink = BitmapFactory.decodeResource(res, R.drawable.alien_pink);
+			occYellow = BitmapFactory.decodeResource(res, R.drawable.alien_yellow);
 			
 		}
 
@@ -188,7 +207,32 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 				for (int j = 0; j < this.model.getColumns(); j++) {
 					Hexagon5 current = this.model.getHexagon(i, j);
 					
-					current.drawSelf2(canvas, tStone);
+					
+					switch ( current.getOccupantState() ) {
+					case NONE:
+						current.drawSelf(canvas, tDemo);
+						break;
+					case OCC_BEIGE:
+						current.drawSelfOccupied(canvas, tDemo, occBeige);
+						break;
+					case OCC_BLUE:
+						current.drawSelfOccupied(canvas, tDemo, occBlue);
+						break;
+					case OCC_GREEN:
+						current.drawSelfOccupied(canvas, tDemo, occGreen);
+						break;
+					case OCC_PINK:
+						current.drawSelfOccupied(canvas, tDemo, occPink);
+						break;
+					case OCC_YELLOW:
+						current.drawSelfOccupied(canvas, tDemo, occYellow);
+						break;
+					default:
+						//nothing
+					}
+					
+					
+					//current.drawSelf(canvas, tDemo);
 					
 				}
 			}

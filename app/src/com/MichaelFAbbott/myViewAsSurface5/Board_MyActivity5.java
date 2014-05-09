@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import com.MichaelFAbbott.myCustomView.Board_View;
 import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.HeldState;
+import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.OccupantState;
 import com.MichaelFAbbott.myfirstapp.AttemptController1;
 import com.MichaelFAbbott.myfirstapp.AttemptModel1;
 import com.MichaelFAbbott.myfirstapp.Login_View;
@@ -20,6 +21,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.ClipData.Item;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
@@ -83,7 +85,14 @@ public class Board_MyActivity5 extends ViewWithActivityBar implements OnTouchLis
 		//lolAdapter.getItemId(position)
 		
 		
+		Spinner occSpinner = (Spinner) findViewById(R.id.look_spinner2);
 		
+		ArrayAdapter<CharSequence> occAdapter = ArrayAdapter.createFromResource(this,
+		    R.array.occSpinner_array, android.R.layout.simple_spinner_item);
+		occAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		occSpinner.setAdapter(occAdapter);
+		
+		occSpinner.setOnItemSelectedListener(this);
 		
 		
 		
@@ -205,18 +214,95 @@ public class Board_MyActivity5 extends ViewWithActivityBar implements OnTouchLis
 		
 		//parent.getItemAtPosition(pos).
 		
+		//parent.getItemAtPosition(pos);
+		
+		//==================================
+		
+		//Object thingAtPos = parent.getItemAtPosition(pos);
+		//int hash = thingAtPos.hashCode();
+		
+		//parent.getAdapter();
+		
+		//parent.getId(); //THIS
+		//parent.getSelectedItemId();
+		//parent.getSelectedItemPosition();
+		
+		//parent.getChildAt(0).findViewById(id); //id is not a long; it's an int
+		//this is also an int: R.id.look_spinner2
+		
 		
 		Hexagon5 theSelected;
 		try {
 			theSelected = this.model.getSelected();
 			
 			
+			//tile colors
+			if (parent.getId() == R.id.look_spinner1)
+			{
+				
+				
+				
+				switch ( pos ) {
+				case 0: //blue
+					theSelected.setHeldState(HeldState.HOLD_BLUE);
+					break;
+				case 1: //purple
+					theSelected.setHeldState(HeldState.HOLD_PURPLE);
+					break;
+				case 2: //green
+					theSelected.setHeldState(HeldState.HOLD_GREEN);
+					break;
+				case 3: //yellow
+					theSelected.setHeldState(HeldState.HOLD_YELLOW);
+					break;
+				case 4: //red
+					theSelected.setHeldState(HeldState.HOLD_RED);
+					break;
+				default:
+					//return super.onOptionsItemSelected(item);
+				}
+				
+				
+				
+			}
+			//occupant selection
+			else if (parent.getId() == R.id.look_spinner2)
+			{
+
+				
+				
+				switch ( pos ) {
+				case 0: //none
+					theSelected.setOccupantState(OccupantState.NONE);
+					break;
+				case 1: //beige
+					theSelected.setOccupantState(OccupantState.OCC_BEIGE);
+					break;
+				case 2: //blue
+					theSelected.setOccupantState(OccupantState.OCC_BLUE);
+					break;
+				case 3: //green
+					theSelected.setOccupantState(OccupantState.OCC_GREEN);
+					break;
+				case 4: //pink
+					theSelected.setOccupantState(OccupantState.OCC_PINK);
+					break;
+				case 5: //yellow
+					theSelected.setOccupantState(OccupantState.OCC_YELLOW);
+					break;
+				default:
+					//nothing (yet)
+				}
+				
+				
+				
+			}
 			
 			
 			
 			
 			
-			/**/
+			/*
 			switch ( pos ) {
 			case 0: //blue
 				theSelected.setHeldState(HeldState.HOLD_BLUE);
