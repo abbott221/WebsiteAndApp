@@ -1,7 +1,6 @@
 package com.MichaelFAbbott.myViewAsSurface5;
 
 
-import com.MichaelFAbbott.customView.GameMap;
 import com.MichaelFAbbott.myCustomView.Board_Controller;
 import com.MichaelFAbbott.myCustomView.Board_Model;
 import com.MichaelFAbbott.myCustomView.Hexagon;

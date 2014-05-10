@@ -1,7 +1,5 @@
 package com.MichaelFAbbott.myViewAsSurface5;
 
-import com.MichaelFAbbott.customView.GameMap;
-import com.MichaelFAbbott.customView.Tile;
 
 import android.content.Context;
 import android.graphics.Canvas;

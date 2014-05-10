@@ -28,6 +28,9 @@ public class Hexagon5
 	public static enum SelectState {
 		SELECTED, UNSELECTED
 	}
+	public static enum BlockState {
+		NONE, DIRT, GRASS, SAND
+	}
 	public static enum HeldState {
 		NONE, HOLD_BLUE, HOLD_PURPLE, HOLD_GREEN, HOLD_ORANGE, HOLD_RED
 	}

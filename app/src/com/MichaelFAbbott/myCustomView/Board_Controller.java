@@ -1,7 +1,5 @@
 package com.MichaelFAbbott.myCustomView;
 
-import com.MichaelFAbbott.customView.GameMap;
-import com.MichaelFAbbott.customView.Tile;
 import com.MichaelFAbbott.myCustomView.Hexagon.State;
 
 import android.content.Context;
