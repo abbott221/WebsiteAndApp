@@ -4,12 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.MichaelFAbbott.customView.Strategy;
 import com.MichaelFAbbott.myCustomView.Board_View;
-import com.MichaelFAbbott.myViewAsSurface.Board_MyActivity;
-import com.MichaelFAbbott.myViewAsSurface2.Board_MyActivity2;
-import com.MichaelFAbbott.myViewAsSurface3.Board_MyActivity3;
-import com.MichaelFAbbott.myViewAsSurface4.Board_MyActivity4;
 import com.MichaelFAbbott.myViewAsSurface5.Board_MyActivity5;
 import com.MichaelFAbbott.myfirstapp.AttemptController1;
 import com.MichaelFAbbott.myfirstapp.AttemptModel1;

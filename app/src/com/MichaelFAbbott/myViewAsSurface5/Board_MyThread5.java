@@ -16,14 +16,17 @@ public class Board_MyThread5 implements Runnable {
 	
 	private Board_MyView5 _panel;
 	
+	private Board_Listener5 controller;
+	
 	private Canvas _c;
 	//volatile Thread t;
 	
-	public Board_MyThread5(Board_MyView5 panel) {
+	public Board_MyThread5(Board_MyView5 panel, Board_Listener5 newController) {
 		
 		holder = panel.getHolder();
 		_panel = panel;
 		
+		controller = newController;
 		_c = new Canvas();
 		
 		
@@ -109,6 +112,12 @@ public class Board_MyThread5 implements Runnable {
 			// Create/Setup canvas
 			_c = holder.lockCanvas();
 			//WHAT IS "c" AS OPPOSED TO PRIVATE VARIABLE "_c"???
+			
+			
+			Board_Model5 tempM = this.controller.getModel();
+			tempM.setCanvasHalfHeight(_c.getHeight() / 2);
+			tempM.setCanvasHalfWidth(_c.getWidth() / 2);
+			
 			
 			//draw on canvas
 			//c.drawARGB(255, 150, 150, 10);

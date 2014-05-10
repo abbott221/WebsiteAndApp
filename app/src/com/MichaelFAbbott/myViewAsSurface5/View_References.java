@@ -1,7 +1,5 @@
 package com.MichaelFAbbott.myViewAsSurface5;
 
-import com.MichaelFAbbott.customView.GameMap;
-import com.MichaelFAbbott.customView.Tile;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -24,6 +22,9 @@ public class View_References {
 	private Spinner lolSpinner;
 	private ArrayAdapter<CharSequence> lolAdapter;
 	
+	private Spinner occSpinner;
+	private ArrayAdapter<CharSequence> occAdapter;
+	
 	
 	
 	
@@ -34,6 +35,9 @@ public class View_References {
 	public View_References() {
 		this.lolSpinner = null;
 		this.lolAdapter = null;
+		
+		this.occSpinner = null;
+		this.occAdapter = null;
 		
 		this.controller = null;
 	}
@@ -69,6 +73,32 @@ public class View_References {
     public void setAdapter(ArrayAdapter<CharSequence> newAdapter)
 	{
 		this.lolAdapter = newAdapter;
+	}
+    
+    
+    
+    public Spinner getOccSpinner()
+	{
+		return this.occSpinner;
+	}
+    public void setOccSpinner(Spinner newSpinner)
+	{
+		this.occSpinner = newSpinner;
+	}
+    public void updateOccSpinner(int newPosition)
+	{
+		this.occSpinner.setSelection(newPosition);
+	}
+    
+    
+    
+    public ArrayAdapter<CharSequence> getOccAdapter()
+	{
+		return this.occAdapter;
+	}
+    public void setOccAdapter(ArrayAdapter<CharSequence> newAdapter)
+	{
+		this.occAdapter = newAdapter;
 	}
     
     
