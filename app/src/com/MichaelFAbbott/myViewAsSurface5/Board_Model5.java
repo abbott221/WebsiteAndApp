@@ -1,6 +1,8 @@
 package com.MichaelFAbbott.myViewAsSurface5;
 
 
+import com.MichaelFAbbott.maps.Board_Maps5;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -52,13 +54,16 @@ public class Board_Model5 {
 	
 	
 	public Board_Model5() {
-		this.rows = 7;
-		this.columns = 4;
 		
 		this.touchRadius = 90;
 		
 		
-
+		Board_Maps5.map2(this);
+		/*
+		this.rows = 7;
+		this.columns = 4;
+		
+		
 		this.board = new Hexagon5[ this.rows ][ this.columns ];
 		
 		for (int i = 0; i < this.rows; i++)
@@ -68,6 +73,10 @@ public class Board_Model5 {
 				this.board[i][j] = new Hexagon5(i, j);
 			}
 		}
+		/**/
+		
+		
+		
 		
 		
 		this.lolSelected = null;
@@ -108,6 +117,30 @@ public class Board_Model5 {
 	}
     
     
+	
+	
+	public void setBoard(Hexagon5[][] newBoard, int r, int c)
+	{
+		this.board = newBoard;
+		
+		this.rows = r;
+		this.columns = c;
+		
+		
+		/*
+		for (int i = 0; i < r; i++)
+		{
+			for (int j = 0; j < c; j++)
+			{
+				this.board[i][j] = new Hexagon5(i, j);
+			}
+		}
+		/**/
+	}
+	
+	
+	
+	
     public int getRows()
 	{
 		return this.rows;
@@ -116,6 +149,18 @@ public class Board_Model5 {
 	{
 		return this.columns;
 	}
+    
+    public void setRows(int newValue)
+	{
+		this.rows = newValue;
+	}
+    public void setColumns(int newValue)
+	{
+		this.columns = newValue;
+	}
+    
+    
+    
     
     
     public void setRadius(int newValue)
@@ -128,6 +173,9 @@ public class Board_Model5 {
 	{
 		return this.board[r][c];
 	}
+    
+    
+    
     
     
     public Hexagon5 getSelected() throws Exception
@@ -213,59 +261,6 @@ public class Board_Model5 {
 		return selected;
 	}
 	
-    /*
-	public Hexagon5 getClosestTile2(float x, float y)
-	{
-		float tempX = 0;
-		float tempY = 0;
-		
-		float diffX = 0;
-		float diffY = 0;
-		
-		float inputX = x;
-		float inputY = y;
-		
-		Hexagon5 selected = null;
-		
-		for (int i = 0; i < rows; i++)
-		{
-			for (int j = 0; j < columns; j++)
-			{
-				tempX = board[i][j].getCenterX();
-				tempY = board[i][j].getCenterY();
-				
-				float tempRadius = touchRadius;
-				
-				tempX *= scaleSize;
-				tempY *= scaleSize;
-				//inputX *= scaleSize;
-				//inputY *= scaleSize;
-				tempRadius *= scaleSize;
-				
-				
-				tempX += displacementX;
-				tempY += displacementY;
-				//inputX *= scaleSize;
-				//inputY *= scaleSize;
-				//tempRadius *= scaleSize;
-				
-				
-				diffX = tempX - inputX;
-				diffY = tempY - inputY;
-				
-				if ( (diffX*diffX) + (diffY*diffY) < (tempRadius*tempRadius) )
-				{
-					selected = board[i][j];
-				}
-				
-				
-			}
-		}
-		
-		//THIS COULD RETURN NULL!!!
-		return selected;
-	}
-	/**/
 	
 	
 	

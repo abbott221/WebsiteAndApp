@@ -105,6 +105,19 @@ public class Board_MyThread5 implements Runnable {
 			
 			//check if holder (and surface?) are available
 			
+			
+			
+			//My phone was getting pretty warm :/
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			
+			
 			if (!holder.getSurface().isValid()) {
 				continue;
 			}

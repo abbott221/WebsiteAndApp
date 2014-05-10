@@ -5,6 +5,7 @@ import com.MichaelFAbbott.myCustomView.Board_Controller;
 import com.MichaelFAbbott.myCustomView.Board_Model;
 import com.MichaelFAbbott.myCustomView.Hexagon;
 import com.MichaelFAbbott.myfirstapp.R;
+
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -60,7 +61,9 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 		private Bitmap tStone;
 		private Bitmap tWater;
 		
-		private Bitmap tDemo;
+		private Bitmap topGrass;
+		private Bitmap topDirt;
+		private Bitmap topSand;
 		
 		
 		private Bitmap occBeige;
@@ -125,7 +128,11 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			tStone = BitmapFactory.decodeResource(res, R.drawable.tile_stone_full);
 			tWater = BitmapFactory.decodeResource(res, R.drawable.tile_water_full);
 			
-			tDemo = BitmapFactory.decodeResource(res, R.drawable.demo_grass);
+			
+			
+			topGrass = BitmapFactory.decodeResource(res, R.drawable.demo_grass);
+			topDirt = BitmapFactory.decodeResource(res, R.drawable.demo_dirt);
+			topSand = BitmapFactory.decodeResource(res, R.drawable.demo_sand);
 			
 			
 			
@@ -190,6 +197,14 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 		
 		@Override
 		public boolean onTouchEvent(MotionEvent event) {
+			
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			
 			scaleGestures.onTouchEvent(event);
 			
@@ -466,8 +481,8 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			
 			/****************************************/
 			
-			
-			
+			Bitmap passBlock = topGrass;
+			Bitmap passOccupant = occBeige;
 			
 			for (int i = 0; i < this.model.getRows(); i++) {
 				for (int j = 0; j < this.model.getColumns(); j++) {
@@ -476,28 +491,45 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 					
 					switch ( current.getOccupantState() ) {
 					case NONE:
-						current.drawSelf(canvas, tDemo, passScale, passX, passY);
+						//passOccupant = occBeige; //a default, I guess (it won't be drawn)
 						break;
 					case OCC_BEIGE:
-						current.drawSelfOccupied(canvas, tDemo, occBeige, passScale, passX, passY);
+						passOccupant = occBeige;
 						break;
 					case OCC_BLUE:
-						current.drawSelfOccupied(canvas, tDemo, occBlue, passScale, passX, passY);
+						passOccupant = occBlue;
 						break;
 					case OCC_GREEN:
-						current.drawSelfOccupied(canvas, tDemo, occGreen, passScale, passX, passY);
+						passOccupant = occGreen;
 						break;
 					case OCC_PINK:
-						current.drawSelfOccupied(canvas, tDemo, occPink, passScale, passX, passY);
+						passOccupant = occPink;
 						break;
 					case OCC_YELLOW:
-						current.drawSelfOccupied(canvas, tDemo, occYellow, passScale, passX, passY);
+						passOccupant = occYellow;
 						break;
 					default:
 						//nothing
 					}
 					
+					switch ( current.getBlockState() ) {
+					case NONE:
+						//passOccupant = occBeige; //a default, I guess (it won't be drawn)
+						break;
+					case DIRT:
+						passBlock = topDirt;
+						break;
+					case GRASS:
+						passBlock = topGrass;
+						break;
+					case SAND:
+						passBlock = topSand;
+						break;
+					default:
+						//nothing
+					}
 					
+					current.drawSelfOccupied(canvas, passBlock, passOccupant, passScale, passX, passY);
 					//current.drawSelf(canvas, tDemo);
 					
 				}

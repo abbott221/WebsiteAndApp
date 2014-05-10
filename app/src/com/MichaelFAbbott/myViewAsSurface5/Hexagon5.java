@@ -41,16 +41,34 @@ public class Hexagon5
 	private HeldState myHeldState;
 	private OccupantState myOccupantState;
 	
+	private BlockState myBlock;
 	
+	
+	
+	public Hexagon5( int r, int c, BlockState block )
+	{
+		createHexagon(r,c);
+		
+		this.myBlock = block;
+		
+	}
+	
+	public Hexagon5( int r, int c )
+	{
+		createHexagon(r,c);
+		
+		this.myBlock = BlockState.GRASS;
+	}
 	
 	
 	// constructor using row and col index
-	public Hexagon5( int r, int c )
+	public void createHexagon( int r, int c )
 	{
 		this.currentState = SelectState.UNSELECTED;
 		this.myHeldState = HeldState.HOLD_RED;
 		this.myOccupantState = OccupantState.NONE;
 		
+		this.myBlock = BlockState.NONE;
 		
 		row = r;
 		column = c;
@@ -207,7 +225,14 @@ public class Hexagon5
 	
 	
 	
-	
+	public BlockState getBlockState()
+	{
+		return this.myBlock;
+	}
+	public void setBlockState(BlockState newState)
+	{
+		this.myBlock = newState;
+	}
 	
 	
 	
@@ -313,62 +338,7 @@ public class Hexagon5
 	
 	
 	
-	public void drawSelf( Canvas canvas, Bitmap drawBlock,
-			float myScale, float scrollX, float scrollY )
-	{
-		canvas.save();
-		
-		//canvas.scale( myScale, myScale );
-		
-		float canvasHeight = canvas.getHeight() / 2;
-		float canvasWidth = canvas.getWidth() / 2;
-		
-		canvas.translate( canvasWidth, canvasHeight );
-		
-		
-		canvas.scale( myScale, myScale );
-		
-		
-		canvas.translate( scrollX, scrollY );
-		
-		
-		//LAST USED
-		//canvas.scale( myScale, myScale );
-		
-		
-		
-		float YfromCenter = centerY - canvasHeight;
-		float XfromCenter = centerX - canvasWidth;
-		
-		canvas.translate( XfromCenter, YfromCenter );
-		
-		
-		
-		
-		int wHalf = drawBlock.getWidth() / 2;
-		int hHalf = drawBlock.getHeight() / 2;
-		
-		canvas.drawBitmap(drawBlock, -wHalf, (-hHalf + 32), paintFill);
-		
-		
-		
-		paintFill.setColor( myColor );
-		paintFill.setStyle( Paint.Style.FILL );
-		
-		//only affects tile size (they shrink in place)
-		//canvas.scale( myScale, myScale );
-		
-		if (myHeldState != HeldState.NONE)
-		{
-			canvas.drawPath( shapePath, paintFill );
-		}
-		
-		//ineffective here
-		//canvas.scale( myScale, myScale );
-		
-		
-		canvas.restore();
-	}
+	
 	
 	public void drawSelfOccupied( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant,
 			float myScale, float scrollX, float scrollY )
@@ -401,11 +371,19 @@ public class Hexagon5
 		
 		
 		
+		int wHalf;
+		int hHalf;
 		
-		int wHalf = drawBlock.getWidth() / 2;
-		int hHalf = drawBlock.getHeight() / 2;
 		
-		canvas.drawBitmap(drawBlock, -wHalf, (-hHalf + 30), paintFill);
+		
+		if (this.myBlock != BlockState.NONE)
+		{
+			wHalf = drawBlock.getWidth() / 2;
+			hHalf = drawBlock.getHeight() / 2;
+			
+			canvas.drawBitmap(drawBlock, -wHalf, (-hHalf + 30), paintFill);
+		}
+		
 		
 		
 		
@@ -415,7 +393,7 @@ public class Hexagon5
 		//only affects tile size (they shrink in place)
 		//canvas.scale( myScale, myScale );
 		
-		if (myHeldState != HeldState.NONE)
+		if (myHeldState != HeldState.NONE && this.myBlock != BlockState.NONE)
 		{
 			canvas.drawPath( shapePath, paintFill );
 		}
@@ -426,12 +404,13 @@ public class Hexagon5
 		
 		
 		/**************************************/
-		
-		wHalf = drawOccupant.getWidth() / 2;
-		hHalf = drawOccupant.getHeight() / 2;
-		
-		canvas.drawBitmap(drawOccupant, -wHalf, (-hHalf - 30), paintFill);
-		
+		if (this.myOccupantState != OccupantState.NONE)
+		{
+			wHalf = drawOccupant.getWidth() / 2;
+			hHalf = drawOccupant.getHeight() / 2;
+			
+			canvas.drawBitmap(drawOccupant, -wHalf, (-hHalf - 30), paintFill);
+		}
 		/**************************************/
 		
 		
