@@ -29,7 +29,7 @@ public class Hexagon5
 		SELECTED, UNSELECTED
 	}
 	public static enum HeldState {
-		HOLD_BLUE, HOLD_PURPLE, HOLD_GREEN, HOLD_ORANGE, HOLD_RED
+		NONE, HOLD_BLUE, HOLD_PURPLE, HOLD_GREEN, HOLD_ORANGE, HOLD_RED
 	}
 	public static enum OccupantState {
 		NONE, OCC_BEIGE, OCC_BLUE, OCC_GREEN, OCC_PINK, OCC_YELLOW
@@ -74,13 +74,16 @@ public class Hexagon5
 		//float centerX = 200;
 		//float centerY = 200;
 		
-		centerX = c * 200 + 150;
+		//centerX = c * 200 + 150;
+		centerX = c * 192 + 150;
 		if (r % 2 != 0)
 		{
-			centerX += 100;
+			//centerX += 100;
+			centerX += 96;
 		}
 		
-		centerY = r * 200 + 150;
+		//centerY = r * 200 + 150;
+		centerY = r * 145 + 150;
 		
 		
 		
@@ -97,8 +100,10 @@ public class Hexagon5
 		
 		angle = (1.0 / 12.0) * 2.0 * Math.PI; //position to 1/12
 		
-		tempX = (float) (Math.cos(angle) * 90.0);
-		tempY = (float) (Math.sin(angle) * 90.0);
+		//tempX = (float) (Math.cos(angle) * 90.0);
+		//tempY = (float) (Math.sin(angle) * 90.0);
+		tempX = (float) (Math.cos(angle) * 80.0);
+		tempY = (float) (Math.sin(angle) * 70.0);
 		
 		shapePath.moveTo( tempX, tempY );
 		
@@ -107,8 +112,8 @@ public class Hexagon5
 	    {
 	    	angle = (i / 12.0) * 2.0 * Math.PI; //initial position to 11/12, final position to 1/12
 			
-			tempX = (float) (Math.cos(angle) * 90.0);
-			tempY = (float) (Math.sin(angle) * 90.0);
+			tempX = (float) (Math.cos(angle) * 80.0);
+			tempY = (float) (Math.sin(angle) * 70.0);
 			
 			shapePath.lineTo( tempX, tempY );
 	    }
@@ -246,6 +251,9 @@ public class Hexagon5
 		if (this.currentState == SelectState.SELECTED) //HIGHLIGHTED
 		{
 			switch ( myHeldState ) {
+			case NONE:
+				//setColor( Color.parseColor("#6DCAEC") );
+				break;
 			case HOLD_BLUE:
 				setColor( Color.parseColor("#6DCAEC") );
 				break;
@@ -268,6 +276,9 @@ public class Hexagon5
 		else //NOT HIGHLIGHTED
 		{
 			switch ( myHeldState ) {
+			case NONE:
+				//setColor( Color.parseColor("#6DCAEC") );
+				break;
 			case HOLD_BLUE:
 				//setColor( Color.parseColor("#0099CC") );
 				setColor( Color.parseColor("#079DD0") );
@@ -296,79 +307,6 @@ public class Hexagon5
 		
 	}
 	
-	
-	/*
-	public void drawSelf2( Canvas canvas, Bitmap drawMe )
-	{
-		
-		//debug.drawSelf(canvas);
-		
-
-		canvas.save();
-		
-		//canvas.scale( 2, 2 );
-		canvas.translate( centerX, centerY );
-		
-		paintFill.setColor( myColor );
-		
-		
-		
-		//paintFill.setColor( myColor );
-		paintFill.setStyle( Paint.Style.FILL );
-		
-		canvas.drawPath( shapePath, paintFill );
-		
-		
-		//canvas.scale( 2, 2 );
-		//canvas.translate( centerX, centerY );
-		//canvas.drawBitmap(drawMe, 0, 0, new Paint());
-		
-		int w = drawMe.getWidth();
-		int h = drawMe.getHeight();
-		
-		canvas.translate( -(w/2), -(h/2) );
-		
-		canvas.drawBitmap(drawMe, 0, 0, paintFill);
-		
-		
-		
-		canvas.restore();
-	}
-	/**/
-	
-	
-	
-	/*
-	public void drawSelf3( Canvas canvas, Bitmap drawBlock,
-			float myScale, float dX, float dY )
-	{
-		canvas.save();
-		
-		canvas.scale( myScale, myScale );
-		
-		canvas.translate( dX, dY );
-		
-		canvas.translate( centerX, centerY );
-		
-		
-		
-		int wHalf = drawBlock.getWidth() / 2;
-		int hHalf = drawBlock.getHeight() / 2;
-		
-		canvas.drawBitmap(drawBlock, -wHalf, (-hHalf + 30), paintFill);
-		
-		
-		
-		paintFill.setColor( myColor );
-		paintFill.setStyle( Paint.Style.FILL );
-		
-		canvas.drawPath( shapePath, paintFill );
-		
-		
-		
-		canvas.restore();
-	}
-	/**/
 	
 	
 	
@@ -407,7 +345,7 @@ public class Hexagon5
 		int wHalf = drawBlock.getWidth() / 2;
 		int hHalf = drawBlock.getHeight() / 2;
 		
-		canvas.drawBitmap(drawBlock, -wHalf, (-hHalf + 30), paintFill);
+		canvas.drawBitmap(drawBlock, -wHalf, (-hHalf + 32), paintFill);
 		
 		
 		
@@ -417,7 +355,10 @@ public class Hexagon5
 		//only affects tile size (they shrink in place)
 		//canvas.scale( myScale, myScale );
 		
-		canvas.drawPath( shapePath, paintFill );
+		if (myHeldState != HeldState.NONE)
+		{
+			canvas.drawPath( shapePath, paintFill );
+		}
 		
 		//ineffective here
 		//canvas.scale( myScale, myScale );
@@ -429,7 +370,7 @@ public class Hexagon5
 	public void drawSelfOccupied( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant,
 			float myScale, float scrollX, float scrollY )
 	{
-canvas.save();
+		canvas.save();
 		
 		//canvas.scale( myScale, myScale );
 		
@@ -471,7 +412,10 @@ canvas.save();
 		//only affects tile size (they shrink in place)
 		//canvas.scale( myScale, myScale );
 		
-		canvas.drawPath( shapePath, paintFill );
+		if (myHeldState != HeldState.NONE)
+		{
+			canvas.drawPath( shapePath, paintFill );
+		}
 		
 		//ineffective here
 		//canvas.scale( myScale, myScale );

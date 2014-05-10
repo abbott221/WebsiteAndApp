@@ -75,20 +75,23 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
     	
     	Hexagon5.HeldState hold = temp.getHeldState();
     	switch ( hold ) {
-		case HOLD_BLUE:
+    	case NONE:
 			this.mvcView.updateSpinner(0);
 			break;
-		case HOLD_PURPLE:
+    	case HOLD_BLUE:
 			this.mvcView.updateSpinner(1);
 			break;
-		case HOLD_GREEN:
+		case HOLD_PURPLE:
 			this.mvcView.updateSpinner(2);
 			break;
-		case HOLD_ORANGE:
+		case HOLD_GREEN:
 			this.mvcView.updateSpinner(3);
 			break;
-		case HOLD_RED:
+		case HOLD_ORANGE:
 			this.mvcView.updateSpinner(4);
+			break;
+		case HOLD_RED:
+			this.mvcView.updateSpinner(5);
 			break;
 		default:
 			//nothing
@@ -281,14 +284,10 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 		
 		//System.err.println("I heard you! onDown");
 		
-		/**/
 		
-		//if (!this.model.getScaleInProgress())
-		//{
 		float eX = e.getX();
 		float eY = e.getY();
 		
-		//System.err.println("I heard you!");
 		Hexagon5 temp = this.model.getClosestTile(eX, eY);
 		
 		if (temp != null)
@@ -297,11 +296,6 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 			//temp.setHighlighted(Hexagon.State.SELECTED);
 			//highlighted = temp;
 		}
-		//}
-		/**/
-		
-		
-		
 		
 		
 		return true;

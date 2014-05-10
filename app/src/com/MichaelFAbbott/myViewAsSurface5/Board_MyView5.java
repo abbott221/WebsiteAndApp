@@ -389,7 +389,7 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			// edge = [canvasHalf + f(displace)] - [(pic)*f(scale)]
 			// edge = [canvasHalf + displace / 2] - [pic * 3(inScale ^ (1/2) )]
 			
-			
+			/*****************************/
 			// 1) MEASUREMENTS
 			
 			float hCanvasHeight = canvas.getHeight() / 2;
@@ -398,23 +398,31 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			float hPicHeight = drawBlock.getHeight() / 2;
 			float hPicWidth = drawBlock.getWidth() / 2;
 			
-			float fDisplaceX = passX / 2;
-			float fDisplaceY = passY / 2;
+			float fDisplaceX = passX / 5;
+			float fDisplaceY = passY / 5;
 			
 			//float fScale = (float) Math.pow(passScale, 0.5);
 			//fScale *= 3.0;
-			float fScale = (float) (passScale * 1.0);
+			float fScale = (float) (passScale * 3.0);
 			
 			// 1) ENDS
+			/*****************************/
 			
+			
+			canvas.translate( hCanvasWidth, hCanvasHeight );
 			
 			
 			// 2) SCALING OF THE PIC FROM CENTER
 			
-			//canvas.scale( fScale, fScale );
+			canvas.scale( fScale, fScale );
 			
 			// 2) ENDS
 			
+			
+			canvas.translate( fDisplaceX, fDisplaceY );
+			
+			//canvas.translate( ,  );
+			//center is canvas so center - canvas is 0
 			
 			
 			// 3) LINE UP CENTER OF PIC WITH CENTER OF CANVAS
@@ -431,6 +439,9 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			
 			topEdge = (hCanvasHeight + fDisplaceY) - (hPicHeight);
 			leftEdge = (hCanvasWidth + fDisplaceX) - (hPicWidth);
+			
+			topEdge = -1.0f * hPicHeight;
+			leftEdge = -1.0f * hPicWidth;
 			
 			// 3) ENDS
 			

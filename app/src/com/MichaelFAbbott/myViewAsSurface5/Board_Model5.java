@@ -174,10 +174,10 @@ public class Board_Model5 {
 		
 		
 		
-		System.err.println("input X: " + inputX);
-		System.err.println("input Y: " + inputY);
-		System.err.println("Canvas 0,0 X: " + board[0][0].getCanvasX() );
-		System.err.println("Canvas 0,0 Y: " + board[0][0].getCanvasY() );
+		//System.err.println("input X: " + inputX);
+		//System.err.println("input Y: " + inputY);
+		//System.err.println("Canvas 0,0 X: " + board[0][0].getCanvasX() );
+		//System.err.println("Canvas 0,0 Y: " + board[0][0].getCanvasY() );
 		
 		
 		

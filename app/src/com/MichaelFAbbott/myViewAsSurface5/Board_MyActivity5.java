@@ -245,19 +245,22 @@ public class Board_MyActivity5 extends ViewWithActivityBar implements OnTouchLis
 				
 				
 				switch ( pos ) {
-				case 0: //blue
+				case 0: //none
+					theSelected.setHeldState(HeldState.NONE);
+					break;
+				case 1: //blue
 					theSelected.setHeldState(HeldState.HOLD_BLUE);
 					break;
-				case 1: //purple
+				case 2: //purple
 					theSelected.setHeldState(HeldState.HOLD_PURPLE);
 					break;
-				case 2: //green
+				case 3: //green
 					theSelected.setHeldState(HeldState.HOLD_GREEN);
 					break;
-				case 3: //yellow
+				case 4: //yellow
 					theSelected.setHeldState(HeldState.HOLD_ORANGE);
 					break;
-				case 4: //red
+				case 5: //red
 					theSelected.setHeldState(HeldState.HOLD_RED);
 					break;
 				default:
