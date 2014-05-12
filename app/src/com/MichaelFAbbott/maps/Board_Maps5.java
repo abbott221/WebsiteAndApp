@@ -5,6 +5,7 @@ import com.MichaelFAbbott.myViewAsSurface5.Board_Model5;
 import com.MichaelFAbbott.myViewAsSurface5.Hexagon5;
 import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.BlockState;
 import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.HeldState;
+import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.OccupantState;
 
 
 public class Board_Maps5 {
@@ -50,12 +51,12 @@ public class Board_Maps5 {
 		board[0][4].setBlockState(BlockState.NONE);
 		board[0][5].setBlockState(BlockState.NONE);
 		
-		board[1][1].setBlockState(BlockState.SAND);
-		board[1][2].setBlockState(BlockState.SAND);
+		board[1][1].setBlockState(BlockState.DIRT);
+		board[1][2].setBlockState(BlockState.DIRT);
 		board[1][6].setBlockState(BlockState.NONE);
 		
 		board[2][0].setBlockState(BlockState.NONE);
-		board[2][2].setBlockState(BlockState.SAND);
+		board[2][2].setBlockState(BlockState.DIRT);
 		board[2][3].setBlockState(BlockState.NONE);
 		board[2][5].setBlockState(BlockState.NONE);
 		board[2][7].setBlockState(BlockState.DIRT);
@@ -95,6 +96,8 @@ public class Board_Maps5 {
 				board[i][j].setHeldState(HeldState.NONE);
 			}
 		}
+		
+		board[1][1].setOccupantState(OccupantState.P_WHITE);
 		
 		model.setBoard(board, myRows, myColumns);
 	}

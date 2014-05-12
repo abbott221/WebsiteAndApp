@@ -24,6 +24,8 @@ public class Board_Model5 {
 	
 	Hexagon5 lolSelected;
 	
+	Hexagon5 previousSelected;
+	
 	//Context lolContext;
 	
 	private Board_Listener5 controller;
@@ -73,6 +75,7 @@ public class Board_Model5 {
 		
 		
 		this.lolSelected = null;
+		this.previousSelected = null;
 		
 		
 		
@@ -167,7 +170,6 @@ public class Board_Model5 {
 		Hexagon5 result = this.lolSelected;
 		if (result == null)
 		{
-			//
 			throw new NullPointerException();
 		}
     	
@@ -175,9 +177,26 @@ public class Board_Model5 {
 	}
     public void setSelected(Hexagon5 newSelect)
 	{
-		this.lolSelected = newSelect;
+		
+    	if (newSelect != this.lolSelected)
+    	{
+    		this.previousSelected = this.lolSelected;
+    	}
+    	//this.previousSelected = this.lolSelected;
+		
+		
+    	this.lolSelected = newSelect;
 	}
-    
+    public Hexagon5 getPreviousSelected() throws Exception
+	{
+		Hexagon5 result = this.previousSelected;
+		if (result == null)
+		{
+			throw new NullPointerException();
+		}
+    	
+    	return this.previousSelected;
+	}
     
     
     

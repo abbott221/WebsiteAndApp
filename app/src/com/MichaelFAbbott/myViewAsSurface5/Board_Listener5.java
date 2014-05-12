@@ -1,5 +1,7 @@
 package com.MichaelFAbbott.myViewAsSurface5;
 
+import java.util.ArrayList;
+
 import com.MichaelFAbbott.myCustomView.Board_CustomView;
 import com.MichaelFAbbott.myCustomView.Board_Model;
 import com.MichaelFAbbott.myCustomView.Hexagon;
@@ -413,7 +415,7 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 	
 	public void processPlayerSelectionEvent(Hexagon5 temp)
     {
-    	
+    	/*
     	for (int i = 0; i < this.model.getRows(); i++) {
 			for (int j = 0; j < this.model.getColumns(); j++) {
 				Hexagon5 current = this.model.getHexagon(i, j);
@@ -422,19 +424,15 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 				current.setHeldState(HeldState.NONE);
 			}
 		}
-    	
+    	/**/
     	this.model.setSelected(temp);
     	
     	//****************************************************************
     	
     	//organize by occupant or HeldState first?
     	
-    	Hexagon5.HeldState hold = temp.getHeldState();
-    	Hexagon5.OccupantState occupy = temp.getOccupantState();
     	
-    	
-    	
-    	
+    	AI_PlayerInteraction.playerSelectionEntry(temp, this.model);
     	
     	
     }
