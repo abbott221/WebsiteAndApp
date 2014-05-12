@@ -78,27 +78,28 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		setContentView(R.layout.activity_experiment);
 		
 		
+		/**/
 		Spinner lolSpinner = (Spinner) findViewById(R.id.look_spinner1);
 		ArrayAdapter<CharSequence> lolAdapter = ArrayAdapter.createFromResource(this,
 		    R.array.lolSpinner_array, android.R.layout.simple_spinner_item);
 		lolAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		lolSpinner.setAdapter(lolAdapter);
 		lolSpinner.setOnItemSelectedListener(this);
+		/**/
+		
 		
 		//lolSpinner.setSelection(position);
 		//lolSpinner.s
 		//lolAdapter.getItemId(position)
 		
-		
+		/**/
 		Spinner occSpinner = (Spinner) findViewById(R.id.look_spinner2);
-		
 		ArrayAdapter<CharSequence> occAdapter = ArrayAdapter.createFromResource(this,
 		    R.array.occSpinner_array, android.R.layout.simple_spinner_item);
 		occAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		occSpinner.setAdapter(occAdapter);
-		
 		occSpinner.setOnItemSelectedListener(this);
-		
+		/**/
 		
 		
 		model = new Board_Model5();
@@ -113,10 +114,12 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		mvcView.registerObserver(mvcController);
 		model.registerObserver(mvcController);
 		
+		
+		/**/
 		mvcView.setSpinner(lolSpinner);
 		
 		mvcView.setOccSpinner(occSpinner);
-		
+		/**/
 		
 		
 		
@@ -210,6 +213,8 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long id) {
+		
+		/*
 		
 		
 		Hexagon5 theSelected;
@@ -308,8 +313,9 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 			//null pointer exception
 		}
 		
-		
 		//System.err.println(pos);
+		
+		/**/
 		
 	}
 

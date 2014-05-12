@@ -98,7 +98,7 @@ public class Hexagon5
 		
 		//centerX = c * 200 + 150;
 		centerX = c * 192 + 150;
-		if (r % 2 != 0)
+		if (r % 2 != 0) //if odd
 		{
 			//centerX += 100;
 			centerX += 96;
@@ -230,11 +230,11 @@ public class Hexagon5
 	}
 	
 	
-	public float getRow()
+	public int getRow()
 	{
 		return row;
 	}
-	public float getColumn()
+	public int getColumn()
 	{
 		return column;
 	}

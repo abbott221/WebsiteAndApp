@@ -5,6 +5,7 @@ import com.MichaelFAbbott.myCustomView.Board_Model;
 import com.MichaelFAbbott.myCustomView.Hexagon;
 import com.MichaelFAbbott.myCustomView.Hexagon.State;
 import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.BlockState;
+import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.HeldState;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -233,7 +234,11 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 		//if the user hit a legitimate tile
 		if (temp != null)
 		{
-			processSelectionEvent(temp);
+			if ( this.model.getDeveloperMode() ) {
+				processDevSelectionEvent(temp);
+			} else {
+				processPlayerSelectionEvent(temp);
+			}
 			
 			//temp.setHighlighted(Hexagon5.SelectState.SELECTED);
 			//this.model.setSelected(temp);
@@ -245,13 +250,21 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 			{
 				//assert temp != null : "Michael; Violation of: Hexagon is not null";
 				
-				processUnselectionEvent();
+				if ( this.model.getDeveloperMode() ) {
+					processDevUnselectionEvent();
+				} else {
+					processPlayerUnselectionEvent();
+				}
 			}
 			//if block is empty and player mode
 			//players can't select empty blocks
 			if (temp.getBlockState() == BlockState.NONE && !this.model.getDeveloperMode() )
 			{
-				processUnselectionEvent();
+				if ( this.model.getDeveloperMode() ) {
+					processDevUnselectionEvent();
+				} else {
+					processPlayerUnselectionEvent();
+				}
 			}
 			
 		}
@@ -262,7 +275,11 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 		// -> unselection
 		if (temp == null)
 		{
-			processUnselectionEvent();
+			if ( this.model.getDeveloperMode() ) {
+				processDevUnselectionEvent();
+			} else {
+				processPlayerUnselectionEvent();
+			}
 		}
 		
 		
@@ -276,7 +293,7 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 	
 	
 	
-	public void processSelectionEvent(Hexagon5 temp)
+	public void processDevSelectionEvent(Hexagon5 temp)
     {
     	
     	for (int i = 0; i < this.model.getRows(); i++) {
@@ -362,7 +379,8 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 	
 	
 	
-	public void processUnselectionEvent()
+	
+	public void processDevUnselectionEvent()
     {
     	
     	for (int i = 0; i < this.model.getRows(); i++) {
@@ -383,6 +401,66 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
     	this.mvcView.updateSpinner(0);
     	
     	this.mvcView.updateOccSpinner(0);
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public void processPlayerSelectionEvent(Hexagon5 temp)
+    {
+    	
+    	for (int i = 0; i < this.model.getRows(); i++) {
+			for (int j = 0; j < this.model.getColumns(); j++) {
+				Hexagon5 current = this.model.getHexagon(i, j);
+				
+				//current.setHighlighted(Hexagon5.SelectState.UNSELECTED);
+				current.setHeldState(HeldState.NONE);
+			}
+		}
+    	
+    	this.model.setSelected(temp);
+    	
+    	//****************************************************************
+    	
+    	//organize by occupant or HeldState first?
+    	
+    	Hexagon5.HeldState hold = temp.getHeldState();
+    	Hexagon5.OccupantState occupy = temp.getOccupantState();
+    	
+    	
+    	
+    	
+    	
+    	
+    }
+	
+	
+	
+	
+	
+	public void processPlayerUnselectionEvent()
+    {
+    	
+    	for (int i = 0; i < this.model.getRows(); i++) {
+			for (int j = 0; j < this.model.getColumns(); j++) {
+				Hexagon5 current = this.model.getHexagon(i, j);
+				
+				//current.setHighlighted(Hexagon5.SelectState.UNSELECTED);
+				current.setHeldState(HeldState.NONE);
+			}
+		}
+    	
+    	this.model.setSelected(null);
+    	
+    	//****************************************************************
+    	
+    	//wait was that all this will ever need?
+    	
     }
 	
 	
