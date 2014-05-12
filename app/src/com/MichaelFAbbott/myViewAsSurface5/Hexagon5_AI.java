@@ -282,8 +282,6 @@ public class Hexagon5_AI {
 		return result;
 	}
 	
-	
-	
 	public static Hexagon5 getBottomRight(Hexagon5 test, Board_Model5 model) {
 		Hexagon5 result = null;
 		
@@ -340,7 +338,7 @@ public class Hexagon5_AI {
 
 	public static ArrayList<Hexagon5> getNeighbors(Hexagon5 test, Board_Model5 model) {
 		
-		ArrayList<Hexagon5> returnMe = new ArrayList<Hexagon5>();
+		ArrayList<Hexagon5> result = new ArrayList<Hexagon5>();
 		
 		
 		int myRow = test.getRow();
@@ -349,93 +347,172 @@ public class Hexagon5_AI {
 		int maxR = model.getRows() - 1;
 		int maxC = model.getColumns() - 1;
 		
-		//boolean edgeR = false;
-		
-		
-		if ( myRow == 0 ) {
-			//
-		}
-		//else if ( myRow == maxR ) {
-		//	//
-		//}
-		
-		//EVEN
-		else if (myRow % 2 == 0) {
-			//
-		}
-		
-		//ODD
-		else {
-			
-		}
-		
-		
-		
-		
-		if ( myRow == 0 )
-		{
-			if (myColumn == 0)
-			{
-				returnMe.add( model.getHexagon(0, 1) );
+		//****************************************
+		/**/
+		if ( myRow != 0 ) {
+			//EVEN
+			if (myRow % 2 == 0) {
 				
-				returnMe.add( model.getHexagon(1, 0) );
+				//TopRight
+				result.add( model.getHexagon(myRow - 1, myColumn) );
+				
+				if ( myColumn != 0 ) {
+					//TopLeft
+					result.add( model.getHexagon(myRow - 1, myColumn - 1) );
+				}
+				
 			}
-			else if (myColumn == maxC)
-			{
-				returnMe.add( model.getHexagon(0, maxC - 1) );
+			//ODD
+			else {
 				
-				returnMe.add( model.getHexagon(1, maxC - 1) );
-				returnMe.add( model.getHexagon(1, maxC) );
-			}
-			else
-			{
-				returnMe.add( model.getHexagon(0, myColumn - 1) );
-				returnMe.add( model.getHexagon(0, myColumn + 1) );
+				//TopLeft
+				result.add( model.getHexagon(myRow - 1, myColumn) );
 				
-				returnMe.add( model.getHexagon(1, myColumn - 1) );
-				returnMe.add( model.getHexagon(1, myColumn) );
-			}
-		}
-		else if (myRow == maxR)
-		{
-			if (myColumn == 0)
-			{
-				returnMe.add( model.getHexagon(0, 1) );
+				if ( myColumn != maxC ) {
+					//TopRight
+					result.add( model.getHexagon(myRow - 1, myColumn + 1) );
+				}
 				
-				returnMe.add( model.getHexagon(1, 0) );
-			}
-			else if (myColumn == maxC)
-			{
-				returnMe.add( model.getHexagon(0, maxC - 1) );
-				
-				returnMe.add( model.getHexagon(1, maxC - 1) );
-				returnMe.add( model.getHexagon(1, maxC) );
-			}
-			else
-			{
-				returnMe.add( model.getHexagon(0, myColumn - 1) );
-				returnMe.add( model.getHexagon(0, myColumn + 1) );
-				
-				returnMe.add( model.getHexagon(1, myColumn - 1) );
-				returnMe.add( model.getHexagon(1, myColumn) );
 			}
 		}
 		
 		
 		
-		if (myColumn == 0)
-		{
-			//
+		if ( myRow != maxR ) {
+			//EVEN
+			if (myRow % 2 == 0) {
+				
+				//BottomRight
+				result.add( model.getHexagon(myRow + 1, myColumn) );
+				
+				if ( myColumn != 0 ) {
+					//BottomLeft
+					result.add( model.getHexagon(myRow + 1, myColumn - 1) );
+				}
+				
+			}
+			//ODD
+			else {
+				//BottomLeft
+				result.add( model.getHexagon(myRow + 1, myColumn) );
+				
+				if ( myColumn != maxC ) {
+					//BottomRight
+					result.add( model.getHexagon(myRow + 1, myColumn + 1) );
+				}
+			}
 		}
-		else if (myColumn == maxC)
-		{
-			//
+		
+		/**/
+		
+		if ( myColumn != 0 ) {
+			//Left
+			result.add( model.getHexagon(myRow, myColumn - 1) );
+		}
+		if ( myColumn != maxC ) {
+			//Right
+			result.add( model.getHexagon(myRow, myColumn + 1) );
 		}
 		
 		
-		
-		return returnMe;
+		return result;
 	}
+	
+	
+	
+	
+	
+	
+	public static ArrayList<Hexagon5> getNeighbors2(Hexagon5 test, Board_Model5 model) {
+		
+		ArrayList<Hexagon5> result = new ArrayList<Hexagon5>();
+		
+		
+		int myRow = test.getRow();
+		int myColumn = test.getColumn();
+		
+		int maxR = model.getRows() - 1;
+		int maxC = model.getColumns() - 1;
+		
+		//****************************************
+		/**/
+		if ( myRow != 0 ) {
+			
+			//TopRight or TopLeft
+			result.add( model.getHexagon(myRow - 1, myColumn) );
+			
+			//EVEN
+			if (myRow % 2 == 0) {
+				
+				//TopRight
+				//result.add( model.getHexagon(myRow - 1, myColumn) );
+				
+				if ( myColumn != 0 ) {
+					//TopLeft
+					result.add( model.getHexagon(myRow - 1, myColumn - 1) );
+				}
+				
+			}
+			//ODD
+			else {
+				
+				//TopLeft
+				//result.add( model.getHexagon(myRow - 1, myColumn) );
+				
+				if ( myColumn != maxC ) {
+					//TopRight
+					result.add( model.getHexagon(myRow - 1, myColumn + 1) );
+				}
+				
+			}
+		}
+		
+		
+		
+		if ( myRow != maxR ) {
+			
+			//BottomRight or BottomLeft
+			result.add( model.getHexagon(myRow + 1, myColumn) );
+			
+			//EVEN
+			if (myRow % 2 == 0) {
+				
+				//BottomRight
+				//result.add( model.getHexagon(myRow + 1, myColumn) );
+				
+				if ( myColumn != 0 ) {
+					//BottomLeft
+					result.add( model.getHexagon(myRow + 1, myColumn - 1) );
+				}
+				
+			}
+			//ODD
+			else {
+				//BottomLeft
+				//result.add( model.getHexagon(myRow + 1, myColumn) );
+				
+				if ( myColumn != maxC ) {
+					//BottomRight
+					result.add( model.getHexagon(myRow + 1, myColumn + 1) );
+				}
+			}
+		}
+		
+		/**/
+		
+		if ( myColumn != 0 ) {
+			//Left
+			result.add( model.getHexagon(myRow, myColumn - 1) );
+		}
+		if ( myColumn != maxC ) {
+			//Right
+			result.add( model.getHexagon(myRow, myColumn + 1) );
+		}
+		
+		
+		return result;
+	}
+	
 	
 	
 	
@@ -456,7 +533,6 @@ public class Hexagon5_AI {
 	
 	
 }
-
 
 
 
