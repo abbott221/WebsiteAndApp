@@ -12,6 +12,8 @@ public class Hexagon5
 	private Paint paintFill;
 	private static Path shapePath;
 	
+	private static Path outlinePath;
+	
 	
 	private int row, column;
 	
@@ -88,8 +90,6 @@ public class Hexagon5
 		
 		
 		
-		shapePath = new Path();
-		
 		
 		
 		//float centerX = 200;
@@ -112,6 +112,13 @@ public class Hexagon5
 		canvasY = centerY;
 		
 		
+		//tempX = (float) (Math.cos(angle) * 90.0);
+		//tempY = (float) (Math.sin(angle) * 90.0);
+		
+		/********************Filled Paint Hexagon Path********************/
+		
+		shapePath = new Path();
+		
 		
 		
 		float tempX = 0;
@@ -121,10 +128,10 @@ public class Hexagon5
 		
 		angle = (1.0 / 12.0) * 2.0 * Math.PI; //position to 1/12
 		
-		//tempX = (float) (Math.cos(angle) * 90.0);
-		//tempY = (float) (Math.sin(angle) * 90.0);
-		tempX = (float) (Math.cos(angle) * 80.0);
-		tempY = (float) (Math.sin(angle) * 70.0);
+		//tempX = (float) (Math.cos(angle) * 80.0);
+		//tempY = (float) (Math.sin(angle) * 70.0);
+		tempX = (float) (Math.cos(angle) * 112.0);
+		tempY = (float) (Math.sin(angle) * 97.0);
 		
 		shapePath.moveTo( tempX, tempY );
 		
@@ -133,8 +140,10 @@ public class Hexagon5
 	    {
 	    	angle = (i / 12.0) * 2.0 * Math.PI; //initial position to 11/12, final position to 1/12
 			
-			tempX = (float) (Math.cos(angle) * 80.0);
-			tempY = (float) (Math.sin(angle) * 70.0);
+			//tempX = (float) (Math.cos(angle) * 80.0);
+			//tempY = (float) (Math.sin(angle) * 70.0);
+			tempX = (float) (Math.cos(angle) * 112.0);
+			tempY = (float) (Math.sin(angle) * 97.0);
 			
 			shapePath.lineTo( tempX, tempY );
 	    }
@@ -142,6 +151,49 @@ public class Hexagon5
 	    
 	    
 	    shapePath.close();
+	    
+	    /********************Filled Paint Hexagon Path********************/
+	    
+	    
+	    /********************Black Hexagon Outline Path********************/
+	    
+		outlinePath = new Path();
+		
+		
+		
+		//float tempX = 0;
+		//float tempY = 0;
+		//double angle = 0;
+		tempX = 0;
+		tempY = 0;
+		angle = 0;
+		
+		
+		angle = (1.0 / 12.0) * 2.0 * Math.PI; //position to 1/12
+		
+		tempX = (float) (Math.cos(angle) * 112.0);
+		tempY = (float) (Math.sin(angle) * 97.0);
+		
+		outlinePath.moveTo( tempX, tempY );
+		
+		
+		for( float i = 11; i > 0; i -= 2 )
+	    {
+	    	angle = (i / 12.0) * 2.0 * Math.PI; //initial position to 11/12, final position to 1/12
+			
+			tempX = (float) (Math.cos(angle) * 112.0);
+			tempY = (float) (Math.sin(angle) * 97.0);
+			
+			outlinePath.lineTo( tempX, tempY );
+	    }
+		
+	    
+	    
+	    outlinePath.close();
+	    
+	    /********************Black Hexagon Outline Path********************/
+	    
+	    
 		
 		//HEXAGON END
 	}
@@ -198,6 +250,9 @@ public class Hexagon5
 	//make a processHighlighted event???
 	public void setHighlighted(SelectState newState)
 	{
+		//assert this != null;
+		//assert this != null : "Michael; Violation of: Hexagon is not null";
+		
 		this.currentState = newState;
 	}
 	
@@ -337,13 +392,8 @@ public class Hexagon5
 	
 	
 	
-	
-	
-	
-	public void drawSelfOccupied( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant,
-			float myScale, float scrollX, float scrollY )
+	public void translateAndScale( Canvas canvas, float myScale, float scrollX, float scrollY )
 	{
-		canvas.save();
 		
 		//canvas.scale( myScale, myScale );
 		
@@ -368,19 +418,32 @@ public class Hexagon5
 		float XfromCenter = centerX - canvasWidth;
 		
 		canvas.translate( XfromCenter, YfromCenter );
+	}
+	
+	
+	public void drawSelf( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant,
+			float myScale, float scrollX, float scrollY )
+	{
+		canvas.save();
+		
+		
+		
+		translateAndScale(canvas, myScale, scrollX, scrollY);
+		
 		
 		
 		
 		int wHalf;
 		int hHalf;
 		
-		
+		//****************************************************************************
 		
 		if (this.myBlock != BlockState.NONE)
 		{
 			wHalf = drawBlock.getWidth() / 2;
 			hHalf = drawBlock.getHeight() / 2;
 			
+			//Draw Bitmap Block
 			canvas.drawBitmap(drawBlock, -wHalf, (-hHalf + 30), paintFill);
 		}
 		
@@ -393,17 +456,106 @@ public class Hexagon5
 		//only affects tile size (they shrink in place)
 		//canvas.scale( myScale, myScale );
 		
+		canvas.translate( 0, -6.5f );
+		
+		/*
+		//this is handled by the view now
+		//the blockstate condition only applies to players
 		if (myHeldState != HeldState.NONE && this.myBlock != BlockState.NONE)
 		{
+			//Fill Painted Hexagon
+			canvas.drawPath( shapePath, paintFill );
+		}
+		/**/
+		if ( myHeldState != HeldState.NONE )
+		{
+			//Fill Painted Hexagon
 			canvas.drawPath( shapePath, paintFill );
 		}
 		
-		//ineffective here
+		canvas.restore();
+	}
+	
+	
+	
+	
+	
+	public void drawSelf_Outline( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant,
+			float myScale, float scrollX, float scrollY )
+	{
+		canvas.save();
+		
+		translateAndScale(canvas, myScale, scrollX, scrollY);
+		
+		
+		
+		
+		//****************************************************************************
+		
+		
+		
+		//paintFill.setColor( myColor );
+		//paintFill.setStyle( Paint.Style.FILL );
+		
+		
+		
+		
+		
+		/********************Black Outline********************/
+		
+		canvas.translate( 0, -6.5f );
+		
+		paintFill.setColor( Color.BLACK );
+		paintFill.setStyle( Paint.Style.STROKE );
+		paintFill.setStrokeWidth( 5.0f );
+		
 		//canvas.scale( myScale, myScale );
 		
+		canvas.drawPath( outlinePath, paintFill );
+		
+		/********************Black Outline********************/
 		
 		
-		/**************************************/
+		
+		canvas.restore();
+	}
+	
+	
+	
+	
+	
+	public void drawSelf_Occupant( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant,
+			float myScale, float scrollX, float scrollY )
+	{
+		canvas.save();
+		
+		
+		
+		translateAndScale(canvas, myScale, scrollX, scrollY);
+		
+		
+		
+		
+		int wHalf;
+		int hHalf;
+		
+		
+		//****************************************************************************
+		
+		
+		
+		paintFill.setColor( myColor );
+		paintFill.setStyle( Paint.Style.FILL );
+		
+		
+		
+		
+		
+		/********************Draw Occupant********************/
+		
+		canvas.translate( 0, -30.0f );
+		
+		
 		if (this.myOccupantState != OccupantState.NONE)
 		{
 			wHalf = drawOccupant.getWidth() / 2;
@@ -411,7 +563,8 @@ public class Hexagon5
 			
 			canvas.drawBitmap(drawOccupant, -wHalf, (-hHalf - 30), paintFill);
 		}
-		/**************************************/
+		
+		/********************Draw Occupant********************/
 		
 		
 		

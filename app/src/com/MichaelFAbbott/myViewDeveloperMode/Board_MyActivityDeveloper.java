@@ -1,12 +1,17 @@
-package com.MichaelFAbbott.myViewAsSurface5;
+package com.MichaelFAbbott.myViewDeveloperMode;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.MichaelFAbbott.myCustomView.Board_View;
+import com.MichaelFAbbott.myViewAsSurface5.Board_Listener5;
+import com.MichaelFAbbott.myViewAsSurface5.Board_Model5;
+import com.MichaelFAbbott.myViewAsSurface5.Board_MyView5;
+import com.MichaelFAbbott.myViewAsSurface5.Hexagon5;
 import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.HeldState;
 import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.OccupantState;
+import com.MichaelFAbbott.myViewAsSurface5.View_References;
 import com.MichaelFAbbott.myfirstapp.AttemptController1;
 import com.MichaelFAbbott.myfirstapp.AttemptModel1;
 import com.MichaelFAbbott.myfirstapp.Login_View;
@@ -51,7 +56,7 @@ import android.widget.TextView;
 
 
 
-public class Board_MyActivity5 extends ViewWithActivityBar implements OnTouchListener, OnItemSelectedListener {
+public class Board_MyActivityDeveloper extends ViewWithActivityBar implements OnTouchListener, OnItemSelectedListener {
 	
 	
 	Board_MyView5 v;
@@ -97,6 +102,7 @@ public class Board_MyActivity5 extends ViewWithActivityBar implements OnTouchLis
 		
 		
 		model = new Board_Model5();
+		model.setDeveloperMode(true);
 		
 		//mvcController = new Board_Listener5(model);
 		
@@ -167,7 +173,7 @@ public class Board_MyActivity5 extends ViewWithActivityBar implements OnTouchLis
 		//let the thread sleep a bit since this motion loop here is doing a lot of stuff
 		//50 -> 20 times per second
 		try {
-			Thread.sleep(10);
+			Thread.sleep(50);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -339,7 +345,7 @@ public class Board_MyActivity5 extends ViewWithActivityBar implements OnTouchLis
 		}
 		
 		
-		//System.err.println(pos);
+		System.err.println(pos);
 		
 	}
 

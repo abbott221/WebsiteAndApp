@@ -109,7 +109,7 @@ public class Board_MyThread5 implements Runnable {
 			
 			//My phone was getting pretty warm :/
 			try {
-				Thread.sleep(50);
+				Thread.sleep(15);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

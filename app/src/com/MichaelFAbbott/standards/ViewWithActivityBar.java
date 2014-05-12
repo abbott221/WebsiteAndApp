@@ -6,6 +6,8 @@ import org.json.JSONObject;
 
 import com.MichaelFAbbott.myCustomView.Board_View;
 import com.MichaelFAbbott.myViewAsSurface5.Board_MyActivity5;
+import com.MichaelFAbbott.myViewDeveloperMode.Board_MyActivityDeveloper;
+import com.MichaelFAbbott.myViewPlayerMode.Board_MyActivityPlayer;
 import com.MichaelFAbbott.myfirstapp.AttemptController1;
 import com.MichaelFAbbott.myfirstapp.AttemptModel1;
 import com.MichaelFAbbott.myfirstapp.Login_View;
@@ -104,10 +106,16 @@ public class ViewWithActivityBar extends ActionBarActivity implements AttemptVie
 			i = new Intent(getBaseContext(), Board_View.class);
 			startActivity(i);
 			return true;
-		case R.id.action_experiment:
+		case R.id.action_experiment_developer:
 			//composeMessage();
 			//i = new Intent(getBaseContext(), Board_MyActivity2.class);
-			i = new Intent(getBaseContext(), Board_MyActivity5.class);
+			i = new Intent(getBaseContext(), Board_MyActivityDeveloper.class);
+			startActivity(i);
+			return true;
+		case R.id.action_experiment_player:
+			//composeMessage();
+			//i = new Intent(getBaseContext(), Board_MyActivity2.class);
+			i = new Intent(getBaseContext(), Board_MyActivityPlayer.class);
 			startActivity(i);
 			return true;
 		default:

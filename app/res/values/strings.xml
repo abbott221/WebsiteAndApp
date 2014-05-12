@@ -11,6 +11,9 @@
     <string name="action_posts">Posts</string>
     <string name="action_board">Tile Board</string>
     
-    <string name="action_experiment">Experiment</string>
+    <!-- <string name="action_experiment">Experiment</string> -->
+    
+    <string name="action_experiment_developer">Experiment Developer</string>
+    <string name="action_experiment_player">Experiment Player</string>
 
 </resources>

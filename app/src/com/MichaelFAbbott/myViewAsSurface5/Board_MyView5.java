@@ -4,6 +4,7 @@ package com.MichaelFAbbott.myViewAsSurface5;
 import com.MichaelFAbbott.myCustomView.Board_Controller;
 import com.MichaelFAbbott.myCustomView.Board_Model;
 import com.MichaelFAbbott.myCustomView.Hexagon;
+import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.BlockState;
 import com.MichaelFAbbott.myfirstapp.R;
 
 import android.annotation.TargetApi;
@@ -199,7 +200,7 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 		public boolean onTouchEvent(MotionEvent event) {
 			
 			try {
-				Thread.sleep(50);
+				Thread.sleep(10);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -228,20 +229,22 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			/**/
 			if (action == MotionEvent.ACTION_UP)
 			{
-				System.err.println("up occurred");
+				//System.err.println("up occurred");
+				
 				if (this.scrollInProgress == true)
 				{
 					
 					if (this.scaleInProgress == true)
 					{
-						System.err.println("scroll ended for scale event");
+						//System.err.println("scroll ended for scale event");
+						
 						//this.scrollInProgress = false;
 						setScrollInProgress(false);
 						setScaleInProgress(false);
 					}
 					else
 					{
-						System.err.println("scroll ended for scroll exclusive event");
+						//System.err.println("scroll ended for scroll exclusive event");
 						
 						listener.onScrollEnd();
 						
@@ -484,10 +487,100 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			Bitmap passBlock = topGrass;
 			Bitmap passOccupant = occBeige;
 			
+			
 			for (int i = 0; i < this.model.getRows(); i++) {
 				for (int j = 0; j < this.model.getColumns(); j++) {
 					Hexagon5 current = this.model.getHexagon(i, j);
 					
+					
+					/**/
+					switch ( current.getOccupantState() ) {
+					case NONE:
+						//passOccupant = occBeige; //a default, I guess (it won't be drawn)
+						break;
+					case OCC_BEIGE:
+						passOccupant = occBeige;
+						break;
+					case OCC_BLUE:
+						passOccupant = occBlue;
+						break;
+					case OCC_GREEN:
+						passOccupant = occGreen;
+						break;
+					case OCC_PINK:
+						passOccupant = occPink;
+						break;
+					case OCC_YELLOW:
+						passOccupant = occYellow;
+						break;
+					default:
+						//nothing
+					}
+					/**/
+					
+					
+					switch ( current.getBlockState() ) {
+					case NONE:
+						//passOccupant = occBeige; //a default, I guess (it won't be drawn)
+						break;
+					case DIRT:
+						passBlock = topDirt;
+						break;
+					case GRASS:
+						passBlock = topGrass;
+						break;
+					case SAND:
+						passBlock = topSand;
+						break;
+					default:
+						//nothing
+					}
+					
+					current.drawSelf(canvas, passBlock, passOccupant, passScale, passX, passY);
+					//current.drawSelf(canvas, tDemo);
+					
+				}
+			}
+			
+			for (int i = 0; i < this.model.getRows(); i++) {
+				for (int j = 0; j < this.model.getColumns(); j++) {
+					
+					Hexagon5 current = this.model.getHexagon(i, j);
+					
+					switch ( current.getBlockState() ) {
+					case NONE:
+						//passOccupant = occBeige; //a default, I guess (it won't be drawn)
+						break;
+					case DIRT:
+						passBlock = topDirt;
+						break;
+					case GRASS:
+						passBlock = topGrass;
+						break;
+					case SAND:
+						passBlock = topSand;
+						break;
+					default:
+						//nothing
+					}
+					
+					//don't draw outline if player and blockstate is none
+					if ( !this.model.getDeveloperMode() && current.getBlockState() == BlockState.NONE )
+					{
+						//don't draw
+					}
+					else
+					{
+						current.drawSelf_Outline(canvas, passBlock, passOccupant, passScale, passX, passY);
+					}
+					
+				}
+			}
+			
+			for (int i = 0; i < this.model.getRows(); i++) {
+				for (int j = 0; j < this.model.getColumns(); j++) {
+					
+					Hexagon5 current = this.model.getHexagon(i, j);
 					
 					switch ( current.getOccupantState() ) {
 					case NONE:
@@ -512,28 +605,10 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 						//nothing
 					}
 					
-					switch ( current.getBlockState() ) {
-					case NONE:
-						//passOccupant = occBeige; //a default, I guess (it won't be drawn)
-						break;
-					case DIRT:
-						passBlock = topDirt;
-						break;
-					case GRASS:
-						passBlock = topGrass;
-						break;
-					case SAND:
-						passBlock = topSand;
-						break;
-					default:
-						//nothing
-					}
-					
-					current.drawSelfOccupied(canvas, passBlock, passOccupant, passScale, passX, passY);
-					//current.drawSelf(canvas, tDemo);
-					
+					current.drawSelf_Occupant(canvas, passBlock, passOccupant, passScale, passX, passY);
 				}
 			}
+			
 			
 			//canvas.save();
 			//canvas.drawBitmap(lolBitmap, 100, 100, new Paint());

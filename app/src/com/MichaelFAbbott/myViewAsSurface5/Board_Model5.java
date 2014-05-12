@@ -52,6 +52,9 @@ public class Board_Model5 {
 	private float canvasHalfWidth;
 	
 	
+	private boolean developerMode;
+	
+	
 	
 	public Board_Model5() {
 		
@@ -59,21 +62,11 @@ public class Board_Model5 {
 		
 		
 		Board_Maps5.map2(this);
-		/*
-		this.rows = 7;
-		this.columns = 4;
+		//Board_Maps5.map1(this);
 		
 		
-		this.board = new Hexagon5[ this.rows ][ this.columns ];
 		
-		for (int i = 0; i < this.rows; i++)
-		{
-			for (int j = 0; j < this.columns; j++)
-			{
-				this.board[i][j] = new Hexagon5(i, j);
-			}
-		}
-		/**/
+		
 		
 		
 		
@@ -96,7 +89,7 @@ public class Board_Model5 {
 		this.unclearedDY = 0;
 		
 		
-		
+		this.developerMode = true;
 		//should I initialize it???
 		//this.canvasHalfHeight = 100.0f;
 		
@@ -127,15 +120,6 @@ public class Board_Model5 {
 		this.columns = c;
 		
 		
-		/*
-		for (int i = 0; i < r; i++)
-		{
-			for (int j = 0; j < c; j++)
-			{
-				this.board[i][j] = new Hexagon5(i, j);
-			}
-		}
-		/**/
 	}
 	
 	
@@ -368,6 +352,18 @@ public class Board_Model5 {
 		this.canvasHalfWidth = newValue;
 	}
 	
+    
+    
+    public boolean getDeveloperMode()
+	{
+		return this.developerMode;
+	}
+    public void setDeveloperMode(boolean newValue)
+	{
+		this.developerMode = newValue;
+	}
+    
+    
 }
 
 
