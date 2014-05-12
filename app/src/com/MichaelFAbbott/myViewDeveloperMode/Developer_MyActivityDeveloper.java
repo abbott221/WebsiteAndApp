@@ -1,4 +1,4 @@
-package com.MichaelFAbbott.myViewPlayerMode;
+package com.MichaelFAbbott.myViewDeveloperMode;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,7 +56,7 @@ import android.widget.TextView;
 
 
 
-public class Board_MyActivityPlayer extends ViewWithActivityBar implements OnTouchListener, OnItemSelectedListener {
+public class Developer_MyActivityDeveloper extends ViewWithActivityBar implements OnTouchListener, OnItemSelectedListener {
 	
 	
 	Board_MyView5 v;
@@ -102,7 +102,7 @@ public class Board_MyActivityPlayer extends ViewWithActivityBar implements OnTou
 		
 		
 		model = new Board_Model5();
-		model.setDeveloperMode(false);
+		model.setDeveloperMode(true);
 		
 		//mvcController = new Board_Listener5(model);
 		
@@ -301,6 +301,21 @@ public class Board_MyActivityPlayer extends ViewWithActivityBar implements OnTou
 				case 5: //yellow
 					theSelected.setOccupantState(OccupantState.OCC_YELLOW);
 					break;
+				case 6: //portal blue
+					theSelected.setOccupantState(OccupantState.P_BLUE);
+					break;
+				case 7: //portal green
+					theSelected.setOccupantState(OccupantState.P_GREEN);
+					break;
+				case 8: //portal red
+					theSelected.setOccupantState(OccupantState.P_RED);
+					break;
+				case 9: //portal white
+					theSelected.setOccupantState(OccupantState.P_WHITE);
+					break;
+				case 10: //portal yellow
+					theSelected.setOccupantState(OccupantState.P_YELLOW);
+					break;
 				default:
 					//nothing (yet)
 				}
@@ -345,7 +360,7 @@ public class Board_MyActivityPlayer extends ViewWithActivityBar implements OnTou
 		}
 		
 		
-		System.err.println(pos);
+		//System.err.println(pos);
 		
 	}
 

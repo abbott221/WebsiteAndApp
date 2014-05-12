@@ -1,4 +1,4 @@
-package com.MichaelFAbbott.myViewDeveloperMode;
+package com.MichaelFAbbott.myViewPlayerMode;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,7 +56,7 @@ import android.widget.TextView;
 
 
 
-public class Board_MyActivityDeveloper extends ViewWithActivityBar implements OnTouchListener, OnItemSelectedListener {
+public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTouchListener, OnItemSelectedListener {
 	
 	
 	Board_MyView5 v;
@@ -102,7 +102,7 @@ public class Board_MyActivityDeveloper extends ViewWithActivityBar implements On
 		
 		
 		model = new Board_Model5();
-		model.setDeveloperMode(true);
+		model.setDeveloperMode(false);
 		
 		//mvcController = new Board_Listener5(model);
 		
@@ -210,33 +210,6 @@ public class Board_MyActivityDeveloper extends ViewWithActivityBar implements On
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long id) {
-		// TODO Auto-generated method stub
-		//parent.getItemAtPosition(pos);
-		//MenuItem lolItem = parent.getItemAtPosition(pos);
-		//parent.getItemAtPosition(pos);
-		//item.getItemId()
-		
-		//parent.getFocusedChild().getId();
-		//parent.getFocusedChild().getNextFocusDownId()
-		//view.getId();
-		
-		//parent.getItemAtPosition(pos).
-		
-		//parent.getItemAtPosition(pos);
-		
-		//==================================
-		
-		//Object thingAtPos = parent.getItemAtPosition(pos);
-		//int hash = thingAtPos.hashCode();
-		
-		//parent.getAdapter();
-		
-		//parent.getId(); //THIS
-		//parent.getSelectedItemId();
-		//parent.getSelectedItemPosition();
-		
-		//parent.getChildAt(0).findViewById(id); //id is not a long; it's an int
-		//this is also an int: R.id.look_spinner2
 		
 		
 		Hexagon5 theSelected;
@@ -301,6 +274,21 @@ public class Board_MyActivityDeveloper extends ViewWithActivityBar implements On
 				case 5: //yellow
 					theSelected.setOccupantState(OccupantState.OCC_YELLOW);
 					break;
+				case 6: //portal blue
+					theSelected.setOccupantState(OccupantState.P_BLUE);
+					break;
+				case 7: //portal green
+					theSelected.setOccupantState(OccupantState.P_GREEN);
+					break;
+				case 8: //portal red
+					theSelected.setOccupantState(OccupantState.P_RED);
+					break;
+				case 9: //portal white
+					theSelected.setOccupantState(OccupantState.P_WHITE);
+					break;
+				case 10: //portal yellow
+					theSelected.setOccupantState(OccupantState.P_YELLOW);
+					break;
 				default:
 					//nothing (yet)
 				}
@@ -313,30 +301,6 @@ public class Board_MyActivityDeveloper extends ViewWithActivityBar implements On
 			
 			
 			
-			/*
-			switch ( pos ) {
-			case 0: //blue
-				theSelected.setHeldState(HeldState.HOLD_BLUE);
-				break;
-			case 1: //purple
-				theSelected.setHeldState(HeldState.HOLD_PURPLE);
-				break;
-			case 2: //green
-				theSelected.setHeldState(HeldState.HOLD_GREEN);
-				break;
-			case 3: //yellow
-				theSelected.setHeldState(HeldState.HOLD_YELLOW);
-				break;
-			case 4: //red
-				theSelected.setHeldState(HeldState.HOLD_RED);
-				break;
-			default:
-				//return super.onOptionsItemSelected(item);
-			}
-			/**/
-			
-			
-			
 			
 			
 		} catch (Exception e) {
@@ -345,7 +309,7 @@ public class Board_MyActivityDeveloper extends ViewWithActivityBar implements On
 		}
 		
 		
-		System.err.println(pos);
+		//System.err.println(pos);
 		
 	}
 

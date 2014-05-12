@@ -37,7 +37,8 @@ public class Hexagon5
 		NONE, HOLD_BLUE, HOLD_PURPLE, HOLD_GREEN, HOLD_ORANGE, HOLD_RED
 	}
 	public static enum OccupantState {
-		NONE, OCC_BEIGE, OCC_BLUE, OCC_GREEN, OCC_PINK, OCC_YELLOW
+		NONE, OCC_BEIGE, OCC_BLUE, OCC_GREEN, OCC_PINK, OCC_YELLOW,
+		P_BLUE, P_GREEN, P_RED, P_WHITE, P_YELLOW
 	}
 	private SelectState currentState; //selectState
 	private HeldState myHeldState;
@@ -530,6 +531,23 @@ public class Hexagon5
 		canvas.save();
 		
 		
+
+		boolean isAPortal = false;
+		
+		if (this.myOccupantState == OccupantState.P_BLUE) {
+			isAPortal = true;
+		} else if (this.myOccupantState == OccupantState.P_GREEN) {
+			isAPortal = true;
+		} else if (this.myOccupantState == OccupantState.P_RED) {
+			isAPortal = true;
+		} else if (this.myOccupantState == OccupantState.P_WHITE) {
+			isAPortal = true;
+		} else if (this.myOccupantState == OccupantState.P_YELLOW) {
+			isAPortal = true;
+		}
+		
+		
+		
 		
 		translateAndScale(canvas, myScale, scrollX, scrollY);
 		
@@ -549,12 +567,14 @@ public class Hexagon5
 		
 		
 		
-		
-		
 		/********************Draw Occupant********************/
 		
 		canvas.translate( 0, -30.0f );
 		
+		
+		if (isAPortal) {
+			canvas.scale(2, 2);
+		}
 		
 		if (this.myOccupantState != OccupantState.NONE)
 		{

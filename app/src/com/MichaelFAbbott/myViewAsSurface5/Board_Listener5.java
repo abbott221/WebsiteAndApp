@@ -340,6 +340,21 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 		case OCC_YELLOW:
 			this.mvcView.updateOccSpinner(5);
 			break;
+		case P_BLUE:
+			this.mvcView.updateOccSpinner(6);
+			break;
+		case P_GREEN:
+			this.mvcView.updateOccSpinner(7);
+			break;
+		case P_RED:
+			this.mvcView.updateOccSpinner(8);
+			break;
+		case P_WHITE:
+			this.mvcView.updateOccSpinner(9);
+			break;
+		case P_YELLOW:
+			this.mvcView.updateOccSpinner(10);
+			break;
 		default:
 			//nothing
 		}

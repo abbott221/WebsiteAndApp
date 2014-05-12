@@ -34,10 +34,10 @@
         <activity android:name="com.MichaelFAbbott.myViewAsSurface5.Board_MyActivity5" ></activity>
         
         <activity
-            android:name="com.MichaelFAbbott.myViewDeveloperMode.Board_MyActivityDeveloper" >
+            android:name="com.MichaelFAbbott.myViewDeveloperMode.Developer_MyActivityDeveloper" >
         </activity>
         <activity
-            android:name="com.MichaelFAbbott.myViewPlayerMode.Board_MyActivityPlayer" >
+            android:name="com.MichaelFAbbott.myViewPlayerMode.Player_MyActivityPlayer" >
         </activity>
         
         

@@ -77,6 +77,13 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 		private Bitmap sepiaSky;
 		
 		
+		private Bitmap portalBlue;
+		private Bitmap portalGreen;
+		private Bitmap portalRed;
+		private Bitmap portalWhite;
+		private Bitmap portalYellow;
+		
+		
 		
 		private Board_Model5 model;
 		
@@ -145,6 +152,13 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			
 			
 			sepiaSky = BitmapFactory.decodeResource(res, R.drawable.sepia_sky);
+			
+			
+			portalBlue = BitmapFactory.decodeResource(res, R.drawable.portal_blue);
+			portalGreen = BitmapFactory.decodeResource(res, R.drawable.portal_green);
+			portalRed = BitmapFactory.decodeResource(res, R.drawable.portal_red);
+			portalWhite = BitmapFactory.decodeResource(res, R.drawable.portal_white);
+			portalYellow = BitmapFactory.decodeResource(res, R.drawable.portal_yellow);
 			
 			
 			model.registerMyView5(this);
@@ -513,6 +527,21 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 					case OCC_YELLOW:
 						passOccupant = occYellow;
 						break;
+					case P_BLUE:
+						passOccupant = portalBlue;
+						break;
+					case P_GREEN:
+						passOccupant = portalGreen;
+						break;
+					case P_RED:
+						passOccupant = portalRed;
+						break;
+					case P_WHITE:
+						passOccupant = portalWhite;
+						break;
+					case P_YELLOW:
+						passOccupant = portalYellow;
+						break;
 					default:
 						//nothing
 					}
@@ -600,6 +629,21 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 						break;
 					case OCC_YELLOW:
 						passOccupant = occYellow;
+						break;
+					case P_BLUE:
+						passOccupant = portalBlue;
+						break;
+					case P_GREEN:
+						passOccupant = portalGreen;
+						break;
+					case P_RED:
+						passOccupant = portalRed;
+						break;
+					case P_WHITE:
+						passOccupant = portalWhite;
+						break;
+					case P_YELLOW:
+						passOccupant = portalYellow;
 						break;
 					default:
 						//nothing

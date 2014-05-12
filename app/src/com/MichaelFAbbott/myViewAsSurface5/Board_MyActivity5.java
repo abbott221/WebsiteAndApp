@@ -295,6 +295,21 @@ public class Board_MyActivity5 extends ViewWithActivityBar implements OnTouchLis
 				case 5: //yellow
 					theSelected.setOccupantState(OccupantState.OCC_YELLOW);
 					break;
+				case 6: //portal blue
+					theSelected.setOccupantState(OccupantState.P_BLUE);
+					break;
+				case 7: //portal green
+					theSelected.setOccupantState(OccupantState.P_GREEN);
+					break;
+				case 8: //portal red
+					theSelected.setOccupantState(OccupantState.P_RED);
+					break;
+				case 9: //portal white
+					theSelected.setOccupantState(OccupantState.P_WHITE);
+					break;
+				case 10: //portal yellow
+					theSelected.setOccupantState(OccupantState.P_YELLOW);
+					break;
 				default:
 					//nothing (yet)
 				}
