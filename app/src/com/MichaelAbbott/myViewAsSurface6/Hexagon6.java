@@ -509,15 +509,6 @@ public class Hexagon6
 		
 		
 		
-		//****************************************************************************
-		
-		
-		
-		//paintFill.setColor( myColor );
-		//paintFill.setStyle( Paint.Style.FILL );
-		
-		
-		
 		
 		
 		/********************Black Outline********************/
@@ -549,31 +540,12 @@ public class Hexagon6
 		canvas.save();
 		
 		
-
-		boolean isAPortal = false;
-		
-		if (this.myOccupantState == OccupantState.P_BLUE) {
-			isAPortal = true;
-		} else if (this.myOccupantState == OccupantState.P_GREEN) {
-			isAPortal = true;
-		} else if (this.myOccupantState == OccupantState.P_RED) {
-			isAPortal = true;
-		} else if (this.myOccupantState == OccupantState.P_WHITE) {
-			isAPortal = true;
-		} else if (this.myOccupantState == OccupantState.P_YELLOW) {
-			isAPortal = true;
-		}
-		
 		
 		
 		
 		translateAndScale(canvas, myScale, scrollX, scrollY);
 		
 		
-		
-		
-		int wHalf;
-		int hHalf;
 		
 		
 		//****************************************************************************
@@ -586,36 +558,7 @@ public class Hexagon6
 		
 		
 		/********************Draw Occupant********************/
-		/*
-		canvas.translate( 0, -30.0f );
 		
-		
-		if (isAPortal) {
-			canvas.scale(2, 2);
-		}
-		/**/
-		
-		
-		//IMPLEMENTATION 1
-		if (this.myOccupantState != OccupantState.NONE)
-		{
-			
-			canvas.translate( 0, -30.0f );
-			
-			
-			if (isAPortal) {
-				canvas.scale(2, 2);
-			}
-			
-			
-			
-			wHalf = drawOccupant.getWidth() / 2;
-			hHalf = drawOccupant.getHeight() / 2;
-			
-			canvas.drawBitmap(drawOccupant, -wHalf, (-hHalf - 30), paintFill);
-			
-			
-		}
 		
 		//IMPLEMENTATION 2
 		Actor temp = this.grid.getOccupant(row, column);

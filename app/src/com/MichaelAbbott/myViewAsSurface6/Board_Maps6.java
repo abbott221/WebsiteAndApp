@@ -97,7 +97,7 @@ public class Board_Maps6 {
 			}
 		}
 		
-		board[1][5].setOccupantState(OccupantState.P_WHITE);
+		//board[1][5].setOccupantState(OccupantState.P_WHITE);
 		
 		model.setBoard(board, myRows, myColumns);
 		

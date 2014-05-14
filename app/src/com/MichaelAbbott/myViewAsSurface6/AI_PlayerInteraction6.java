@@ -38,55 +38,14 @@ public class AI_PlayerInteraction6 {
 		
 		
 		Hexagon6.HeldState hold = target.getHeldState();
-    	Hexagon6.OccupantState occupy = target.getOccupantState();
+    	//Hexagon6.OccupantState occupy = target.getOccupantState();
 		
-    	
-    	//target.setHeldState(HeldState.HOLD_BLUE);
-    	
-    	//IMPLEMENTATION 1
-    	
-    	/*
-    	if (hold == HeldState.NONE && occupy == OccupantState.NONE) {
-    		selectedEmptyTile(target, model);
-    	}
-    	
-    	
-    	if (hold == HeldState.HOLD_PURPLE) {
-    		selectedPurpleTile(target, model);
-    	}
-    	if (hold == HeldState.HOLD_ORANGE) {
-    		selectedYellowTile(target, model);
-    	}
-    	if ( AI_Hexagon6.occupantIsPortal(target) ) {
-    		selectedPortalTile(target, model);
-    	}
-    	if ( AI_Hexagon6.occupantIsCreature(target) ) {
-    		selectedCreatureTile(target, model);
-    	}
-    	/**/
-    	
-    	//END IMPLEMENTATION 1
-    	
-    	//clearTiles(target, model);
     	
     	
 
 		//IMPLEMENTATION 2
 		
 		Actor occupant = target.getGrid().getOccupant( target.getRow(), target.getColumn() );
-		
-		//if (hold == HeldState.NONE && occupy == OccupantState.NONE) {
-		
-		/*
-		if (occupant == null)
-		{
-			System.err.println("occupant is null");
-		}
-		else if (occupant != null)
-		{
-			System.err.println("occupant is not null");
-		}
-		/**/
 		
 		//IT MAY REGISTER AS "ACTOR" WHEN SUPPOSE TO BE NULL
 		if (occupant == null)
@@ -110,14 +69,6 @@ public class AI_PlayerInteraction6 {
     	if (hold == HeldState.HOLD_ORANGE) {
     		selectedYellowTile(target, model);
     	}
-    	/*
-    	if ( AI_Hexagon6.occupantIsPortal(target) ) {
-    		selectedPortalTile(target, model);
-    	}
-    	if ( AI_Hexagon6.occupantIsCreature(target) ) {
-    		selectedCreatureTile(target, model);
-    	}
-    	/**/
     	
 		
 		//IMPLEMENTATION 2 END
@@ -143,28 +94,31 @@ public class AI_PlayerInteraction6 {
 	
 	public static void selectedPurpleTile(Hexagon6 target, Board_Model6 model) {
 		
-		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getBlockNeighbors(target, model);
+		//ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
 		
 		
-		//IMPLEMENTATION 1
-		
-		//target.setOccupantState(OccupantState.OCC_BEIGE);
-		
-		//END IMPLEMENTATION 1
-		
-		//IMPLEMENTATION 2
-		
-		//Actor newOccupant = new Actor_BeigeAlien( model.getContext() );
-		//Actor newOccupant = null;
 		Actor newOccupant = new Actor_BeigeAlien( model, target );
 		
 		model.setOccupant(target.getRow(), target.getColumn(), newOccupant);
-		//END IMPLEMENTATION 2
 		
+		
+		
+		
+		/*
+		 * 
+		 * POSITION AND REFERENCE CHANGES END
+		 * 
+		 */
+		
+		
+		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
+		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(target, model);
 		
 		clearTiles(model);
 		
 		setHolds(possibleMoves, HeldState.HOLD_ORANGE);
+		setHolds(possibleEnemies, HeldState.HOLD_RED);
+		
 		setHold(target, HeldState.HOLD_BLUE);
 	}
 	
@@ -175,16 +129,6 @@ public class AI_PlayerInteraction6 {
 	
 	public static void selectedYellowTile(Hexagon6 target, Board_Model6 model) {
 		
-		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getBlockNeighbors(target, model);
-		
-		
-		
-		
-		
-		//IMPLEMENTATION 2
-		
-		//Actor occupant = target.getGrid().getOccupant( target.getRow(), target.getColumn() );
-		//Actor occupant = new Actor_BeigeAlien( model.getContext() );
 		Actor occupant = null;
 		
 		
@@ -193,7 +137,6 @@ public class AI_PlayerInteraction6 {
 		try {
 			previous = model.getPreviousSelected();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -203,16 +146,24 @@ public class AI_PlayerInteraction6 {
 			occupant = model.getOccupant( previous.getRow(), previous.getColumn() );
 		}
 		
-		//target.setOccupantState(OccupantState.OCC_BEIGE);
-		
 		occupant.setLocation(target);
 		
-		//END IMPLEMENTATION 2
 		
+		/*
+		 * 
+		 * POSITION AND REFERENCE CHANGES END
+		 * 
+		 */
+		
+		
+		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
+		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(target, model);
 		
 		clearTiles(model);
 		
 		setHolds(possibleMoves, HeldState.HOLD_ORANGE);
+		setHolds(possibleEnemies, HeldState.HOLD_RED);
+		
 		setHold(target, HeldState.HOLD_BLUE);
 	}
 	
@@ -223,7 +174,7 @@ public class AI_PlayerInteraction6 {
 	public static void selectedPortalTile(Hexagon6 target, Board_Model6 model) {
 		
 		//get neighbors to be set
-		ArrayList<Hexagon6> blocksByPortal = AI_Hexagon6.getBlockNeighbors(target, model);
+		ArrayList<Hexagon6> blocksByPortal = AI_Hexagon6.getOpenNeighbors(target, model);
 		
 		
 		
@@ -238,16 +189,29 @@ public class AI_PlayerInteraction6 {
 	
 	public static void selectedCreatureTile(Hexagon6 target, Board_Model6 model) {
 		
-		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getBlockNeighbors(target, model);
+		//ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
 		
 		//this is already set
 		//target.setOccupantState(OccupantState.OCC_BEIGE);
 		
 		
 		
+		
+		/*
+		 * 
+		 * POSITION AND REFERENCE CHANGES END
+		 * 
+		 */
+		
+		
+		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
+		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(target, model);
+		
 		clearTiles(model);
 		
 		setHolds(possibleMoves, HeldState.HOLD_ORANGE);
+		setHolds(possibleEnemies, HeldState.HOLD_RED);
+		
 		setHold(target, HeldState.HOLD_BLUE);
 	}
 	
