@@ -20,16 +20,22 @@
             android:orientation="vertical" >
 
             <ProgressBar
-                android:id="@+id/progressBar1"
+                android:id="@+id/look_progressBar1"
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/darker_gray"
+                android:layout_gravity="center"
+                android:layout_margin="6dp" />
 
             <ProgressBar
-                android:id="@+id/progressBar2"
+                android:id="@+id/look_progressBar2"
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/darker_gray"
+                android:layout_gravity="center"
+                android:layout_margin="6dp" />
 
         </LinearLayout>
 

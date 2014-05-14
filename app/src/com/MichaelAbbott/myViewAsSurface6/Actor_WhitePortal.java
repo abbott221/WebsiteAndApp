@@ -46,13 +46,6 @@ public class Actor_WhitePortal extends Actor {
 	
     public Actor_WhitePortal(Board_Model6 grid, Hexagon6 loc) {
         
-    	
-    	//this.setColor(Color.RED);
-        
-    	//context = this.getGrid().g
-    	
-    	
-        
         Resources res = grid.getContext().getResources();
         Bitmap occBeige = BitmapFactory.decodeResource(res, R.drawable.portal_white);
         //occBeige = BitmapFactory.decodeResource(res, R.drawable.alien_beige);
@@ -76,6 +69,17 @@ public class Actor_WhitePortal extends Actor {
         
         this.setGrid(grid);
         this.setLocation(loc);
+        
+        
+        
+        this.setMaxHealth(8);
+        this.setCurrentHealth(8);
+        
+        this.setMaxEnergy(8);
+        this.setCurrentEnergy(8);
+        
+        this.setRange(0);
+        this.setPower(0);
     }
     
     

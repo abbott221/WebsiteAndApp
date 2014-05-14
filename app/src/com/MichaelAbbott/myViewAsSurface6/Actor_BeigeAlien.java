@@ -36,21 +36,8 @@ public class Actor_BeigeAlien extends Actor {
     
 	
 	
-	//private Bitmap occBeige;
-	
-	//private int drawScale;
-    //private int drawX;
-    //private int drawY;
-	
 	
     public Actor_BeigeAlien(Board_Model6 grid, Hexagon6 loc) {
-        
-    	
-    	//this.setColor(Color.RED);
-        
-    	//context = this.getGrid().g
-    	
-    	
         
         Resources res = grid.getContext().getResources();
         Bitmap occBeige = BitmapFactory.decodeResource(res, R.drawable.alien_beige);
@@ -75,6 +62,17 @@ public class Actor_BeigeAlien extends Actor {
         
         this.setGrid(grid);
         this.setLocation(loc);
+        
+        
+        
+        this.setMaxHealth(8);
+        this.setCurrentHealth(8);
+        
+        this.setMaxEnergy(8);
+        this.setCurrentEnergy(8);
+        
+        this.setRange(1);
+        this.setPower(2);
     }
     
     

@@ -451,6 +451,8 @@ public class Board_Listener6 implements GestureDetector.OnGestureListener /*, Sc
     	
     	this.model.setSelected(null);
     	
+    	this.mvcView.updateBothVisibility(0);
+    	
     	//****************************************************************
     	
     	//wait was that all this will ever need?

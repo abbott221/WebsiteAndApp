@@ -12,6 +12,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
@@ -26,6 +27,8 @@ public class View_References6 {
 	private ArrayAdapter<CharSequence> occAdapter;
 	
 	
+	private ProgressBar topBar;
+	private ProgressBar bottomBar;
 	
 	
 	private Board_Listener6 controller;
@@ -38,6 +41,9 @@ public class View_References6 {
 		
 		this.occSpinner = null;
 		this.occAdapter = null;
+		
+		this.topBar = null;
+		this.bottomBar = null;
 		
 		this.controller = null;
 	}
@@ -63,7 +69,6 @@ public class View_References6 {
 	{
 		this.lolSpinner.setSelection(newPosition);
 	}
-    
     
     
     public ArrayAdapter<CharSequence> getAdapter()
@@ -103,7 +108,68 @@ public class View_References6 {
     
     
     
+    public ProgressBar getTopBar()
+	{
+		return this.topBar;
+	}
+    public void setTopBar(ProgressBar newBar)
+	{
+		this.topBar = newBar;
+	}
+    public void updateTopBar(int num, int denom)
+	{
+		int progress = this.topBar.getMax() * num / denom;
+    	this.topBar.setProgress(progress);
+	}
+    public void updateTopVisibility(int newValue)
+	{
+		if (newValue == 0) {
+			this.topBar.setVisibility(View.GONE);
+		} else if (newValue == 1) {
+			this.topBar.setVisibility(View.INVISIBLE);
+		} else if (newValue == 2) {
+			this.topBar.setVisibility(View.VISIBLE);
+		}
+	}
     
+    
+    public ProgressBar getBottomBar()
+	{
+		return this.bottomBar;
+	}
+    public void setBottomBar(ProgressBar newBar)
+	{
+		this.bottomBar = newBar;
+	}
+    public void updateBottomBar(int num, int denom)
+	{
+		int progress = this.bottomBar.getMax() * num / denom;
+    	this.bottomBar.setProgress(progress);
+	}
+    public void updateBottomVisibility(int newValue)
+	{
+		if (newValue == 0) {
+			this.bottomBar.setVisibility(View.GONE);
+		} else if (newValue == 1) {
+			this.bottomBar.setVisibility(View.INVISIBLE);
+		} else if (newValue == 2) {
+			this.bottomBar.setVisibility(View.VISIBLE);
+		}
+	}
+    
+    public void updateBothVisibility(int newValue)
+	{
+		if (newValue == 0) {
+			this.topBar.setVisibility(View.GONE);
+			this.bottomBar.setVisibility(View.GONE);
+		} else if (newValue == 1) {
+			this.topBar.setVisibility(View.INVISIBLE);
+			this.bottomBar.setVisibility(View.INVISIBLE);
+		} else if (newValue == 2) {
+			this.topBar.setVisibility(View.VISIBLE);
+			this.bottomBar.setVisibility(View.VISIBLE);
+		}
+	}
     
     
 	

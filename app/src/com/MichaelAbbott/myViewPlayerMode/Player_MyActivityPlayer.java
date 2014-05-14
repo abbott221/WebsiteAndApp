@@ -55,6 +55,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -79,7 +80,7 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		super.onCreate(savedInstanceState);
 		
 		
-		setContentView(R.layout.activity_experiment);
+		setContentView(R.layout.activity_exp_player);
 		
 		
 		/**/
@@ -132,6 +133,20 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		//Board_MyView4 lolView = new Board_MyView4(this);
 		
 		v = new Board_MyView6(this, mvcController); //the view is referenced outside of onCreate()
+		
+		
+		
+		ProgressBar lolTopBar = (ProgressBar) findViewById(R.id.look_progressBar1);
+		ProgressBar lolBottomBar = (ProgressBar) findViewById(R.id.look_progressBar2);
+		
+		mvcView.setTopBar(lolTopBar);
+		mvcView.setBottomBar(lolBottomBar);
+		
+		
+		//mvcView.updateTopVisibility(0);
+		//mvcView.updateBottomVisibility(0);
+		mvcView.updateBothVisibility(0);
+		
 		
 		//lolContainer.addView(lolView);
 		lolContainer.addView(v);

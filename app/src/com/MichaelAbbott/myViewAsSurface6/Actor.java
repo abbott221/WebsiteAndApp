@@ -31,6 +31,16 @@ public class Actor {
     
     private ActorType myActorType;
     
+    
+    private int maxHealth;
+    private int currentHealth;
+    
+    private int maxEnergy;
+    private int currentEnergy;
+    
+    private int range;
+    private int power;
+    
 
     public Actor() {
         this.grid = null;
@@ -97,6 +107,52 @@ public class Actor {
     public void setActorType(ActorType newValue) {
         this.myActorType = newValue;
     }
+    
+    
+    
+    
+    public int getMaxHealth() {
+        return this.maxHealth;
+    }
+    public void setMaxHealth(int newValue) {
+        this.maxHealth = newValue;
+    }
+    
+    public int getCurrentHealth() {
+        return this.currentHealth;
+    }
+    public void setCurrentHealth(int newValue) {
+        this.currentHealth = newValue;
+    }
+    
+    public int getMaxEnergy() {
+        return this.maxEnergy;
+    }
+    public void setMaxEnergy(int newValue) {
+        this.maxEnergy = newValue;
+    }
+    
+    public int getCurrentEnergy() {
+        return this.currentEnergy;
+    }
+    public void setCurrentEnergy(int newValue) {
+        this.currentEnergy = newValue;
+    }
+    
+    public int getRange() {
+        return this.range;
+    }
+    public void setRange(int newValue) {
+        this.range = newValue;
+    }
+    public int getPower() {
+        return this.power;
+    }
+    public void setPower(int newValue) {
+        this.power = newValue;
+    }
+    
+    
     
     
     

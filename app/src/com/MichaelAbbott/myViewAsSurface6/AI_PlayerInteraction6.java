@@ -69,6 +69,9 @@ public class AI_PlayerInteraction6 {
     	if (hold == HeldState.HOLD_ORANGE) {
     		selectedYellowTile(target, model);
     	}
+    	if (hold == HeldState.HOLD_RED) {
+    		selectedRedTile(target, model);
+    	}
     	
 		
 		//IMPLEMENTATION 2 END
@@ -86,6 +89,8 @@ public class AI_PlayerInteraction6 {
 		clearTiles(model);
 		
 		setHold(target, HeldState.HOLD_BLUE);
+		
+		model.getView_References().updateBothVisibility(0);
 	}
 	/**/
 	
@@ -120,6 +125,11 @@ public class AI_PlayerInteraction6 {
 		setHolds(possibleEnemies, HeldState.HOLD_RED);
 		
 		setHold(target, HeldState.HOLD_BLUE);
+		
+		View_References6 progBars = model.getView_References();
+		progBars.updateBothVisibility(2);
+		progBars.updateTopBar( 1, 1 );
+		progBars.updateBottomBar( 1, 1 );
 	}
 	
 	
@@ -165,6 +175,93 @@ public class AI_PlayerInteraction6 {
 		setHolds(possibleEnemies, HeldState.HOLD_RED);
 		
 		setHold(target, HeldState.HOLD_BLUE);
+		
+		
+		View_References6 progBars = model.getView_References();
+		progBars.updateBothVisibility(2);
+		//might want to surround with try-catch in case null pointer error
+		progBars.updateTopBar( occupant.getCurrentHealth(), occupant.getMaxHealth() );
+		progBars.updateBottomBar( occupant.getCurrentEnergy(), occupant.getMaxEnergy() );
+	}
+	
+	
+	
+	
+	
+	
+	//base it off of YellowTile for energy decreases of previous
+	public static void selectedRedTile(Hexagon6 target, Board_Model6 model) {
+		
+		Actor attacker = null;
+		
+		
+		Hexagon6 previous = null;
+		
+		try {
+			previous = model.getPreviousSelected();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if (previous != null) {
+			//previous.setOccupantState(OccupantState.NONE);
+			
+			attacker = model.getOccupant( previous.getRow(), previous.getColumn() );
+		}
+		//Attacker has been initialized by here
+		//Now initialize defender
+		
+		Actor defender = model.getOccupant( target.getRow(), target.getColumn() );
+		
+		
+		//Now, change current values
+		
+		int damage = attacker.getPower();
+		
+		int health = defender.getCurrentHealth();
+		int energy = attacker.getCurrentEnergy();
+		
+		health -= damage;
+		energy -= damage;
+		
+		if (health <= 0)
+		{
+			//defender has been defeated
+			model.setOccupant(target.getRow(), target.getColumn(), null);
+		}
+		else
+		{
+			//defender lives
+			defender.setCurrentHealth(health);
+		}
+		
+		attacker.setCurrentEnergy(energy);
+		
+		
+		
+		/*
+		 * 
+		 * POSITION AND REFERENCE CHANGES END
+		 * 
+		 */
+		
+		
+		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
+		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(target, model);
+		
+		clearTiles(model);
+		
+		setHolds(possibleMoves, HeldState.HOLD_ORANGE);
+		setHolds(possibleEnemies, HeldState.HOLD_RED);
+		
+		setHold(target, HeldState.HOLD_BLUE);
+		
+		
+		View_References6 progBars = model.getView_References();
+		progBars.updateBothVisibility(2);
+		//might want to surround with try-catch in case null pointer error
+		progBars.updateTopBar( attacker.getCurrentHealth(), attacker.getMaxHealth() );
+		progBars.updateBottomBar( attacker.getCurrentEnergy(), attacker.getMaxEnergy() );
 	}
 	
 	
@@ -172,6 +269,9 @@ public class AI_PlayerInteraction6 {
 	
 	
 	public static void selectedPortalTile(Hexagon6 target, Board_Model6 model) {
+		
+		Actor occupant = model.getOccupant( target.getRow(), target.getColumn() );
+		
 		
 		//get neighbors to be set
 		ArrayList<Hexagon6> blocksByPortal = AI_Hexagon6.getOpenNeighbors(target, model);
@@ -182,12 +282,20 @@ public class AI_PlayerInteraction6 {
 		
 		setHolds(blocksByPortal, HeldState.HOLD_PURPLE);
 		setHold(target, HeldState.HOLD_BLUE);
+		
+		
+		View_References6 progBars = model.getView_References();
+		progBars.updateBothVisibility(2);
+		progBars.updateTopBar( occupant.getCurrentHealth(), occupant.getMaxHealth() );
+		progBars.updateBottomBar( occupant.getCurrentEnergy(), occupant.getMaxEnergy() );
 	}
 	
 	
 	
 	
 	public static void selectedCreatureTile(Hexagon6 target, Board_Model6 model) {
+		
+		Actor occupant = model.getOccupant( target.getRow(), target.getColumn() );
 		
 		//ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
 		
@@ -213,6 +321,12 @@ public class AI_PlayerInteraction6 {
 		setHolds(possibleEnemies, HeldState.HOLD_RED);
 		
 		setHold(target, HeldState.HOLD_BLUE);
+		
+		
+		View_References6 progBars = model.getView_References();
+		progBars.updateBothVisibility(2);
+		progBars.updateTopBar( occupant.getCurrentHealth(), occupant.getMaxHealth() );
+		progBars.updateBottomBar( occupant.getCurrentEnergy(), occupant.getMaxEnergy() );
 	}
 	
 	

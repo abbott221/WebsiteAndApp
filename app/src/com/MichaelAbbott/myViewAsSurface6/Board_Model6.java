@@ -34,6 +34,8 @@ public class Board_Model6 {
 	
 	private Board_MyView6 myView5;
 	
+	private View_References6 myViewReferences;
+	
 	
 	
 	private boolean scaleInProgress;
@@ -115,18 +117,39 @@ public class Board_Model6 {
 	
 	public void registerObserver(Board_Listener6 newController)
 	{
-		controller = newController;
+		this.controller = newController;
+		
+		this.registerView_References(newController.getView());
 	}
+	public Board_Listener6 getBoard_Listener6()
+	{
+		return this.controller;
+	}
+	
 	
 	public void registerMyView5(Board_MyView6 newView)
 	{
-		myView5 = newView;
+		this.myView5 = newView;
 	}
 	public Board_MyView6 getMyView5()
 	{
 		return this.myView5;
 	}
     
+	
+	public void registerView_References(View_References6 newReferences)
+	{
+		this.myViewReferences = newReferences;
+	}
+	public View_References6 getView_References()
+	{
+		return this.myViewReferences;
+	}
+	
+	
+	
+	
+	
     
 	
 	
