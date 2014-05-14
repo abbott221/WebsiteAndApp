@@ -501,6 +501,7 @@ public class Board_MyView5 extends SurfaceView implements SurfaceHolder.Callback
 			Bitmap passBlock = topGrass;
 			Bitmap passOccupant = occBeige;
 			
+			
 			for (int i = 0; i < this.model.getRows(); i++) {
 				for (int j = 0; j < this.model.getColumns(); j++) {
 					Hexagon5 current = this.model.getHexagon(i, j);

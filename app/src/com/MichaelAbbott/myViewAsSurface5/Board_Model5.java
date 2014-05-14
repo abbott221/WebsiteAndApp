@@ -1,8 +1,6 @@
 package com.MichaelAbbott.myViewAsSurface5;
 
 
-import com.MichaelFAbbott.maps.Board_Maps5;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
