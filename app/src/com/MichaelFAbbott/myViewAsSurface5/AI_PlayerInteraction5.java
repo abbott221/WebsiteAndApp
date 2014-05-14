@@ -28,7 +28,7 @@ import android.util.Log;
 
 
 
-public class AI_PlayerInteraction {
+public class AI_PlayerInteraction5 {
 	
 	
 	

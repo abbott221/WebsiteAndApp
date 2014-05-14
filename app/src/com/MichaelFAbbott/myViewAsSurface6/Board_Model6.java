@@ -1,5 +1,7 @@
-package com.MichaelFAbbott.myViewAsSurface5;
+package com.MichaelFAbbott.myViewAsSurface6;
 
+
+import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.OccupantState;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -12,23 +14,25 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class Board_Model5 {
+public class Board_Model6 {
 	
 	
-	private Hexagon5[][] board;
+	private Hexagon6[][] board;
+	private Actor[][] occupantArray;
+	
 	private int rows, columns;
 	
 	private float touchRadius;
 	
-	Hexagon5 lolSelected;
+	Hexagon6 lolSelected;
 	
-	Hexagon5 previousSelected;
+	Hexagon6 previousSelected;
 	
 	//Context lolContext;
 	
-	private Board_Listener5 controller;
+	private Board_Listener6 controller;
 	
-	private Board_MyView5 myView5;
+	private Board_MyView6 myView5;
 	
 	
 	
@@ -55,19 +59,32 @@ public class Board_Model5 {
 	private boolean developerMode;
 	
 	
+	Context myContext;
 	
-	public Board_Model5() {
+	
+	public Board_Model6(Context context) {
+		
+		this.myContext = context;
+		
+		
+		
 		
 		this.touchRadius = 90;
 		
 		
-		Board_Maps5.map2(this);
+		Board_Maps6.map2(this);
 		//Board_Maps5.map1(this);
 		
 		
 		
+		/*
+		int r = this.getRows();
+		int c = this.getColumns();
 		
+		occupantArray = new Actor[r][c];
 		
+		occupantArray[6][4] = new Actor_BeigeAlien(context);
+		/**/
 		
 		
 		
@@ -96,16 +113,16 @@ public class Board_Model5 {
 		
 	}
 	
-	public void registerObserver(Board_Listener5 newController)
+	public void registerObserver(Board_Listener6 newController)
 	{
 		controller = newController;
 	}
 	
-	public void registerMyView5(Board_MyView5 newView)
+	public void registerMyView5(Board_MyView6 newView)
 	{
 		myView5 = newView;
 	}
-	public Board_MyView5 getMyView5()
+	public Board_MyView6 getMyView5()
 	{
 		return this.myView5;
 	}
@@ -113,7 +130,7 @@ public class Board_Model5 {
     
 	
 	
-	public void setBoard(Hexagon5[][] newBoard, int r, int c)
+	public void setBoard(Hexagon6[][] newBoard, int r, int c)
 	{
 		this.board = newBoard;
 		
@@ -123,6 +140,26 @@ public class Board_Model5 {
 		
 	}
 	
+	public void setOccupantArray(Actor[][] newBoard)
+	{
+		this.occupantArray = newBoard;
+		
+		//this.rows = r;
+		//this.columns = c;
+		
+		
+	}
+	
+	
+	public Context getContext()
+	{
+		return this.myContext;
+	}
+	//won't be used
+    public void setContext(Context newValue)
+	{
+		this.myContext = newValue;
+	}
 	
 	
 	
@@ -154,18 +191,35 @@ public class Board_Model5 {
 	}
     
     
-    public Hexagon5 getHexagon(int r, int c)
+    public Hexagon6 getHexagon(int r, int c)
 	{
 		return this.board[r][c];
+	}
+    
+    
+    public Actor getOccupant(int r, int c)
+	{
+		return this.occupantArray[r][c];
+	}
+    public void setOccupant(int r, int c, Actor newActor)
+	{
+		this.occupantArray[r][c] = newActor;
+	}
+    //using the returned actor is optional
+    public Actor removeOccupant(int r, int c)
+	{
+		Actor removed = this.occupantArray[r][c];
+		this.occupantArray[r][c] = null;
+    	return removed;
 	}
     
     
     
     
     
-    public Hexagon5 getSelected() throws Exception
+    public Hexagon6 getSelected() throws Exception
 	{
-		Hexagon5 result = this.lolSelected;
+		Hexagon6 result = this.lolSelected;
 		if (result == null)
 		{
 			throw new NullPointerException();
@@ -173,7 +227,7 @@ public class Board_Model5 {
     	
     	return this.lolSelected;
 	}
-    public void setSelected(Hexagon5 newSelect)
+    public void setSelected(Hexagon6 newSelect)
 	{
 		
     	if (newSelect != this.lolSelected)
@@ -185,9 +239,9 @@ public class Board_Model5 {
 		
     	this.lolSelected = newSelect;
 	}
-    public Hexagon5 getPreviousSelected() throws Exception
+    public Hexagon6 getPreviousSelected() throws Exception
 	{
-		Hexagon5 result = this.previousSelected;
+		Hexagon6 result = this.previousSelected;
 		if (result == null)
 		{
 			throw new NullPointerException();
@@ -206,7 +260,7 @@ public class Board_Model5 {
 	 * 
 	 * called by onSingleTapUp() in Board_Listener5
 	 */
-	public Hexagon5 getClosestTile(float x, float y)
+	public Hexagon6 getClosestTile(float x, float y)
 	{
 		float tempX = 0;
 		float tempY = 0;
@@ -217,7 +271,7 @@ public class Board_Model5 {
 		float inputX = x;
 		float inputY = y;
 		
-		Hexagon5 selected = null;
+		Hexagon6 selected = null;
 		
 		
 		

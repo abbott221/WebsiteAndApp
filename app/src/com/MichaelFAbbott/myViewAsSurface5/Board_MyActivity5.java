@@ -58,7 +58,7 @@ public class Board_MyActivity5 extends ViewWithActivityBar implements OnTouchLis
 	
 	
 	private Board_Model5 model;
-	private View_References mvcView;
+	private View_References5 mvcView;
 	
 	private Board_Listener5 mvcController;
 	
@@ -100,7 +100,7 @@ public class Board_MyActivity5 extends ViewWithActivityBar implements OnTouchLis
 		
 		//mvcController = new Board_Listener5(model);
 		
-		mvcView = new View_References();
+		mvcView = new View_References5();
 		
 		mvcController = new Board_Listener5(model, mvcView);
 		

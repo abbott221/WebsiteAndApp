@@ -1,28 +1,28 @@
-package com.MichaelFAbbott.maps;
+package com.MichaelFAbbott.myViewAsSurface6;
 
 
-import com.MichaelFAbbott.myViewAsSurface5.Board_Model5;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.BlockState;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.HeldState;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.OccupantState;
+import com.MichaelFAbbott.myViewAsSurface6.Board_Model6;
+import com.MichaelFAbbott.myViewAsSurface6.Hexagon6;
+import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.BlockState;
+import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.HeldState;
+import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.OccupantState;
 
 
-public class Board_Maps5 {
+public class Board_Maps6 {
 	
 	
-	public static void map1(Board_Model5 model) {
+	public static void map1(Board_Model6 model) {
 		
 		int myRows = 8;
 		int myColumns = 5;
 		
-		Hexagon5[][] board = new Hexagon5[ myRows ][ myColumns ];
+		Hexagon6[][] board = new Hexagon6[ myRows ][ myColumns ];
 		
 		for (int i = 0; i < myRows; i++)
 		{
 			for (int j = 0; j < myColumns; j++)
 			{
-				board[i][j] = new Hexagon5(i, j);
+				board[i][j] = new Hexagon6(i, j, model);
 			}
 		}
 		
@@ -31,18 +31,18 @@ public class Board_Maps5 {
 	
 	
 
-	public static void map2(Board_Model5 model) {
+	public static void map2(Board_Model6 model) {
 		
 		int myRows = 8;
 		int myColumns = 8;
 		
-		Hexagon5[][] board = new Hexagon5[ myRows ][ myColumns ];
+		Hexagon6[][] board = new Hexagon6[ myRows ][ myColumns ];
 		
 		for (int i = 0; i < myRows; i++)
 		{
 			for (int j = 0; j < myColumns; j++)
 			{
-				board[i][j] = new Hexagon5(i, j);
+				board[i][j] = new Hexagon6(i, j, model);
 			}
 		}
 		
@@ -97,9 +97,32 @@ public class Board_Maps5 {
 			}
 		}
 		
-		board[1][1].setOccupantState(OccupantState.P_WHITE);
+		board[1][5].setOccupantState(OccupantState.P_WHITE);
 		
 		model.setBoard(board, myRows, myColumns);
+		
+		
+		
+		
+		//IMPLEMENTATION 2
+		
+		Actor[][] occupantArray = new Actor[myRows][myColumns];
+		
+		/*
+		for (int i = 0; i < myRows; i++)
+		{
+			for (int j = 0; j < myColumns; j++)
+			{
+				board[i][j] = new Hexagon6(i, j, model);
+			}
+		}
+		/**/
+		model.setOccupantArray(occupantArray);
+		
+		occupantArray[1][1] = new Actor_WhitePortal( model, model.getHexagon(1, 1) );
+		occupantArray[6][4] = new Actor_BeigeAlien( model, model.getHexagon(6, 4) );
+		
+		model.setOccupantArray(occupantArray);
 	}
 	
 	

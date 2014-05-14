@@ -5,13 +5,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.MichaelFAbbott.myCustomView.Board_View;
-import com.MichaelFAbbott.myViewAsSurface5.Board_Listener5;
-import com.MichaelFAbbott.myViewAsSurface5.Board_Model5;
-import com.MichaelFAbbott.myViewAsSurface5.Board_MyView5;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.HeldState;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.OccupantState;
-import com.MichaelFAbbott.myViewAsSurface5.View_References;
+import com.MichaelFAbbott.myViewAsSurface6.Board_Listener6;
+import com.MichaelFAbbott.myViewAsSurface6.Board_Model6;
+import com.MichaelFAbbott.myViewAsSurface6.Board_MyView6;
+import com.MichaelFAbbott.myViewAsSurface6.Hexagon6;
+import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.HeldState;
+import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.OccupantState;
+import com.MichaelFAbbott.myViewAsSurface6.View_References6;
 import com.MichaelFAbbott.myfirstapp.AttemptController1;
 import com.MichaelFAbbott.myfirstapp.AttemptModel1;
 import com.MichaelFAbbott.myfirstapp.Login_View;
@@ -59,13 +59,13 @@ import android.widget.TextView;
 public class Developer_MyActivityDeveloper extends ViewWithActivityBar implements OnTouchListener, OnItemSelectedListener {
 	
 	
-	Board_MyView5 v;
+	Board_MyView6 v;
 	
 	
-	private Board_Model5 model;
-	private View_References mvcView;
+	private Board_Model6 model;
+	private View_References6 mvcView;
 	
-	private Board_Listener5 mvcController;
+	private Board_Listener6 mvcController;
 	
 	//float x, y;
 	
@@ -101,14 +101,14 @@ public class Developer_MyActivityDeveloper extends ViewWithActivityBar implement
 		
 		
 		
-		model = new Board_Model5();
+		model = new Board_Model6(this);
 		model.setDeveloperMode(true);
 		
 		//mvcController = new Board_Listener5(model);
 		
-		mvcView = new View_References();
+		mvcView = new View_References6();
 		
-		mvcController = new Board_Listener5(model, mvcView);
+		mvcController = new Board_Listener6(model, mvcView);
 		
 		mvcView.registerObserver(mvcController);
 		model.registerObserver(mvcController);
@@ -124,7 +124,7 @@ public class Developer_MyActivityDeveloper extends ViewWithActivityBar implement
 		LinearLayout lolContainer = (LinearLayout) findViewById(R.id.linearContainer);
 		//Board_MyView4 lolView = new Board_MyView4(this);
 		
-		v = new Board_MyView5(this, mvcController); //the view is referenced outside of onCreate()
+		v = new Board_MyView6(this, mvcController); //the view is referenced outside of onCreate()
 		
 		//lolContainer.addView(lolView);
 		lolContainer.addView(v);
@@ -239,7 +239,7 @@ public class Developer_MyActivityDeveloper extends ViewWithActivityBar implement
 		//this is also an int: R.id.look_spinner2
 		
 		
-		Hexagon5 theSelected;
+		Hexagon6 theSelected;
 		try {
 			theSelected = this.model.getSelected();
 			

@@ -1,4 +1,4 @@
-package com.MichaelFAbbott.myViewAsSurface5;
+package com.MichaelFAbbott.myViewAsSurface6;
 
 
 import android.content.Context;
@@ -15,7 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
-public class View_References {
+public class View_References6 {
 	
 	
 	
@@ -28,11 +28,11 @@ public class View_References {
 	
 	
 	
-	private Board_Listener5 controller;
+	private Board_Listener6 controller;
 	
 	
 	
-	public View_References() {
+	public View_References6() {
 		this.lolSpinner = null;
 		this.lolAdapter = null;
 		
@@ -43,7 +43,7 @@ public class View_References {
 	}
 	
 	//called nowhere yet
-	public void registerObserver(Board_Listener5 newController)
+	public void registerObserver(Board_Listener6 newController)
 	{
 		controller = newController;
 	}

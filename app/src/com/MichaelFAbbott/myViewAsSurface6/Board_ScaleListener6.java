@@ -1,4 +1,4 @@
-package com.MichaelFAbbott.myViewAsSurface5;
+package com.MichaelFAbbott.myViewAsSurface6;
 
 import com.MichaelFAbbott.myCustomView.Board_CustomView;
 import com.MichaelFAbbott.myCustomView.Board_Model;
@@ -25,11 +25,11 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class Board_ScaleListener5 extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+public class Board_ScaleListener6 extends ScaleGestureDetector.SimpleOnScaleGestureListener {
 	
 	
-	private Board_Model5 model;
-	private View_References5 mvcView;
+	private Board_Model6 model;
+	private View_References6 mvcView;
 	
 	
 	
@@ -49,7 +49,7 @@ public class Board_ScaleListener5 extends ScaleGestureDetector.SimpleOnScaleGest
 	//private float currentSpanY;
 	
 
-	public Board_ScaleListener5(Board_Model5 m, View_References5 v) {
+	public Board_ScaleListener6(Board_Model6 m, View_References6 v) {
 		
 		this.model = m;
 		this.mvcView = v;
@@ -57,7 +57,7 @@ public class Board_ScaleListener5 extends ScaleGestureDetector.SimpleOnScaleGest
 	
 	
 	
-	public Board_Model5 getModel()
+	public Board_Model6 getModel()
 	{
 		return this.model;
 	}

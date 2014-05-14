@@ -1,29 +1,8 @@
-package com.MichaelFAbbott.myViewPlayerMode;
+package com.MichaelFAbbott.myViewAsSurface6;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.MichaelFAbbott.myCustomView.Board_View;
-import com.MichaelFAbbott.myViewAsSurface5.Board_Listener5;
-import com.MichaelFAbbott.myViewAsSurface5.Board_Model5;
-import com.MichaelFAbbott.myViewAsSurface5.Board_MyView5;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.HeldState;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.OccupantState;
-import com.MichaelFAbbott.myViewAsSurface5.View_References5;
-import com.MichaelFAbbott.myViewAsSurface6.Board_Listener6;
-import com.MichaelFAbbott.myViewAsSurface6.Board_Model6;
-import com.MichaelFAbbott.myViewAsSurface6.Board_MyView6;
-import com.MichaelFAbbott.myViewAsSurface6.View_References6;
-import com.MichaelFAbbott.myfirstapp.AttemptController1;
-import com.MichaelFAbbott.myfirstapp.AttemptModel1;
-import com.MichaelFAbbott.myfirstapp.Login_View;
-import com.MichaelFAbbott.myfirstapp.Post_View;
+import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.HeldState;
+import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.OccupantState;
 import com.MichaelFAbbott.myfirstapp.R;
-import com.MichaelFAbbott.standards.AttemptController;
-import com.MichaelFAbbott.standards.AttemptModel;
-import com.MichaelFAbbott.standards.AttemptView;
 import com.MichaelFAbbott.standards.ViewWithActivityBar;
 
 import android.support.v4.app.Fragment;
@@ -60,7 +39,7 @@ import android.widget.TextView;
 
 
 
-public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTouchListener, OnItemSelectedListener {
+public class Board_MyActivity6 extends ViewWithActivityBar implements OnTouchListener, OnItemSelectedListener {
 	
 	
 	Board_MyView6 v;
@@ -82,32 +61,30 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		setContentView(R.layout.activity_experiment);
 		
 		
-		/**/
 		Spinner lolSpinner = (Spinner) findViewById(R.id.look_spinner1);
 		ArrayAdapter<CharSequence> lolAdapter = ArrayAdapter.createFromResource(this,
 		    R.array.lolSpinner_array, android.R.layout.simple_spinner_item);
 		lolAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		lolSpinner.setAdapter(lolAdapter);
 		lolSpinner.setOnItemSelectedListener(this);
-		/**/
-		
 		
 		//lolSpinner.setSelection(position);
 		//lolSpinner.s
 		//lolAdapter.getItemId(position)
 		
-		/**/
+		
 		Spinner occSpinner = (Spinner) findViewById(R.id.look_spinner2);
+		
 		ArrayAdapter<CharSequence> occAdapter = ArrayAdapter.createFromResource(this,
 		    R.array.occSpinner_array, android.R.layout.simple_spinner_item);
 		occAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		occSpinner.setAdapter(occAdapter);
+		
 		occSpinner.setOnItemSelectedListener(this);
-		/**/
+		
 		
 		
 		model = new Board_Model6(this);
-		model.setDeveloperMode(false);
 		
 		//mvcController = new Board_Listener5(model);
 		
@@ -118,12 +95,10 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		mvcView.registerObserver(mvcController);
 		model.registerObserver(mvcController);
 		
-		
-		/**/
 		mvcView.setSpinner(lolSpinner);
 		
 		mvcView.setOccSpinner(occSpinner);
-		/**/
+		
 		
 		
 		
@@ -180,7 +155,7 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		//let the thread sleep a bit since this motion loop here is doing a lot of stuff
 		//50 -> 20 times per second
 		try {
-			Thread.sleep(50);
+			Thread.sleep(10);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -217,11 +192,36 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long id) {
+		// TODO Auto-generated method stub
+		//parent.getItemAtPosition(pos);
+		//MenuItem lolItem = parent.getItemAtPosition(pos);
+		//parent.getItemAtPosition(pos);
+		//item.getItemId()
 		
-		/*
+		//parent.getFocusedChild().getId();
+		//parent.getFocusedChild().getNextFocusDownId()
+		//view.getId();
+		
+		//parent.getItemAtPosition(pos).
+		
+		//parent.getItemAtPosition(pos);
+		
+		//==================================
+		
+		//Object thingAtPos = parent.getItemAtPosition(pos);
+		//int hash = thingAtPos.hashCode();
+		
+		//parent.getAdapter();
+		
+		//parent.getId(); //THIS
+		//parent.getSelectedItemId();
+		//parent.getSelectedItemPosition();
+		
+		//parent.getChildAt(0).findViewById(id); //id is not a long; it's an int
+		//this is also an int: R.id.look_spinner2
 		
 		
-		Hexagon5 theSelected;
+		Hexagon6 theSelected;
 		try {
 			theSelected = this.model.getSelected();
 			
@@ -310,6 +310,30 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 			
 			
 			
+			/*
+			switch ( pos ) {
+			case 0: //blue
+				theSelected.setHeldState(HeldState.HOLD_BLUE);
+				break;
+			case 1: //purple
+				theSelected.setHeldState(HeldState.HOLD_PURPLE);
+				break;
+			case 2: //green
+				theSelected.setHeldState(HeldState.HOLD_GREEN);
+				break;
+			case 3: //yellow
+				theSelected.setHeldState(HeldState.HOLD_YELLOW);
+				break;
+			case 4: //red
+				theSelected.setHeldState(HeldState.HOLD_RED);
+				break;
+			default:
+				//return super.onOptionsItemSelected(item);
+			}
+			/**/
+			
+			
+			
 			
 			
 		} catch (Exception e) {
@@ -317,9 +341,8 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 			//null pointer exception
 		}
 		
-		//System.err.println(pos);
 		
-		/**/
+		//System.err.println(pos);
 		
 	}
 

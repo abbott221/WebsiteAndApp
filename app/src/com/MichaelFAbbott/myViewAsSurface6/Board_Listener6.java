@@ -1,13 +1,9 @@
-package com.MichaelFAbbott.myViewAsSurface5;
+package com.MichaelFAbbott.myViewAsSurface6;
 
 import java.util.ArrayList;
 
-import com.MichaelFAbbott.myCustomView.Board_CustomView;
-import com.MichaelFAbbott.myCustomView.Board_Model;
-import com.MichaelFAbbott.myCustomView.Hexagon;
-import com.MichaelFAbbott.myCustomView.Hexagon.State;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.BlockState;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.HeldState;
+import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.BlockState;
+import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.HeldState;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -22,11 +18,11 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 
-public class Board_Listener5 implements GestureDetector.OnGestureListener /*, ScaleGestureDetector.OnScaleGestureListener*/ {
+public class Board_Listener6 implements GestureDetector.OnGestureListener /*, ScaleGestureDetector.OnScaleGestureListener*/ {
 	
 	
-	private Board_Model5 model;
-	private View_References5 mvcView;
+	private Board_Model6 model;
+	private View_References6 mvcView;
 	
 	
 	
@@ -36,7 +32,7 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 	private float currentScrollY;
 	
 
-	public Board_Listener5(Board_Model5 m, View_References5 v) {
+	public Board_Listener6(Board_Model6 m, View_References6 v) {
 		
 		this.model = m;
 		this.mvcView = v;
@@ -44,12 +40,12 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 	
 	
 	
-	public Board_Model5 getModel()
+	public Board_Model6 getModel()
 	{
 		return this.model;
 	}
 	
-	public View_References5 getView()
+	public View_References6 getView()
 	{
 		return this.mvcView;
 	}
@@ -220,7 +216,7 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 		
 		
 		
-		Hexagon5 previousSelection = null;
+		Hexagon6 previousSelection = null;
 		try {
 			previousSelection = this.model.getSelected();
 		} catch (Exception e1) {
@@ -230,7 +226,7 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 		
 		
 		
-		Hexagon5 temp = this.model.getClosestTile(eX, eY);
+		Hexagon6 temp = this.model.getClosestTile(eX, eY);
 		
 		
 		//if the user hit a legitimate tile
@@ -295,26 +291,26 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 	
 	
 	
-	public void processDevSelectionEvent(Hexagon5 temp)
+	public void processDevSelectionEvent(Hexagon6 temp)
     {
     	
     	for (int i = 0; i < this.model.getRows(); i++) {
 			for (int j = 0; j < this.model.getColumns(); j++) {
-				Hexagon5 current = this.model.getHexagon(i, j);
+				Hexagon6 current = this.model.getHexagon(i, j);
 				
-				current.setHighlighted(Hexagon5.SelectState.UNSELECTED);
+				current.setHighlighted(Hexagon6.SelectState.UNSELECTED);
 				
 			}
 		}
     	
-    	temp.setHighlighted(Hexagon5.SelectState.SELECTED);
+    	temp.setHighlighted(Hexagon6.SelectState.SELECTED);
     	
     	this.model.setSelected(temp);
     	
     	
     	
     	
-    	Hexagon5.HeldState hold = temp.getHeldState();
+    	Hexagon6.HeldState hold = temp.getHeldState();
     	switch ( hold ) {
     	case NONE:
 			this.mvcView.updateSpinner(0);
@@ -339,7 +335,7 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 		}
     	
     	
-    	Hexagon5.OccupantState occupy = temp.getOccupantState();
+    	Hexagon6.OccupantState occupy = temp.getOccupantState();
     	switch ( occupy ) {
 		case NONE:
 			this.mvcView.updateOccSpinner(0);
@@ -387,9 +383,9 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
     	
     	for (int i = 0; i < this.model.getRows(); i++) {
 			for (int j = 0; j < this.model.getColumns(); j++) {
-				Hexagon5 current = this.model.getHexagon(i, j);
+				Hexagon6 current = this.model.getHexagon(i, j);
 				
-				current.setHighlighted(Hexagon5.SelectState.UNSELECTED);
+				current.setHighlighted(Hexagon6.SelectState.UNSELECTED);
 				
 			}
 		}
@@ -413,7 +409,7 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
 	
 	
 	
-	public void processPlayerSelectionEvent(Hexagon5 temp)
+	public void processPlayerSelectionEvent(Hexagon6 temp)
     {
     	/*
     	for (int i = 0; i < this.model.getRows(); i++) {
@@ -432,7 +428,7 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
     	//organize by occupant or HeldState first?
     	
     	
-    	AI_PlayerInteraction5.playerSelectionEntry(temp, this.model);
+    	AI_PlayerInteraction6.playerSelectionEntry(temp, this.model);
     	
     	
     }
@@ -446,7 +442,7 @@ public class Board_Listener5 implements GestureDetector.OnGestureListener /*, Sc
     	
     	for (int i = 0; i < this.model.getRows(); i++) {
 			for (int j = 0; j < this.model.getColumns(); j++) {
-				Hexagon5 current = this.model.getHexagon(i, j);
+				Hexagon6 current = this.model.getHexagon(i, j);
 				
 				//current.setHighlighted(Hexagon5.SelectState.UNSELECTED);
 				current.setHeldState(HeldState.NONE);
