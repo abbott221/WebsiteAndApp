@@ -14,7 +14,7 @@
  * @author Cay Horstmann
  */
 
-package com.MichaelFAbbott.myViewAsSurface6;
+package com.MichaelAbbott.myViewAsSurface6;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -23,7 +23,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.OccupantState;
+import com.MichaelAbbott.myViewAsSurface6.Hexagon6.OccupantState;
 import com.MichaelFAbbott.myfirstapp.R;
 
 

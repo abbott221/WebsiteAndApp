@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme" >
         
         <activity
-            android:name="com.MichaelFAbbott.myfirstapp.MainActivity"
+            android:name="com.MichaelAbbott.myfirstapp.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,28 +28,24 @@
         </activity>
         
         
-        <activity android:name="com.MichaelFAbbott.myViewAsSurface2.Board_MyActivity2" ></activity>
-        <activity android:name="com.MichaelFAbbott.myViewAsSurface3.Board_MyActivity3" ></activity>
-        <activity android:name="com.MichaelFAbbott.myViewAsSurface4.Board_MyActivity4" ></activity>
-        <activity android:name="com.MichaelFAbbott.myViewAsSurface5.Board_MyActivity5" ></activity>
+        <activity android:name="com.MichaelAbbott.myViewAsSurface5.Board_MyActivity5" ></activity>
         
         <activity
-            android:name="com.MichaelFAbbott.myViewDeveloperMode.Developer_MyActivityDeveloper" >
+            android:name="com.MichaelAbbott.myViewDeveloperMode.Developer_MyActivityDeveloper" >
         </activity>
         <activity
-            android:name="com.MichaelFAbbott.myViewPlayerMode.Player_MyActivityPlayer" >
+            android:name="com.MichaelAbbott.myViewPlayerMode.Player_MyActivityPlayer" >
         </activity>
         
         
         
-        <activity android:name="com.MichaelFAbbott.myfirstapp.Post_View" ></activity>
-        <activity android:name="com.MichaelFAbbott.myfirstapp.Login_View" ></activity>
+        <activity android:name="com.MichaelAbbott.myfirstapp.Post_View" ></activity>
+        <activity android:name="com.MichaelAbbott.myfirstapp.Login_View" ></activity>
         
-        <activity android:name="com.MichaelFAbbott.customView.Strategy" ></activity>
-        <activity android:name="com.MichaelFAbbott.myCustomView.Board_View" ></activity>
+        <activity android:name="com.MichaelAbbott.myCustomView.Board_View" ></activity>
         
-        <activity android:name="com.MichaelFAbbott.myfirstapp.AttemptView1" ></activity>
-        <activity android:name="com.MichaelFAbbott.myfirstapp.AttemptView2" ></activity>
+        <activity android:name="com.MichaelAbbott.myfirstapp.AttemptView1" ></activity>
+        <activity android:name="com.MichaelAbbott.myfirstapp.AttemptView2" ></activity>
         
     </application>
 

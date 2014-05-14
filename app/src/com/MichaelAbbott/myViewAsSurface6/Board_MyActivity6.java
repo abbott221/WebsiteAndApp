@@ -1,9 +1,9 @@
-package com.MichaelFAbbott.myViewAsSurface6;
+package com.MichaelAbbott.myViewAsSurface6;
 
-import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.HeldState;
-import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.OccupantState;
+import com.MichaelAbbott.myViewAsSurface6.Hexagon6.HeldState;
+import com.MichaelAbbott.myViewAsSurface6.Hexagon6.OccupantState;
+import com.MichaelAbbott.standards.ViewWithActivityBar;
 import com.MichaelFAbbott.myfirstapp.R;
-import com.MichaelFAbbott.standards.ViewWithActivityBar;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;

@@ -3,7 +3,7 @@
     android:id="@+id/layoutContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.MichaelFAbbott.myfirstapp.MainActivity"
+    tools:context="com.MichaelAbbott.myfirstapp.MainActivity"
     tools:ignore="MergeRootFrame" >
 
     <LinearLayout

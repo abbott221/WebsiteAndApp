@@ -1,11 +1,11 @@
-package com.MichaelFAbbott.myViewAsSurface6;
+package com.MichaelAbbott.myViewAsSurface6;
 
 
-import com.MichaelFAbbott.myViewAsSurface6.Board_Model6;
-import com.MichaelFAbbott.myViewAsSurface6.Hexagon6;
-import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.BlockState;
-import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.HeldState;
-import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.OccupantState;
+import com.MichaelAbbott.myViewAsSurface6.Board_Model6;
+import com.MichaelAbbott.myViewAsSurface6.Hexagon6;
+import com.MichaelAbbott.myViewAsSurface6.Hexagon6.BlockState;
+import com.MichaelAbbott.myViewAsSurface6.Hexagon6.HeldState;
+import com.MichaelAbbott.myViewAsSurface6.Hexagon6.OccupantState;
 
 
 public class Board_Maps6 {

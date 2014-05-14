@@ -1,4 +1,4 @@
-package com.MichaelFAbbott.myViewAsSurface6;
+package com.MichaelAbbott.myViewAsSurface6;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,10 +20,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.MichaelFAbbott.myViewAsSurface6.Actor.ActorType;
-import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.BlockState;
-import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.HeldState;
-import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.OccupantState;
+import com.MichaelAbbott.myViewAsSurface6.Actor.ActorType;
+import com.MichaelAbbott.myViewAsSurface6.Hexagon6.BlockState;
+import com.MichaelAbbott.myViewAsSurface6.Hexagon6.HeldState;
+import com.MichaelAbbott.myViewAsSurface6.Hexagon6.OccupantState;
 
 import android.util.Log;
 

@@ -1,13 +1,14 @@
-package com.MichaelFAbbott.myfirstapp;
+package com.MichaelAbbott.myfirstapp;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.MichaelFAbbott.standards.AttemptController;
-import com.MichaelFAbbott.standards.AttemptModel;
-import com.MichaelFAbbott.standards.AttemptView;
-import com.MichaelFAbbott.standards.ViewWithActivityBar;
+import com.MichaelAbbott.standards.AttemptController;
+import com.MichaelAbbott.standards.AttemptModel;
+import com.MichaelAbbott.standards.AttemptView;
+import com.MichaelAbbott.standards.ViewWithActivityBar;
+import com.MichaelFAbbott.myfirstapp.R;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;

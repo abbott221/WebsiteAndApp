@@ -1,4 +1,4 @@
-package com.MichaelFAbbott.myViewAsSurface6;
+package com.MichaelAbbott.myViewAsSurface6;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

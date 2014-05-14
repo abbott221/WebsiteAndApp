@@ -1,9 +1,9 @@
-package com.MichaelFAbbott.myViewAsSurface6;
+package com.MichaelAbbott.myViewAsSurface6;
 
 import java.util.ArrayList;
 
-import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.BlockState;
-import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.HeldState;
+import com.MichaelAbbott.myViewAsSurface6.Hexagon6.BlockState;
+import com.MichaelAbbott.myViewAsSurface6.Hexagon6.HeldState;
 
 import android.content.Context;
 import android.graphics.Canvas;

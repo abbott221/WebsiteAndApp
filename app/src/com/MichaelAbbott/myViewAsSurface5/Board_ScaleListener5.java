@@ -1,9 +1,9 @@
-package com.MichaelFAbbott.myViewAsSurface5;
+package com.MichaelAbbott.myViewAsSurface5;
 
-import com.MichaelFAbbott.myCustomView.Board_CustomView;
-import com.MichaelFAbbott.myCustomView.Board_Model;
-import com.MichaelFAbbott.myCustomView.Hexagon;
-import com.MichaelFAbbott.myCustomView.Hexagon.State;
+import com.MichaelAbbott.myCustomView.Board_CustomView;
+import com.MichaelAbbott.myCustomView.Board_Model;
+import com.MichaelAbbott.myCustomView.Hexagon;
+import com.MichaelAbbott.myCustomView.Hexagon.State;
 
 import android.annotation.TargetApi;
 import android.content.Context;

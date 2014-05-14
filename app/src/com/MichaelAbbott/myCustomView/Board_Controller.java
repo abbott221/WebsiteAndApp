@@ -1,6 +1,6 @@
-package com.MichaelFAbbott.myCustomView;
+package com.MichaelAbbott.myCustomView;
 
-import com.MichaelFAbbott.myCustomView.Hexagon.State;
+import com.MichaelAbbott.myCustomView.Hexagon.State;
 
 import android.content.Context;
 import android.graphics.Canvas;

@@ -1,10 +1,10 @@
-package com.MichaelFAbbott.myViewAsSurface5;
+package com.MichaelAbbott.myViewAsSurface5;
 
 
-import com.MichaelFAbbott.myCustomView.Board_Controller;
-import com.MichaelFAbbott.myCustomView.Board_Model;
-import com.MichaelFAbbott.myCustomView.Hexagon;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.BlockState;
+import com.MichaelAbbott.myCustomView.Board_Controller;
+import com.MichaelAbbott.myCustomView.Board_Model;
+import com.MichaelAbbott.myCustomView.Hexagon;
+import com.MichaelAbbott.myViewAsSurface5.Hexagon5.BlockState;
 import com.MichaelFAbbott.myfirstapp.R;
 
 import android.annotation.TargetApi;

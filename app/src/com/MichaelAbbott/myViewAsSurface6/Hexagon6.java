@@ -1,6 +1,6 @@
-package com.MichaelFAbbott.myViewAsSurface6;
+package com.MichaelAbbott.myViewAsSurface6;
 
-import com.MichaelFAbbott.standards.AttemptController;
+import com.MichaelAbbott.standards.AttemptController;
 
 import android.graphics.*;
 import android.util.Log;

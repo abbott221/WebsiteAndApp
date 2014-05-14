@@ -1,13 +1,13 @@
-package com.MichaelFAbbott.myViewAsSurface5;
+package com.MichaelAbbott.myViewAsSurface5;
 
 import java.util.ArrayList;
 
-import com.MichaelFAbbott.myCustomView.Board_CustomView;
-import com.MichaelFAbbott.myCustomView.Board_Model;
-import com.MichaelFAbbott.myCustomView.Hexagon;
-import com.MichaelFAbbott.myCustomView.Hexagon.State;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.BlockState;
-import com.MichaelFAbbott.myViewAsSurface5.Hexagon5.HeldState;
+import com.MichaelAbbott.myCustomView.Board_CustomView;
+import com.MichaelAbbott.myCustomView.Board_Model;
+import com.MichaelAbbott.myCustomView.Hexagon;
+import com.MichaelAbbott.myCustomView.Hexagon.State;
+import com.MichaelAbbott.myViewAsSurface5.Hexagon5.BlockState;
+import com.MichaelAbbott.myViewAsSurface5.Hexagon5.HeldState;
 
 import android.content.Context;
 import android.graphics.Canvas;

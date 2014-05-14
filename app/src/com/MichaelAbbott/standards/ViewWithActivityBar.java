@@ -1,21 +1,21 @@
-package com.MichaelFAbbott.standards;
+package com.MichaelAbbott.standards;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.MichaelFAbbott.myCustomView.Board_View;
-import com.MichaelFAbbott.myViewAsSurface5.Board_MyActivity5;
-import com.MichaelFAbbott.myViewDeveloperMode.Developer_MyActivityDeveloper;
-import com.MichaelFAbbott.myViewPlayerMode.Player_MyActivityPlayer;
-import com.MichaelFAbbott.myfirstapp.AttemptController1;
-import com.MichaelFAbbott.myfirstapp.AttemptModel1;
-import com.MichaelFAbbott.myfirstapp.Login_View;
-import com.MichaelFAbbott.myfirstapp.Post_View;
+import com.MichaelAbbott.myCustomView.Board_View;
+import com.MichaelAbbott.myViewAsSurface5.Board_MyActivity5;
+import com.MichaelAbbott.myViewDeveloperMode.Developer_MyActivityDeveloper;
+import com.MichaelAbbott.myViewPlayerMode.Player_MyActivityPlayer;
+import com.MichaelAbbott.myfirstapp.AttemptController1;
+import com.MichaelAbbott.myfirstapp.AttemptModel1;
+import com.MichaelAbbott.myfirstapp.Login_View;
+import com.MichaelAbbott.myfirstapp.Post_View;
+import com.MichaelAbbott.standards.AttemptController;
+import com.MichaelAbbott.standards.AttemptModel;
+import com.MichaelAbbott.standards.AttemptView;
 import com.MichaelFAbbott.myfirstapp.R;
-import com.MichaelFAbbott.standards.AttemptController;
-import com.MichaelFAbbott.standards.AttemptModel;
-import com.MichaelFAbbott.standards.AttemptView;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;

@@ -1,7 +1,7 @@
-package com.MichaelFAbbott.myViewAsSurface6;
+package com.MichaelAbbott.myViewAsSurface6;
 
 
-import com.MichaelFAbbott.myViewAsSurface6.Hexagon6.OccupantState;
+import com.MichaelAbbott.myViewAsSurface6.Hexagon6.OccupantState;
 
 import android.content.Context;
 import android.graphics.Canvas;

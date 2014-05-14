@@ -1,8 +1,9 @@
-package com.MichaelFAbbott.myfirstapp;
+package com.MichaelAbbott.myfirstapp;
 
 
-import com.MichaelFAbbott.standards.AttemptModel;
-import com.MichaelFAbbott.standards.AttemptView;
+import com.MichaelAbbott.standards.AttemptModel;
+import com.MichaelAbbott.standards.AttemptView;
+import com.MichaelFAbbott.myfirstapp.R;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

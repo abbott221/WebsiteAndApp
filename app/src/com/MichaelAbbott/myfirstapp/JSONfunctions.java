@@ -1,4 +1,4 @@
-package com.MichaelFAbbott.myfirstapp;
+package com.MichaelAbbott.myfirstapp;
 
 import java.io.BufferedReader;
 import java.io.IOException;

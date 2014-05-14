@@ -1,6 +1,6 @@
 
 
-package com.MichaelFAbbott.myViewAsSurface6;
+package com.MichaelAbbott.myViewAsSurface6;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;

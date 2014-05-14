@@ -1,4 +1,4 @@
-package com.MichaelFAbbott.myViewAsSurface6;
+package com.MichaelAbbott.myViewAsSurface6;
 
 
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.MichaelFAbbott.myfirstapp;
+package com.MichaelAbbott.myfirstapp;
 
 
 import java.io.BufferedReader;
@@ -20,7 +20,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import com.MichaelFAbbott.standards.AttemptModel;
+import com.MichaelAbbott.standards.AttemptModel;
 
 import android.util.Log;
 

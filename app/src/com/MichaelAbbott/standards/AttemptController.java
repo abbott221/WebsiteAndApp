@@ -1,4 +1,4 @@
-package com.MichaelFAbbott.standards;
+package com.MichaelAbbott.standards;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -1,4 +1,4 @@
-package com.MichaelFAbbott.myCustomView;
+package com.MichaelAbbott.myCustomView;
 
 import android.content.*;
 import android.graphics.*;
