@@ -2,6 +2,7 @@
 <resources>
 
     <string-array name="lolSpinner_array">
+        <item>None</item>
         <item>Blue</item>
         <item>Purple</item>
         <item>Green</item>
@@ -16,6 +17,11 @@
         <item>Green</item>
         <item>Pink</item>
         <item>Yellow</item>
+        <item>Portal Blue</item>
+        <item>Portal Green</item>
+        <item>Portal Red</item>
+        <item>Portal White</item>
+        <item>Portal Yellow</item>
     </string-array>
 
 </resources>

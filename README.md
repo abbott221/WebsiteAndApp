@@ -1,26 +1,16 @@
-Brought to you by: The Unexpected Packet
-MedZapp - Data Centralization and Client Communication
-====================
-
-MedZapp is a comprehensive healthcare database that effeciently handles who can access a patient's data and optionally allows the patient to connect anonamously with other people with similar conditions.
-
-Database
+Intro
 -----
-Contains the following tables:
-- loginData
-    username, password, uID (user ID number), anon (boolean), doctor (boolean)
-- permissions
-    uID, category (type of contition), pID (patient ID number)
-- medicalHistory
-    uID, category, name (name of condition), date, description
-- messages
-    postCount, threadID, uID, content (of the message)
-- threads 
-    threadID, uID, partnerID
+This repository has very poor documentation and this README is not updated very frequently, but here's a general roadmap of what folder of code does what
+- App
+  - res : "resources" such as XML files that describe the layout of various screens and png files that are displayed on them
+  - src : "source" this is where all the Java files are stored
+    - com.MichaelAbbott.myCustomView      : an early version of the game that doesn't use images
+    - com.MichaelAbbott.myViewAsSurface5  : the first implementation of the game that uses images
+    - com.MichaelAbbott.myViewAsSurface6  : the second implementation of the game that uses images, this is the one currently being worked on
+    - com.MichaelAbbott.myfirstapp        : the screens created that aren't involved in the game
+    - com.MichaelAbbott.standards         : a few early interfaces that I made which aren't really that useful
+- Website : yes there is a website involved, but will be used to support the multiplayer database in the future
 
-Notes
------
-This is NOT ready for deployment. It currently does not utilize data sanitation or encryption of any kind (aside from ssl). These and other security measures will be incorperated later.
 
 TODO
 -----
