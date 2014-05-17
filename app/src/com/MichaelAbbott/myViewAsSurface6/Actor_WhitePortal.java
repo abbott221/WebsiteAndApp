@@ -71,8 +71,18 @@ public class Actor_WhitePortal extends Actor {
         
         this.setGrid(grid);
         this.setLocation(loc);
-        this.setPlayer( grid.getCurrentPlayer() );
         
+        Player myPlayer = grid.getCurrentPlayer();
+        this.setPlayer( myPlayer );
+        //myPlayer.addActor(this);
+        
+        /*
+        if (grid.getCurrentPlayer() == null) {
+        	System.err.println("null");
+        } else {
+        	System.err.println("not null");
+        }
+        /**/
         
         
         this.setMaxHealth(8);

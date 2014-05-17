@@ -64,8 +64,19 @@ public class Actor_BeigeAlien extends Actor {
         
         this.setGrid(grid);
         this.setLocation(loc);
-        this.setPlayer( grid.getCurrentPlayer() );
         
+        Player myPlayer = grid.getCurrentPlayer();
+        this.setPlayer( myPlayer );
+        //myPlayer.addActor(this);
+        
+        /*
+        if (grid.getCurrentPlayer() == null) {
+        	System.err.println("null");
+        } else {
+        	System.err.println("not null");
+        }
+        //System.err.println( grid.getCurrentPlayer() );
+        /**/
         
         
         this.setMaxHealth(8);

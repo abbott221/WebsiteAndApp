@@ -87,6 +87,10 @@ public class Board_Model6 {
 		this.touchRadius = 90;
 		
 		
+		
+		this.currentPlayer = null;
+		
+		
 		Board_Maps6.map2(this);
 		//Board_Maps5.map1(this);
 		
@@ -102,7 +106,7 @@ public class Board_Model6 {
 		/**/
 		
 		//Set to 0 in the ArrayList returned from map2???
-		this.currentPlayer = null;
+		//this.currentPlayer = null;
 		
 		
 		

@@ -307,9 +307,26 @@ public class AI_Hexagon6 {
 			
 			occupant = model.getOccupant( temp.getRow(), temp.getColumn() );
 			
+			/**/
 			if (occupant.getPlayer() == model.getCurrentPlayer()) {
 				result.remove(temp);
 			}
+			/**/
+			
+			/*
+			if ( model.getCurrentPlayer().hasActor(occupant) ) {
+				result.remove(temp);
+			}
+			/**/
+			
+			/*
+			int occNum = occupant.getPlayer().getNumber();
+			int playerNum = model.getCurrentPlayer().getNumber();
+			
+			if ( occupant.getPlayer().getNumber() == model.getCurrentPlayer().getNumber() ) {
+				result.remove(temp);
+			}
+			/**/
 		}
 		
 		return result;

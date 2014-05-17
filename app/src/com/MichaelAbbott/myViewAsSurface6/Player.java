@@ -14,6 +14,8 @@ public class Player {
     
     private ArrayList<Actor> ownedOccupants;
     
+    private int number;
+    
     
 
     public Player() {
@@ -21,7 +23,16 @@ public class Player {
         
         //should it be initialized empty or just be null?
         this.ownedOccupants = new ArrayList<Actor>();
+    }
+    
+    
+    public Player(int num) {
+        this.grid = null;
         
+        //should it be initialized empty or just be null?
+        this.ownedOccupants = new ArrayList<Actor>();
+        
+        this.number = num;
     }
     
     
@@ -32,6 +43,16 @@ public class Player {
     
     public void setGrid(Board_Model6 newGrid) {
         this.grid = newGrid;
+    }
+    
+    
+    
+    public int getNumber() {
+        return this.number;
+    }
+    
+    public void setNumber(int newValue) {
+        this.number = newValue;
     }
     
     

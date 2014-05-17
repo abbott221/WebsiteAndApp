@@ -48,6 +48,7 @@ public class AI_PlayerInteraction6 {
 		Actor occupant = target.getGrid().getOccupant( target.getRow(), target.getColumn() );
 		
 		//IT MAY REGISTER AS "ACTOR" WHEN SUPPOSE TO BE NULL
+		/*
 		if (occupant == null)
 		{
 			selectedEmptyTile(target, model);
@@ -62,6 +63,7 @@ public class AI_PlayerInteraction6 {
     		selectedCreatureTile(target, model);
     	}
     	
+		
     	
     	if (hold == HeldState.HOLD_PURPLE) {
     		selectedPurpleTile(target, model);
@@ -71,6 +73,35 @@ public class AI_PlayerInteraction6 {
     	}
     	if (hold == HeldState.HOLD_RED) {
     		selectedRedTile(target, model);
+    	}
+    	/**/
+    	
+    	
+    	
+    	if (hold == HeldState.HOLD_PURPLE) {
+    		selectedPurpleTile(target, model);
+    	}
+    	else if (hold == HeldState.HOLD_ORANGE) {
+    		selectedYellowTile(target, model);
+    	}
+    	else if (hold == HeldState.HOLD_RED) {
+    		selectedRedTile(target, model);
+    	}
+    	
+    	
+    	
+    	else if (occupant == null)
+		{
+			selectedEmptyTile(target, model);
+		}
+		else if (occupant.getActorType() == ActorType.NONE) {
+    		selectedEmptyTile(target, model);
+    	}
+		else if ( AI_Hexagon6.occupantIsPortal(target) ) {
+    		selectedPortalTile(target, model);
+    	}
+		else if ( AI_Hexagon6.occupantIsCreature(target) ) {
+    		selectedCreatureTile(target, model);
     	}
     	
 		
@@ -117,7 +148,8 @@ public class AI_PlayerInteraction6 {
 		
 		
 		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
-		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(target, model);
+		//ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(target, model);
+		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNonplayerNeighbors(target, model);
 		
 		clearTiles(model);
 		
@@ -167,7 +199,8 @@ public class AI_PlayerInteraction6 {
 		
 		
 		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
-		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(target, model);
+		//ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(target, model);
+		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNonplayerNeighbors(target, model);
 		
 		clearTiles(model);
 		
@@ -293,7 +326,8 @@ public class AI_PlayerInteraction6 {
 		
 		
 		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(active, model);
-		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(active, model);
+		//ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(active, model);
+		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNonplayerNeighbors(active, model);
 		//ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(previous, model);
 		//ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(previous, model);
 		//ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
@@ -365,7 +399,8 @@ public class AI_PlayerInteraction6 {
 		
 		
 		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
-		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(target, model);
+		//ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(target, model);
+		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNonplayerNeighbors(target, model);
 		
 		clearTiles(model);
 		
