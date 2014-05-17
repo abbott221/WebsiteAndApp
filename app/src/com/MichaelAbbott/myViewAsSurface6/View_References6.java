@@ -12,6 +12,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -25,6 +26,9 @@ public class View_References6 {
 	
 	private Spinner occSpinner;
 	private ArrayAdapter<CharSequence> occAdapter;
+	
+	
+	private Button turnButton;
 	
 	
 	private ProgressBar topBar;
@@ -42,6 +46,8 @@ public class View_References6 {
 		this.occSpinner = null;
 		this.occAdapter = null;
 		
+		this.turnButton = null;
+		
 		this.topBar = null;
 		this.bottomBar = null;
 		
@@ -56,6 +62,16 @@ public class View_References6 {
 	
 	
     
+	public Button getTurnButton()
+	{
+		return this.turnButton;
+	}
+    public void setTurnButton(Button newButton)
+	{
+		this.turnButton = newButton;
+	}
+	
+	
     
     public Spinner getSpinner()
 	{

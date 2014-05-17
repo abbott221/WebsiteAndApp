@@ -31,6 +31,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ClipData.Item;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
@@ -61,7 +63,7 @@ import android.widget.TextView;
 
 
 
-public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTouchListener, OnItemSelectedListener {
+public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTouchListener, OnItemSelectedListener, OnClickListener {
 	
 	
 	Board_MyView6 v;
@@ -107,6 +109,10 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		/**/
 		
 		
+		Button turnButton = (Button) findViewById(R.id.look_button1);
+		turnButton.setOnClickListener(this);
+		
+		
 		model = new Board_Model6(this);
 		model.setDeveloperMode(false);
 		
@@ -124,6 +130,8 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		mvcView.setSpinner(lolSpinner);
 		
 		mvcView.setOccSpinner(occSpinner);
+		
+		mvcView.setTurnButton(turnButton);
 		/**/
 		
 		
@@ -344,6 +352,26 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 	public void onNothingSelected(AdapterView<?> parent) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+
+	/**/
+	@Override
+	public void onClick(DialogInterface dialog, int which) {
+		System.err.println("Override click");
+		
+		//model.endTurn();
+	}
+	/**/
+	
+	@Override
+	public void onClick(View view) {
+		//end turn
+		
+		System.err.println("Other click");
+		
+		model.endTurn();
 	}
 	
 	

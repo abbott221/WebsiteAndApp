@@ -122,51 +122,31 @@ public class Board_Maps6 {
 		model.setOccupantArray(occupantArray);
 		
 		//something with players
-		Actor newOccupant;
 		
 		
-		ArrayList<Player> lolPlayers = new ArrayList<Player>();
-		Player player1 = new Player(1);
-		Player player2 = new Player(2);
-		lolPlayers.add(player1);
-		lolPlayers.add(player2);
+		model.setPlayers(2);
 		
-		model.setPlayers(lolPlayers);
 		
-		//model.setPlayers(2);
 		
-		model.setCurrentPlayer(player1);
+		model.setCurrentPlayer(0);
 		
-		//occupantArray[1][1] = new Actor_WhitePortal( model, model.getHexagon(1, 1) );
-		//model.setOccupant(1, 1, occupantArray[1][1]);
+		occupantArray[1][1] = new Actor_WhitePortal( model, model.getHexagon(1, 1) );
 		
 		
 		
 		
-		model.setCurrentPlayer(player2);
+		model.setCurrentPlayer(1);
 		
-		
-		Actor newOccupant1 = new Actor_BeigeAlien( model, model.getHexagon(6, 4) );
-		model.setOccupant(6, 4, newOccupant1);
-		Actor newOccupant2 = new Actor_BeigeAlien( model, model.getHexagon(6, 5) );
-		model.setOccupant(6, 5, newOccupant2);
-		
-		//last working
-		//occupantArray[6][4] = new Actor_BeigeAlien( model, model.getHexagon(6, 4) );
-		
-		//model.setOccupant(6, 4, occupantArray[6][4]);
-		//occupantArray[6][5] = new Actor_BeigeAlien( model, model.getHexagon(6, 5) );
-		//model.setOccupant(6, 4, occupantArray[6][4]);
+		occupantArray[6][4] = new Actor_BeigeAlien( model, model.getHexagon(6, 4) );
+		occupantArray[6][5] = new Actor_BeigeAlien( model, model.getHexagon(6, 5) );
 		
 		
 		
 		
-		model.setCurrentPlayer(player1);
+		model.setCurrentPlayer(0);
 		
-		Actor newOccupant3 = new Actor_WhitePortal( model, model.getHexagon(1, 1) );
-		model.setOccupant(1, 1, newOccupant3);
 		
-		//occupantArray[1][1] = new Actor_WhitePortal( model, model.getHexagon(1, 1) );
+		
 		
 		//is this necessary? isn't the reference the same still?
 		model.setOccupantArray(occupantArray);

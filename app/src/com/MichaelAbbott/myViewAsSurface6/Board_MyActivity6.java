@@ -11,6 +11,8 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ClipData.Item;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Build;
@@ -39,7 +41,7 @@ import android.widget.TextView;
 
 
 
-public class Board_MyActivity6 extends ViewWithActivityBar implements OnTouchListener, OnItemSelectedListener {
+public class Board_MyActivity6 extends ViewWithActivityBar implements OnTouchListener, OnItemSelectedListener, OnClickListener {
 	
 	
 	Board_MyView6 v;
@@ -83,6 +85,9 @@ public class Board_MyActivity6 extends ViewWithActivityBar implements OnTouchLis
 		occSpinner.setOnItemSelectedListener(this);
 		
 		
+		Button turnButton = (Button) findViewById(R.id.look_button1);
+		turnButton.setOnClickListener(this);
+		
 		
 		model = new Board_Model6(this);
 		
@@ -95,11 +100,15 @@ public class Board_MyActivity6 extends ViewWithActivityBar implements OnTouchLis
 		mvcView.registerObserver(mvcController);
 		model.registerObserver(mvcController);
 		
+		
+		
+		
 		mvcView.setSpinner(lolSpinner);
 		
 		mvcView.setOccSpinner(occSpinner);
 		
-		
+		mvcView.setTurnButton(turnButton);
+		//turnButton.setOnClickListener(this);
 		
 		
 		
@@ -192,7 +201,6 @@ public class Board_MyActivity6 extends ViewWithActivityBar implements OnTouchLis
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long id) {
-		// TODO Auto-generated method stub
 		//parent.getItemAtPosition(pos);
 		//MenuItem lolItem = parent.getItemAtPosition(pos);
 		//parent.getItemAtPosition(pos);
@@ -353,9 +361,24 @@ public class Board_MyActivity6 extends ViewWithActivityBar implements OnTouchLis
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+	@Override
+	public void onClick(DialogInterface dialog, int which) {
+		System.err.println("Override click");
+		
+		model.endTurn();
+	}
 	
 	
-	
+	public void onClick(View view) {
+		//end turn
+		
+		System.err.println("Other click");
+		
+		//model.endTurn();
+	}
 	
 	
 	
