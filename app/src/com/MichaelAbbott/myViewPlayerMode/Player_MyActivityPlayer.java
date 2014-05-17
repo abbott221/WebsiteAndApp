@@ -371,6 +371,7 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		
 		System.err.println("Other click");
 		
+		mvcController.processPlayerUnselectionEvent();
 		model.endTurn();
 	}
 	

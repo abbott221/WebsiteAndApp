@@ -137,8 +137,10 @@ public class Board_Maps6 {
 		
 		model.setCurrentPlayer(1);
 		
-		occupantArray[6][4] = new Actor_BeigeAlien( model, model.getHexagon(6, 4) );
-		occupantArray[6][5] = new Actor_BeigeAlien( model, model.getHexagon(6, 5) );
+		occupantArray[3][6] = new Actor_WhitePortal( model, model.getHexagon(3, 6) );
+		
+		//occupantArray[6][4] = new Actor_BeigeAlien( model, model.getHexagon(6, 4) );
+		//occupantArray[6][5] = new Actor_BeigeAlien( model, model.getHexagon(6, 5) );
 		
 		
 		

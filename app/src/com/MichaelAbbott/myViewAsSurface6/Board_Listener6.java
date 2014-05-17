@@ -232,15 +232,25 @@ public class Board_Listener6 implements GestureDetector.OnGestureListener /*, Sc
 		try {
 			active = this.model.getActiveTile();
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+		
+		
+		//Actor occupant = model.getOccupant( temp.getRow(), temp.getColumn() );
 		
 		
 		
 		//if the user hit a legitimate tile
 		if (temp != null)
 		{
+			
+			
+			
+			Actor occupant = model.getOccupant( temp.getRow(), temp.getColumn() );
+			
+			
+			
 			if ( this.model.getDeveloperMode() ) {
 				processDevSelectionEvent(temp);
 			} else {
@@ -256,7 +266,12 @@ public class Board_Listener6 implements GestureDetector.OnGestureListener /*, Sc
 				}
 				//otherwise, legitimate selection event
 				else {
+					
+					//user can only select their own players
+					//if ( occupant.getPlayer() == model.getCurrentPlayer() )
 					processPlayerSelectionEvent(temp);
+					
+					
 				}
 				/**/
 				

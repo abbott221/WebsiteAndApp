@@ -48,33 +48,7 @@ public class AI_PlayerInteraction6 {
 		Actor occupant = target.getGrid().getOccupant( target.getRow(), target.getColumn() );
 		
 		//IT MAY REGISTER AS "ACTOR" WHEN SUPPOSE TO BE NULL
-		/*
-		if (occupant == null)
-		{
-			selectedEmptyTile(target, model);
-		}
-		else if (occupant.getActorType() == ActorType.NONE) {
-    		selectedEmptyTile(target, model);
-    	}
-		else if ( AI_Hexagon6.occupantIsPortal(target) ) {
-    		selectedPortalTile(target, model);
-    	}
-		else if ( AI_Hexagon6.occupantIsCreature(target) ) {
-    		selectedCreatureTile(target, model);
-    	}
-    	
 		
-    	
-    	if (hold == HeldState.HOLD_PURPLE) {
-    		selectedPurpleTile(target, model);
-    	}
-    	if (hold == HeldState.HOLD_ORANGE) {
-    		selectedYellowTile(target, model);
-    	}
-    	if (hold == HeldState.HOLD_RED) {
-    		selectedRedTile(target, model);
-    	}
-    	/**/
     	
     	
     	
@@ -98,10 +72,32 @@ public class AI_PlayerInteraction6 {
     		selectedEmptyTile(target, model);
     	}
 		else if ( AI_Hexagon6.occupantIsPortal(target) ) {
-    		selectedPortalTile(target, model);
+			
+			//user can only select their own players
+			//otherwise, treat as empty tile
+			if ( occupant.getPlayer() == model.getCurrentPlayer() ) {
+				selectedPortalTile(target, model);
+			}
+			else {
+				selectedEnemyTile(target, model);
+				//selectedEmptyTile(target, model);
+			}
+			//selectedPortalTile(target, model);
+			
     	}
 		else if ( AI_Hexagon6.occupantIsCreature(target) ) {
-    		selectedCreatureTile(target, model);
+    		
+			//user can only select their own players
+			//otherwise, treat as empty tile
+			if ( occupant.getPlayer() == model.getCurrentPlayer() ) {
+				selectedCreatureTile(target, model);
+			}
+			else {
+				selectedEnemyTile(target, model);
+				//selectedEmptyTile(target, model);
+			}
+			//selectedCreatureTile(target, model);
+    		
     	}
     	
 		
@@ -119,11 +115,27 @@ public class AI_PlayerInteraction6 {
 		
 		clearTiles(model);
 		
-		setHold(target, HeldState.HOLD_BLUE);
+		setHold(target, model, HeldState.HOLD_BLUE);
 		
 		model.getView_References().updateBothVisibility(0);
 	}
 	/**/
+	
+	
+	
+	public static void selectedEnemyTile(Hexagon6 target, Board_Model6 model) {
+		
+		Actor occupant = model.getOccupant( target.getRow(), target.getColumn() );
+		
+		clearTiles(model);
+		
+		setHold(target, model, HeldState.HOLD_BLUE);
+		
+		View_References6 progBars = model.getView_References();
+		progBars.updateBothVisibility(2);
+		progBars.updateTopBar( occupant.getCurrentHealth(), occupant.getMaxHealth() );
+		progBars.updateBottomBar( occupant.getCurrentEnergy(), occupant.getMaxEnergy() );
+	}
 	
 	
 	
@@ -156,7 +168,7 @@ public class AI_PlayerInteraction6 {
 		setHolds(possibleMoves, HeldState.HOLD_ORANGE);
 		setHolds(possibleEnemies, HeldState.HOLD_RED);
 		
-		setHold(target, HeldState.HOLD_BLUE);
+		setHold(target, model, HeldState.HOLD_BLUE);
 		
 		View_References6 progBars = model.getView_References();
 		progBars.updateBothVisibility(2);
@@ -188,6 +200,52 @@ public class AI_PlayerInteraction6 {
 			occupant = model.getOccupant( previous.getRow(), previous.getColumn() );
 		}
 		
+		
+		
+		
+		Hexagon6 active = null;
+		
+		try {
+			active = model.getActiveTile();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//if previous is wrong
+		//if (previous == target) {
+		if ( active != null ) {
+			
+			//System.err.println("Previous is wrong");
+			
+			if (active != null) {
+				occupant = model.getOccupant( active.getRow(), active.getColumn() );
+			}
+		}
+		//if previous isn't wrong, model.setActiveTile
+		else {
+			model.setActiveTile(previous);
+			
+			//System.err.println("Previous is right");
+			
+			/**/
+			//this is what I forgot: active wasn't updated!
+			try {
+				active = model.getActiveTile();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			/**/
+			
+			if (active != null) {
+				occupant = model.getOccupant( active.getRow(), active.getColumn() );
+			}
+		}
+		
+		
+		
+		
+		
+		
 		occupant.setLocation(target);
 		
 		
@@ -207,7 +265,7 @@ public class AI_PlayerInteraction6 {
 		setHolds(possibleMoves, HeldState.HOLD_ORANGE);
 		setHolds(possibleEnemies, HeldState.HOLD_RED);
 		
-		setHold(target, HeldState.HOLD_BLUE);
+		setHold(target, model, HeldState.HOLD_BLUE);
 		
 		
 		View_References6 progBars = model.getView_References();
@@ -258,7 +316,7 @@ public class AI_PlayerInteraction6 {
 		//if previous is wrong
 		if (previous == target) {
 			
-			System.err.println("Previous is wrong");
+			//System.err.println("Previous is wrong");
 			
 			if (active != null) {
 				attacker = model.getOccupant( active.getRow(), active.getColumn() );
@@ -268,7 +326,7 @@ public class AI_PlayerInteraction6 {
 		else {
 			model.setActiveTile(previous);
 			
-			System.err.println("Previous is right");
+			//System.err.println("Previous is right");
 			
 			/**/
 			//this is what I forgot: active wasn't updated!
@@ -338,7 +396,7 @@ public class AI_PlayerInteraction6 {
 		setHolds(possibleMoves, HeldState.HOLD_ORANGE);
 		setHolds(possibleEnemies, HeldState.HOLD_RED);
 		
-		setHold(active, HeldState.HOLD_BLUE);
+		setHold(active, model, HeldState.HOLD_BLUE);
 		//setHold(previous, HeldState.HOLD_BLUE);
 		//setHold(target, HeldState.HOLD_BLUE);
 		
@@ -367,7 +425,7 @@ public class AI_PlayerInteraction6 {
 		clearTiles(model);
 		
 		setHolds(blocksByPortal, HeldState.HOLD_PURPLE);
-		setHold(target, HeldState.HOLD_BLUE);
+		setHold(target, model, HeldState.HOLD_BLUE);
 		
 		
 		View_References6 progBars = model.getView_References();
@@ -407,13 +465,15 @@ public class AI_PlayerInteraction6 {
 		setHolds(possibleMoves, HeldState.HOLD_ORANGE);
 		setHolds(possibleEnemies, HeldState.HOLD_RED);
 		
-		setHold(target, HeldState.HOLD_BLUE);
+		setHold(target, model, HeldState.HOLD_BLUE);
 		
 		
 		View_References6 progBars = model.getView_References();
 		progBars.updateBothVisibility(2);
 		progBars.updateTopBar( occupant.getCurrentHealth(), occupant.getMaxHealth() );
 		progBars.updateBottomBar( occupant.getCurrentEnergy(), occupant.getMaxEnergy() );
+		
+		//model.setActiveTile(target);
 	}
 	
 	
@@ -437,9 +497,12 @@ public class AI_PlayerInteraction6 {
 	
 	
 	
-	public static void setHold(Hexagon6 target, HeldState setting) {
+	public static void setHold(Hexagon6 target, Board_Model6 model, HeldState setting) {
 		
 		target.setHeldState(setting);
+		
+		
+		model.setActiveTile(target);
 		
 	}
 	
