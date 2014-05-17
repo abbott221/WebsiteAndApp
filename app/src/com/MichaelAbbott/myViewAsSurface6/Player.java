@@ -39,6 +39,13 @@ public class Player {
     
     
     
+    public ArrayList<Actor> getOccupants() {
+        return this.ownedOccupants;
+    }
+    public void setOccupants(ArrayList<Actor> input) {
+        this.ownedOccupants = input;
+    }
+    
     
     
     
@@ -48,7 +55,11 @@ public class Player {
     public void removeActor(Actor newActor) {
         this.ownedOccupants.remove(newActor);
     }
-    
+    /*
+    public void setActor(Actor newActor) {
+        this.ownedOccupants.remove(newActor);
+    }
+    /**/
     public boolean hasActor(Actor check) {
     	return this.ownedOccupants.contains(check);
     }

@@ -82,7 +82,8 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		super.onCreate(savedInstanceState);
 		
 		
-		setContentView(R.layout.activity_exp_player);
+		//setContentView(R.layout.activity_exp_player);
+		setContentView(R.layout.activity_bars_to_bottom);
 		
 		
 		/**/

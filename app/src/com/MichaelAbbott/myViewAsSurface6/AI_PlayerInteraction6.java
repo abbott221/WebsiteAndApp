@@ -145,11 +145,38 @@ public class AI_PlayerInteraction6 {
 		//ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
 		
 		
-		Actor newOccupant = new Actor_BeigeAlien( model, target );
+		//Actor newOccupant = new Actor_BeigeAlien( model, target );
 		
-		model.setOccupant(target.getRow(), target.getColumn(), newOccupant);
+		//model.setOccupant(target.getRow(), target.getColumn(), newOccupant);
 		
 		
+		
+		Hexagon6 activeTile = null;
+		try {
+			activeTile = model.getActiveTile();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Actor occupant = model.getOccupant( activeTile.getRow(), activeTile.getColumn() );
+		int energy = occupant.getCurrentEnergy();
+		
+		if ( energy > 0 ) {
+			energy -= 1;
+			occupant.setCurrentEnergy(energy);
+			
+			
+			
+			
+			Actor newOccupant = new Actor_BeigeAlien( model, target );
+			
+			model.setOccupant(target.getRow(), target.getColumn(), newOccupant);
+			
+			selectedCreatureTile(target, model);
+		}
+		else {
+			target = occupant.getLocation();
+		}
 		
 		
 		/*
@@ -159,6 +186,7 @@ public class AI_PlayerInteraction6 {
 		 */
 		
 		
+		/*
 		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
 		//ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(target, model);
 		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNonplayerNeighbors(target, model);
@@ -174,6 +202,7 @@ public class AI_PlayerInteraction6 {
 		progBars.updateBothVisibility(2);
 		progBars.updateTopBar( 1, 1 );
 		progBars.updateBottomBar( 1, 1 );
+		/**/
 	}
 	
 	
@@ -243,10 +272,17 @@ public class AI_PlayerInteraction6 {
 		
 		
 		
+		int energy = occupant.getCurrentEnergy();
 		
-		
-		
-		occupant.setLocation(target);
+		if ( energy > 0 ) {
+			energy -= 1;
+			occupant.setCurrentEnergy(energy);
+			
+			occupant.setLocation(target);
+		}
+		else {
+			target = occupant.getLocation();
+		}
 		
 		
 		/*
@@ -356,10 +392,10 @@ public class AI_PlayerInteraction6 {
 		int damage = attacker.getPower();
 		
 		int health = defender.getCurrentHealth();
-		int energy = attacker.getCurrentEnergy();
+		//int energy = attacker.getCurrentEnergy();
 		
 		health -= damage;
-		energy -= damage;
+		//energy -= damage;
 		
 		if (health <= 0)
 		{
@@ -372,7 +408,7 @@ public class AI_PlayerInteraction6 {
 			defender.setCurrentHealth(health);
 		}
 		
-		attacker.setCurrentEnergy(energy);
+		//attacker.setCurrentEnergy(energy);
 		
 		
 		

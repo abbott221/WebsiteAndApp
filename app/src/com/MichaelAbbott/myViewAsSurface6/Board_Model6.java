@@ -300,6 +300,21 @@ public class Board_Model6 {
 	}
     public void endTurn()
     {
+    	//recharge energy of all occupants
+    	//not working yet
+    	/**/
+    	ArrayList<Actor> occs = this.currentPlayer.getOccupants();
+    	Actor current;
+    	for (int i = 0; i < occs.size(); i++) {
+    		current = occs.get(i);
+    		current.setCurrentEnergy( current.getMaxEnergy() );
+    		//this.currentPlayer
+    	}
+    	this.currentPlayer.setOccupants(occs);
+    	/**/
+    	//System.err.println( this.currentPlayer.getOccupants().size() );
+    	
+    	
     	//find position of current player
     	//if not max, get next
     	//if max, reset to 0
