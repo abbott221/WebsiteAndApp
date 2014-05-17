@@ -17,6 +17,8 @@ public class Actor {
 	//private Grid<Actor> grid;
     private Hexagon6 location;
     
+    private Player player;
+    
     //similar to color
     private Bitmap appearance;
     
@@ -45,6 +47,8 @@ public class Actor {
     public Actor() {
         this.grid = null;
         this.location = null;
+        
+        this.player = null;
         
         this.appearance = null;
         
@@ -203,6 +207,33 @@ public class Actor {
     	
     	this.location = newLocation;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    //based on getLocation
+    public Player getPlayer() {
+        return this.player;
+    }
+    
+    //based on setLocation - but it doesn't have related null handling?
+    public void setPlayer(Player newPlayer) {
+    	
+    	/*
+    	//perhaps this.player was still null, causing the error
+    	if (newPlayer == null) {
+    		this.player.removeActor(this);
+    	}
+    	/**/
+    	
+        this.player = newPlayer;
+    }
+    
+    
     
     
     

@@ -195,6 +195,8 @@ public class AI_PlayerInteraction6 {
 		Actor attacker = null;
 		
 		
+		
+		
 		Hexagon6 previous = null;
 		
 		try {
@@ -208,6 +210,50 @@ public class AI_PlayerInteraction6 {
 			
 			attacker = model.getOccupant( previous.getRow(), previous.getColumn() );
 		}
+		
+		
+		
+		
+		Hexagon6 active = null;
+		
+		try {
+			active = model.getActiveTile();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//if previous is wrong
+		if (previous == target) {
+			
+			System.err.println("Previous is wrong");
+			
+			if (active != null) {
+				attacker = model.getOccupant( active.getRow(), active.getColumn() );
+			}
+		}
+		//if previous isn't wrong, model.setActiveTile
+		else {
+			model.setActiveTile(previous);
+			
+			System.err.println("Previous is right");
+			
+			/**/
+			//this is what I forgot: active wasn't updated!
+			try {
+				active = model.getActiveTile();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			/**/
+			
+			if (active != null) {
+				attacker = model.getOccupant( active.getRow(), active.getColumn() );
+			}
+		}
+		
+		
+		
+		
 		//Attacker has been initialized by here
 		//Now initialize defender
 		
@@ -246,15 +292,21 @@ public class AI_PlayerInteraction6 {
 		 */
 		
 		
-		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
-		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(target, model);
+		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(active, model);
+		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(active, model);
+		//ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(previous, model);
+		//ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(previous, model);
+		//ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
+		//ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(target, model);
 		
 		clearTiles(model);
 		
 		setHolds(possibleMoves, HeldState.HOLD_ORANGE);
 		setHolds(possibleEnemies, HeldState.HOLD_RED);
 		
-		setHold(target, HeldState.HOLD_BLUE);
+		setHold(active, HeldState.HOLD_BLUE);
+		//setHold(previous, HeldState.HOLD_BLUE);
+		//setHold(target, HeldState.HOLD_BLUE);
 		
 		
 		View_References6 progBars = model.getView_References();

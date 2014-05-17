@@ -228,6 +228,15 @@ public class Board_Listener6 implements GestureDetector.OnGestureListener /*, Sc
 		
 		Hexagon6 temp = this.model.getClosestTile(eX, eY);
 		
+		Hexagon6 active = null;
+		try {
+			active = this.model.getActiveTile();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
 		
 		//if the user hit a legitimate tile
 		if (temp != null)
@@ -235,7 +244,23 @@ public class Board_Listener6 implements GestureDetector.OnGestureListener /*, Sc
 			if ( this.model.getDeveloperMode() ) {
 				processDevSelectionEvent(temp);
 			} else {
-				processPlayerSelectionEvent(temp);
+				
+				//removed for the following if-else involving selecting "active" tile
+				//processPlayerSelectionEvent(temp);
+				
+				
+				//if user "selected" the active tile, then unselection event
+				/**/
+				if (temp == active) {
+					processPlayerUnselectionEvent();
+				}
+				//otherwise, legitimate selection event
+				else {
+					processPlayerSelectionEvent(temp);
+				}
+				/**/
+				
+				
 			}
 			
 			//temp.setHighlighted(Hexagon5.SelectState.SELECTED);
@@ -251,7 +276,12 @@ public class Board_Listener6 implements GestureDetector.OnGestureListener /*, Sc
 				if ( this.model.getDeveloperMode() ) {
 					processDevUnselectionEvent();
 				} else {
-					processPlayerUnselectionEvent();
+					
+					//only unselect if not attack event (red tile)
+					if ( temp.getHeldState() != HeldState.HOLD_RED ) {
+						processPlayerUnselectionEvent();
+					}
+					
 				}
 			}
 			//if block is empty and player mode
@@ -450,6 +480,9 @@ public class Board_Listener6 implements GestureDetector.OnGestureListener /*, Sc
 		}
     	
     	this.model.setSelected(null);
+    	
+    	this.model.setActiveTile(null);
+    	
     	
     	this.mvcView.updateBothVisibility(0);
     	

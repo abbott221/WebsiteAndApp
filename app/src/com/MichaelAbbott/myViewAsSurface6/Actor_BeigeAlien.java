@@ -60,8 +60,11 @@ public class Actor_BeigeAlien extends Actor {
         
         this.setActorType(ActorType.ALIEN);
         
+        
+        
         this.setGrid(grid);
         this.setLocation(loc);
+        this.setPlayer( grid.getCurrentPlayer() );
         
         
         

@@ -81,8 +81,9 @@ public class AI_Hexagon6 {
 	
 	
 	
-	
-
+	/**
+	 * returns all valid neighbor hexagons
+	 */
 	public static ArrayList<Hexagon6> getNeighbors(Hexagon6 test, Board_Model6 model) {
 		
 		ArrayList<Hexagon6> result = new ArrayList<Hexagon6>();
@@ -167,9 +168,9 @@ public class AI_Hexagon6 {
 	
 	
 	
-	
-	
-	
+	/**
+	 * returns all neighbor hexagons that have a block
+	 */
 	public static ArrayList<Hexagon6> getBlockNeighbors(Hexagon6 test, Board_Model6 model) {
 		
 		ArrayList<Hexagon6> result = getNeighbors(test, model);
@@ -193,7 +194,9 @@ public class AI_Hexagon6 {
 	
 	
 	
-	
+	/**
+	 * returns all neighbor hexagons that don't have occupants
+	 */
 	public static ArrayList<Hexagon6> getOpenNeighbors(Hexagon6 test, Board_Model6 model) {
 		
 		ArrayList<Hexagon6> result = getNeighbors(test, model);
@@ -225,7 +228,9 @@ public class AI_Hexagon6 {
 	
 	
 	
-	
+	/**
+	 * returns all neighbor hexagons that do have occupants
+	 */
 	public static ArrayList<Hexagon6> getNeutralNeighbors(Hexagon6 test, Board_Model6 model) {
 		
 		ArrayList<Hexagon6> result = getNeighbors(test, model);
@@ -253,6 +258,63 @@ public class AI_Hexagon6 {
 		
 		return result;
 	}
+	
+	
+	
+	
+	
+	
+	/**
+	 * returns all neighbor hexagons that do have occupants which do belong to current player
+	 */
+	public static ArrayList<Hexagon6> getPlayerNeighbors(Hexagon6 test, Board_Model6 model) {
+		
+		ArrayList<Hexagon6> result = getNeutralNeighbors(test, model);
+		
+		Hexagon6 temp;
+		
+		Actor occupant = null;
+		
+		for (int i = result.size() - 1; i >= 0; i--) {
+			temp = result.get(i);
+			
+			occupant = model.getOccupant( temp.getRow(), temp.getColumn() );
+			
+			if (occupant.getPlayer() != model.getCurrentPlayer()) {
+				result.remove(temp);
+			}
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
+	/**
+	 * returns all neighbor hexagons that do have occupants which don't belong to current player
+	 */
+	public static ArrayList<Hexagon6> getNonplayerNeighbors(Hexagon6 test, Board_Model6 model) {
+		
+		ArrayList<Hexagon6> result = getNeutralNeighbors(test, model);
+		
+		Hexagon6 temp;
+		
+		Actor occupant = null;
+		
+		for (int i = result.size() - 1; i >= 0; i--) {
+			temp = result.get(i);
+			
+			occupant = model.getOccupant( temp.getRow(), temp.getColumn() );
+			
+			if (occupant.getPlayer() == model.getCurrentPlayer()) {
+				result.remove(temp);
+			}
+		}
+		
+		return result;
+	}
+	
 	
 	
 	

@@ -66,9 +66,12 @@ public class Actor_WhitePortal extends Actor {
         this.setTranslateX(0);
         
         this.setActorType(ActorType.PORTAL);
+
+        
         
         this.setGrid(grid);
         this.setLocation(loc);
+        this.setPlayer( grid.getCurrentPlayer() );
         
         
         

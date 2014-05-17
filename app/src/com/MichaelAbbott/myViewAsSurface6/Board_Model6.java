@@ -1,6 +1,8 @@
 package com.MichaelAbbott.myViewAsSurface6;
 
 
+import java.util.ArrayList;
+
 import com.MichaelAbbott.myViewAsSurface6.Hexagon6.OccupantState;
 
 import android.content.Context;
@@ -19,14 +21,25 @@ public class Board_Model6 {
 	
 	private Hexagon6[][] board;
 	private Actor[][] occupantArray;
+	private ArrayList<Player> players;
+	
+	private Player currentPlayer;
 	
 	private int rows, columns;
 	
 	private float touchRadius;
 	
+	
+	
+	
 	Hexagon6 lolSelected;
 	
 	Hexagon6 previousSelected;
+	
+	Hexagon6 activeTile;
+	
+	
+	
 	
 	//Context lolContext;
 	
@@ -88,11 +101,18 @@ public class Board_Model6 {
 		occupantArray[6][4] = new Actor_BeigeAlien(context);
 		/**/
 		
+		//Set to 0 in the ArrayList returned from map2???
+		this.currentPlayer = null;
+		
+		
 		
 		
 		
 		this.lolSelected = null;
 		this.previousSelected = null;
+		this.activeTile = null;
+		
+		
 		
 		
 		
@@ -169,8 +189,33 @@ public class Board_Model6 {
 		
 		//this.rows = r;
 		//this.columns = c;
+	}
+	
+	public void setPlayers(ArrayList<Player> newList)
+	{
+		this.players = newList;
+		
+		//this.rows = r;
+		//this.columns = c;
+	}
+	
+	public void setPlayers(int listSize)
+	{
+		ArrayList<Player> newList = new ArrayList<Player>();
 		
 		
+		Player temp;
+		
+		for (int i = 0; i < listSize; i++) {
+			temp = new Player();
+			newList.add(temp);
+		}
+		
+		
+		this.players = newList;
+		
+		//this.rows = r;
+		//this.columns = c;
 	}
 	
 	
@@ -237,6 +282,43 @@ public class Board_Model6 {
 	}
     
     
+    public Player getCurrentPlayer()
+	{
+		return this.currentPlayer;
+	}
+    public void setCurrentPlayer(Player newPlayer)
+	{
+		this.currentPlayer = newPlayer;
+	}
+    public void setCurrentPlayer(int newPlayer)
+	{
+		this.currentPlayer = this.players.get(newPlayer);
+	}
+    public void endTurn()
+    {
+    	//find position of current player
+    	//if not max, get next
+    	//if max, reset to 0
+    	int currentIndex = this.players.indexOf(this.currentPlayer);
+    	int maxIndex = this.players.size() - 1;
+    	
+    	int newIndex = 0;
+    	
+    	/*
+    	if (currentIndex == maxIndex) {
+    		newIndex = 0;
+    	} else {
+    		newIndex = currentIndex + 1;
+    	}
+    	/**/
+    	if (currentIndex != maxIndex) {
+    		newIndex = currentIndex + 1;
+    	}
+    	
+    	this.currentPlayer = this.players.get(newIndex);
+    }
+    
+    
     
     
     
@@ -271,6 +353,21 @@ public class Board_Model6 {
 		}
     	
     	return this.previousSelected;
+	}
+    
+    public Hexagon6 getActiveTile() throws Exception
+	{
+		Hexagon6 result = this.activeTile;
+		if (result == null)
+		{
+			throw new NullPointerException();
+		}
+    	
+    	return this.activeTile;
+	}
+    public void setActiveTile(Hexagon6 newSelect)
+	{
+		this.activeTile = newSelect;
 	}
     
     
