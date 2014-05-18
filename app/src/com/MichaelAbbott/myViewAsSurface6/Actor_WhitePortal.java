@@ -25,7 +25,7 @@ import android.graphics.Paint;
 
 import com.MichaelAbbott.myViewAsSurface6.Actor.ActorType;
 import com.MichaelAbbott.myViewAsSurface6.Hexagon6.OccupantState;
-import com.MichaelFAbbott.myfirstapp.R;
+import com.MichaelAbbott.hexagonalgame.R;
 
 
 /**

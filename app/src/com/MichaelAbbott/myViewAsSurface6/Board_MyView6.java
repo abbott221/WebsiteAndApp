@@ -2,7 +2,7 @@ package com.MichaelAbbott.myViewAsSurface6;
 
 
 import com.MichaelAbbott.myViewAsSurface6.Hexagon6.BlockState;
-import com.MichaelFAbbott.myfirstapp.R;
+import com.MichaelAbbott.hexagonalgame.R;
 
 import android.annotation.TargetApi;
 import android.content.Context;

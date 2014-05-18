@@ -5,7 +5,7 @@ import com.MichaelAbbott.myCustomView.Board_Controller;
 import com.MichaelAbbott.myCustomView.Board_Model;
 import com.MichaelAbbott.myCustomView.Hexagon;
 import com.MichaelAbbott.myViewAsSurface5.Hexagon5.BlockState;
-import com.MichaelFAbbott.myfirstapp.R;
+import com.MichaelAbbott.hexagonalgame.R;
 
 import android.annotation.TargetApi;
 import android.content.Context;

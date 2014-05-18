@@ -3,7 +3,7 @@ package com.MichaelAbbott.myViewAsSurface6;
 import com.MichaelAbbott.myViewAsSurface6.Hexagon6.HeldState;
 import com.MichaelAbbott.myViewAsSurface6.Hexagon6.OccupantState;
 import com.MichaelAbbott.standards.ViewWithActivityBar;
-import com.MichaelFAbbott.myfirstapp.R;
+import com.MichaelAbbott.hexagonalgame.R;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;

@@ -3,7 +3,7 @@ package com.MichaelAbbott.myfirstapp;
 
 import com.MichaelAbbott.standards.AttemptModel;
 import com.MichaelAbbott.standards.AttemptView;
-import com.MichaelFAbbott.myfirstapp.R;
+import com.MichaelAbbott.hexagonalgame.R;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

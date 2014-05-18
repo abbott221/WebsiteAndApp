@@ -15,7 +15,7 @@ import com.MichaelAbbott.myfirstapp.Post_View;
 import com.MichaelAbbott.standards.AttemptController;
 import com.MichaelAbbott.standards.AttemptModel;
 import com.MichaelAbbott.standards.AttemptView;
-import com.MichaelFAbbott.myfirstapp.R;
+import com.MichaelAbbott.hexagonalgame.R;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;

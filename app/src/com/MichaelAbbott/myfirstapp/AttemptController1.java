@@ -4,10 +4,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.MichaelAbbott.hexagonalgame.R;
 import com.MichaelAbbott.standards.AttemptController;
 import com.MichaelAbbott.standards.AttemptModel;
 import com.MichaelAbbott.standards.AttemptView;
-import com.MichaelFAbbott.myfirstapp.R;
 
 import android.util.Log;
 import android.view.View;

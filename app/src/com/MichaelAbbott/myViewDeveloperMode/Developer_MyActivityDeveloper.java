@@ -20,7 +20,7 @@ import com.MichaelAbbott.standards.AttemptController;
 import com.MichaelAbbott.standards.AttemptModel;
 import com.MichaelAbbott.standards.AttemptView;
 import com.MichaelAbbott.standards.ViewWithActivityBar;
-import com.MichaelFAbbott.myfirstapp.R;
+import com.MichaelAbbott.hexagonalgame.R;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
