@@ -1,6 +1,8 @@
 Intro
 -----
-The App is now available on the Google Play Store: https://play.google.com/store/apps/details?id=com.MichaelAbbott.hexagonalgame
+The App is now available on the Google Play Store:
+https://play.google.com/store/apps/details?id=com.MichaelAbbott.hexagonalgame
+http://goo.gl/omk477
 
 This repository has very poor documentation and this README is not updated very frequently, but here's a general roadmap of what folder of code does what
 - App
