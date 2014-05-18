@@ -89,6 +89,8 @@ public class Actor_BeigeAlien extends Actor {
         
         this.setRange(1);
         this.setPower(2);
+        
+        this.setCanAttack(true);
     }
     
     

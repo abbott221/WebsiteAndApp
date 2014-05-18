@@ -441,13 +441,17 @@ public class Hexagon6
 	
 	
 	public void drawSelf( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant,
-			float myScale, float scrollX, float scrollY )
+			float myScale, float scrollX, float scrollY, Board_Model6 model )
 	{
 		canvas.save();
 		
 		
 		
 		translateAndScale(canvas, myScale, scrollX, scrollY);
+		
+		
+		//not the original position of this line
+		//canvas.translate( 0, -6.5f );
 		
 		
 		
@@ -457,13 +461,38 @@ public class Hexagon6
 		
 		//****************************************************************************
 		
+		float densityX = model.getDensityX();
+		float densityY = model.getDensityY();
+		
 		if (this.myBlock != BlockState.NONE)
 		{
 			wHalf = drawBlock.getWidth() / 2;
 			hHalf = drawBlock.getHeight() / 2;
 			
+			
+			
+			/*
+			float densityX = model.getDensityX();
+			float densityY = model.getDensityY();
+			/**/
+			
+			canvas.scale( (472.965f / densityX), (473.475f / densityY) );
+			/**/
+			
+			
+			
+			//canvas.translate( 0, -6.5f );
+			
 			//Draw Bitmap Block
 			canvas.drawBitmap(drawBlock, -wHalf, (-hHalf + 30), paintFill);
+			
+			//canvas.translate( 0, 6.5f );
+			
+			/**/
+			canvas.scale( (densityX / 472.965f), (densityY / 473.475f) );
+			/**/
+			
+			
 		}
 		
 		
@@ -472,20 +501,16 @@ public class Hexagon6
 		paintFill.setColor( myColor );
 		paintFill.setStyle( Paint.Style.FILL );
 		
-		//only affects tile size (they shrink in place)
-		//canvas.scale( myScale, myScale );
+		
 		
 		canvas.translate( 0, -6.5f );
 		
+		
 		/*
-		//this is handled by the view now
-		//the blockstate condition only applies to players
-		if (myHeldState != HeldState.NONE && this.myBlock != BlockState.NONE)
-		{
-			//Fill Painted Hexagon
-			canvas.drawPath( shapePath, paintFill );
-		}
+		canvas.scale( (densityX / 472.965f), (densityY / 473.475f) );
 		/**/
+		
+		
 		if ( myHeldState != HeldState.NONE )
 		{
 			//Fill Painted Hexagon
@@ -500,7 +525,7 @@ public class Hexagon6
 	
 	
 	public void drawSelf_Outline( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant,
-			float myScale, float scrollX, float scrollY )
+			float myScale, float scrollX, float scrollY, Board_Model6 model )
 	{
 		canvas.save();
 		
@@ -535,7 +560,7 @@ public class Hexagon6
 	
 	
 	public void drawSelf_Occupant( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant,
-			float myScale, float scrollX, float scrollY )
+			float myScale, float scrollX, float scrollY, Board_Model6 model )
 	{
 		canvas.save();
 		
@@ -565,7 +590,7 @@ public class Hexagon6
 		if (temp != null)
 		{
 			//System.err.println("Actor object draw entered");
-			this.grid.getOccupant(row, column).drawSelf_Occupant(canvas, paintFill);
+			this.grid.getOccupant(row, column).drawSelf_Occupant(canvas, paintFill, model);
 		}
 		
 		
@@ -577,73 +602,6 @@ public class Hexagon6
 	}
 	
 	
-	/*
-	public void drawSelf_Occupant2( Canvas canvas, Bitmap drawBlock, Bitmap drawOccupant,
-			float myScale, float scrollX, float scrollY )
-	{
-		canvas.save();
-		
-		
-
-		boolean isAPortal = false;
-		
-		if (this.myOccupantState == OccupantState.P_BLUE) {
-			isAPortal = true;
-		} else if (this.myOccupantState == OccupantState.P_GREEN) {
-			isAPortal = true;
-		} else if (this.myOccupantState == OccupantState.P_RED) {
-			isAPortal = true;
-		} else if (this.myOccupantState == OccupantState.P_WHITE) {
-			isAPortal = true;
-		} else if (this.myOccupantState == OccupantState.P_YELLOW) {
-			isAPortal = true;
-		}
-		
-		
-		
-		
-		translateAndScale(canvas, myScale, scrollX, scrollY);
-		
-		
-		
-		
-		int wHalf;
-		int hHalf;
-		
-		
-		//****************************************************************************
-		
-		
-		
-		paintFill.setColor( myColor );
-		paintFill.setStyle( Paint.Style.FILL );
-		
-		
-		
-		//********************Draw Occupant********************
-		
-		canvas.translate( 0, -30.0f );
-		
-		
-		if (isAPortal) {
-			canvas.scale(2, 2);
-		}
-		
-		if (this.myOccupantState != OccupantState.NONE)
-		{
-			wHalf = drawOccupant.getWidth() / 2;
-			hHalf = drawOccupant.getHeight() / 2;
-			
-			canvas.drawBitmap(drawOccupant, -wHalf, (-hHalf - 30), paintFill);
-		}
-		
-		//********************Draw Occupant********************
-		
-		
-		
-		canvas.restore();
-	}
-	/**/
 	
 }
 

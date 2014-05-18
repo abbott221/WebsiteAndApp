@@ -43,6 +43,8 @@ public class Actor {
     private int range;
     private int power;
     
+    private boolean canAttack;
+    
 
     public Actor() {
         this.grid = null;
@@ -159,6 +161,16 @@ public class Actor {
     
     
     
+    public boolean getCanAttack() {
+        return this.canAttack;
+    }
+    public void setCanAttack(boolean newValue) {
+        this.canAttack = newValue;
+    }
+    
+    
+    
+    
     
     /**
      * Gets the grid in which this actor is located.
@@ -241,7 +253,7 @@ public class Actor {
     
     
     
-    public void drawSelf_Occupant( Canvas canvas, Paint paintFill )
+    public void drawSelf_Occupant( Canvas canvas, Paint paintFill, Board_Model6 model )
 	{
 		//canvas.save();
 		
@@ -265,8 +277,25 @@ public class Actor {
 			canvas.scale(2, 2);
 		}
 		/**/
+		
+		
+		
+		
+		
+		
 		canvas.scale(this.getDrawScale(), this.getDrawScale());
 		
+		
+		
+		
+		
+		/**/
+		//scale for dpi right before drawBitmap()
+		float densityX = model.getDensityX();
+		float densityY = model.getDensityY();
+		
+		canvas.scale( (472.965f / densityX), (473.475f / densityY) );
+		/**/
 		
 		
 		canvas.drawBitmap(this.getAppearance(), this.getDrawX(), this.getDrawY(), paintFill);

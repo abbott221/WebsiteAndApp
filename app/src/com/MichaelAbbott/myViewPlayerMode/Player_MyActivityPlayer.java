@@ -15,6 +15,7 @@ import com.MichaelAbbott.myViewAsSurface5.Hexagon5.OccupantState;
 import com.MichaelAbbott.myViewAsSurface6.Board_Listener6;
 import com.MichaelAbbott.myViewAsSurface6.Board_Model6;
 import com.MichaelAbbott.myViewAsSurface6.Board_MyView6;
+import com.MichaelAbbott.myViewAsSurface6.Hexagon6;
 import com.MichaelAbbott.myViewAsSurface6.View_References6;
 import com.MichaelAbbott.myfirstapp.AttemptController1;
 import com.MichaelAbbott.myfirstapp.AttemptModel1;
@@ -40,6 +41,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.os.Vibrator;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -96,10 +98,6 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		/**/
 		
 		
-		//lolSpinner.setSelection(position);
-		//lolSpinner.s
-		//lolAdapter.getItemId(position)
-		
 		/**/
 		Spinner occSpinner = (Spinner) findViewById(R.id.look_spinner2);
 		ArrayAdapter<CharSequence> occAdapter = ArrayAdapter.createFromResource(this,
@@ -107,6 +105,16 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		occAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		occSpinner.setAdapter(occAdapter);
 		occSpinner.setOnItemSelectedListener(this);
+		/**/
+		
+		
+		/**/
+		Spinner scaleSpinner = (Spinner) findViewById(R.id.look_spinner3);
+		ArrayAdapter<CharSequence> scaleAdapter = ArrayAdapter.createFromResource(this,
+		    R.array.scaleSpinner_array, android.R.layout.simple_spinner_item);
+		scaleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		scaleSpinner.setAdapter(scaleAdapter);
+		scaleSpinner.setOnItemSelectedListener(this);
 		/**/
 		
 		
@@ -131,6 +139,8 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		mvcView.setSpinner(lolSpinner);
 		
 		mvcView.setOccSpinner(occSpinner);
+		
+		mvcView.setScaleSpinner(scaleSpinner);
 		
 		mvcView.setTurnButton(turnButton);
 		/**/
@@ -159,6 +169,17 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		
 		//lolContainer.addView(lolView);
 		lolContainer.addView(v);
+		
+		
+		
+		
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		float xDensity = metrics.xdpi;
+		float yDensity = metrics.ydpi;
+		
+		model.setDensityX(xDensity);
+		model.setDensityY(yDensity);
 		
 	}
 	
@@ -242,108 +263,38 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long id) {
 		
-		/*
+		
+		//System.err.println("X: " + model.getDensityX() );
+		//System.err.println("Y: " + model.getDensityY() );
 		
 		
-		Hexagon5 theSelected;
-		try {
-			theSelected = this.model.getSelected();
+		if (parent.getId() == R.id.look_spinner3)
+		{
 			
+			//this.model.setScale(newValue);
 			
-			//tile colors
-			if (parent.getId() == R.id.look_spinner1)
-			{
-				
-				
-				
-				switch ( pos ) {
-				case 0: //none
-					theSelected.setHeldState(HeldState.NONE);
-					break;
-				case 1: //blue
-					theSelected.setHeldState(HeldState.HOLD_BLUE);
-					break;
-				case 2: //purple
-					theSelected.setHeldState(HeldState.HOLD_PURPLE);
-					break;
-				case 3: //green
-					theSelected.setHeldState(HeldState.HOLD_GREEN);
-					break;
-				case 4: //yellow
-					theSelected.setHeldState(HeldState.HOLD_ORANGE);
-					break;
-				case 5: //red
-					theSelected.setHeldState(HeldState.HOLD_RED);
-					break;
-				default:
-					//return super.onOptionsItemSelected(item);
-				}
-				
-				
-				
-			}
-			//occupant selection
-			else if (parent.getId() == R.id.look_spinner2)
-			{
-
-				
-				
-				switch ( pos ) {
-				case 0: //none
-					theSelected.setOccupantState(OccupantState.NONE);
-					break;
-				case 1: //beige
-					theSelected.setOccupantState(OccupantState.OCC_BEIGE);
-					break;
-				case 2: //blue
-					theSelected.setOccupantState(OccupantState.OCC_BLUE);
-					break;
-				case 3: //green
-					theSelected.setOccupantState(OccupantState.OCC_GREEN);
-					break;
-				case 4: //pink
-					theSelected.setOccupantState(OccupantState.OCC_PINK);
-					break;
-				case 5: //yellow
-					theSelected.setOccupantState(OccupantState.OCC_YELLOW);
-					break;
-				case 6: //portal blue
-					theSelected.setOccupantState(OccupantState.P_BLUE);
-					break;
-				case 7: //portal green
-					theSelected.setOccupantState(OccupantState.P_GREEN);
-					break;
-				case 8: //portal red
-					theSelected.setOccupantState(OccupantState.P_RED);
-					break;
-				case 9: //portal white
-					theSelected.setOccupantState(OccupantState.P_WHITE);
-					break;
-				case 10: //portal yellow
-					theSelected.setOccupantState(OccupantState.P_YELLOW);
-					break;
-				default:
-					//nothing (yet)
-				}
-				
-				
-				
+			switch ( pos ) {
+			case 0: //0.50
+				this.model.setScale(0.50f);
+				break;
+			case 1: //0.75
+				this.model.setScale(0.75f);
+				break;
+			case 2: //1.00
+				this.model.setScale(1.00f);
+				break;
+			case 3: //1.50
+				this.model.setScale(1.50f);
+				break;
+			case 4: //2.00
+				this.model.setScale(2.00f);
+				break;
+			default:
+				//return super.onOptionsItemSelected(item);
 			}
 			
-			
-			
-			
-			
-			
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			//null pointer exception
 		}
 		
-		//System.err.println(pos);
-		
-		/**/
 		
 	}
 

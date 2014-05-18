@@ -95,6 +95,8 @@ public class Actor_WhitePortal extends Actor {
         
         this.setRange(0);
         this.setPower(0);
+        
+        this.setCanAttack(true);
     }
     
     

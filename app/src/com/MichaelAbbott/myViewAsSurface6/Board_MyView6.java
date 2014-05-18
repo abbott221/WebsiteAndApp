@@ -562,7 +562,7 @@ public class Board_MyView6 extends SurfaceView implements SurfaceHolder.Callback
 						//nothing
 					}
 					
-					current.drawSelf(canvas, passBlock, passOccupant, passScale, passX, passY);
+					current.drawSelf(canvas, passBlock, passOccupant, passScale, passX, passY, this.model);
 					//current.drawSelf(canvas, tDemo);
 					
 				}
@@ -597,7 +597,7 @@ public class Board_MyView6 extends SurfaceView implements SurfaceHolder.Callback
 					}
 					else
 					{
-						current.drawSelf_Outline(canvas, passBlock, passOccupant, passScale, passX, passY);
+						current.drawSelf_Outline(canvas, passBlock, passOccupant, passScale, passX, passY, this.model);
 					}
 					
 				}
@@ -646,7 +646,7 @@ public class Board_MyView6 extends SurfaceView implements SurfaceHolder.Callback
 						//nothing
 					}
 					
-					current.drawSelf_Occupant(canvas, passBlock, passOccupant, passScale, passX, passY);
+					current.drawSelf_Occupant(canvas, passBlock, passOccupant, passScale, passX, passY, this.model);
 				}
 			}
 			

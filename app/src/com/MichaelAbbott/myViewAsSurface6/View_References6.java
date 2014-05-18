@@ -27,6 +27,9 @@ public class View_References6 {
 	private Spinner occSpinner;
 	private ArrayAdapter<CharSequence> occAdapter;
 	
+	private Spinner scaleSpinner;
+	private ArrayAdapter<CharSequence> scaleAdapter;
+	
 	
 	private Button turnButton;
 	
@@ -45,6 +48,9 @@ public class View_References6 {
 		
 		this.occSpinner = null;
 		this.occAdapter = null;
+		
+		this.scaleSpinner = null;
+		this.scaleAdapter = null;
 		
 		this.turnButton = null;
 		
@@ -121,6 +127,34 @@ public class View_References6 {
 	{
 		this.occAdapter = newAdapter;
 	}
+    
+    
+    
+    
+    public Spinner getScaleSpinner()
+	{
+		return this.scaleSpinner;
+	}
+    public void setScaleSpinner(Spinner newSpinner)
+	{
+		this.scaleSpinner = newSpinner;
+	}
+    public void updateScaleSpinner(int newPosition)
+	{
+		this.scaleSpinner.setSelection(newPosition);
+	}
+    
+    
+    
+    public ArrayAdapter<CharSequence> getScaleAdapter()
+	{
+		return this.scaleAdapter;
+	}
+    public void setScaleAdapter(ArrayAdapter<CharSequence> newAdapter)
+	{
+		this.scaleAdapter = newAdapter;
+	}
+    
     
     
     
