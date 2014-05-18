@@ -48,24 +48,28 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.00" >
+            android:layout_height="52dp" >
 
             <Spinner
                 android:id="@+id/look_spinner1"
-                android:layout_width="110dp"
+                android:layout_width="70dp"
                 android:layout_height="match_parent" />
 
             <Spinner
                 android:id="@+id/look_spinner2"
-                android:layout_width="110dp"
+                android:layout_width="70dp"
+                android:layout_height="match_parent" />
+
+            <Spinner
+                android:id="@+id/look_spinner3"
+                android:layout_width="80dp"
                 android:layout_height="match_parent" />
 
             <Button
                 android:id="@+id/look_button1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.24"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"
                 android:text="Button" />
 
         </LinearLayout>

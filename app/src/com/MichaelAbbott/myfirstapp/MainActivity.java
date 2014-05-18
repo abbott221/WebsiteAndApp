@@ -4,6 +4,7 @@ package com.MichaelAbbott.myfirstapp;
 import com.MichaelAbbott.standards.AttemptModel;
 import com.MichaelAbbott.standards.AttemptView;
 import com.MichaelAbbott.hexagonalgame.R;
+import com.MichaelAbbott.myViewPlayerMode.Player_MyActivityPlayer;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -72,7 +73,13 @@ public class MainActivity extends Activity {
         
         
         //Intent i = new Intent(getBaseContext(), AttemptView1.class);
+        
+        /*
         Intent i = new Intent(getBaseContext(), Post_View.class);
+        startActivity(i);
+        /**/
+        
+        Intent i = new Intent(getBaseContext(), Player_MyActivityPlayer.class);
         startActivity(i);
         
         

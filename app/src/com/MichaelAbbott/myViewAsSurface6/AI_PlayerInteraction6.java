@@ -394,6 +394,34 @@ public class AI_PlayerInteraction6 {
 		int health = defender.getCurrentHealth();
 		//int energy = attacker.getCurrentEnergy();
 		
+		
+		
+		boolean canAttack = attacker.getCanAttack();
+		
+		if ( canAttack ) {
+			
+			health -= damage;
+			//energy -= damage;
+			
+			if (health <= 0)
+			{
+				//defender has been defeated
+				model.setOccupant(target.getRow(), target.getColumn(), null);
+			}
+			else
+			{
+				//defender lives
+				defender.setCurrentHealth(health);
+			}
+			
+			attacker.setCanAttack(false);
+			
+		}
+		else {
+			//
+		}
+		
+		/*
 		health -= damage;
 		//energy -= damage;
 		
@@ -407,6 +435,9 @@ public class AI_PlayerInteraction6 {
 			//defender lives
 			defender.setCurrentHealth(health);
 		}
+		/**/
+		
+		
 		
 		//attacker.setCurrentEnergy(energy);
 		
@@ -418,23 +449,20 @@ public class AI_PlayerInteraction6 {
 		 * 
 		 */
 		
-		
+		/**/
 		ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(active, model);
-		//ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(active, model);
 		ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNonplayerNeighbors(active, model);
-		//ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(previous, model);
-		//ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(previous, model);
-		//ArrayList<Hexagon6> possibleMoves = AI_Hexagon6.getOpenNeighbors(target, model);
-		//ArrayList<Hexagon6> possibleEnemies = AI_Hexagon6.getNeutralNeighbors(target, model);
 		
 		clearTiles(model);
 		
 		setHolds(possibleMoves, HeldState.HOLD_ORANGE);
-		setHolds(possibleEnemies, HeldState.HOLD_RED);
+		
+		if ( canAttack ) {
+			setHolds(possibleEnemies, HeldState.HOLD_RED);
+		}
 		
 		setHold(active, model, HeldState.HOLD_BLUE);
-		//setHold(previous, HeldState.HOLD_BLUE);
-		//setHold(target, HeldState.HOLD_BLUE);
+		/**/
 		
 		
 		View_References6 progBars = model.getView_References();
@@ -483,6 +511,7 @@ public class AI_PlayerInteraction6 {
 		//target.setOccupantState(OccupantState.OCC_BEIGE);
 		
 		
+		boolean canAttack = occupant.getCanAttack();
 		
 		
 		/*
@@ -499,7 +528,10 @@ public class AI_PlayerInteraction6 {
 		clearTiles(model);
 		
 		setHolds(possibleMoves, HeldState.HOLD_ORANGE);
-		setHolds(possibleEnemies, HeldState.HOLD_RED);
+		
+		if (canAttack) {
+			setHolds(possibleEnemies, HeldState.HOLD_RED);
+		}
 		
 		setHold(target, model, HeldState.HOLD_BLUE);
 		

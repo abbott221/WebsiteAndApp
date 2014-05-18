@@ -12,6 +12,7 @@ import android.graphics.Path;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Vibrator;
+import android.util.DisplayMetrics;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -69,6 +70,10 @@ public class Board_Model6 {
 	
 	private float canvasHalfHeight;
 	private float canvasHalfWidth;
+	
+	
+	private float xDensity;
+	private float yDensity;
 	
 	
 	private boolean developerMode;
@@ -136,6 +141,10 @@ public class Board_Model6 {
 		this.developerMode = true;
 		//should I initialize it???
 		//this.canvasHalfHeight = 100.0f;
+		
+		
+		this.xDensity = 100;
+		this.yDensity = 100;
 		
 	}
 	
@@ -309,6 +318,7 @@ public class Board_Model6 {
     		current = occs.get(i);
     		current.setCurrentEnergy( current.getMaxEnergy() );
     		//this.currentPlayer
+    		current.setCanAttack(true);
     	}
     	this.currentPlayer.setOccupants(occs);
     	/**/
@@ -528,6 +538,28 @@ public class Board_Model6 {
 		this.displacementY += newValue;
 	}
     /**/
+    
+    
+    
+    public float getDensityX()
+	{
+		return this.xDensity;
+	}
+    public void setDensityX(float newValue)
+	{
+		this.xDensity = newValue;
+	}
+    
+    public float getDensityY()
+	{
+		return this.yDensity;
+	}
+    public void setDensityY(float newValue)
+	{
+		this.yDensity = newValue;
+	}
+    
+    
     
     
     
