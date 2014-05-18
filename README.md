@@ -37,10 +37,10 @@ Screenshots
 These will be organized most recent to least recent
 
 This is a picture of the second implementation of the game using pictures, the code is in the package com.MichaelAbbott.myViewAsSurface6
-![alt text](https://raw.githubusercontent.com/abbott221/WebsiteAndApp/master/Screenshot_2014-05-14-00-21-56.png "Second Implementation")
+![alt text](https://raw.githubusercontent.com/abbott221/WebsiteAndApp/master/pictures_fullsize/Screenshot_2014-05-14-00-21-56.png "Second Implementation")
 
 This is a picture of the second implementation of the game using pictures, the code is in the package com.MichaelAbbott.myCustomView
-![alt text](https://raw.githubusercontent.com/abbott221/WebsiteAndApp/master/Screenshot_2014-05-14-00-47-20.png "First Implementation")
+![alt text](https://raw.githubusercontent.com/abbott221/WebsiteAndApp/master/pictures_fullsize/Screenshot_2014-05-14-00-47-20.png "First Implementation")
 
 
 
