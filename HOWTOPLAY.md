@@ -7,23 +7,46 @@ The goal of each player is to destroy the opponent's "portal"
 
 This "portal" can "summon"/"teleport" "creatures"/"aliens" which can move and attack
 
+You and your opponent's "portal" and "creatures"/"aliens" are currently indistinguishable (I should probably fix that)
+
 
 (will explain the pictures in next commit)
 
 Main Picture
 -----
+Red Circle:   Ignore these. They are left over from debugging. They were very helpful. I disabled them, but still need to make them invisible
+Blue Circle:  Press this to end the current player's turn
+Green Circle: This contains 2 progress bars. The top one is health, and the bottom one is energy.
+Label 1:      This points to the "portal"
+Label 2:      This points to the "alien"/"creature"
+
 ![alt text](https://raw.githubusercontent.com/abbott221/WebsiteAndApp/master/pictures_display/4_3_main.png "Main Picture")
 
 
 
-"Alien" Picture
+"Alien" Picture / Tile selection
 -----
+When you press the tile that an "alien"/"creature" is standing on, it is highlighted (in blue)
+
+Label 1:      Red Tiles indicate the occupant on that tile can be attacked (because it belongs to the opponent).
+Label 2:      Blue Tiles indicate that a tile and its occupant has been selected by the user
+Label 3:      Yellow Yiles indicate tiles that the selected occupant can move to
+
+Features that are definitely not bugs:
+- you can't attack your own "aliens"/"creatures"
+- you can't control your opponent's portal or alien thingies
+
 ![alt text](https://raw.githubusercontent.com/abbott221/WebsiteAndApp/master/pictures_display/4_3_occupant.png "Main Picture")
 
 
 
 "Portal" Picture
 -----
+When you press the tile that belongs to your "portal", it is highlighted (in blue)
+
+Label 1:      Purple Tiles indicate a tile where you can "summon"/"teleport" an "alien" to.
+Label 2:      The blue tile indicates that its occupant is selected.
+
 ![alt text](https://raw.githubusercontent.com/abbott221/WebsiteAndApp/master/pictures_display/4_3_portal.png "Main Picture")
 
 
