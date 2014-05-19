@@ -121,6 +121,14 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		Button turnButton = (Button) findViewById(R.id.look_button1);
 		turnButton.setOnClickListener(this);
 		
+		Button toggleTextButton = (Button) findViewById(R.id.look_buttonHelp);
+		toggleTextButton.setOnClickListener(this);
+		
+		
+		TextView helpText = (TextView) findViewById(R.id.help_text_view);
+		
+		
+		
 		
 		model = new Board_Model6(this);
 		model.setDeveloperMode(false);
@@ -143,6 +151,8 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		mvcView.setScaleSpinner(scaleSpinner);
 		
 		mvcView.setTurnButton(turnButton);
+		mvcView.setToggleHelpButton(toggleTextButton);
+		mvcView.setHelpText(helpText);
 		/**/
 		
 		
@@ -181,6 +191,15 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 		model.setDensityX(xDensity);
 		model.setDensityY(yDensity);
 		
+		
+		
+		
+		lolSpinner.setVisibility(View.GONE);
+		occSpinner.setVisibility(View.GONE);
+		scaleSpinner.setVisibility(View.GONE);
+		
+		
+		mvcView.updateHelpText("It is Player 1's turn");
 	}
 	
 	
@@ -319,12 +338,24 @@ public class Player_MyActivityPlayer extends ViewWithActivityBar implements OnTo
 	
 	@Override
 	public void onClick(View view) {
+		
+		
 		//end turn
+		if (view.getId() == R.id.look_button1) {
+			System.err.println("End turn button");
+			
+			mvcController.processPlayerUnselectionEvent();
+			model.endTurn();
+		}
+		//toggle help text
+		else if (view.getId() == R.id.look_buttonHelp) {
+			System.err.println("Toggle button");
+			
+			mvcView.visibilityHelpText();
+		}
 		
-		System.err.println("Other click");
+		//System.err.println("Other click");
 		
-		mvcController.processPlayerUnselectionEvent();
-		model.endTurn();
 	}
 	
 	

@@ -4,6 +4,7 @@ package com.MichaelAbbott.myViewAsSurface6;
 import java.util.ArrayList;
 
 import com.MichaelAbbott.myViewAsSurface6.Hexagon6.OccupantState;
+import com.MichaelAbbott.myViewAsSurface6.Player.PlayerColor;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -220,7 +221,7 @@ public class Board_Model6 {
 		Player temp;
 		
 		for (int i = 0; i < listSize; i++) {
-			temp = new Player();
+			temp = new Player(PlayerColor.WHITE);
 			newList.add(temp);
 		}
 		
@@ -311,7 +312,7 @@ public class Board_Model6 {
     {
     	//recharge energy of all occupants
     	//not working yet
-    	/**/
+    	/*
     	ArrayList<Actor> occs = this.currentPlayer.getOccupants();
     	Actor current;
     	for (int i = 0; i < occs.size(); i++) {
@@ -345,6 +346,23 @@ public class Board_Model6 {
     	}
     	
     	this.currentPlayer = this.players.get(newIndex);
+    	
+    	myViewReferences.updateHelpText("It is Player " + (newIndex + 1) + "'s turn");
+    	
+    	
+    	
+    	//recharge energy of all occupants
+    	/**/
+    	ArrayList<Actor> occs = this.currentPlayer.getOccupants();
+    	Actor current;
+    	for (int i = 0; i < occs.size(); i++) {
+    		current = occs.get(i);
+    		current.setCurrentEnergy( current.getMaxEnergy() );
+    		//this.currentPlayer
+    		current.setCanAttack(true);
+    	}
+    	this.currentPlayer.setOccupants(occs);
+    	/**/
     }
     
     

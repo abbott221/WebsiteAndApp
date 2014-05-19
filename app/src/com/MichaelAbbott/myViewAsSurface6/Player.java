@@ -9,6 +9,12 @@ import java.util.ArrayList;
 public class Player {
     
 	
+	public static enum PlayerColor {
+		BLUE, GREEN, RED, WHITE, YELLOW
+	}
+	
+	private PlayerColor myColor;
+	
 	
 	private Board_Model6 grid;
     
@@ -17,8 +23,10 @@ public class Player {
     
     
 
-    public Player() {
-        this.grid = null;
+    public Player(PlayerColor color) {
+        this.myColor = color;
+    	
+    	this.grid = null;
         
         //should it be initialized empty or just be null?
         this.ownedOccupants = new ArrayList<Actor>();
@@ -34,6 +42,17 @@ public class Player {
     
     public void setGrid(Board_Model6 newGrid) {
         this.grid = newGrid;
+    }
+    
+    
+    
+    
+    public PlayerColor getColor() {
+        return this.myColor;
+    }
+    
+    public void setColor(PlayerColor newValue) {
+        this.myColor = newValue;
     }
     
     

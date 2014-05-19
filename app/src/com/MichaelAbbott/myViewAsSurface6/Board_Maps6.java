@@ -8,6 +8,7 @@ import com.MichaelAbbott.myViewAsSurface6.Hexagon6;
 import com.MichaelAbbott.myViewAsSurface6.Hexagon6.BlockState;
 import com.MichaelAbbott.myViewAsSurface6.Hexagon6.HeldState;
 import com.MichaelAbbott.myViewAsSurface6.Hexagon6.OccupantState;
+import com.MichaelAbbott.myViewAsSurface6.Player.PlayerColor;
 
 
 public class Board_Maps6 {
@@ -129,6 +130,7 @@ public class Board_Maps6 {
 		
 		
 		model.setCurrentPlayer(0);
+		model.getCurrentPlayer().setColor(PlayerColor.WHITE);
 		
 		occupantArray[1][1] = new Actor_WhitePortal( model, model.getHexagon(1, 1) );
 		
@@ -136,8 +138,9 @@ public class Board_Maps6 {
 		
 		
 		model.setCurrentPlayer(1);
+		model.getCurrentPlayer().setColor(PlayerColor.BLUE);
 		
-		occupantArray[3][6] = new Actor_WhitePortal( model, model.getHexagon(3, 6) );
+		occupantArray[3][6] = new Actor_BluePortal( model, model.getHexagon(3, 6) );
 		
 		//occupantArray[6][4] = new Actor_BeigeAlien( model, model.getHexagon(6, 4) );
 		//occupantArray[6][5] = new Actor_BeigeAlien( model, model.getHexagon(6, 5) );

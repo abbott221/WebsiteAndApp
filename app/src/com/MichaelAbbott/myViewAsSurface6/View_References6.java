@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 
 public class View_References6 {
 	
@@ -32,6 +33,8 @@ public class View_References6 {
 	
 	
 	private Button turnButton;
+	private Button toggleHelpButton;
+	private TextView helpText;
 	
 	
 	private ProgressBar topBar;
@@ -39,6 +42,9 @@ public class View_References6 {
 	
 	
 	private Board_Listener6 controller;
+	
+	
+	private boolean visible;
 	
 	
 	
@@ -53,11 +59,15 @@ public class View_References6 {
 		this.scaleAdapter = null;
 		
 		this.turnButton = null;
+		this.toggleHelpButton = null;
+		this.helpText = null;
 		
 		this.topBar = null;
 		this.bottomBar = null;
 		
 		this.controller = null;
+		
+		this.visible = true;
 	}
 	
 	//called nowhere yet
@@ -76,8 +86,56 @@ public class View_References6 {
 	{
 		this.turnButton = newButton;
 	}
+    
+    
+    
+    
+    public Button getToggleHelpButton()
+	{
+		return this.toggleHelpButton;
+	}
+    public void setToggleHelpButton(Button newButton)
+	{
+		this.toggleHelpButton = newButton;
+	}
 	
 	
+    
+    
+    
+    
+    
+    public TextView getHelpText()
+	{
+		return this.helpText;
+	}
+    public void setHelpText(TextView newObject)
+	{
+		this.helpText = newObject;
+	}
+    public void updateHelpText(String newValue)
+	{
+		//this.lolSpinner.setSelection(newPosition);
+		this.helpText.setText(newValue);
+	}
+    public void visibilityHelpText()
+	{
+		if (this.visible == true) {
+			this.helpText.setVisibility(View.GONE);
+			this.visible = false;
+		}
+		else {
+			this.helpText.setVisibility(View.VISIBLE);
+			this.visible = true;
+		}
+	}
+    
+    
+    
+    
+    
+    
+    
     
     public Spinner getSpinner()
 	{

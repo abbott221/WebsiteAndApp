@@ -24,6 +24,7 @@ import com.MichaelAbbott.myViewAsSurface6.Actor.ActorType;
 import com.MichaelAbbott.myViewAsSurface6.Hexagon6.BlockState;
 import com.MichaelAbbott.myViewAsSurface6.Hexagon6.HeldState;
 import com.MichaelAbbott.myViewAsSurface6.Hexagon6.OccupantState;
+import com.MichaelAbbott.myViewAsSurface6.Player.PlayerColor;
 
 import android.util.Log;
 
@@ -166,9 +167,17 @@ public class AI_PlayerInteraction6 {
 			occupant.setCurrentEnergy(energy);
 			
 			
+			Actor newOccupant = null;
+			if (model.getCurrentPlayer().getColor() == PlayerColor.WHITE) {
+				newOccupant = new Actor_BeigeAlien( model, target );
+			}
+			else if (model.getCurrentPlayer().getColor() == PlayerColor.BLUE) {
+				newOccupant = new Actor_BlueAlien( model, target );
+			}
+			
+			//newOccupant = new Actor_BeigeAlien( model, target );
 			
 			
-			Actor newOccupant = new Actor_BeigeAlien( model, target );
 			
 			model.setOccupant(target.getRow(), target.getColumn(), newOccupant);
 			
