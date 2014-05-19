@@ -1,5 +1,9 @@
 Intro
 -----
+The App is now available on the Google Play Store:
+- https://play.google.com/store/apps/details?id=com.MichaelAbbott.hexagonalgame
+- http://goo.gl/omk477
+
 This repository has very poor documentation and this README is not updated very frequently, but here's a general roadmap of what folder of code does what
 - App
   - res : "resources" such as XML files that describe the layout of various screens and png files that are displayed on them
@@ -37,10 +41,10 @@ Screenshots
 These will be organized most recent to least recent
 
 This is a picture of the second implementation of the game using pictures, the code is in the package com.MichaelAbbott.myViewAsSurface6
-![alt text](https://raw.githubusercontent.com/abbott221/WebsiteAndApp/master/Screenshot_2014-05-14-00-21-56.png "Second Implementation")
+![alt text](https://raw.githubusercontent.com/abbott221/WebsiteAndApp/master/pictures_fullsize/Screenshot_2014-05-14-00-21-56.png "Second Implementation")
 
 This is a picture of the second implementation of the game using pictures, the code is in the package com.MichaelAbbott.myCustomView
-![alt text](https://raw.githubusercontent.com/abbott221/WebsiteAndApp/master/Screenshot_2014-05-14-00-47-20.png "First Implementation")
+![alt text](https://raw.githubusercontent.com/abbott221/WebsiteAndApp/master/pictures_fullsize/Screenshot_2014-05-14-00-47-20.png "First Implementation")
 
 
 
