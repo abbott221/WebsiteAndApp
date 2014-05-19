@@ -12,6 +12,13 @@ You and your opponent's "portal" and "creatures"/"aliens" are currently indistin
 
 
 
+Goal
+-----
+The game is basically capture the flag; kill the other player's portal before they kill yours.
+How? Attack the opponent's portal until it runs out of health.
+
+
+
 
 Main Picture
 -----
@@ -26,6 +33,7 @@ Features that are definitely not bugs:
 - when an alien runs out of energy, a selected yellow tile will just deselect itself
 
 ![alt text](https://raw.githubusercontent.com/abbott221/WebsiteAndApp/master/pictures_display/4_3_main.png "Main Picture")
+
 
 
 
@@ -46,6 +54,7 @@ Features that are definitely not bugs:
 
 
 
+
 "Portal" Picture
 -----
 When you press the tile that belongs to your "portal", it is highlighted (in blue)
@@ -54,5 +63,6 @@ When you press the tile that belongs to your "portal", it is highlighted (in blu
 - Label 2:      The blue tile indicates that its occupant is selected.
 
 ![alt text](https://raw.githubusercontent.com/abbott221/WebsiteAndApp/master/pictures_display/4_3_portal.png "Main Picture")
+
 
 
