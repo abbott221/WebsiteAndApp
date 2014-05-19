@@ -4,6 +4,9 @@ The App is now available on the Google Play Store:
 - https://play.google.com/store/apps/details?id=com.MichaelAbbott.hexagonalgame
 - http://goo.gl/omk477
 
+What am I even looking at?
+- https://github.com/abbott221/WebsiteAndApp/blob/master/HOWTOPLAY.md
+
 This repository has very poor documentation and this README is not updated very frequently, but here's a general roadmap of what folder of code does what
 - App
   - res : "resources" such as XML files that describe the layout of various screens and png files that are displayed on them
