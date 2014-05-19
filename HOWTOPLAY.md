@@ -15,7 +15,7 @@ You and your opponent's "portal" and "creatures"/"aliens" are currently indistin
 Goal
 -----
 The game is basically capture the flag; kill the other player's portal before they kill yours.
-How? Attack the opponent's portal until it runs out of health.
+How? Attack the opponent's portal (with your aliens) until it runs out of health.
 
 
 
