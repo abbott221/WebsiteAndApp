@@ -19,4 +19,4 @@ Goal
 
 
 
-(a picture will go here soon)
+![alt text](https://raw.githubusercontent.com/abbott221/WebsiteAndApp/master/pictures_display/5_3_TLDR.png "Main Picture")
