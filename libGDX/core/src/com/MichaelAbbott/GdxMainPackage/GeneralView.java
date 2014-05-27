@@ -52,8 +52,10 @@ public class GeneralView {
 			rad = i * 2 + 1;
 			angle = (rad / 12.0) * 2.0 * Math.PI;
 			
-			tempX = (float) (Math.cos(angle) * 112.0);
-			tempY = (float) (Math.sin(angle) * 97.0);
+			//tempX = (float) (Math.cos(angle) * 112.0);
+			//tempY = (float) (Math.sin(angle) * 97.0);
+			tempX = (float) (Math.cos(angle) * 36.0);
+			tempY = (float) (Math.sin(angle) * 31.5);
 			
 			verts[2*i] = tempX;
 			verts[2*i + 1] = tempY;
@@ -66,30 +68,8 @@ public class GeneralView {
 		mediator = caller;
 	}
 	
-	/*
-	public void drawHexagon() {
-		
-		shapes.triangle(0, 0, verts[0], verts[1], verts[10], verts[11]);
-		
-		for (int i = 0; i < 5; i++) {
-			shapes.triangle(0, 0, verts[2*i], verts[2*i + 1], verts[2*i + 2], verts[2*i + 3]);
-		}
-	}
 	
 	
-	public void drawHexagon(float x, float y) {
-		
-		shapes.translate(x, y, 0);
-		
-		shapes.triangle(0, 0, verts[0], verts[1], verts[10], verts[11]);
-		
-		for (int i = 0; i < 5; i++) {
-			shapes.triangle(0, 0, verts[2*i], verts[2*i + 1], verts[2*i + 2], verts[2*i + 3]);
-		}
-		
-		shapes.translate(-x, -y, 0);
-	}
-	/**/
 	
 	public void draw() {
 		
@@ -112,7 +92,7 @@ public class GeneralView {
 		
 		
 		
-		
+		/*
 		batch.setProjectionMatrix(camera.combined);
 		
 		batch.begin();
@@ -120,6 +100,34 @@ public class GeneralView {
 		//batch.draw(img, 0, 0);
 		//draw hexagon blocks here
 		batch.draw(block_grass, 0, 0);
+		
+		batch.end();
+		/**/
+		
+		
+		
+		
+		batch.setProjectionMatrix(camera.combined);
+		
+		batch.begin();
+		
+		//batch.draw(img, 0, 0);
+		//draw hexagon blocks here
+		//batch.draw(block_grass, 0, 0);
+		
+		/*
+		for (int i = 0; i < myRows; i++) {
+			for (int j = 0; j < myColumns; j++) {
+				board[i][j].drawBlock();
+			}
+		}
+		/**/
+		
+		for (int i = (myRows - 1); i >= 0; i--) {
+			for (int j = (myColumns - 1); j >= 0; j--) {
+				board[i][j].drawBlock();
+			}
+		}
 		
 		batch.end();
 		
@@ -136,8 +144,16 @@ public class GeneralView {
 		
 		//drawHexagon(100, 100);
 		
+		/*
 		for (int i = 0; i < myRows; i++) {
 			for (int j = 0; j < myColumns; j++) {
+				board[i][j].drawHexagon();
+			}
+		}
+		/**/
+		
+		for (int i = (myRows - 1); i >= 0; i--) {
+			for (int j = (myColumns - 1); j >= 0; j--) {
 				board[i][j].drawHexagon();
 			}
 		}
@@ -147,17 +163,23 @@ public class GeneralView {
 		
 		
 		
-		
+		/*
 		batch.setProjectionMatrix(camera.combined);
 		
 		batch.begin();
 		
 		//batch.draw(img, 0, 0);
 		//draw hexagon blocks here
-		batch.draw(block_grass, 0, 0);
+		//batch.draw(block_grass, 0, 0);
+		
+		for (int i = 0; i < myRows; i++) {
+			for (int j = 0; j < myColumns; j++) {
+				board[i][j].drawBlock();
+			}
+		}
 		
 		batch.end();
-		
+		/**/
 		
 	}
 	

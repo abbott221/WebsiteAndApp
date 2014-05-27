@@ -68,14 +68,23 @@ public class Hexagon {
 		
 		
 		
-		centerX = c * 192 + 150;
+		int xSpacing = 80;
+		int ySpacing = 90;
+		//int xSpacing = 65;
+		//int ySpacing = 50;
+		
+		
+		
+		//centerX = c * 192 + 150;
+		centerX = c * xSpacing + 150;
 		
 		if (r % 2 != 0) //if odd
 		{
-			centerX += 96;
+			centerX += (xSpacing / 2.0f);
 		}
 		
-		centerY = r * 145 + 150;
+		//centerY = r * 145 + 150;
+		centerY = r * ySpacing + 150;
 		
 		
 		
@@ -105,10 +114,9 @@ public class Hexagon {
 		
 		
 		
-		//shapes.translate(x, y, 0);
 		shapes.translate(centerX, centerY, 0);
 		
-		shapes.scale(0.9f, 0.9f, 1.0f);
+		//shapes.scale(0.9f, 0.9f, 1.0f);
 		
 		
 		
@@ -120,12 +128,27 @@ public class Hexagon {
 		
 		
 		
-		shapes.scale(1/0.9f, 1/0.9f, 1.0f);
+		//shapes.scale(1/0.9f, 1/0.9f, 1.0f);
 		
-		//shapes.translate(-x, -y, 0);
 		shapes.translate(-centerX, -centerY, 0);
 		
 		
+		
+	}
+	
+	
+	
+	public void drawBlock() {
+		
+		SpriteBatch batch = mediator.view.batch;
+		Texture block_grass = mediator.view.block_grass;
+		
+		float left = centerX - (32.5f); // 65/2 = 32.5
+		float bottom = centerY - (44.5f); // 89/2 = 44.5
+		
+		bottom -= 10f;
+		
+		batch.draw(block_grass, left, bottom, 65, 89);
 		
 	}
 	
