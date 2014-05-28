@@ -27,18 +27,15 @@ public class TileModel {
 	
 	
 	
-	public TileModel() {
+	public TileModel(Mediator med) {
 		
-		this.boardR = 4;
-		this.boardC = 4;
+		this.mediator = med;
 		
-		board = new Hexagon[boardR][boardC];
 		
-		for (int i = 0; i < boardR; i++) {
-			for (int j = 0; j < boardC; j++) {
-				board[i][j] = new Hexagon(mediator, i, j);
-			}
-		}
+		this.board = new Hexagon[1][1];
+		//Maps.map1(med, this);
+		Maps.map2(med, this);
+		
 		
 		
 		this.previousTile = null;
@@ -65,16 +62,52 @@ public class TileModel {
 	public int getRows() {
 		return this.boardR;
 	}
+	public void setRows(int newValue) {
+		this.boardR = newValue;
+	}
 	public int getColumns() {
 		return this.boardC;
 	}
+	public void setColumns(int newValue) {
+		this.boardC = newValue;
+	}
+	
+	
 	
 	public int getTouchRadius() {
 		return this.touchRadius;
 	}
 	
+	
+	
 	public Hexagon[][] getBoard() {
 		return this.board;
+	}
+	public void setBoard(Hexagon[][] newValue) {
+		this.board = newValue;
+	}
+	
+	
+	
+	public Hexagon getPressedTile() {
+		return this.pressedTile;
+	}
+	public void setPressedTile(Hexagon newValue) {
+		this.pressedTile = newValue;
+	}
+	
+	public Hexagon getActiveTile() {
+		return this.activeTile;
+	}
+	public void setActiveTile(Hexagon newValue) {
+		this.activeTile = newValue;
+	}
+	
+	public Hexagon getPreviousTile() {
+		return this.pressedTile;
+	}
+	public void setPreviousTile(Hexagon newValue) {
+		this.previousTile = newValue;
 	}
 	
 	

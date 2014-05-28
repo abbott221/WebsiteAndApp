@@ -51,24 +51,21 @@ public class Listener implements InputProcessor {
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		
-		System.out.println("Touch up detected");
+		//System.out.println("Touch up detected");
 		
 		int libY =  540 - screenY;
 		int libX = screenX;
 		
+		
+		
 		Hexagon pressed = Logic_Board.getClosestTile(mediator.model, libX, libY);
 		
+		mediator.model.setPressedTile(pressed);
+		
+		
+		//if the user selected something on the grid
 		if (pressed != null) {
-			
-			//System.out.println( pressed.getRow() );
-			//System.out.println( pressed.getColumn() );
-			//System.out.println("Tile pressed");
-			
-			
-			
-			pressed.setActiveState(ActiveState.YELLOW);
-			
-			
+			Logic_ActiveState.tilePressed(mediator, pressed);
 		}
 		
 		return true;

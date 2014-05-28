@@ -50,6 +50,7 @@ public class Hexagon {
 		
 		this.cubeState = newCube;
 		
+		/*
 		centerX = c * 192 + 150;
 		
 		if (r % 2 != 0) //if odd
@@ -58,6 +59,10 @@ public class Hexagon {
 		}
 		
 		centerY = r * 145 + 150;
+		/**/
+		
+		constructorEnd(med, r, c);
+		
 	}
 	
 	public Hexagon(Mediator med, int r, int c) {
@@ -67,8 +72,10 @@ public class Hexagon {
 		this.column = c;
 		
 		
+		this.activeState = ActiveState.NONE;
+		this.cubeState = CubeState.GRASS;
 		
-		
+		/*
 		int xSpacing = 80;
 		int ySpacing = 90;
 		//int xSpacing = 65;
@@ -86,12 +93,44 @@ public class Hexagon {
 		
 		//centerY = r * 145 + 150;
 		centerY = r * ySpacing + 150;
+		/**/
 		
 		
+		//this.activeState = ActiveState.BLUE;
+		//this.activeState = ActiveState.NONE;
+		//this.cubeState = CubeState.GRASS;
 		
-		this.activeState = ActiveState.BLUE;
+		constructorEnd(med, r, c);
 	}
 	
+	
+	
+	public void constructorEnd(Mediator med, int r, int c) {
+		//spread out
+		//int xSpacing = 80;
+		//int ySpacing = 90;
+		//int xStart = 150;
+		//int yStart = 150;
+		
+		//packed
+		int xSpacing = 65;
+		int ySpacing = 50;
+		int xStart = 20;
+		int yStart = 80;
+		
+		
+		
+		//centerX = c * 192 + 150;
+		centerX = c * xSpacing + xStart;
+		
+		if (r % 2 != 0) //if odd
+		{
+			centerX += (xSpacing / 2.0f);
+		}
+		
+		//centerY = r * 145 + 150;
+		centerY = r * ySpacing + yStart;
+	}
 	
 	
 	
@@ -124,6 +163,16 @@ public class Hexagon {
 	}
 	public void setActiveState(ActiveState newValue) {
 		this.activeState = newValue;
+	}
+	/**/
+	
+	
+	/**/
+	public CubeState getCubeState() {
+		return this.cubeState;
+	}
+	public void setCubeState(CubeState newValue) {
+		this.cubeState = newValue;
 	}
 	/**/
 	
@@ -180,14 +229,15 @@ public class Hexagon {
 		//shapes.scale(0.9f, 0.9f, 1.0f);
 		
 		
-		
-		shapes.triangle(0, 0, verts[0], verts[1], verts[10], verts[11]);
-		
-		for (int i = 0; i < 5; i++) {
-			shapes.triangle(0, 0, verts[2*i], verts[2*i + 1], verts[2*i + 2], verts[2*i + 3]);
+		if (activeState != ActiveState.NONE) {
+			
+			shapes.triangle(0, 0, verts[0], verts[1], verts[10], verts[11]);
+			
+			for (int i = 0; i < 5; i++) {
+				shapes.triangle(0, 0, verts[2*i], verts[2*i + 1], verts[2*i + 2], verts[2*i + 3]);
+			}
+			
 		}
-		
-		
 		
 		//String out = shapes.getColor().toString();
 		//System.out.println(out);
@@ -225,8 +275,9 @@ public class Hexagon {
 		
 		bottom -= 10f;
 		
-		batch.draw(block_grass, left, bottom, 65, 89);
-		
+		if (cubeState != CubeState.NONE) {
+			batch.draw(block_grass, left, bottom, 65, 89);
+		}
 	}
 	
 	

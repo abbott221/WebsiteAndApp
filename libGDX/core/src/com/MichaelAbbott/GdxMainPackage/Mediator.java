@@ -21,8 +21,8 @@ public class Mediator {
 	
 	public Mediator() {
 		
-		model = new TileModel();
-		model.registerMediator(this);
+		model = new TileModel(this);
+		//model.registerMediator(this);
 		
 		
 		
