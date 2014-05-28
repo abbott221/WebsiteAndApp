@@ -7,11 +7,21 @@
        </head>
        
        <body>              
+              <!--
               <applet code = 'com.MichaelAbbott.applet.AppletLauncher'
               archive = 'executeInBrowser.jar'
               width = 800
               height = 600>
                      <param name="permissions" value="sandbox" />
               </applet>
+              -->
+              
+              <script src="https://www.java.com/js/deployJava.js"></script>
+              <script>
+                     var dir = location.href.substring(0,location.href.lastIndexOf('/')+1);
+                     var url = dir + "something.jnlp";
+                     deployJava.createWebStartLaunchButton(url, '1.7.0');
+              </script>
+              <a href="https://abbott221.github.io/WebsiteAndApp/something.jnlp">Launch Hexagonal Game</a>
        </body>
 </html>

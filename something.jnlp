@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase=
+"https://abbott221.github.io/WebsiteAndApp" 
+    href="something.jnlp">
+    <information>
+        <title>Hexagonal Game Title</title>
+        <vendor>Hexagonal Game Vendor</vendor>
+    </information>
+    <resources>
+        <!-- Application Resources -->
+        <j2se version="1.7+"
+              href="http://java.sun.com/products/autodl/j2se"/>
+        <jar href="executeInBrowser.jar"
+            main="true" />
+
+    </resources>
+    <application-desc
+         name="Hexagonal Game Application"
+         main-class=
+           "com.MichaelAbbott.GdxMainPackage.MyDesktopLauncher"
+         width="960"
+         height="540">
+     </application-desc>
+     <update check="background"/>
+</jnlp>
