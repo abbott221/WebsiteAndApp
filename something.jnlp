@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jnlp spec="1.0+" codebase=
-"https://abbott221.github.io/WebsiteAndApp" 
-    href="something.jnlp">
+"https://abbott221.github.io/WebsiteAndApp/" href="something.jnlp">
     <information>
         <title>Hexagonal Game Title</title>
         <vendor>Hexagonal Game Vendor</vendor>
     </information>
+    <security>
+        <all-permissions/>
+    </security>
     <resources>
         <!-- Application Resources -->
-        <j2se version="1.7+"
-              href="http://java.sun.com/products/autodl/j2se"/>
-        <jar href="executeInBrowser.jar"
-            main="true" />
+        <j2se version="1.7+" />
+        <jar href="executeInBrowser.jar" main="true" />
 
     </resources>
     <application-desc
