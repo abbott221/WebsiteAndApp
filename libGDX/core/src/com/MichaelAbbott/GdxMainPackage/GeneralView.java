@@ -1,5 +1,6 @@
 package com.MichaelAbbott.GdxMainPackage;
 
+import com.MichaelAbbott.GdxMainPackage.Hexagon.ActiveState;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
@@ -25,6 +26,7 @@ public class GeneralView {
 	
 	Texture img;
 	Texture block_grass;
+	
 	
 	
 	
@@ -80,52 +82,18 @@ public class GeneralView {
 		
 		
 		
-		int myRows = 4;
-		int myColumns = 4;
-		Hexagon[][] board = new Hexagon[ myRows ][ myColumns ];
-		
-		for (int i = 0; i < myRows; i++) {
-			for (int j = 0; j < myColumns; j++) {
-				board[i][j] = new Hexagon(mediator, i, j);
-			}
-		}
-		
-		
-		
-		/*
-		batch.setProjectionMatrix(camera.combined);
-		
-		batch.begin();
-		
-		//batch.draw(img, 0, 0);
-		//draw hexagon blocks here
-		batch.draw(block_grass, 0, 0);
-		
-		batch.end();
-		/**/
-		
-		
 		
 		
 		batch.setProjectionMatrix(camera.combined);
 		
 		batch.begin();
 		
-		//batch.draw(img, 0, 0);
-		//draw hexagon blocks here
-		//batch.draw(block_grass, 0, 0);
+		Hexagon[][] tempBoard = mediator.model.getBoard();
+		TileModel tempModel = mediator.model;
 		
-		/*
-		for (int i = 0; i < myRows; i++) {
-			for (int j = 0; j < myColumns; j++) {
-				board[i][j].drawBlock();
-			}
-		}
-		/**/
-		
-		for (int i = (myRows - 1); i >= 0; i--) {
-			for (int j = (myColumns - 1); j >= 0; j--) {
-				board[i][j].drawBlock();
+		for (int i = (tempModel.getRows() - 1); i >= 0; i--) {
+			for (int j = (tempModel.getColumns() - 1); j >= 0; j--) {
+				tempBoard[i][j].drawBlock();
 			}
 		}
 		
@@ -140,21 +108,10 @@ public class GeneralView {
 		shapes.begin(ShapeType.Filled);
 		shapes.setColor(Color.BLUE);
 		
-		//shapes.scale(0.9f, 0.9f, 1.0f);
-		
-		//drawHexagon(100, 100);
-		
-		/*
-		for (int i = 0; i < myRows; i++) {
-			for (int j = 0; j < myColumns; j++) {
-				board[i][j].drawHexagon();
-			}
-		}
-		/**/
-		
-		for (int i = (myRows - 1); i >= 0; i--) {
-			for (int j = (myColumns - 1); j >= 0; j--) {
-				board[i][j].drawHexagon();
+		for (int i = (tempModel.getRows() - 1); i >= 0; i--) {
+			for (int j = (tempModel.getColumns() - 1); j >= 0; j--) {
+				
+				tempBoard[i][j].drawHexagon(shapes);
 			}
 		}
 		
@@ -163,26 +120,11 @@ public class GeneralView {
 		
 		
 		
-		/*
-		batch.setProjectionMatrix(camera.combined);
-		
-		batch.begin();
-		
-		//batch.draw(img, 0, 0);
-		//draw hexagon blocks here
-		//batch.draw(block_grass, 0, 0);
-		
-		for (int i = 0; i < myRows; i++) {
-			for (int j = 0; j < myColumns; j++) {
-				board[i][j].drawBlock();
-			}
-		}
-		
-		batch.end();
-		/**/
 		
 	}
 	
 	
 	
 }
+
+

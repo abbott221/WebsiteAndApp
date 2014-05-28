@@ -11,12 +11,42 @@ public class Mediator {
 	
 	public GeneralView view;
 	
+	//public NonEventListener oldListener;
+	
+	public Listener listener;
+	
+	public TileModel model;
+	
+	
+	
 	public Mediator() {
+		
+		model = new TileModel();
+		model.registerMediator(this);
+		
+		
 		
 		view = new GeneralView();
 		view.registerMediator(this);
+		
+		
+		
+		listener = new Listener();
+		Gdx.input.setInputProcessor(listener);
+		
+		listener.registerMediator(this);
+		
+		
+		//model = new TileModel();
+		//model.registerMediator(this);
+		
+		
+		
 	}
 	
 	
 	
 }
+
+
+

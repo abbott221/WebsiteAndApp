@@ -3,6 +3,7 @@ package com.MichaelAbbott.GdxMainPackage;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -100,18 +101,78 @@ public class Hexagon {
 	
 	
 	
-	public void setMyColor() {
-		//
+	public float getCenterX() {
+		return this.centerX;
+	}
+	public float getCenterY() {
+		return this.centerY;
+	}
+	
+	
+	public float getRow() {
+		return this.row;
+	}
+	public float getColumn() {
+		return this.column;
 	}
 	
 	
 	
+	/**/
+	public ActiveState getActiveState() {
+		return this.activeState;
+	}
+	public void setActiveState(ActiveState newValue) {
+		this.activeState = newValue;
+	}
+	/**/
 	
-	public void drawHexagon() {
+	
+	//only call within this class for drawing
+	private void setMyColor(ShapeRenderer shapes) {
 		
-		ShapeRenderer shapes = mediator.view.shapes;
+		if (activeState == null) {
+			//
+		}
+		else if (activeState == ActiveState.NONE) {
+			//
+		}
+		else if (activeState == ActiveState.BLUE) {
+			shapes.setColor(Color.BLUE);
+			//System.out.println("blue");
+		}
+		else if (activeState == ActiveState.PURPLE) {
+			shapes.setColor(Color.DARK_GRAY);
+		}
+		
+		if (activeState == ActiveState.YELLOW) {
+			shapes.setColor(Color.YELLOW);
+			//System.out.println("yellow");
+		}
+		else if (activeState == ActiveState.RED) {
+			shapes.setColor(Color.RED);
+		}
+		
+		
+		//System.out.println("entered");
+		//shapes.setColor(Color.BLUE);
+	}
+	
+	
+	public void printStuff() {
+		//String out = shapes.getColor().toString();
+		System.out.println( this.getActiveState().toString() );
+	}
+	
+	
+	
+	public void drawHexagon(ShapeRenderer shapes) {
+		
+		//ShapeRenderer shapes = mediator.view.shapes;
 		float[] verts = mediator.view.verts;
 		
+		
+		setMyColor(shapes);
 		
 		
 		shapes.translate(centerX, centerY, 0);
@@ -128,6 +189,11 @@ public class Hexagon {
 		
 		
 		
+		//String out = shapes.getColor().toString();
+		//System.out.println(out);
+		
+		
+		
 		//shapes.scale(1/0.9f, 1/0.9f, 1.0f);
 		
 		shapes.translate(-centerX, -centerY, 0);
@@ -139,6 +205,17 @@ public class Hexagon {
 	
 	
 	public void drawBlock() {
+		
+		if (mediator == null) {
+			System.out.println("mediator");
+		}
+		if (mediator.view == null) {
+			System.out.println("view");
+		}
+		if (mediator.view.batch == null) {
+			System.out.println("batch");
+		}
+		
 		
 		SpriteBatch batch = mediator.view.batch;
 		Texture block_grass = mediator.view.block_grass;

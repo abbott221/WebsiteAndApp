@@ -28,7 +28,6 @@ public class GdxMainClass implements ApplicationListener {
 		
 		mediator.view.draw();
 		
-		
 	}
 
 	@Override

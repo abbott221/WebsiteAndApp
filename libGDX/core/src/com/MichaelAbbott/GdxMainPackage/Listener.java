@@ -1,0 +1,124 @@
+package com.MichaelAbbott.GdxMainPackage;
+
+import com.MichaelAbbott.GdxMainPackage.Hexagon.ActiveState;
+import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+
+public class Listener implements InputProcessor {
+	
+	Mediator mediator;
+	
+	private float startScrollX;
+	private float startScrollY;
+	private float currentScrollX;
+	private float currentScrollY;
+	
+	public Listener() {
+		//
+	}
+	
+	public void registerMediator(Mediator caller) {
+		mediator = caller;
+	}
+	
+	
+	
+	
+	
+	
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		int libY =  540 - screenY;
+		int libX = screenX;
+		
+		//System.out.println("Touch down detected");
+		//System.out.println(screenY);
+		
+		
+		startScrollX = screenX;
+		startScrollY = screenY;
+		
+		
+		return true;
+	}
+	
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		
+		System.out.println("Touch up detected");
+		
+		int libY =  540 - screenY;
+		int libX = screenX;
+		
+		Hexagon pressed = Logic_Board.getClosestTile(mediator.model, libX, libY);
+		
+		if (pressed != null) {
+			
+			//System.out.println( pressed.getRow() );
+			//System.out.println( pressed.getColumn() );
+			//System.out.println("Tile pressed");
+			
+			
+			
+			pressed.setActiveState(ActiveState.YELLOW);
+			
+			
+		}
+		
+		return true;
+	}
+	
+	@Override
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		int libY =  540 - screenY;
+		int libX = screenX;
+		
+		return true;
+	}
+	
+	
+	
+	
+	
+	
+	
+	@Override
+	public boolean keyDown(int keycode) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
+	public boolean keyUp(int keycode) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
+	public boolean keyTyped(char character) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
+	
+	@Override
+	public boolean mouseMoved(int screenX, int screenY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
+	public boolean scrolled(int amount) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
+}
