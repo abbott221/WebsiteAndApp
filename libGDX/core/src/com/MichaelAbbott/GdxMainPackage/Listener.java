@@ -58,7 +58,7 @@ public class Listener implements InputProcessor {
 		
 		
 		
-		Hexagon pressed = Logic_Board.getClosestTile(mediator.model, libX, libY);
+		Hexagon pressed = Logic_Tile.getClosestTile(mediator.model, libX, libY);
 		
 		mediator.model.setPressedTile(pressed);
 		

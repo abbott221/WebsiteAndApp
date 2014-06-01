@@ -11,7 +11,6 @@ public class MyDesktopLauncher {
 		config.height = 540;
 		config.width = 960;
 		
-		
 		new LwjglApplication(new GdxMainClass(), config);
 	}
 }

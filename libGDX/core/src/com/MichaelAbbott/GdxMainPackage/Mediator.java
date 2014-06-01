@@ -15,13 +15,13 @@ public class Mediator {
 	
 	public Listener listener;
 	
-	public TileModel model;
+	public Model_General model;
 	
 	
 	
 	public Mediator() {
 		
-		model = new TileModel(this);
+		model = new Model_General(this);
 		//model.registerMediator(this);
 		
 		

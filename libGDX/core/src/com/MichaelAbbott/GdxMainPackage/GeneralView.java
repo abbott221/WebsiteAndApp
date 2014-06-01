@@ -1,5 +1,6 @@
 package com.MichaelAbbott.GdxMainPackage;
 
+import com.MichaelAbbott.GdxMainPackage.Actor.ActorType;
 import com.MichaelAbbott.GdxMainPackage.Hexagon.ActiveState;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
@@ -89,7 +90,7 @@ public class GeneralView {
 		batch.begin();
 		
 		Hexagon[][] tempBoard = mediator.model.getBoard();
-		TileModel tempModel = mediator.model;
+		Model_General tempModel = mediator.model;
 		
 		for (int i = (tempModel.getRows() - 1); i >= 0; i--) {
 			for (int j = (tempModel.getColumns() - 1); j >= 0; j--) {
@@ -118,6 +119,35 @@ public class GeneralView {
 		shapes.end();
 		
 		
+		
+		batch.begin();
+		
+		//Hexagon[][] tempBoard = mediator.model.getBoard();
+		//Model_General tempModel = mediator.model;
+		Actor[][] tempOccupants = mediator.model.getOccupantArray();
+		
+		for (int i = (tempModel.getRows() - 1); i >= 0; i--) {
+			for (int j = (tempModel.getColumns() - 1); j >= 0; j--) {
+				
+				
+				//tempBoard[i][j].drawBlock();
+				
+				if (tempOccupants[i][j] == null) {
+					//nothing
+				}
+				else if (tempOccupants[i][j].getActorType() == ActorType.NONE) {
+					//nothing
+				}
+				else {
+					tempOccupants[i][j].drawSelf();
+				}
+				
+				
+				
+			}
+		}
+		
+		batch.end();
 		
 		
 		

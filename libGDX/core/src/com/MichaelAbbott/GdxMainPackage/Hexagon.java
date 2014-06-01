@@ -148,10 +148,10 @@ public class Hexagon {
 	}
 	
 	
-	public float getRow() {
+	public int getRow() {
 		return this.row;
 	}
-	public float getColumn() {
+	public int getColumn() {
 		return this.column;
 	}
 	
@@ -187,8 +187,16 @@ public class Hexagon {
 			//
 		}
 		else if (activeState == ActiveState.BLUE) {
-			shapes.setColor(Color.BLUE);
+			//shapes.setColor(Color.BLUE);
 			//System.out.println("blue");
+			
+			//selected
+			//shapes.setColor(Color.valueOf("6DCAECFF"));
+			shapes.setColor(Color.valueOf("6DCAEC00"));
+			
+			//unselected
+			//shapes.setColor(Color.valueOf("079DD0FF"));
+			//shapes.setColor(Color.valueOf("079DD000"));
 		}
 		else if (activeState == ActiveState.PURPLE) {
 			shapes.setColor(Color.DARK_GRAY);
@@ -255,7 +263,7 @@ public class Hexagon {
 	
 	
 	public void drawBlock() {
-		
+		/*
 		if (mediator == null) {
 			System.out.println("mediator");
 		}
@@ -265,7 +273,7 @@ public class Hexagon {
 		if (mediator.view.batch == null) {
 			System.out.println("batch");
 		}
-		
+		/**/
 		
 		SpriteBatch batch = mediator.view.batch;
 		Texture block_grass = mediator.view.block_grass;

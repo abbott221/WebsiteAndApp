@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Maps {
 	
 	
-	public static void map1(Mediator med, TileModel model) {
+	public static void map1(Mediator med, Model_General model) {
 		
 		int myRows = 5;
 		int myColumns = 8;
@@ -48,7 +48,7 @@ public class Maps {
 	
 	
 	
-	public static void map2(Mediator med, TileModel model) {
+	public static void map2(Mediator med, Model_General model) {
 		
 		int myRows = 8;
 		int myColumns = 9;
@@ -118,6 +118,18 @@ public class Maps {
 		model.setBoard(board);
 		model.setRows(myRows);
 		model.setColumns(myColumns);
+		
+		
+		
+		
+		Actor[][] occupantArray = new Actor[myRows][myColumns];
+		model.setOccupantArray(occupantArray);
+		
+		occupantArray[6][4] = new Actor_BeigeAlien( med, board[6][4] );
+		model.setOccupantArray(occupantArray);
+		
+		
+		
 	}
 	
 	

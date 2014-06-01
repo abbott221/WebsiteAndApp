@@ -1,5 +1,7 @@
 package com.MichaelAbbott.GdxMainPackage;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
@@ -7,13 +9,20 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class TileModel {
+public class Model_General {
 	
 	Mediator mediator;
 	
 	
 	
 	public Hexagon[][] board;
+	
+	private Actor[][] occupantArray;
+	private ArrayList<Player> players;
+	
+	
+	
+	//public Hexagon[][] board;
 	private int boardR;
 	private int boardC;
 	
@@ -27,7 +36,7 @@ public class TileModel {
 	
 	
 	
-	public TileModel(Mediator med) {
+	public Model_General(Mediator med) {
 		
 		this.mediator = med;
 		
@@ -42,7 +51,7 @@ public class TileModel {
 		this.activeTile = null;
 		this.pressedTile = null;
 		
-		this.touchRadius = 25;
+		this.touchRadius = 30;
 		
 	}
 	
@@ -86,6 +95,39 @@ public class TileModel {
 	public void setBoard(Hexagon[][] newValue) {
 		this.board = newValue;
 	}
+	
+	
+	
+	
+	public Actor[][] getOccupantArray() {
+		return this.occupantArray;
+	}
+	
+	//called by maps
+	public void setOccupantArray(Actor[][] newValue) {
+		this.occupantArray = newValue;
+	}
+	
+	
+	public Actor getOccupant(int r, int c) {
+		return this.occupantArray[r][c];
+	}
+	public void setOccupant(int r, int c, Actor newActor) {
+		this.occupantArray[r][c] = newActor;
+	}
+	//using returned occupant is optional
+	public Actor removeOccupant(int r, int c) {
+		Actor removed = this.occupantArray[r][c];
+		this.occupantArray[r][c] = null;
+		return removed;
+	}
+	
+	
+	
+	public Hexagon getHexagon(int r, int c) {
+		return this.board[r][c];
+	}
+	
 	
 	
 	
