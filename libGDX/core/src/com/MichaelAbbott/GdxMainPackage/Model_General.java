@@ -13,6 +13,8 @@ public class Model_General {
 	
 	Mediator mediator;
 	
+	Model_Selection mod_select;
+	
 	
 	
 	public Hexagon[][] board;
@@ -40,6 +42,8 @@ public class Model_General {
 		
 		this.mediator = med;
 		
+		this.mod_select = new Model_Selection(med);
+		
 		
 		this.board = new Hexagon[1][1];
 		//Maps.map1(med, this);
@@ -63,6 +67,18 @@ public class Model_General {
 				board[i][j].registerMediator(caller);
 			}
 		}
+	}
+	
+	
+	public Mediator getMediator() {
+		return this.mediator;
+	}
+	
+	
+	
+	
+	public Model_Selection getMForSelection() {
+		return this.mod_select;
 	}
 	
 	

@@ -60,13 +60,29 @@ public class Listener implements InputProcessor {
 		
 		Hexagon pressed = Logic_Tile.getClosestTile(mediator.model, libX, libY);
 		
-		mediator.model.setPressedTile(pressed);
 		
+		
+		
+		
+		//Logic_Selection call here
+		Logic_Selection.pressOccurred(mediator.model, pressed);
+		
+		
+		
+		
+		
+		/*
+		mediator.model.setPressedTile(pressed);
 		
 		//if the user selected something on the grid
 		if (pressed != null) {
 			Logic_ActiveState.tilePressed(mediator, pressed);
 		}
+		/**/
+		
+		
+		
+		
 		
 		return true;
 	}

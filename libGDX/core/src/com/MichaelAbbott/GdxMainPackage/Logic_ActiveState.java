@@ -38,11 +38,26 @@ public class Logic_ActiveState {
 			selectedCreatureTile(mediator, pressed);
 		}
 		
+		//selected empty tile
+		else {
+			selectedEmptyTile(mediator, pressed);
+		}
 		
-		
-		mediator.model.getPressedTile().setActiveState(ActiveState.BLUE);
+		//mediator.model.getPressedTile().setActiveState(ActiveState.BLUE);
+		//setHold()
 	}
 	
+	
+	
+	public static void selectedEmptyTile(Mediator med, Hexagon active) {
+		
+		
+		
+		clearTiles(med, active);
+		
+		
+		setHold(active, med.model, ActiveState.BLUE);
+	}
 	
 	
 	public static void selectedYellowTile(Mediator med, Hexagon active) {
@@ -54,6 +69,7 @@ public class Logic_ActiveState {
 		
 		ArrayList<Hexagon> openTiles = Logic_Tile.getBlockNeighbors(active, med.model);
 		setHolds(openTiles, ActiveState.YELLOW);
+		setHold(active, med.model, ActiveState.BLUE);
 	}
 	
 	
@@ -83,6 +99,7 @@ public class Logic_ActiveState {
 		
 		ArrayList<Hexagon> openTiles = Logic_Tile.getBlockNeighbors(active, med.model);
 		setHolds(openTiles, ActiveState.YELLOW);
+		setHold(active, med.model, ActiveState.BLUE);
 	}
 	
 	
@@ -93,7 +110,9 @@ public class Logic_ActiveState {
 		target.setActiveState(setting);
 		
 		
-		model.setActiveTile(target);
+		//model.setActiveTile(target);
+		
+		model.getMForSelection().setNewActive(target);
 		
 	}
 	
