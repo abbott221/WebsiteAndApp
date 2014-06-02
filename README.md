@@ -6,6 +6,7 @@ The App is now available on the Google Play Store:
 
 What am I even looking at?
 - https://github.com/abbott221/WebsiteAndApp/blob/master/HOWTOPLAY.md
+- https://github.com/abbott221/WebsiteAndApp/blob/master/HOWTOPLAY_TLDR.md
 
 This repository has very poor documentation and this README is not updated very frequently, but here's a general roadmap of what folder of code does what
 - App
