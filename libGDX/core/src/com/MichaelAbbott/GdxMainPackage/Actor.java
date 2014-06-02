@@ -209,7 +209,13 @@ public class Actor {
 		//float left = this.g;
 		//float right;
 		
-		batch.draw(this.appearance, left, bottom, this.getDrawWidth(), this.getDrawHeight());
+		
+		float translateX = left + mediator.listener.displacementX;
+		float translateY = bottom + mediator.listener.displacementY;
+		
+		
+		//batch.draw(this.appearance, left, bottom, this.getDrawWidth(), this.getDrawHeight());
+		batch.draw(this.appearance, translateX, translateY, this.getDrawWidth(), this.getDrawHeight());
 	}
 	
 	

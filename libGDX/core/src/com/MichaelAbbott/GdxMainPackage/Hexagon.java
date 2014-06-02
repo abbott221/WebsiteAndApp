@@ -232,7 +232,12 @@ public class Hexagon {
 		setMyColor(shapes);
 		
 		
-		shapes.translate(centerX, centerY, 0);
+		float translateX = centerX + mediator.listener.displacementX;
+		float translateY = centerY + mediator.listener.displacementY;
+		
+		
+		//shapes.translate(centerX, centerY, 0);
+		shapes.translate(translateX, translateY, 0);
 		
 		//shapes.scale(0.9f, 0.9f, 1.0f);
 		
@@ -254,7 +259,8 @@ public class Hexagon {
 		
 		//shapes.scale(1/0.9f, 1/0.9f, 1.0f);
 		
-		shapes.translate(-centerX, -centerY, 0);
+		//shapes.translate(-centerX, -centerY, 0);
+		shapes.translate(-translateX, -translateY, 0);
 		
 		
 		
@@ -283,8 +289,15 @@ public class Hexagon {
 		
 		bottom -= 10f;
 		
+		
+		
+		float translateX = left + mediator.listener.displacementX;
+		float translateY = bottom + mediator.listener.displacementY;
+		
+		
 		if (cubeState != CubeState.NONE) {
-			batch.draw(block_grass, left, bottom, 65, 89);
+			//batch.draw(block_grass, left, bottom, 65, 89);
+			batch.draw(block_grass, translateX, translateY, 65, 89);
 		}
 	}
 	

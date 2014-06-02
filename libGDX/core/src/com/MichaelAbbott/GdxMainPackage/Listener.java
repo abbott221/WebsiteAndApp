@@ -14,13 +14,31 @@ public class Listener implements InputProcessor {
 	
 	Mediator mediator;
 	
-	private float startScrollX;
-	private float startScrollY;
+	
+	
+	
+	public float displacementX;
+	public float displacementY;
+	
+	//lastKnownX
+	//startScrollX
+	private float lastKnownX;
+	private float lastKnownY;
+	
+	//newX
+	//currentScrollX
+	//possibly could've just been a local variable
 	private float currentScrollX;
 	private float currentScrollY;
 	
+	private boolean dragOccurred;
+	
+	
 	public Listener() {
-		//
+		displacementX = 0;
+		displacementY = 0;
+		
+		dragOccurred = false;
 	}
 	
 	public void registerMediator(Mediator caller) {
@@ -34,15 +52,22 @@ public class Listener implements InputProcessor {
 	
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		int libY =  540 - screenY;
-		int libX = screenX;
 		
 		//System.out.println("Touch down detected");
+		//System.out.println(screenX);
 		//System.out.println(screenY);
 		
 		
-		startScrollX = screenX;
-		startScrollY = screenY;
+		
+		int libX = screenX;
+		int libY =  540 - screenY;
+		
+		
+		
+		//lastKnownX = screenX;
+		//lastKnownY = screenY;
+		lastKnownX = libX;
+		lastKnownY = libY;
 		
 		
 		return true;
@@ -52,20 +77,35 @@ public class Listener implements InputProcessor {
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		
 		//System.out.println("Touch up detected");
-		
-		int libY =  540 - screenY;
-		int libX = screenX;
-		
-		
-		
-		Hexagon pressed = Logic_Tile.getClosestTile(mediator.model, libX, libY);
+		//System.out.println(screenX);
+		//System.out.println(screenY);
 		
 		
 		
+		//only update the hexagon ActiveState info if there wasn't a drag event
+		if (!dragOccurred) {
+			
+			int libX = screenX;
+			int libY =  540 - screenY;
+			
+			
+			
+			float translateX = libX - mediator.listener.displacementX;
+			float translateY = libY - mediator.listener.displacementY;
+			
+			
+			Hexagon pressed = Logic_Tile.getClosestTile(mediator.model, translateX, translateY);
+			
+			
+			
+			
+			//Logic_Selection call here
+			Logic_Selection.pressOccurred(mediator.model, pressed);
+		}
+		else {
+			dragOccurred = false;
+		}
 		
-		
-		//Logic_Selection call here
-		Logic_Selection.pressOccurred(mediator.model, pressed);
 		
 		
 		
@@ -82,6 +122,11 @@ public class Listener implements InputProcessor {
 		
 		
 		
+		//System.out.println("Touch up detected");
+		//System.out.println(screenX);
+		//System.out.println(screenY);
+		//System.out.println(displacementX);
+		//System.out.println(displacementY);
 		
 		
 		return true;
@@ -89,8 +134,26 @@ public class Listener implements InputProcessor {
 	
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		int libY =  540 - screenY;
-		int libX = screenX;
+		
+		int freshX = screenX;
+		int freshY =  540 - screenY;
+		
+		
+		
+		
+		//these are null/uncleared on first call to drag
+		currentScrollX = freshX;
+		currentScrollY = freshY;
+		
+		displacementX += currentScrollX - lastKnownX;
+		displacementY += currentScrollY - lastKnownY;
+		//displacements are finished updating
+		//So, clear the currentScroll values to the lastKnown values
+		lastKnownX = currentScrollX;
+		lastKnownY = currentScrollY;
+		
+		
+		dragOccurred = true;
 		
 		return true;
 	}

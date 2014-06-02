@@ -166,6 +166,74 @@ public class Logic_Tile {
 	
 	
 	
+	/**
+	 * returns all neighbor hexagons that don't have occupants
+	 */
+	public static ArrayList<Hexagon> getOpenNeighbors(Hexagon test, Model_General model) {
+		
+		ArrayList<Hexagon> result = getNeighbors(test, model);
+		
+		Hexagon temp;
+		
+		Actor occupant = null;
+		
+		
+		
+		for (int i = result.size() - 1; i >= 0; i--) {
+			
+			temp = result.get(i);
+			
+			occupant = model.getOccupant( temp.getRow(), temp.getColumn() );
+			
+			if (temp.getCubeState() == CubeState.NONE) {
+				result.remove(temp);
+			}
+			else if (occupant != null) {
+				result.remove(temp);
+			}
+		}
+		
+		
+		
+		return result;
+	}
+	
+	
+	
+	/**
+	 * returns all neighbor hexagons that do have occupants
+	 */
+	public static ArrayList<Hexagon> getNeutralNeighbors(Hexagon test, Model_General model) {
+		
+		ArrayList<Hexagon> result = getNeighbors(test, model);
+		
+		Hexagon temp;
+		
+		Actor occupant = null;
+		
+		
+		
+		for (int i = result.size() - 1; i >= 0; i--) {
+			
+			temp = result.get(i);
+			
+			occupant = model.getOccupant( temp.getRow(), temp.getColumn() );
+			
+			if (temp.getCubeState() == CubeState.NONE) {
+				result.remove(temp);
+			}
+			else if (occupant == null) {
+				result.remove(temp);
+			}
+		}
+		
+		
+		
+		return result;
+	}
+	
+	
+	
 	
 	
 	

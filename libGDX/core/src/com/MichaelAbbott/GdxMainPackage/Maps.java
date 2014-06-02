@@ -126,6 +126,9 @@ public class Maps {
 		model.setOccupantArray(occupantArray);
 		
 		occupantArray[6][4] = new Actor_BeigeAlien( med, board[6][4] );
+		
+		occupantArray[6][5] = new Actor_BeigeAlien( med, board[6][5] );
+		
 		model.setOccupantArray(occupantArray);
 		
 		
