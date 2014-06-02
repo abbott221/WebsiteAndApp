@@ -25,7 +25,7 @@ public class GeneralView {
 	
 	SpriteBatch batch;
 	
-	Texture img;
+	//Texture img;
 	Texture block_grass;
 	
 	
@@ -40,7 +40,7 @@ public class GeneralView {
 		
 		batch = new SpriteBatch();
 		
-		img = new Texture("badlogic.jpg");
+		//img = new Texture("badlogic.jpg");
 		block_grass = new Texture("demo_grass.png");
 		
 		
@@ -83,9 +83,10 @@ public class GeneralView {
 		
 		
 		
-		
-		
 		batch.setProjectionMatrix(camera.combined);
+		
+		
+		
 		
 		batch.begin();
 		
@@ -149,6 +150,16 @@ public class GeneralView {
 		
 		batch.end();
 		
+		
+		
+		
+		
+		batch.begin();
+		//WIDGETS GO HERE
+		
+		mediator.widgets.drawWidgets();
+		
+		batch.end();
 		
 		
 	}

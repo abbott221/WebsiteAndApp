@@ -17,6 +17,8 @@ public class Mediator {
 	
 	public Model_General model;
 	
+	Widgets widgets;
+	
 	
 	
 	public Mediator() {
@@ -35,6 +37,11 @@ public class Mediator {
 		Gdx.input.setInputProcessor(listener);
 		
 		listener.registerMediator(this);
+		
+		
+		
+		widgets = new Widgets();
+		widgets.registerMediator(this);
 		
 		
 		//model = new TileModel();
