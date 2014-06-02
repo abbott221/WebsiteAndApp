@@ -77,26 +77,17 @@ public class Logic_Selection {
 		
 		
 		
-		
-		//model.setPressedTile(newPressed);
-		//model.setActiveTile(newActive);
-		//model.setPreviousTile(newPrevious);
-		
-		
-		/*
-		model.getMForSelection().setNewActive(newActive);
-		model.getMForSelection().setNewPressed(newPressed);
-		
-		model.getMForSelection().setOldActive(oldActive);
-		model.getMForSelection().setOldPressed(oldPressed);
-		/**/
 	}
 	
 	
 	public static void selectionEvent(Model_General model) {
 		
+		//System.out.println("Selection");
 		
-		//model.setPressedTile(touched);
+		
+		
+		//opportunity to do some stuff with the active state here
+		
 		
 		
 		//is this the best place to call this?
@@ -107,6 +98,10 @@ public class Logic_Selection {
 	}
 	
 	public static void unselectionEvent(Model_General model, Hexagon touched) {
+		
+		//System.out.println("Unselection");
+		
+		
 		
 		Hexagon current = null;
 		

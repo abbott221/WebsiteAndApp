@@ -120,8 +120,31 @@ public class Actor {
 	public Hexagon getLocation() {
 		return this.location;
 	}
-	public void setLocation(Hexagon newValue) {
-		this.location = newValue;
+	public void setLocation(Hexagon newLocation) {
+		
+		Hexagon oldLocation = this.getLocation();
+		if (oldLocation != null) {
+			int oldRow = oldLocation.getRow();
+			int oldColumn = oldLocation.getColumn();
+			
+			//this.getGrid().setOccupant(oldRow, oldColumn, null);
+			this.mediator.model.setOccupant(oldRow, oldColumn, null);
+			
+			
+			
+			int newRow = newLocation.getRow();
+			int newColumn = newLocation.getColumn();
+			
+			this.mediator.model.setOccupant(newRow, newColumn, this);
+		}
+		
+		//int newRow = newLocation.getRow();
+		//int newColumn = newLocation.getColumn();
+		
+		//this.getGrid().setOccupant(newRow, newColumn, this);
+		//this.mediator.model.setOccupant(newRow, newColumn, this);
+		
+		this.location = newLocation;
 	}
 	
 	
