@@ -31,6 +31,11 @@ public class GeneralView {
 	
 	
 	
+	Texture sky;
+	
+	
+	
+	
 	public GeneralView() {
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 960, 540);
@@ -42,6 +47,8 @@ public class GeneralView {
 		
 		//img = new Texture("badlogic.jpg");
 		block_grass = new Texture("demo_grass.png");
+		
+		sky = new Texture("sepia_sky.png");
 		
 		
 		double angle = (1.0 / 12.0) * 2.0 * Math.PI;
@@ -89,6 +96,9 @@ public class GeneralView {
 		
 		
 		batch.begin();
+		
+		batch.draw(sky, 0, 0, 960, 540);
+		
 		
 		Hexagon[][] tempBoard = mediator.model.getBoard();
 		Model_General tempModel = mediator.model;

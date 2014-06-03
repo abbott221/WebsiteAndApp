@@ -17,6 +17,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar.ProgressBarStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -26,100 +27,99 @@ public class Widgets {
 	Mediator mediator;
 	
 	
-	//OrthographicCamera camera;
-	
-	//ShapeRenderer shapes;
-	//float[] verts;
-	
-	//SpriteBatch batch;
-	
-	//Texture img;
-	//Texture block_grass;
 	
 	private Skin skin;
-	private ProgressBar.ProgressBarStyle pbStyle;
-	private ProgressBar.ProgressBarStyle style;
+	
+	ProgressBar leftTop;
+	ProgressBar leftBottom;
+	
+	ProgressBar rightTop;
+	ProgressBar rightBottom;
 	
 	
-	ProgressBar first;
+	Label leftTopLabel;
+	Label leftBottomLabel;
+	
+	Label rightTopLabel;
+	Label rightBottomLabel;
 	
 	
 	public Widgets() {
 		
-		
-		//skin = new Skin();
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 		
 		
-		//===========================================================
+		float labelTopRow = 70;
+		float labelBottomRow = 30;
+		float pbTopRow = 60;
+		float pbBottomRow = 20;
 		
+		float screenWidth = 960;
+		float barWidth = 350;
+		float margin = 30;
 		
-		/*
-		//BEGIN
-		
-		//store a white texture called "white"
-		Pixmap pixmap = new Pixmap(1, 1, Format.RGBA8888);
-		pixmap.setColor(Color.WHITE);
-		pixmap.fill();
-		skin.add("white", new Texture(pixmap));
-		
-		//store default libgdx font as "default"
-		skin.add("default", new BitmapFont());
-		
-		
-		style = new ProgressBar.ProgressBarStyle();
-		style.background = skin.newDrawable("white", Color.DARK_GRAY);
-		
-		skin.add("default", style);
-		
-		//END
-		/**/
+		float leftSide = margin;
+		float rightSide = screenWidth - (margin + barWidth); //630 = 960 - (300 + 30)
 		
 		
 		
-		
-		first = new ProgressBar(0, 100, 1, false, skin);
-		
-		//first = new ProgressBar(0, 100, 1, false, style);
-		
-		
-		first.setX(50);
-		first.setY(50);
-		first.setSize(300, 0);
+		leftTop = new ProgressBar(0, 100, 1, false, skin);
+		//leftTop.setX(leftSide);
+		//leftTop.setY(pbTopRow);
+		//leftTop.setSize(barWidth, 0);
+		leftTop.setBounds(leftSide, pbTopRow, barWidth, 0);
 		
 		
+		leftBottom = new ProgressBar(0, 100, 1, false, skin);
+		//leftBottom.setX(leftSide);
+		//leftBottom.setY(pbBottomRow);
+		//leftBottom.setSize(barWidth, 0);
+		leftBottom.setBounds(leftSide, pbBottomRow, barWidth, 0);
+		
+		
+		rightTop = new ProgressBar(0, 100, 1, false, skin);
+		//rightTop.setX(rightSide);
+		//rightTop.setY(pbTopRow);
+		//rightTop.setSize(barWidth, 0);
+		rightTop.setBounds(rightSide, pbTopRow, barWidth, 0);
+		
+		
+		rightBottom = new ProgressBar(0, 100, 1, false, skin);
+		//rightBottom.setX(rightSide);
+		//rightBottom.setY(pbBottomRow);
+		//rightBottom.setSize(barWidth, 0);
+		rightBottom.setBounds(rightSide, pbBottomRow, barWidth, 0);
 		
 		
 		
 		
-		/*
+		leftTopLabel = new Label("Player 1 Health", skin);
+		//leftTopLabel.setX(leftSide);
+		//leftTopLabel.setY(labelTopRow);
+		leftTopLabel.setPosition(leftSide, labelTopRow);
 		
-		//block_grass = new Texture("demo_grass.png");
 		
-		ProgressBarStyle style = new ProgressBar.ProgressBarStyle();
+		leftBottomLabel = new Label("Player 1 Energy", skin);
+		//leftBottomLabel.setX(leftSide);
+		//leftBottomLabel.setY(labelBottomRow);
+		leftBottomLabel.setPosition(leftSide, labelBottomRow);
 		
-		pbStyle = skin.get("default-horizontal", ProgressBar.ProgressBarStyle.class);
 		
-		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+		rightTopLabel = new Label("Player 2 Health", skin);
+		//rightTopLabel.setX(rightSide);
+		//rightTopLabel.setY(labelTopRow);
+		rightTopLabel.setPosition(rightSide, labelTopRow);
 		
-		first = new ProgressBar(0, 100, 1, false, skin);
-		//first = new ProgressBar(0, 100, 1, false, style);
 		
-		//last parameter is either skin or style
-		//first = new ProgressBar(0, 100, 1, false, style);
-		//first = new ProgressBar(0, 0, 0, false, null);
+		rightBottomLabel = new Label("Player 2 Energy", skin);
+		//rightBottomLabel.setX(rightSide);
+		//rightBottomLabel.setY(labelBottomRow);
+		rightBottomLabel.setPosition(rightSide, labelBottomRow);
 		
-		first.setX(10);
-		first.setY(10);
-		first.setSize(100, 10);
-		
-		//first = new ProgressBar();
-		
-		//first = new ProgressBar(0, 0, 0, false, null, null);
-		
-		/**/
 		
 	}
+	
+	
 	
 	public void registerMediator(Mediator caller) {
 		mediator = caller;
@@ -132,23 +132,25 @@ public class Widgets {
 		
 		SpriteBatch batch = mediator.view.batch;
 		
-		//batch.draw(block_grass, translateX, translateY, 65, 89);
 		
-		//batch.draw(first, 1.0f);
+		leftTopLabel.draw(batch, 1.0f);
+		leftBottomLabel.draw(batch, 1.0f);
 		
-		first.setValue(50.0f);
-		//first.setColor(Color.CYAN);
-		//pbStyle.
-		//first.setStyle(pbStyle);
-		//first.set
+		rightTopLabel.draw(batch, 1.0f);
+		rightBottomLabel.draw(batch, 1.0f);
 		
-		//first.setStyle(pbStyle);
 		
-		//first.getStyle().toString()
-		System.out.println( first.getStyle().toString() );
 		
-		first.draw(batch, 1.0f);
+		leftTop.setValue(50.0f);
 		
+		
+		leftTop.draw(batch, 1.0f);
+		leftBottom.draw(batch, 1.0f);
+		
+		rightTop.draw(batch, 1.0f);
+		rightBottom.draw(batch, 1.0f);
+		
+		//first.draw(batch, 1.0f);
 	}
 	
 	
