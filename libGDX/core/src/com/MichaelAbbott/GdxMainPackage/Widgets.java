@@ -50,6 +50,10 @@ public class Widgets {
 		//skin = new Skin();
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 		
+		
+		//===========================================================
+		
+		
 		/*
 		//BEGIN
 		
@@ -75,6 +79,9 @@ public class Widgets {
 		
 		
 		first = new ProgressBar(0, 100, 1, false, skin);
+		
+		//first = new ProgressBar(0, 100, 1, false, style);
+		
 		
 		first.setX(50);
 		first.setY(50);
@@ -128,6 +135,17 @@ public class Widgets {
 		//batch.draw(block_grass, translateX, translateY, 65, 89);
 		
 		//batch.draw(first, 1.0f);
+		
+		first.setValue(50.0f);
+		//first.setColor(Color.CYAN);
+		//pbStyle.
+		//first.setStyle(pbStyle);
+		//first.set
+		
+		//first.setStyle(pbStyle);
+		
+		//first.getStyle().toString()
+		System.out.println( first.getStyle().toString() );
 		
 		first.draw(batch, 1.0f);
 		
