@@ -9,10 +9,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Actor_BeigeAlien extends Actor {
+public class Actor_WhitePortal extends Actor {
 	
 	
-	public Actor_BeigeAlien(Mediator med) {
+	public Actor_WhitePortal(Mediator med) {
 		
 		
 		commonPart(med);
@@ -20,7 +20,7 @@ public class Actor_BeigeAlien extends Actor {
 	
 	
 	
-	public Actor_BeigeAlien(Mediator med, Hexagon loc) {
+	public Actor_WhitePortal(Mediator med, Hexagon loc) {
 		
 		this.setLocation(loc);
 		
@@ -35,15 +35,15 @@ public class Actor_BeigeAlien extends Actor {
 		//this.mediator = med;
 		this.registerMediator(med);
 		
-		Texture texture = new Texture("alien_beige.png");
+		Texture texture = new Texture("portal_white.png");
 		this.setAppearance(texture);
 		//this.appearance = new Texture("demo_grass.png");
 		
 		
-		//float top = occBeige.getHeight() / 2;
-		//float top = texture.getHeight();
-		float width = texture.getWidth();
-		float height = texture.getHeight();
+		//float width = texture.getWidth();
+		//float height = texture.getHeight();
+		float width = 2 * texture.getWidth();
+		float height = 2 * texture.getHeight();
 		
 		this.setDrawWidth(width);
 		this.setDrawHeight(height);

@@ -207,6 +207,9 @@ public class Logic_ActiveState {
 		
 		setHold(active, med.model, ActiveState.BLUE);
 		med.model.getMForSelection().setNewActive(active);
+		
+		med.widgets.toggleLeft(false);
+		med.widgets.toggleRight(false);
 	}
 	
 	public static void selectedCreatureTile(Mediator med, Hexagon active) {

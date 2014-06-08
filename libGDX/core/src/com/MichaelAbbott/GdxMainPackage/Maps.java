@@ -123,11 +123,13 @@ public class Maps {
 		
 		
 		Actor[][] occupantArray = new Actor[myRows][myColumns];
-		model.setOccupantArray(occupantArray);
+		//model.setOccupantArray(occupantArray);
 		
 		occupantArray[6][4] = new Actor_BeigeAlien( med, board[6][4] );
 		
 		occupantArray[6][5] = new Actor_BeigeAlien( med, board[6][5] );
+		
+		occupantArray[6][2] = new Actor_WhitePortal( med, board[6][2] );
 		
 		model.setOccupantArray(occupantArray);
 		

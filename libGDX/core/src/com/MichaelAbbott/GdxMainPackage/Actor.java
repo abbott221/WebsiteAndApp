@@ -49,6 +49,10 @@ public class Actor {
 	
 	private boolean canAttack;
 	
+	private boolean canMove;
+	
+	
+	
 	
 	/*
 	public Actor(Mediator med) {
@@ -91,6 +95,8 @@ public class Actor {
 		this.drawY = 0;
 		this.drawWidth = 0;
 		this.drawHeight = 0;
+		
+		//this.maxHealth = 0;
 	}
 	
 	
@@ -218,6 +224,66 @@ public class Actor {
 		batch.draw(this.appearance, translateX, translateY, this.getDrawWidth(), this.getDrawHeight());
 	}
 	
+	
+	
+	
+	public int getMaxHealth() {
+		return this.maxHealth;
+	}
+	public void setMaxHealth(int newValue) {
+		this.maxHealth = newValue;
+	}
+	
+	public int getCurrentHealth() {
+		return this.currentHealth;
+	}
+	public void setCurrentHealth(int newValue) {
+		this.currentHealth = newValue;
+	}
+	
+	
+	
+	
+	public int getMaxEnergy() {
+		return this.maxEnergy;
+	}
+	public void setMaxEnergy(int newValue) {
+		this.maxEnergy = newValue;
+	}
+	
+	public int getCurrentEnergy() {
+		return this.currentEnergy;
+	}
+	public void setCurrentEnergy(int newValue) {
+		this.currentEnergy = newValue;
+	}
+	
+	
+	
+	
+	public int getRange() {
+		return this.range;
+	}
+	public void setRange(int newValue) {
+		this.range = newValue;
+	}
+	
+	public int getPower() {
+		return this.power;
+	}
+	public void setPower(int newValue) {
+		this.power = newValue;
+	}
+	
+	
+	
+	
+	public boolean getCanAttack() {
+		return this.canAttack;
+	}
+	public void setCanAttack(boolean newValue) {
+		this.canAttack = newValue;
+	}
 	
 	
 }
