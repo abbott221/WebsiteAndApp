@@ -17,11 +17,16 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar.ProgressBarStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 public class Widgets {
 	
@@ -49,10 +54,24 @@ public class Widgets {
 	
 	Label playerLabel;
 	
-	TextButton turnButton;
+	
+	
+	
+	public TextButton turnButton;
+	
+	boolean buttonDown;
+	
+	
+	
+	
+	//Stage stage;
 	
 	
 	public Widgets() {
+		
+		//stage = new Stage();
+		//Gdx.input.setInputProcessor(stage);
+		
 		
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 		
@@ -126,6 +145,45 @@ public class Widgets {
 		turnButton = new TextButton("End Turn", skin);
 		turnButton.setPosition(780, 450);
 		turnButton.setSize(100, 40);
+		
+		buttonDown = false;
+		
+		//turnButton.
+		
+		
+		/*
+		turnButton.addListener(new ChangeListener() {
+			
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				// TODO Auto-generated method stub
+				System.out.println("changed");
+			}
+			
+		});
+		/**/
+		
+		
+		//turnButton.g
+		/*
+		turnButton.addListener(new InputListener() {
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				
+				//process down event
+				//System.out.println("down");
+				
+				return true;
+			}
+			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+				
+				//process up event
+				//System.out.println("up");
+				
+				//return true;
+			}
+		});
+		/**/
+		//stage.addActor(turnButton);
 	}
 	
 	
@@ -138,6 +196,7 @@ public class Widgets {
 	
 	
 	public void drawWidgets() {
+		
 		
 		SpriteBatch batch = mediator.view.batch;
 		
@@ -166,7 +225,78 @@ public class Widgets {
 		turnButton.draw(batch, 1.0f);
 		
 		
-		//first.draw(batch, 1.0f);
+		
+		/**/
+		boolean justTouched = Gdx.input.justTouched();
+		boolean touched = Gdx.input.isTouched();
+		
+		if (touched) {
+			
+			int firstX = Gdx.input.getX();
+			int firstY = 540 - Gdx.input.getY();
+			
+			//turnButton.toggle();
+			
+			//process up here or in else statements?
+			
+			//System.out.println("just touched");
+			
+			//System.out.println(firstX);
+			//System.out.println(firstY);
+			
+			if (firstY > 450 && firstY < 490) {
+				if (firstX > 780 && firstX < 880) {
+					//down
+					//System.out.println("just touched");
+					
+					//batch.draw((Texture) turnButton.getStyle().down, 780, 450, 100, 40);
+					
+					if (buttonDown == false) {
+						freshButtonPress();
+					}
+					
+					buttonDown = true;
+					turnButton.getStyle().down.draw(batch, 780, 450, 100, 40);
+					
+					//turnButton.toggle();
+				}
+				else {
+					//up
+					buttonDown = false;
+					turnButton.draw(batch, 1.0f);
+				}
+			}
+			else {
+				//up
+				buttonDown = false;
+				turnButton.draw(batch, 1.0f);
+			}
+			
+		}
+		else {
+			/*
+			//batch.draw((Texture) turnButton.getStyle().up, 780, 450, 100, 40);
+			//turnButton.draw(batch, 1.0f);
+			turnButton.getStyle().up.draw(batch, 780, 450, 100, 40);
+			//turnButton.getStyle().font.draw(batch, "End Turn", 780, 450);
+			int regionX = turnButton.getStyle().font.getRegion().getRegionX();
+			int regionY = turnButton.getStyle().font.getRegion().getRegionY();
+			turnButton.getStyle().font.draw(batch, "End Turn", regionX, regionY);
+			/**/
+			buttonDown = false;
+			turnButton.draw(batch, 1.0f);
+			
+		}
+		/**/
+		
+	}
+	
+	
+	
+	public void freshButtonPress() {
+		//leftShown = visible;
+		System.out.println("fresh button press");
+		
 	}
 	
 	

@@ -4,6 +4,7 @@ import com.MichaelAbbott.GdxMainPackage.Hexagon.ActiveState;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -61,6 +62,22 @@ public class Listener implements InputProcessor {
 		
 		int libX = screenX;
 		int libY =  540 - screenY;
+		
+		
+		
+		/*
+		System.out.println("x: " + libX);
+		System.out.println("y: " + libY);
+		
+		if (libY > 450 && libY < 550) {
+			System.out.println("just touched");
+			
+			if (libX > 780 && libX < 820) {
+				//down
+				System.out.println("just touched");
+			}
+		}
+		/**/
 		
 		
 		
